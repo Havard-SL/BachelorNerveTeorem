@@ -1,0 +1,114 @@
+\documentclass[a4paper, titlepage, 12pt, norsk]{article}
+
+\usepackage[utf8]{inputenc} % For å kunna skriva æøå i tekstar
+\usepackage[T1]{fontenc}
+\usepackage[margin=2cm]{geometry} % Fiksa margin
+\usepackage[ddmmyyyy]{datetime} % Fiksar datorormatet på tiitelen
+\usepackage{amssymb}
+\usepackage{amsmath} % For visse mattesymbol, typ \mathbb
+\usepackage{graphicx} % Bilete
+%\usepackage{minted} % For kodesnuttar og resultat
+\usepackage{enumitem} % Kan endra på korleis listar ser ut
+
+\usepackage{amsthm}
+\usepackage{thmtools} 
+
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+
+\RequirePackage{fontspec}
+\setmainfont{Atkinson Hyperlegible}
+
+% Ny type lista med ganske perfekt spacing
+\newlist{plist}{enumerate}{5}
+\setlist[plist]{align=left, itemindent = 0cm, labelsep = 0cm, labelindent = 0cm}
+\setlist[plist,1]{label=\arabic*, font=\bf\Large}
+\setlist[plist,2]{label*=.\arabic*, labelwidth=1.25cm, leftmargin=1.25cm}
+\setlist[plist,3]{label*=.\arabic*, labelwidth=1.5cm, leftmargin=1.5cm}
+
+\theoremstyle{plain}
+\newtheorem{theorem}{Teorem}[section]
+\newtheorem{proposition}[theorem]{Proposjon}
+\newtheorem{corollary}[theorem]{Korollar}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definisjon}
+\newtheorem{example}[theorem]{Eksempel}
+\newtheorem{remark}[theorem]{Merknad}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+
+\title{Nerveteorement og Anvendingar}
+\author{Håvard Skjetne Lilleheie}
+
+\begin{document}
+
+\maketitle
+
+\section{Grunnleggande definisjonar og resultat}
+
+\begin{definition}
+	For $V$ ei ikkje-tom og endeleg mengda, så definerar me $K$ til å vera eit \emph{endeleg asbtrakt simplisielt kompleks over $V$} om:
+	\begin{enumerate}
+		\item{$\forall v \in V: \{v\} \in K$}
+		\item{$\forall \sigma \in K, \forall \tau \subseteq \sigma: \tau \in K$}
+	\end{enumerate}
+\end{definition}
+Nokre eksempel av endelege abstrakte simplisielle kompleks over $\{p_1, p_2, p_3\}$:
+\begin{itemize}
+	\item{$A_1=\{\{p_1, p_2\}, \{p_1\}, \{p_2\}\}$}
+	\item{$A_2=\{\{p_1\}, \{p_2\}, \{p_3\}, \{p_1, p_3\}, \{p_2, p_3\}$}
+	\item{$A_3=\{\{p_1\}, \{p_2\}, \{p_3\}\}$}
+\end{itemize}
+Og her er nokre ikkje-eksempel av endelege abstrakte simplisielle kompleks over $\{p_1, p_2, p_3\}$:
+\begin{itemize}
+	\item{$A_1'=\{\{p_1, p_2\}, \{p_1\}\}=A_1 \setminus \{\{p_2\}\}$}
+	\item{$A_2'=\{\{p_1\}, \{p_2\}, \{p_3\}, \{p_1, p_3\}, \{p_2, p_3\}, \{p_1, p_2, p_3\}\}=A_2 \cup \{\{p_1, p_2, p_3\}\}$}
+	\item{$A_3'=\{\{p_1\}, \{p_2\}, \{p_2, p_3\}\}=\left(A_3 \setminus \{\{p_3\}\}\right) \cup \{\{p_2, p_3\}\}$}
+\end{itemize}
+Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men som me kjem til å sjå seinare; så er dette ein svært praktisk simplifisering av informasjon som bevarer mykje av eigenskapane til den originale datamengda ein vil sjå på. 
+\\Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
+\begin{definition}
+	Ein endeleg mengda punkt $\{p_1, p_2, p_3, \dots, p_n\}$ i $\R^m$ for $m\geq1$ er \emph{geometrisk uavhengige} om for $\{t_i\}_{i=0}^n$ med $t_i\in\R$, så:
+	\begin{equation*}
+		\left(\sum_{i=0}^n t_i=0 \land  \sum_{i_0}^n t_ip_i=0\right)\Rightarrow t_i=0 \; \forall i
+	\end{equation*}
+\end{definition}
+\begin{theorem}
+	Ei endeleg mengda $\{p_1, p_2, p_3, \dots, p_n \}$ av punkt i $\R^m$ er gemetrisk uavhengige $\Leftrightarrow$ vektorane $\{(p_2-p_1), (p_3-p_1), (p_4-p_1),\dots,(p_n-p_1)\}$ er lineært uavhengige i $\R^m$
+\end{theorem}
+\begin{proof}
+	(\Rightarrow)
+	\\For $a_i\in\R$, annta $\sum_{i=2}^na_i(p_i-p_1)=0$. Det kan me skriva om til: $\sum_{i=2}^na_ip_i + \left(-\sum_{i=2}^na_i\right)p_1$. Om me då definerar: $a_1 := -\sum_{i=2}^na_i$, så ser me at $\sum_{i=1}^na_i=\sum_{i=2}^na_i-\sum_{i=2}^na_i=0$, og at $\sum_{i=1}^na_ip_i=\sum_{i=2}^na_i(p_i-p_1)=0$. Og sidan $\{p_i\}_{i=1}^n$ er geometrisk uavhengig frå antaginga, så $\Rightarrow$ $a_i=0 \, \forall i$ 	
+	\\(\Leftarrow)
+	\\Mutt
+\end{proof}
+\begin{definition}
+	Konveks kombinasjon
+\end{definition}
+\begin{definition}
+	Geometrisk simplex
+\end{definition}
+\begin{definition}
+	Simplisielt kompleks
+\end{definition}
+\begin{definition}
+	Affin imbedding
+\end{definition}
+\begin{definition}
+	Ein \emph{geometriske realisering} til eit endeleg abstrakt simplisielt kompleks over ei ikkje-tom mengda $V$ er, gitt ein vilkårleg affin imbedding $f:V\to\R^n$ for ein eller annan $n\geq1$, 
+\end{definition}
+\begin{theorem}
+	geometrisk realisering unik opp til homeomorfi
+\end{theorem}
+\begin{remark}
+	Derfor me bruker bestemt form
+\end{remark}
+
+
+
+\end{document}
