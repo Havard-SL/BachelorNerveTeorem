@@ -37,6 +37,9 @@
 \newtheorem{example}[theorem]{Eksempel}
 \newtheorem{remark}[theorem]{Merknad}
 
+\usepackage[norsk]{babel}
+%\renewcommand*{\proofname}{Bevis}
+
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\Z}{\mathbb{Z}}
@@ -58,10 +61,10 @@
 		\item{$\forall \sigma \in K, \forall \tau \subseteq \sigma: \tau \in K$}
 	\end{enumerate}
 \end{definition}
-Nokre eksempel av endelege abstrakte simplisielle kompleks over $\{p_1, p_2, p_3\}$:
+\noindent Nokre eksempel av endelege abstrakte simplisielle kompleks over $\{p_1, p_2, p_3\}$:
 \begin{itemize}
 	\item{$A_1=\{\{p_1, p_2\}, \{p_1\}, \{p_2\}\}$}
-	\item{$A_2=\{\{p_1\}, \{p_2\}, \{p_3\}, \{p_1, p_3\}, \{p_2, p_3\}$}
+	\item{$A_2=\{\{p_1\}, \{p_2\}, \{p_3\}, \{p_1, p_3\}, \{p_2, p_3\}\}$}
 	\item{$A_3=\{\{p_1\}, \{p_2\}, \{p_3\}\}$}
 \end{itemize}
 Og her er nokre ikkje-eksempel av endelege abstrakte simplisielle kompleks over $\{p_1, p_2, p_3\}$:
@@ -73,9 +76,9 @@ Og her er nokre ikkje-eksempel av endelege abstrakte simplisielle kompleks over 
 Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men som me kjem til å sjå seinare; så er dette ein svært praktisk simplifisering av informasjon som bevarer mykje av eigenskapane til den originale datamengda ein vil sjå på. 
 \\Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 \begin{definition}
-	Ein endeleg mengda punkt $\{p_1, p_2, p_3, \dots, p_n\}$ i $\R^m$ for $m\geq1$ er \emph{geometrisk uavhengige} om for $\{t_i\}_{i=0}^n$ med $t_i\in\R$, så:
+	Ein endeleg mengda punkt $\{p_1, p_2, p_3, \dots, p_n\}$ i $\R^m$ for $m\geq1$ er \emph{geometrisk uavhengige} om for $\{a_i\}_{i=0}^n$ med $a_i\in\R$, så:
 	\begin{equation*}
-		\left(\sum_{i=0}^n t_i=0 \land  \sum_{i_0}^n t_ip_i=0\right)\Rightarrow t_i=0 \; \forall i
+		\left(\sum_{i=1}^n a_i=0 \land  \sum_{i=1}^n a_ip_i=0\right)\Rightarrow a_i=0 \; \forall i
 	\end{equation*}
 \end{definition}
 \begin{theorem}
@@ -83,15 +86,66 @@ Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men
 \end{theorem}
 \begin{proof}
 	(\Rightarrow)
-	\\For $a_i\in\R$, annta $\sum_{i=2}^na_i(p_i-p_1)=0$. Det kan me skriva om til: $\sum_{i=2}^na_ip_i + \left(-\sum_{i=2}^na_i\right)p_1$. Om me då definerar: $a_1 := -\sum_{i=2}^na_i$, så ser me at $\sum_{i=1}^na_i=\sum_{i=2}^na_i-\sum_{i=2}^na_i=0$, og at $\sum_{i=1}^na_ip_i=\sum_{i=2}^na_i(p_i-p_1)=0$. Og sidan $\{p_i\}_{i=1}^n$ er geometrisk uavhengig frå antaginga, så $\Rightarrow$ $a_i=0 \, \forall i$ 	
+	\\For $a_i\in\R$, annta $\sum_{i=2}^na_i(p_i-p_1)=0$. Om me då definerar: $a_1 := -\sum_{i=2}^na_i$, så ser me at 
+	\begin{equation*}
+		\sum_{i=1}^na_i=\sum_{i=2}^na_i-\sum_{i=2}^na_i=0
+	\end{equation*}
+	og at 
+	\begin{equation*}
+		\sum_{i=1}^na_ip_i=\sum_{i=2}^na_i(p_i-p_1)=0
+	\end{equation*}
+	Og sidan $\{p_i\}_{i=1}^n$ er geometrisk uavhengig frå antaginga, så $\Rightarrow$ $a_i=0 \, \forall i$. Som er definisjonen på lineært uavhengig.
 	\\(\Leftarrow)
-	\\Mutt
+	\\for $a_i\in\R$, annta $\sum_{i=1}^n a_i=0$ og $\sum_{i=1}^n a_ip_i=0$. Då ser me at 
+	\begin{equation*}
+		a_1=-\sum_{i=2}^n a_i
+	\end{equation*} 
+	Det gir oss: 
+	\begin{equation*}
+		0=\sum_{i=1}^n a_ip_i=\sum_{i=2}^n a_ip_i-\sum_{i=2}a_ip_1=\sum_{i=2}a_i(p_i-p_1)
+	\end{equation*}
+	Men sidan $\{(p_i-p_1)\}_{i=2}^n$ er lineært uavhengig, så: $\Rightarrow a_i = 0$ for $i\in[2,n]$. Men sidan $a_1 = -\sum_{i=2}^n a_i=0$, så får me $a_i=0 \forall i$. Som er definisjonen på geometrisk uavhengig.
+\end{proof}
+\begin{remark}
+	Ein direkte konsekvens frå dette resultatet og grunnleggande lineær algebra er at ein geometrisk uavhengig mengda i $\R^m$ kan maksimalt innehalda $m+1$ forskjellige punkt. Dette er fordi det kan ikkje vera meir enn $m$ lineært uavhengige vektorar i eit $m$-dimensjonalt vektorrom.
+\end{remark}
+\begin{definition}
+	Ein \emph{konveks kombinasjon} av ei geometrisk uavhengig mengda $P=\{p_1, p_2, p_3, \dots, p_n\}$ av punkt i $\R^m$ er eit punkt $x\in\R^m$ gitt ein tupel av koeffisientar $A=\{a_1, a_2, a_3, \dots, a_n\}$ i $\R$, med $a_i\geq0\forall i$ og $\sum_{i=1}^n a_i = 1;$
+	\begin{equation*}
+		x=\sum_{i=1}^n a_ip_i
+	\end{equation*}
+	Om $P$ er ein tupel (ein ordna mengda) så blir koeffiseintane også ein tupel, og $A$ blir då kalla dei \emph{barysentriske koordinatane} til $x$.
+\end{definition}
+\begin{theorem}
+	Dei barysentriske koordinatane til ein konveks kombinasjon er unik.
+\end{theorem}
+\begin{proof}
+	La $x$ vera ein konveks kombinasjon av $(p_1, p_2, p_3, \dots, p_n)$ i $\R^m$. Annta at $x$ har to barysentriske koordinatar: $(a_1, a_2, a_3, \dots, a_n)$ og $(b_1, b_2, b_3, \dots, b_n)$. Det betyr at:
+	\begin{equation*}
+		0 = x - x = \sum_{i=1}^n a_ip_i - \sum_{i=1}^n b_ip_i=\sum_{i=1}^n (a_i-b_i)p_i
+	\end{equation*}
+	og me får:
+	\begin{equation*}
+		\sum_{i=1}^n(a_i-b_i)=\sum_{i=1}^na_i - \sum_{i=1}^nb_i = 1 - 1 = 0
+	\end{equation*}
+	Men sidan $(p_1, p_2, p_3, \dots, p_n)$ er geometrisk uavhengig, så 
+	\begin{equation*}
+		\Rightarrow (a_i-b_i)=0\forall i \Leftrightarrow a_i = b_i \forall i
+	\end{equation*}
+	og dei barysentriske koordinatane er derfor like.
 \end{proof}
 \begin{definition}
-	Konveks kombinasjon
+	Det \emph{geometrisk simplekset} utspent av ei geometrisk uavhengig mengda av punkt $P=\{p_1, p_2, p_3, \dots, p_n\}$ i $\R^m$, er alle konvekse kombinasjonar av $P$.
+	\\Vidare, så kallar me dette geometriske simplekset for eit \emph{$(n-1)$-simpleks}, når $P$ består av $n$ punkt.
 \end{definition}
+\begin{remark}
+	Ut ifrå den førre definisjonen så ser me at eit $0$-simpleks kun er eit enkelt punkt, eit $1$-simpleks er alle konvekse kombinasjonar mellom to punkt, som viser seg å vera ei linja mellom dei to punkta. Og eit $2$-simpleks dannar ein trekant. Ein $3$-simpleks blir også kalla eit tetraheder. Denne simpleks definisjonenen gir ein fin matematisk forklaring av "trekant"-strukturar i $\R^m$.
+\end{remark}
+\begin{remark}
+	Noko som er svært interessant med denne definisjonen er at om ein har ei geometrisk uavhengig mengda $P$, og ser på $P^i := P \setminus \{p_i\}$, så vil dette også vera ei geometrisk uavhengig mengda. I tilleg så vil det geometriske simplekset utspent av $p^i$ vere ei delmengda av det geometriske simplekset utspent av $P$. Med andre ord; alle delmengdar av $P$ dannar også andre geometriske simpleks, inneholdt i det originale geometriske simplekset! Men ikkje nok med det, fordi når ein ser på det geometriske simplekset utspent av $P^i$ for ein eller annan vilkårleg $i$, så ser me at det er som eine "flata" av det geometriske simplekset utspunne av $P$. Dette inspirerar ein ny definisjon:
+\end{remark}
 \begin{definition}
-	Geometrisk simplex
+	Fjes
 \end{definition}
 \begin{definition}
 	Simplisielt kompleks
