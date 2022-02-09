@@ -142,13 +142,17 @@ Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men
 	Ut ifrå den førre definisjonen så ser me at eit $0$-simpleks kun er eit enkelt punkt, eit $1$-simpleks er alle konvekse kombinasjonar mellom to punkt, som viser seg å vera ei linja mellom dei to punkta. Og eit $2$-simpleks dannar ein trekant. Ein $3$-simpleks blir også kalla eit tetraheder. Denne simpleks definisjonenen gir ein fin matematisk forklaring av "trekant"-strukturar i $\R^m$.
 \end{remark}
 \begin{remark}
-	Noko som er svært interessant med denne definisjonen er at om ein har ei geometrisk uavhengig mengda $P$, og ser på $P^i := P \setminus \{p_i\}$, så vil dette også vera ei geometrisk uavhengig mengda. I tilleg så vil det geometriske simplekset utspent av $p^i$ vere ei delmengda av det geometriske simplekset utspent av $P$. Med andre ord; alle delmengdar av $P$ dannar også andre geometriske simpleks, inneholdt i det originale geometriske simplekset! Men ikkje nok med det, fordi når ein ser på det geometriske simplekset utspent av $P^i$ for ein eller annan vilkårleg $i$, så ser me at det er som eine "flata" av det geometriske simplekset utspunne av $P$. Dette inspirerar ein ny definisjon:
+	Noko som er svært interessant med denne definisjonen er at om ein har ei geometrisk uavhengig mengda $P$, og ser på $P^i := P \setminus \{p_i\}$, så vil dette også vera ei geometrisk uavhengig mengda. I tilleg så vil det geometriske simplekset utspent av $p^i$ vere ei delmengda av det geometriske simplekset utspent av $P$. Med andre ord; alle delmengdar av $P$ dannar også andre geometriske simpleks, inneholdt i det originale geometriske simplekset! Men ikkje nok med det, fordi når ein ser på det geometriske simplekset utspent av $P^i$ for ein eller annan vilkårleg $i$, så ser me at det er som eine "fjeset" av det geometriske simplekset utspunne av $P$. Dette inspirerar ein ny definisjon:
 \end{remark}
 \begin{definition}
-	Fjes
+	Eit \emph{fjes} til eit geometrisk simpleks utspunne av $P=\{p_1, p_2, p_3, \dots, p_n\}$ er eit geometriske simpleks utspunne av $P^i := P\setminus \{p_i\}$ for ein eller annan $i$.
 \end{definition}
-\begin{definition}
-	Simplisielt kompleks
+\begin{definition} % Ikkje utspunne av nokre punkt?
+	Eit \emph{geometrisk simplisielt kompleks} er ei mengda av geometriske simpleksar (utspent av punkt i $\R^m$), $K$, sånn at:
+	\begin{enumerate}
+		\item{For $\sigma \in K$ så er alle fjesa til $\sigma$ også i $K$.}
+		\item{For $\sigma, \tau \in K$ med $\sigma \cap \tau \neq \emptyset$, då er $\sigma \cap \tau$ eit fjes av både $\sigma$ og $\tau$.}
+	\end{enumerate}
 \end{definition}
 \begin{definition}
 	Affin imbedding
@@ -157,7 +161,7 @@ Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men
 	Ein \emph{geometriske realisering} til eit endeleg abstrakt simplisielt kompleks over ei ikkje-tom mengda $V$ er, gitt ein vilkårleg affin imbedding $f:V\to\R^n$ for ein eller annan $n\geq1$, 
 \end{definition}
 \begin{theorem}
-	geometrisk realisering unik opp til homeomorfi
+	geometrisk realisering eintydig opp til homeomorfi
 \end{theorem}
 \begin{remark}
 	Derfor me bruker bestemt form
