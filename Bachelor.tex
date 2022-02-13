@@ -10,11 +10,17 @@
 %\usepackage{minted} % For kodesnuttar og resultat
 \usepackage{enumitem} % Kan endra på korleis listar ser ut
 
+\usepackage[hidelinks,colorlinks=true]{hyperref} % For autoref
+\hypersetup{allcolors=[rgb]{0,0.31,0.62}}
+
 \usepackage{amsthm}
 \usepackage{thmtools} 
 
 \usepackage{tikz}
 \usetikzlibrary{matrix}
+\newcommand{\diagram}[3]{\matrix (#1) [matrix of math nodes,row
+  sep={#2},column sep={#3},text height=1.5ex,text
+  depth=0.25ex]}
 
 \RequirePackage{fontspec}
 \setmainfont{Atkinson Hyperlegible}
@@ -60,6 +66,7 @@
 		\item{$\forall v \in V: \{v\} \in K$}
 		\item{$\forall \sigma \in K, \forall \tau \subseteq \sigma: \tau \in K$}
 	\end{enumerate}
+	Då kallar me og $V$ for \emph{hjørnemengda} til $K$.
 \end{definition}
 \noindent Nokre eksempel av endelege abstrakte simplisielle kompleks over $\{p_1, p_2, p_3\}$:
 \begin{itemize}
@@ -81,7 +88,7 @@ Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men
 		\left(\sum_{i=1}^n a_i=0 \land  \sum_{i=1}^n a_ip_i=0\right)\Rightarrow a_i=0 \; \forall i
 	\end{equation*}
 \end{definition}
-\begin{theorem}
+\begin{theorem}\label{thm:geometrisklineærtuavhengig}
 	Ei endeleg mengda $\{p_1, p_2, p_3, \dots, p_n \}$ av punkt i $\R^m$ er gemetrisk uavhengige $\Leftrightarrow$ vektorane $\{(p_2-p_1), (p_3-p_1), (p_4-p_1),\dots,(p_n-p_1)\}$ er lineært uavhengige i $\R^m$
 \end{theorem}
 \begin{proof}
@@ -114,26 +121,26 @@ Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men
 	\begin{equation*}
 		x=\sum_{i=1}^n a_ip_i
 	\end{equation*}
-	Om $P$ er ein tupel (ein ordna mengda) så blir koeffiseintane også ein tupel, og $A$ blir då kalla dei \emph{barysentriske koordinatane} til $x$.
+%	Om $P$ er ein tupel (ein ordna mengda) så blir koeffiseintane også ein tupel, og $A$ blir då kalla dei \emph{barysentriske koordinatane} til $x$.
 \end{definition}
-\begin{theorem}
-	Dei barysentriske koordinatane til ein konveks kombinasjon er unik.
-\end{theorem}
-\begin{proof}
-	La $x$ vera ein konveks kombinasjon av $(p_1, p_2, p_3, \dots, p_n)$ i $\R^m$. Annta at $x$ har to barysentriske koordinatar: $(a_1, a_2, a_3, \dots, a_n)$ og $(b_1, b_2, b_3, \dots, b_n)$. Det betyr at:
-	\begin{equation*}
-		0 = x - x = \sum_{i=1}^n a_ip_i - \sum_{i=1}^n b_ip_i=\sum_{i=1}^n (a_i-b_i)p_i
-	\end{equation*}
-	og me får:
-	\begin{equation*}
-		\sum_{i=1}^n(a_i-b_i)=\sum_{i=1}^na_i - \sum_{i=1}^nb_i = 1 - 1 = 0
-	\end{equation*}
-	Men sidan $(p_1, p_2, p_3, \dots, p_n)$ er geometrisk uavhengig, så 
-	\begin{equation*}
-		\Rightarrow (a_i-b_i)=0\forall i \Leftrightarrow a_i = b_i \forall i
-	\end{equation*}
-	og dei barysentriske koordinatane er derfor like.
-\end{proof}
+%\begin{theorem}
+%	Dei barysentriske koordinatane til ein konveks kombinasjon er eintydig.
+%\end{theorem}
+%\begin{proof}
+%	La $x$ vera ein konveks kombinasjon av $(p_1, p_2, p_3, \dots, p_n)$ i $\R^m$. Annta at $x$ har to barysentriske koordinatar: $(a_1, a_2, a_3, \dots, a_n)$ og $(b_1, b_2, b_3, \dots, b_n)$. Det betyr at:
+%	\begin{equation*}
+%		0 = x - x = \sum_{i=1}^n a_ip_i - \sum_{i=1}^n b_ip_i=\sum_{i=1}^n (a_i-b_i)p_i
+%	\end{equation*}
+%	og me får:
+%	\begin{equation*}
+%		\sum_{i=1}^n(a_i-b_i)=\sum_{i=1}^na_i - \sum_{i=1}^nb_i = 1 - 1 = 0
+%	\end{equation*}
+%	Men sidan $(p_1, p_2, p_3, \dots, p_n)$ er geometrisk uavhengig, så 
+%	\begin{equation*}
+%		\Rightarrow (a_i-b_i)=0\forall i \Leftrightarrow a_i = b_i \forall i
+%	\end{equation*}
+%	og dei barysentriske koordinatane er derfor like.
+%\end{proof}
 \begin{definition}
 	Det \emph{geometrisk simplekset} utspent av ei geometrisk uavhengig mengda av punkt $P=\{p_1, p_2, p_3, \dots, p_n\}$ i $\R^m$, er alle konvekse kombinasjonar av $P$.
 	\\Vidare, så kallar me dette geometriske simplekset for eit \emph{$(n-1)$-simpleks}, når $P$ består av $n$ punkt.
@@ -155,16 +162,71 @@ Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men
 	\end{enumerate}
 \end{definition}
 \begin{definition}
-	Affin imbedding
+	For $V$ ein endeleg mengda og $m\geq1$, så er $f:V\rightarrow \R^m$ ein \emph{affin imbedding} om $f$ er injektiv, og om biletet, $f(A)$ er ei geometrisk uavhengig mengda av punkt.
 \end{definition}
 \begin{definition}
-	Ein \emph{geometriske realisering} til eit endeleg abstrakt simplisielt kompleks over ei ikkje-tom mengda $V$ er, gitt ein vilkårleg affin imbedding $f:V\to\R^n$ for ein eller annan $n\geq1$, 
+	For eit endeleg abstrakt simplisielt kompleks $K$, over ei ikkje-tom hjørnemengda $V$, gitt ein vilkårleg affin imbedding $f:V\to\R^m$ for ein eller annan $m\geq1$. Så er den \emph{geometriske realiseringa med hensyn til $f$} unionen av alle dei geometriske simpleksane utspunne av punkta i $f(\sigma)$, for $\sigma\in K$. Dette er ofte betegna $|K|_f$
 \end{definition}
 \begin{theorem}
-	geometrisk realisering eintydig opp til homeomorfi
+	Geometrisk realisering er eintydig opp til homeomorfi. Med andre ord: For to ulike geometriske realiseringar av eit endeleg abstrakt simplisielt kompleks $K$, med hensyn til $f$ og $g$ (to ulike affine imbeddingar), så er $|K|_f$ og $|K|_g$ homeomorfe.
 \end{theorem}
+\begin{proof}%Rotete? Trenge unike barysentriske koordinatar? Må visa \hat{\tau} er bijeksjonar
+	La $K$ vera eit abstrakt simplisielt kompleks, og la $f:K\to\R^m$ og $g:K\to\R^l$ vera to affine imbeddingar. La $V={v_1, v_2, \dots, v_n}$ vera hjørnemengda til $K$ Definér vidare $x_i=(f(k_{i-1})-f(k_1))$ og $y_i=(g(k_{i-1})-g(k_1))$. La $\tau_f:\R^m\to\R^m$ vera ein translasjon som tek $x\mapsto x-f(k_1)$. Og la $\tau_g:\R^l\to\R^l$ vera ein translasjon som tek $x\mapsto x-g(k_1)$. Til slutt, la $L_1:\R^m\to\R^l$ vera den lineære funksjonen som sender $x_i\mapsto y_i$.
+Og for praktiske grunnar: Definér $\hat{f}:=\tau_f\circ f$ og $\hat{g}:=\tau_g \circ g$
+Me får då at $L_1(\hat{f}(k_i))=\hat{g}(k_i)$, fordi:
+For $i=1$:
+\begin{equation*}
+	L_1(\hat{f}(k_1)=L_1(f(k_1)-f(k_1))=L(0)=0=g(k_1)-g(k_1)=\hat{g}(k_1)
+\end{equation*}
+For $i\neq 1$:
+\begin{equation*}
+	L_1(\hat{f}(k_i))=L_1(f(k_i)-f(k_1))=L_1(x_{i-1})=y_{i-1}=g(k_i)-g(k_1)=\hat{g}(k_i)
+\end{equation*}
+Om ein då let $\hat{L}=L|_{|K|_{\hat{f}}}$, og $L_2:\R^l\to\R^m$ vera den lineære funskjonen som sender $y_i\mapsto x_i$ og let $\tilde{L}=L_2|_{|K|_{\hat{g}}}$, så er definisjonane symmetriske og det symmetriske resultatet gjelder derfor for $L_2$ også. 
+For eit vilkårleg element $x\in|K|_{\hat{f}}$ så er $x$ eit element av ein simpleks i det geometriske simplisielle komplekset. Det vil seie, me kan utrykka $x$ som ein konveks sum av ein geometrisk uavhengig mengda, som korresponderar til den simpleksen $x$ er eit element i.
+\\Me velger derfor ein $\sigma\in K$ sånn at $\hat{f}(\sigma)=\{\hat{f}(k_1), \hat{f}(k_2), \dots, \hat{f}(k_r)\}$. Dette er ein geometrisk uavhengig mengda fordi $\tau_f$ er injektiv og sender $x_i\mapsto x_i$ som er lineært uavhengig og biletet er derfor geometrisk uavhengig om $\{x_i\}$ er lineært uavhengig, som det er frå \autoref{thm:geometrisklineærtuavhengig}.
+\\La denne mengda utspenna punkta til ein simpleks som $x$ er eit element av. Då kan me utrykka $x$ som ein konveks kombinasjon av elementa i $\hat{f}(\sigma)$: $x=\sum_{i=1}^ka_i\hat{f}(k_i)$ med $\sum_{i=1}^ka_i=1$ og $a_i\geq0\; \forall i$. 
+\\Her er valet av kva geometrisk simpleks me velger ikkje vikitg, ettersom $\hat{L}$ er veldefinert.
+\begin{align*}
+	\tilde{L}\circ \hat{L}(x) &= \tilde{L}\circ \hat{L}\left(\sum_{i=1}^ra_i\hat{f}(k_i)\right) \\
+	&= \tilde{L}\left(\sum_{i=1}^r\hat{L}(a_i\hat{f}(k_i))\right) \\
+	&= \tilde{L}\left(\sum_{i=1}^ra_i\hat{L}(\hat{f}(k_i))\right) \\
+	&= \tilde{L}\left(\sum_{i=1}^ra_i\hat{g}(k_i))\right) \\
+	\intertext{Sidan $\sum_{i=1}^ra_i\hat{g}(k_i)\in|K|_{\hat{g}}$, så får me:} \\
+	&= \sum_{i=1}^r\tilde{L}(a_i\hat{g}(k_i)) \\
+	&= \sum_{i=1}^ra_i\tilde{L}(\hat{g}(k_i)) \\
+	&= \sum_{i=1}^ra_i\hat{f}(k_i) \\
+	&= x
+\end{align*}
+Og likt for $\hat{L}\circ\tilde{L}(y)$.
+Så det betyr at $\hat{L}$ er bijektiv med invers $\tilde{L}$.
+Om ein let $\hat{\tau}_f:=\tau_f|_{|K|_f}$ og $\hat{\tau}_g:=\tau_g|_{|K|_g}$, så får ein følgande kommutative diagram:
+\begin{center}
+	\begin{tikzpicture}
+		\diagram{d}{2.5em}{2.5em}{
+			\R^m & \R^m & \R^l & \R^l \\
+			\vline K\vline_f & \vline K\vline_{\hat{f}} & \vline K\vline_{\hat{g}} & \vline K\vline_g \\
+			};
+	\path[->,font = \scriptsize, midway]
+	(d-1-1) edge node[above]{$\tau_f$} (d-1-2)
+	(d-1-2) edge node[above]{$L$} (d-1-3)
+	(d-1-4) edge node[above]{$\tau_g$} (d-1-3)
+	(d-2-1) edge [dashed,->] node[below]{$\hat{\tau}_f$}(d-2-2)
+	(d-2-2) edge node[below]{$\hat{L}$} (d-2-3)
+	(d-2-4) edge [dashed,->] node[below]{$\hat{\tau}_g$} (d-2-3)
+	(d-2-1) edge (d-1-1)
+	(d-2-2) edge (d-1-2)
+	(d-2-3) edge (d-1-3)
+	(d-2-4) edge (d-1-4);
+	\end{tikzpicture}
+\end{center}
+Der alle vertikale avbildningane er den naturlege inklusjonen.
+Merk her at ettersom den naturlege inklusjonen er kontinuerlig, så er alle avbildningane på nederste rad også kontinuerlige frå at diagrammet kommuterar og definisjonen av underromstopologien. Meir spesifikt, så får ein at sidan $\tau_f$ og $\tau_g$ er homeomorfiar, at dei induserte avbildningane gitt av dei prikka linjene også er homeomorfiar.
+Og sidan $\hat{L}$ er både kontinuerlig og bijektiv, med invers $\tilde{L}$ som frå eit symmetrisk argument også er kontinuerlig, at $\hat{L}$ er ein homeomorfi.
+Så me får ein avbildning: $(\tau_g)^{-1}\circ\hat{L}\circ\tau_f:|K|_f\to|K|_g$ som er ein samansetting av tre homeomorfiar, og er derfor ein homeomorfi sjølve.
+\end{proof}
 \begin{remark}
-	Derfor me bruker bestemt form
+	Grunna det førre resultatet så er det vanleg å snakka om \emph{den} geometriske realiseringa til eit abstrakt simplisielt kompleks $K$, ettersom alle forskjellige geometriske realiseringar er homeomorfe. Derfor plar ein ofte å sløyfa subskrifta i notasjona og kun bruka $|K|$ for \emph{den} geometriske realiseringa til $K$.
 \end{remark}
 
 
