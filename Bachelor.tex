@@ -25,8 +25,12 @@
 \usepackage{tikz-cd} %For kommutative diagram med tikz
 \usepackage{parskip} %Fjernar indents, men gjer linjeavstanden kortare
 
-\RequirePackage{fontspec}
-\setmainfont{Atkinson Hyperlegible}
+\usepackage{fontspec}
+\usepackage{unicode-math}
+
+%\setmainfont{Atkinson Hyperlegible}
+\setmainfont{Fira Sans}
+\setmathfont{Fira Math}
 
 % Ny type lista med ganske perfekt spacing
 \newlist{plist}{enumerate}{5}
@@ -55,6 +59,34 @@
 \newcommand{\Nb}{\mathbb{N}}
 \newcommand{\Nc}{\mathcal{N}}
 \newcommand{\Cech}{\operatorname{Cech}}
+\newcommand{\intersect}{\mathop{\cap}\limits} % For finare grenser på snitt
+\newcommand{\union}{\mathop{\cup}\limits}
+\newcommand{\gr}[1]{\lvert #1 \rvert} % Geometrisk realisering
+
+% PERSONLEGE NOTAT
+
+% Eigen kommando for \set
+% Større separator i mengdar
+% Rydda vekk semikolonar og kolonar i teksten min
+% Gjer manglane bevis
+% \cup og \cap ser merkelege ut
+% Bytta font? Litt uleseleg til tider. Ingen kaligrafi N, \bigcup/\bigcap f.eks
+% Fiksa tikz diagrammet
+% Kommando for Cech?
+% Skriva om det longe beviset
+% Fleire eksempel!!
+% Kva er feil med \vert og |?
+% Nervedefinisjon for topologisk rom og kun endeleg?
+% Hugs å spesifisér alt! Skriv ned idéen bak korleis eg skriv ting.
+% Seksjon 0 med definisjonar og minimumskrav?
+% Kvifor endra linjeavstand i \parskip?
+
+% PLAN
+% Fokus på å forbetra del 1, og så byrja på del 2. Pass på Magnus sitt bevis er litt shady.
+
+% MERK:
+% Drit i uendeleg!
+
 
 \title{Nerveteorement og Anvendingar}
 \author{Håvard Skjetne Lilleheie}
@@ -73,29 +105,37 @@
 	\end{enumerate}
 	Då kallar me og $V$ for \emph{hjørnemengda} til $K$.
 \end{definition}
+
 Nokre eksempel av endelege abstrakte simplisielle kompleks over $\{p_1, p_2, p_3\}$:
+
 \begin{itemize}
 	\item{$A_1=\{\{p_1, p_2\}, \{p_1\}, \{p_2\}\}$}
 	\item{$A_2=\{\{p_1\}, \{p_2\}, \{p_3\}, \{p_1, p_3\}, \{p_2, p_3\}\}$}
 	\item{$A_3=\{\{p_1\}, \{p_2\}, \{p_3\}\}$}
 \end{itemize}
+
 Og her er nokre ikkje-eksempel av endelege abstrakte simplisielle kompleks over $\{p_1, p_2, p_3\}$:
+
 \begin{itemize}
 	\item{$A_1'=\{\{p_1, p_2\}, \{p_1\}\}=A_1 \setminus \{\{p_2\}\}$}
-	\item{$A_2'=\{\{p_1\}, \{p_2\}, \{p_3\}, \{p_1, p_3\}, \{p_2, p_3\}, \{p_1, p_2, p_3\}\}=A_2 \cup \{\{p_1, p_2, p_3\}\}$}
-	\item{$A_3'=\{\{p_1\}, \{p_2\}, \{p_2, p_3\}\}=\left(A_3 \setminus \{\{p_3\}\}\right) \cup \{\{p_2, p_3\}\}$}
+	\item{$A_2'=\{\{p_1\}, \{p_2\}, \{p_3\}, \{p_1, p_3\}, \{p_2, p_3\}, \{p_1, p_2, p_3\}\}=A_2 \union \{\{p_1, p_2, p_3\}\}$}
+	\item{$A_3'=\{\{p_1\}, \{p_2\}, \{p_2, p_3\}\}=\left(A_3 \setminus \{\{p_3\}\}\right) \union \{\{p_2, p_3\}\}$}
 \end{itemize}
+
 Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men som me kjem til å sjå seinare; så er dette ein svært praktisk simplifisering av informasjon som bevarer mykje av eigenskapane til den originale datamengda ein vil sjå på. 
 \\Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
+
 \begin{definition}
 	Ein endeleg mengda punkt $\{p_1, p_2, p_3, \dots, p_n\}$ i $\Rb^m$ for $m\geq1$ er \emph{geometrisk uavhengige} om for $\{a_i\}_{i=0}^n$ med $a_i\in\Rb$, så:
 	\begin{equation*}
 		\left(\sum_{i=1}^n a_i=0 \land  \sum_{i=1}^n a_ip_i=0\right)\implies a_i=0 \; \forall i
 	\end{equation*}
 \end{definition}
+
 \begin{theorem}\label{thm:geometrisklineærtuavhengig}
 	Ei endeleg mengda $\{p_1, p_2, p_3, \dots, p_n \}$ av punkt i $\Rb^m$ er gemetrisk uavhengige $\Longleftrightarrow$ vektorane $\{(p_2-p_1), (p_3-p_1), (p_4-p_1),\dots,(p_n-p_1)\}$ er lineært uavhengige i $\Rb^m$
 \end{theorem}
+
 \begin{proof}
 	($\implies$)
 	\\For $a_i\in\Rb$, annta $\sum_{i=2}^na_i(p_i-p_1)=0$. Om me då definerar: $a_1 := -\sum_{i=2}^na_i$, så ser me at 
@@ -107,7 +147,7 @@ Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men
 		\sum_{i=1}^na_ip_i=\sum_{i=2}^na_i(p_i-p_1)=0
 	\end{equation*}
 	Og sidan $\{p_i\}_{i=1}^n$ er geometrisk uavhengig frå antaginga, så $\implies$ $a_i=0 \, \forall i$. Som er definisjonen på lineært uavhengig.
-	\\(\Leftarrow)
+	\\(\(\Longleftarrow\))
 	\\for $a_i\in\Rb$, annta $\sum_{i=1}^n a_i=0$ og $\sum_{i=1}^n a_ip_i=0$. Då ser me at 
 	\begin{equation*}
 		a_1=-\sum_{i=2}^n a_i
@@ -118,9 +158,11 @@ Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men
 	\end{equation*}
 	Men sidan $\{(p_i-p_1)\}_{i=2}^n$ er lineært uavhengig, så: $\implies a_i = 0$ for $i\in[2,n]$. Men sidan $a_1 = -\sum_{i=2}^n a_i=0$, så får me $a_i=0 \forall i$. Som er definisjonen på geometrisk uavhengig.
 \end{proof}
+
 \begin{remark}
 	Ein direkte konsekvens frå dette resultatet og grunnleggande lineær algebra er at ein geometrisk uavhengig mengda i $\Rb^m$ kan maksimalt innehalda $m+1$ forskjellige punkt. Dette er fordi det kan ikkje vera meir enn $m$ lineært uavhengige vektorar i eit $m$-dimensjonalt vektorrom.
 \end{remark}
+
 \begin{definition}
 	\sloppy Ein \emph{konveks kombinasjon} av ei geometrisk uavhengig mengda $P=\{p_1, p_2, p_3, \dots, p_n\}$ av punkt i $\Rb^m$ er eit punkt $x\in\Rb^m$ gitt ein tupel av koeffisientar $A=\{a_1, a_2, a_3, \dots, a_n\}$ i $\Rb$, med $a_i\geq0\forall i$ og $\sum_{i=1}^n a_i = 1;$
 	\begin{equation*}
@@ -128,6 +170,7 @@ Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men
 	\end{equation*}
 %	Om $P$ er ein tupel (ein ordna mengda) så blir koeffiseintane også ein tupel, og $A$ blir då kalla dei \emph{barysentriske koordinatane} til $x$.
 \end{definition}
+
 %\begin{theorem}
 %	Dei barysentriske koordinatane til ein konveks kombinasjon er eintydig.
 %\end{theorem}
@@ -146,160 +189,210 @@ Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men
 %	\end{equation*}
 %	og dei barysentriske koordinatane er derfor like.
 %\end{proof}
+
 \begin{definition}
 	Det \emph{geometrisk simplekset} utspent av ei geometrisk uavhengig mengda av punkt $P=\{p_1, p_2, p_3, \dots, p_n\}$ i $\Rb^m$, er alle konvekse kombinasjonar av $P$.
 	\\Vidare, så kallar me dette geometriske simplekset for eit \emph{$(n-1)$-simpleks}, når $P$ består av $n$ punkt.
 \end{definition}
+
 \begin{remark}
-	Ut ifrå den førre definisjonen så ser me at eit $0$-simpleks kun er eit enkelt punkt, eit $1$-simpleks er alle konvekse kombinasjonar mellom to punkt, som viser seg å vera ei linja mellom dei to punkta. Og eit $2$-simpleks dannar ein trekant. Ein $3$-simpleks blir også kalla eit tetraheder. Denne simpleks definisjonenen gir ein fin matematisk forklaring av "trekant"-strukturar i $\Rb^m$.
+	Ut ifrå den førre definisjonen så ser me at eit $0$-simpleks kun er eit enkelt punkt, eit $1$-simpleks er alle konvekse kombinasjonar mellom to punkt, som viser seg å vera ei linjestykket mellom dei to punkta. Og eit $2$-simpleks dannar ein trekant. Ein $3$-simpleks blir også kalla eit tetraheder. Denne simpleks definisjonenen gir ein fin matematisk forklaring av "trekant"-strukturar i $\Rb^m$.
 \end{remark}
+
+\begin{example} 
+	TODO
+\end{example}
+
 \begin{remark}
 	Noko som er svært interessant med denne definisjonen er at om ein har ei geometrisk uavhengig mengda $P$, og ser på $\hat{P}_i := P \setminus \{p_i\}$, så vil dette også vera ei geometrisk uavhengig mengda. I tilleg så vil det geometriske simplekset utspent av $p^i$ vere ei delmengda av det geometriske simplekset utspent av $P$. Med andre ord; alle delmengdar av $P$ dannar også andre geometriske simpleks, inneholdt i det originale geometriske simplekset! Men ikkje nok med det, fordi når ein ser på det geometriske simplekset utspent av $\hat{P}_i$ for ein eller annan vilkårleg $i$, så ser me at det er som eine "fjeset" av det geometriske simplekset utspunne av $P$. Dette inspirerar ein ny definisjon:
 \end{remark}
+
 \begin{definition}
 	Eit \emph{fjes} til eit geometrisk simpleks utspunne av $P=\{p_1, p_2, p_3, \dots, p_n\}$ er eit geometriske simpleks utspunne av $\hat{P}_i := P\setminus \{p_i\}$ for ein eller annan $i$.
 \end{definition}
+
 \begin{definition} % Ikkje utspunne av nokre punkt?
 	Eit \emph{geometrisk simplisielt kompleks} er ei mengda av geometriske simpleksar (utspent av punkt i $\Rb^m$), $K$, sånn at:
 	\begin{enumerate}
 		\item{For $\sigma \in K$ så er alle fjesa til $\sigma$ også i $K$.}
-		\item{For $\sigma, \tau \in K$ med $\sigma \bigcap \tau \neq \emptyset$, då er $\sigma \bigcap \tau$ eit fjes av både $\sigma$ og $\tau$.}
+		\item{For $\sigma, \tau \in K$ med $\sigma \intersect \tau \neq \emptyset$, då er $\sigma \intersect \tau$ eit fjes av både $\sigma$ og $\tau$.}
 	\end{enumerate}
 \end{definition}
+
 \begin{definition}
 	For $V$ ein endeleg mengda og $m\geq1$, så er $f:V\rightarrow \Rb^m$ ein \emph{affin imbedding} om $f$ er injektiv, og om biletet, $f(A)$ er ei geometrisk uavhengig mengda av punkt.
 \end{definition}
+
 \begin{definition}
-	For eit endeleg abstrakt simplisielt kompleks $K$, over ei ikkje-tom hjørnemengda $V$, gitt ein vilkårleg affin imbedding $f:V\to\Rb^m$ for ein eller annan $m\geq1$. Så er den \emph{geometriske realiseringa med hensyn til $f$} unionen av alle dei geometriske simpleksane utspunne av punkta i $f(\sigma)$, for $\sigma\in K$. Dette er ofte betegna $|K|_f$
+	For eit endeleg abstrakt simplisielt kompleks $K$, over ei ikkje-tom hjørnemengda $V$, gitt ein vilkårleg affin imbedding $f:V\to\Rb^m$ for ein eller annan $m\geq1$. Så er den \emph{geometriske realiseringa med hensyn til $f$} unionen av alle dei geometriske simpleksane utspunne av punkta i $f(\sigma)$, for $\sigma\in K$. Dette er ofte betegna $\gr{K}_f$
 \end{definition}
+
 \begin{theorem}
-	Geometrisk realisering er eintydig opp til homeomorfi. Med andre ord: For to ulike geometriske realiseringar av eit endeleg abstrakt simplisielt kompleks $K$, med hensyn til $f$ og $g$ (to ulike affine imbeddingar), så er $|K|_f$ og $|K|_g$ homeomorfe.
+	Geometrisk realisering er eintydig opp til homeomorfi. Med andre ord: For to ulike geometriske realiseringar av eit endeleg abstrakt simplisielt kompleks $K$, med hensyn til $f$ og $g$ (to ulike affine imbeddingar), så er $\gr{K}_f$ og $\gr{K}_g$ homeomorfe.
 \end{theorem}
+
 \begin{proof}%Rotete? Trenge unike barysentriske koordinatar? Må visa \hat{\tau} er bijeksjonar
-	La $K$ vera eit abstrakt simplisielt kompleks, og la $f:K\to\Rb^m$ og $g:K\to\Rb^l$ vera to affine imbeddingar. La $V={v_1, v_2, \dots, v_n}$ vera hjørnemengda til $K$ Definér vidare $x_i=(f(k_{i-1})-f(k_1))$ og $y_i=(g(k_{i-1})-g(k_1))$. La $\tau_f:\Rb^m\to\Rb^m$ vera ein forskyving som tek $x\mapsto x-f(k_1)$. Og la $\tau_g:\Rb^l\to\Rb^l$ vera ein forskyving som tek $x\mapsto x-g(k_1)$. Til slutt, la $L_1:\Rb^m\to\Rb^l$ vera den lineære funksjonen som sender $x_i\mapsto y_i$.
-Og for praktiske grunnar: Definér $\hat{f}:=\tau_f\circ f$ og $\hat{g}:=\tau_g \circ g$
+	La $K$ vera eit abstrakt simplisielt kompleks, og la $f:K\to\Rb^m$ og $g:K\to\Rb^l$ vera to affine imbeddingar. La $V=\{ v_1, v_2, \dots, v_n \}$ vera hjørnemengda til $K$ Definér vidare $x_i=(f(k_{i-1})-f(k_1))$ og $y_i=(g(k_{i-1})-g(k_1))$. La $\tau_f:\Rb^m\to\Rb^m$ vera ein forskyving som tek $x\mapsto x-f(k_1)$. Og la $\tau_g:\Rb^l\to\Rb^l$ vera ein forskyving som tek $x\mapsto x-g(k_1)$. Til slutt, la $L_1:\Rb^m\to\Rb^l$ vera den lineære funksjonen som sender $x_i\mapsto y_i$.
+	Og for praktiske grunnar: Definér $\hat{f}:=\tau_f\circ f$ og $\hat{g}:=\tau_g \circ g$
 Me får då at $L_1(\hat{f}(k_i))=\hat{g}(k_i)$, fordi:
 For $i=1$:
-\begin{equation*}
-	L_1(\hat{f}(k_1)=L_1(f(k_1)-f(k_1))=L(0)=0=g(k_1)-g(k_1)=\hat{g}(k_1)
-\end{equation*}
-For $i\neq 1$:
-\begin{equation*}
-	L_1(\hat{f}(k_i))=L_1(f(k_i)-f(k_1))=L_1(x_{i-1})=y_{i-1}=g(k_i)-g(k_1)=\hat{g}(k_i)
-\end{equation*}
-Om ein då let $\hat{L}=L|_{|K|_{\hat{f}}}$, og $L_2:\Rb^l\to\Rb^m$ vera den lineære funskjonen som sender $y_i\mapsto x_i$ og let $\tilde{L}=L_2|_{|K|_{\hat{g}}}$, så er definisjonane symmetriske og det symmetriske resultatet gjelder derfor for $L_2$ også. 
-For eit vilkårleg element $x\in|K|_{\hat{f}}$ så er $x$ eit element av ein simpleks i det geometriske simplisielle komplekset. Det vil seie, me kan utrykka $x$ som ein konveks sum av ein geometrisk uavhengig mengda, som korresponderar til den simpleksen $x$ er eit element i.
-\\Me velger derfor ein $\sigma\in K$ sånn at $\hat{f}(\sigma)=\{\hat{f}(k_1), \hat{f}(k_2), \dots, \hat{f}(k_r)\}$. Dette er ein geometrisk uavhengig mengda fordi $\tau_f$ er injektiv og sender $x_i\mapsto x_i$ som er lineært uavhengig og biletet er derfor geometrisk uavhengig om $\{x_i\}$ er lineært uavhengig, som det er frå \autoref{thm:geometrisklineærtuavhengig}.
-\\La denne mengda utspenna punkta til ein simpleks som $x$ er eit element av. Då kan me utrykka $x$ som ein konveks kombinasjon av elementa i $\hat{f}(\sigma)$: $x=\sum_{i=1}^ka_i\hat{f}(k_i)$ med $\sum_{i=1}^ka_i=1$ og $a_i\geq0\; \forall i$. 
-\\Her er valet av kva geometrisk simpleks me velger ikkje vikitg, ettersom $\hat{L}$ er veldefinert.
-\begin{align*}
-	\tilde{L}\circ \hat{L}(x) &= \tilde{L}\circ \hat{L}\left(\sum_{i=1}^ra_i\hat{f}(k_i)\right) \\
-	&= \tilde{L}\left(\sum_{i=1}^r\hat{L}(a_i\hat{f}(k_i))\right) \\
-	&= \tilde{L}\left(\sum_{i=1}^ra_i\hat{L}(\hat{f}(k_i))\right) \\
-	&= \tilde{L}\left(\sum_{i=1}^ra_i\hat{g}(k_i))\right) \\
-	\intertext{Sidan $\sum_{i=1}^ra_i\hat{g}(k_i)\in|K|_{\hat{g}}$, så får me:} \\
-	&= \sum_{i=1}^r\tilde{L}(a_i\hat{g}(k_i)) \\
-	&= \sum_{i=1}^ra_i\tilde{L}(\hat{g}(k_i)) \\
-	&= \sum_{i=1}^ra_i\hat{f}(k_i) \\
-	&= x
-\end{align*}
-Og likt for $\hat{L}\circ\tilde{L}(y)$.
-Så det betyr at $\hat{L}$ er bijektiv med invers $\tilde{L}$.
-Om ein let $\hat{\tau}_f:=\tau_f|_{|K|_f}$ og $\hat{\tau}_g:=\tau_g|_{|K|_g}$, så kan ein sjå at $\hat{\tau}_f:|K|_f\to|K|_{\hat{f}}$ er ein bijeksjon, og likt for $\hat{\tau}_g$.
-\\Då får ein følgande kommutative diagram:
-%\begin{center}
-%	\begin{tikzpicture}
-%		\diagram{d}{2.5em}{2.5em}{
-%			\Rb^m & \Rb^m & \Rb^l & \Rb^l \\
-%			\vline K\vline_f & \vline K\vline_{\hat{f}} & \vline K\vline_{\hat{g}} & \vline K\vline_g \\
-%			};
-%	\path[->,font = \scriptsize, midway]
-%	(d-1-1) edge node[above]{$\tau_f$} (d-1-2)
-%	(d-1-2) edge node[above]{$L$} (d-1-3)
-%	(d-1-4) edge node[above]{$\tau_g$} (d-1-3)
-%	(d-2-1) edge [dashed,->] node[below]{$\hat{\tau}_f$}(d-2-2)
-%	(d-2-2) edge node[below]{$\hat{L}$} (d-2-3)
-%	(d-2-4) edge [dashed,->] node[below]{$\hat{\tau}_g$} (d-2-3)
-%	(d-2-1) edge (d-1-1)
-%	(d-2-2) edge (d-1-2)
-%	(d-2-3) edge (d-1-3)
-%	(d-2-4) edge (d-1-4);
-%	\end{tikzpicture}
-%\end{center}
-\begin{center}
-	\begin{tikzcd}
-		\Rb^m \arrow{r}{\tau_f}
-		& \Rb^m \arrow{r}{L}
-		& \Rb^l
-		& \Rb^l \arrow{l}[swap]{\tau_g} \\
-		\vline K\vline_f \arrow[dashed]{r}{\hat{\tau}_f} \arrow[hook]{u}
-		& \vline K\vline_{\hat{f}} \arrow{r}{\hat{L}} \arrow[hook]{u}
-		& \vline K\vline_{\hat{g}} \arrow[hook]{u}
-		& \vline K\vline_g \arrow[dashed]{l}[swap]{\hat{\tau}_g} \arrow[hook]{u}
-	\end{tikzcd}
-\end{center}
-Der alle vertikale avbildningane er den naturlege inklusjonen.
-Merk her at ettersom den naturlege inklusjonen er kontinuerlig, så er alle avbildningane på nederste rad også kontinuerlige frå at diagrammet kommuterar og definisjonen av underromstopologien. Meir spesifikt, så får ein at sidan $\tau_f$ og $\tau_g$ er homeomorfiar, at dei restrikterte avbildningane gitt av dei prikka linjene også er homeomorfiar.
-Og sidan $\hat{L}$ er både kontinuerlig og bijektiv, med invers $\tilde{L}$ som frå eit symmetrisk argument også er kontinuerlig, at $\hat{L}$ er ein homeomorfi.
-Så me får ein avbildning: $(\hat{\tau}_g)^{-1}\circ\hat{L}\circ\hat{\tau}_f:|K|_f\to|K|_g$ som er ein samansetting av tre homeomorfiar, og er derfor ein homeomorfi sjølve.
+
+	\begin{equation*}
+		L_1(\hat{f}(k_1)=L_1(f(k_1)-f(k_1))=L(0)=0=g(k_1)-g(k_1)=\hat{g}(k_1)
+	\end{equation*}
+
+	For $i\neq 1$:
+
+	\begin{equation*}
+		L_1(\hat{f}(k_i))=L_1(f(k_i)-f(k_1))=L_1(x_{i-1})=y_{i-1}=g(k_i)-g(k_1)=\hat{g}(k_i)
+	\end{equation*}
+	Om ein då let $\hat{L}=L|_{\gr{K}_{\hat{f}}}$, og $L_2:\Rb^l\to\Rb^m$ vera den lineære funskjonen som sender $y_i\mapsto x_i$ og let $\tilde{L}=L_2|_{\gr{K}_{\hat{g}}}$, så er definisjonane symmetriske og det symmetriske resultatet gjelder derfor for $L_2$ også. 
+	For eit vilkårleg element $x\in\gr{K}_{\hat{f}}$ så er $x$ eit element av ein simpleks i det geometriske simplisielle komplekset. Det vil seie, me kan utrykka $x$ som ein konveks sum av ein geometrisk uavhengig mengda, som korresponderar til den simpleksen $x$ er eit element i.
+	\\Me velger derfor ein $\sigma\in K$ sånn at $\hat{f}(\sigma)=\{\hat{f}(k_1), \hat{f}(k_2), \dots, \hat{f}(k_r)\}$. Dette er ein geometrisk uavhengig mengda fordi $\tau_f$ er injektiv og sender $x_i\mapsto x_i$ som er lineært uavhengig og biletet er derfor geometrisk uavhengig om $\{x_i\}$ er lineært uavhengig, som det er frå \autoref{thm:geometrisklineærtuavhengig}.
+	\\La denne mengda utspenna punkta til ein simpleks som $x$ er eit element av. Då kan me utrykka $x$ som ein konveks kombinasjon av elementa i $\hat{f}(\sigma)$: $x=\sum_{i=1}^ka_i\hat{f}(k_i)$ med $\sum_{i=1}^ka_i=1$ og $a_i\geq0\; \forall i$. 
+	\\Her er valet av kva geometrisk simpleks me velger ikkje vikitg, ettersom $\hat{L}$ er veldefinert.
+	\begin{align*}
+		\tilde{L}\circ \hat{L}(x) &= \tilde{L}\circ \hat{L}\left(\sum_{i=1}^ra_i\hat{f}(k_i)\right) \\
+		&= \tilde{L}\left(\sum_{i=1}^r\hat{L}(a_i\hat{f}(k_i))\right) \\
+		&= \tilde{L}\left(\sum_{i=1}^ra_i\hat{L}(\hat{f}(k_i))\right) \\
+		&= \tilde{L}\left(\sum_{i=1}^ra_i\hat{g}(k_i))\right) \\
+		\intertext{Sidan $\sum_{i=1}^ra_i\hat{g}(k_i)\in\gr{K}_{\hat{g}}$, så får me:} \\
+		&= \sum_{i=1}^r\tilde{L}(a_i\hat{g}(k_i)) \\
+		&= \sum_{i=1}^ra_i\tilde{L}(\hat{g}(k_i)) \\
+		&= \sum_{i=1}^ra_i\hat{f}(k_i) \\
+		&= x
+	\end{align*}
+	Og likt for $\hat{L}\circ\tilde{L}(y)$.
+	Så det betyr at $\hat{L}$ er bijektiv med invers $\tilde{L}$.
+	Om ein let $\hat{\tau}_f:=\tau_f|_{\gr{K}_f}$ og $\hat{\tau}_g:=\tau_g|_{\gr{K}_g}$, så kan ein sjå at $\hat{\tau}_f\gr{K}_f\to\gr{K}_{\hat{f}}$ er ein bijeksjon, og likt for $\hat{\tau}_g$.
+	\\Då får ein følgande kommutative diagram:
+%	\begin{center}
+%		\begin{tikzpicture}
+%			\diagram{d}{2.5em}{2.5em}{
+%				\Rb^m & \Rb^m & \Rb^l & \Rb^l \\
+%				\vert K\vert_f & \vert K\vert_{\hat{f}} & \vert K\vert_{\hat{g}} & \vert K\vert_g \\
+%				};
+%		\path[->,font = \scriptsize, midway]
+%		(d-1-1) edge node[above]{$\tau_f$} (d-1-2)
+%		(d-1-2) edge node[above]{$L$} (d-1-3)
+%		(d-1-4) edge node[above]{$\tau_g$} (d-1-3)
+%		(d-2-1) edge [dashed,->] node[below]{$\hat{\tau}_f$}(d-2-2)
+%		(d-2-2) edge node[below]{$\hat{L}$} (d-2-3)
+%		(d-2-4) edge [dashed,->] node[below]{$\hat{\tau}_g$} (d-2-3)
+%		(d-2-1) edge (d-1-1)
+%		(d-2-2) edge (d-1-2)
+%		(d-2-3) edge (d-1-3)
+%		(d-2-4) edge (d-1-4);
+%		\end{tikzpicture}
+%	\end{center}
+	\begin{center} % |, \vert funke ikkje??
+		\begin{tikzcd}
+			\Rb^m \arrow{r}{\tau_f}
+			& \Rb^m \arrow{r}{L}
+			& \Rb^l
+			& \Rb^l \arrow{l}[swap]{\tau_g} \\
+			\gr{K}_f \arrow[dashed]{r}{\hat{\tau}_f} \arrow[hook]{u}
+			& \gr{K}_{\hat{f}} \arrow{r}{\hat{L}} \arrow[hook]{u}
+			& \gr{K}_{\hat{g}} \arrow[hook]{u}
+			& \gr{K}_g \arrow[dashed]{l}[swap]{\hat{\tau}_g} \arrow[hook]{u}
+		\end{tikzcd}
+	\end{center}
+	Der alle vertikale avbildningane er den naturlege inklusjonen.
+	Merk her at ettersom den naturlege inklusjonen er kontinuerlig, så er alle avbildningane på nederste rad også kontinuerlige frå at diagrammet kommuterar og definisjonen av underromstopologien. Meir spesifikt, så får ein at sidan $\tau_f$ og $\tau_g$ er homeomorfiar, at dei restrikterte avbildningane gitt av dei prikka linjene også er homeomorfiar.
+	Og sidan $\hat{L}$ er både kontinuerlig og bijektiv, med invers $\tilde{L}$ som frå eit symmetrisk argument også er kontinuerlig, at $\hat{L}$ er ein homeomorfi.
+	Så me får ein avbildning: $(\hat{\tau}_g)^{-1}\circ\hat{L}\circ\hat{\tau}_f:\gr{K}_f\to\gr{K}_g$ som er ein samansetting av tre homeomorfiar, og er derfor ein homeomorfi sjølve.
 \end{proof}
+
 \begin{remark}
-	Grunna det førre resultatet så er det vanleg å snakka om \emph{den} geometriske realiseringa til eit abstrakt simplisielt kompleks $K$, ettersom alle forskjellige geometriske realiseringar er homeomorfe. Derfor plar ein ofte å sløyfa subskrifta i notasjona og kun bruka $|K|$ for \emph{den} geometriske realiseringa til $K$.
+	Grunna det førre resultatet så er det vanleg å snakka om \emph{den} geometriske realiseringa til eit abstrakt simplisielt kompleks $K$, ettersom alle forskjellige geometriske realiseringar er homeomorfe. Derfor plar ein ofte å sløyfa subskrifta i notasjona og kun bruka $\gr{K}$ for \emph{den} geometriske realiseringa til $K$.
 \end{remark}
+
 \begin{definition}
-	La $\bar{B}_r(x):=\{y\in\Rb^m; d(x, y)\leq r\}$ vera den lukka ballen med hensyn til den euklidske metrikken i $\Rb^m$.
+	La $\bar{B}_r(x):=\{y\in\Rb^m \mid d(x, y)\leq r\}$ vera den lukka ballen med hensyn til den euklidske metrikken i $\Rb^m$.
 \end{definition}
+
 \begin{definition}
 	For $P$ ei endeleg mengda av punkt i $\Rb^m$ og $r\in[0,\infty)$, så er \emph{Cech komplekset til $P$ med radius $r$} definert som:
 	\begin{equation*}
-		\Cech_r(P):=\left\{\sigma\subseteq P; \bigcap_{p\in\sigma}\bar{B}_r(p)\neq\emptyset\right\}
+		\Cech_r(P):=\left\{\sigma\subseteq P \mid \intersect_{p\in\sigma}\bar{B}_r(p)\neq\emptyset\right\}
 	\end{equation*}
 \end{definition}
+
+\begin{example}
+	TODO
+\end{example}
+
 \begin{theorem}
-	For $P$ ei endeleg mengda punkt i $\Rb^m$ og $r\in[0,infty)$, så er Cech komplekset til $P$ med radius $r$ eit abstrakt simplisielt kompleks over $P$.
+	For $P$ ei endeleg mengda punkt i $\Rb^m$ og $r\in[0,\infty)$, så er Cech komplekset til $P$ med radius $r$ eit abstrakt simplisielt kompleks over $P$.
 \end{theorem}
+
 \begin{proof}
 	TODO
 \end{proof}
+
 Eit fint resultat som er ekvivalent til definisjonen av Cech komplekset:
+
 \begin{theorem}
 	For $P$ ei endeleg mengda av punkt i $\Rb^m$ og $r\in[0, \infty)$, så:
 	\begin{equation*}
 		\sigma\in \Cech_r(P) \Longleftrightarrow \exists x\in\Rb^m; \sigma \subseteq \bar{B}_r(x)
 	\end{equation*}
 \end{theorem}
+
 \begin{proof}
 	($\implies$)
-	\\Sidan $A:=\bigcap_{p\in\sigma}\bar{B}_r(p)\neq\emptyset$, så er det ein $x\in A$, der for $\forall p\in\sigma: d(p,x)\leq r$, sidan $x\in\bar{B}_r(p)$.
+	\\Sidan $A:=\intersect_{p\in\sigma}\bar{B}_r(p)\neq\emptyset$, så er det ein $x\in A$, der for $\forall p\in\sigma: d(p,x)\leq r$, sidan $x\in\bar{B}_r(p)$.
 	Men sidan $d(p,x)=d(x,p)$ per definisjon av metrikk. 
 	Så $\implies \forall p\in\sigma: p \in \bar{B}_r(x)$
-	\\(\Leftarrow)
-	\\Ved eit likt argument så ser me at  $\forall p \in \sigma : d(x, p) \leq r \implies \forall p \in \sigma : d(p, x) \leq r \implies x \in \bigcap_{p \in \sigma} \bar{B}_r(p) \implies \bigcap_{p \in \sigma} \bar{B}_r(p) \neq \emptyset$
+	\\( \( \Longleftarrow \) )
+	\\Ved eit likt argument så ser me at  $\forall p \in \sigma : d(x, p) \leq r \implies \forall p \in \sigma : d(p, x) \leq r \implies x \in \intersect_{p \in \sigma} \bar{B}_r(p) \implies \intersect_{p \in \sigma} \bar{B}_r(p) \neq \emptyset$
 \end{proof}
+
 Dette gir oss nok grunnlag til å endeleg forstå og definera nerva:
-\begin{definition}
+
+\begin{definition} % Kan definera for vilk. mengda? Og endeleg?
 	La $X$ vera eit topologisk rom. Vidare la $F$ vera ei mengda av delmengder av $X$. \emph{Nerva} til $F$, betegna som $\Nc$, er:
 	\begin{equation*}
-		\Nc(F) := \left \{ \sigma \subseteq F ; \bigcap_{ F_i \in \sigma } F_i \neq \emptyset \right \}
+		\Nc(F) := \left \{ \sigma \subseteq F \mid \intersect_{ F_i \in \sigma } F_i \neq \emptyset \right \}
 	\end{equation*}
 \end{definition}
+
 \begin{theorem}
 	For $X$ eit topologisk rom med $F$ ei mengda av delmengder av $X$, då er nerva til $F$ eit abstrakt simplisielt kompleks over $F$.
 \end{theorem}
+
 \begin{proof}
 	TODO
 \end{proof}
+
+\begin{example}
+	TODO
+\end{example}
+
 \begin{remark}
-	Rett frå definisjonen så ser me at Cech komplekset til $P$ med radius $r$ er ``ekvivalent'' til nerva til $\bigcup_{p \in P} \left \{ \bar{B}_r(p) \right \}$
+	Rett frå definisjonen så ser me at Cech komplekset til $P$ med radius $r$ er ``ekvivalent'' til nerva til $\union_{p \in P} \left \{ \bar{B}_r(p) \right \}$
 \end{remark}
+
 Då kan me endeleg utrykka nerveteorema:
+
 \begin{theorem}
 	(Konveks og lukka) La $V$ vera eit vektorrom med ein topologi, med $X\subseteq V$ ei delmengda med underromstopologien. Vidare, la $F$ vera eit endeleg lukka og konveks overdekke av $X$.
 	
-	Då er $|\Nc(F)|$ homotopiekvivalent til $X$
+	Då er $\gr{\Nc(F)}$ homotopiekvivalent til $X$
 \end{theorem}
+
+\begin{definition}
+	La \( X \) vera eit topologisk rom, og la \( F \) vera ei mengda av delmengder av \( X \). Då har \( F \) \emph{samantrekkbart snitt} om \( \forall \. \sigma \subseteq F \) så er \( \intersect_{F_i \in \sigma}F_i \) samantrekkbar.
+\end{definition}
+
 \begin{theorem}
-	(Opent, samantrekkbart snitt) La $X$ vera eit topologisk rom
+	(Opent, samantrekkbart snitt) La $V$ vera eit topologisk rom (ikkje nødvendigvis eit vektorrom), med \( X \subseteq V \) ei delmengda med underromstopologien. Vidare, la $F$ vera eit endeleg ope overdekke av $X$ med samantrekkbart snitt.
+
+	Då er \( \gr{\Nc(F)} \) homotopiekvivalent til \( X \).
 \end{theorem}
+
+\section{Bevis av Nervelemma}
+
+
 
 \end{document}
