@@ -16,6 +16,11 @@
 \usepackage{amsthm} % For teorem, definisjon, bevis enviornments.
 \usepackage{thmtools} 
 
+\usepackage{svg}
+\svgpath{svg/}
+\usepackage{float}
+%\usepackage[subsection]{placeins}
+
 %\usepackage{tikz}
 %\usetikzlibrary{matrix}
 %\newcommand{\diagram}[3]{\matrix (#1) [matrix of math nodes,row
@@ -58,10 +63,11 @@
 \newcommand{\Zb}{\mathbb{Z}}
 \newcommand{\Nb}{\mathbb{N}}
 \newcommand{\Nc}{\mathcal{N}}
-\newcommand{\Cech}{\operatorname{Cech}}
-\newcommand{\intersect}{\mathop{\cap}\limits} % For finare grenser på snitt
-\newcommand{\union}{\mathop{\cup}\limits}
-\newcommand{\gr}[1]{\lvert #1 \rvert} % Geometrisk realisering
+\newcommand{\Cech}{ \operatorname{Cech} }
+\newcommand{\intersect}{ \mathop{\cap}\limits } % For finare grenser på snitt
+\newcommand{\union}{ \mathop{\cup}\limits }
+\newcommand{\gr}[1]{ \lvert #1 \rvert } % Geometrisk realisering
+\newcommand{\set}[1]{ \left \{ #1 \right \} } % Mengda
 
 % PERSONLEGE NOTAT
 
@@ -199,8 +205,14 @@ Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men
 	Ut ifrå den førre definisjonen så ser me at eit $0$-simpleks kun er eit enkelt punkt, eit $1$-simpleks er alle konvekse kombinasjonar mellom to punkt, som viser seg å vera ei linjestykket mellom dei to punkta. Og eit $2$-simpleks dannar ein trekant. Ein $3$-simpleks blir også kalla eit tetraheder. Denne simpleks definisjonenen gir ein fin matematisk forklaring av "trekant"-strukturar i $\Rb^m$.
 \end{remark}
 
-\begin{example} 
-	TODO
+\begin{example}
+	\phantom{123}
+	\begin{figure}[H]
+		\begin{center}
+			\includesvg[width=0.6\textwidth]{Eksempel1-8.svg}
+			\caption{Her er tre geometriske simpleksar. Ein \( 1 \)-simpleks utspunne av \( \set{a_1, a_2} \), Ein \(2\)-simpleks utspunne av \( \set{b_1, b_2, b_3} \), og ein \(3\)-simpleks utspunne av \( \set{c_1, c_2, c_3, c_4} \)}
+		\end{center}
+	\end{figure}
 \end{example}
 
 \begin{remark}
@@ -312,14 +324,20 @@ For $i=1$:
 \end{definition}
 
 \begin{definition}
-	For $P$ ei endeleg mengda av punkt i $\Rb^m$ og $r\in[0,\infty)$, så er \emph{Cech komplekset til $P$ med radius $r$} definert som:
+	For $P$ ei endeleg mengda av punkt i $\Rb^m$ og $r\in[0,\infty)$, så er \emph{Cech-komplekset til $P$ med radius $r$} definert som:
 	\begin{equation*}
 		\Cech_r(P):=\left\{\sigma\subseteq P \mid \intersect_{p\in\sigma}\bar{B}_r(p)\neq\emptyset\right\}
 	\end{equation*}
 \end{definition}
 
 \begin{example}
-	TODO
+	\phantom{abcd}
+	\begin{figure}[H]
+		\begin{center}
+			\includesvg[width=0.5\textwidth]{Eksempel1_18.svg}
+		\end{center}
+		\caption{Her kan me sjå tre ulike eksempel av korleis Cech-komplekset ser ut med varierande radius. Merk her at \( p_i \)-ane er ballane med den gitte radiusen, og ikkje punkta.}
+	\end{figure}
 \end{example}
 
 \begin{theorem}
@@ -351,7 +369,7 @@ Eit fint resultat som er ekvivalent til definisjonen av Cech komplekset:
 Dette gir oss nok grunnlag til å endeleg forstå og definera nerva:
 
 \begin{definition} % Kan definera for vilk. mengda? Og endeleg?
-	La $X$ vera eit topologisk rom. Vidare la $F$ vera ei mengda av delmengder av $X$. \emph{Nerva} til $F$, betegna som $\Nc$, er:
+	La $X$ vera eit topologisk rom. Vidare la $F$ vera ei mengda av delmengder av $X$. \emph{Nerva} til $F$, betegna som $\Nc(F)$, er:
 	\begin{equation*}
 		\Nc(F) := \left \{ \sigma \subseteq F \mid \intersect_{ F_i \in \sigma } F_i \neq \emptyset \right \}
 	\end{equation*}
@@ -366,30 +384,40 @@ Dette gir oss nok grunnlag til å endeleg forstå og definera nerva:
 \end{proof}
 
 \begin{example}
-	TODO
+	\phantom{abc}
+	\begin{figure}[H]
+		\begin{center}
+			\includesvg[width=0.7\textwidth]{Eksempel1_23.svg}
+		\end{center}
+		\caption{Her har me tre eksempel på mengdar av delmengder i \( \Rb^2 \) og den geometriske realiseringa av nerva deira.}
+	\end{figure}
 \end{example}
 
 \begin{remark}
 	Rett frå definisjonen så ser me at Cech komplekset til $P$ med radius $r$ er ``ekvivalent'' til nerva til $\union_{p \in P} \left \{ \bar{B}_r(p) \right \}$
 \end{remark}
 
-Då kan me endeleg utrykka nerveteorema:
+Då kan me endeleg utrykka nerveteoremet:
+
+%\begin{definition}
+%	La \( Y \) vera eit topologisk rom, og \( X \subseteq Y \) ei delmengda. Og la $A$ vera ei indekseringsmengda. Då er eit \emph{overdekke av $X$ relativ til $Y$} ei samling av delmengdar av $Y$: \( \{ F_\alpha \}_{\alpha\in A} \) der \( F_\alpha \subseteq Y  \) og \( X \subseteq \union_{\alpha \in A} F_\alpha \)
+%\end{definition}
 
 \begin{theorem}
-	(Konveks og lukka) La $V$ vera eit vektorrom med ein topologi, med $X\subseteq V$ ei delmengda med underromstopologien. Vidare, la $F$ vera eit endeleg lukka og konveks overdekke av $X$.
+	(Nerveteoremet for konveks og lukka overdekke) La $V$ vera eit vektorrom med ein topologi og \( F = \set{F_i}_{i=1}^n \) ei endeleg mengda av lukka og konvekse delmengder av $V$.
 	
-	Då er $\gr{\Nc(F)}$ homotopiekvivalent til $X$
+	Då er $\gr{\Nc(X)}$ homotopiekvivalent til \( \cup_{i=1}^n F_i \)
 \end{theorem}
 
-\begin{definition}
-	La \( X \) vera eit topologisk rom, og la \( F \) vera ei mengda av delmengder av \( X \). Då har \( F \) \emph{samantrekkbart snitt} om \( \forall \. \sigma \subseteq F \) så er \( \intersect_{F_i \in \sigma}F_i \) samantrekkbar.
-\end{definition}
-
-\begin{theorem}
-	(Opent, samantrekkbart snitt) La $V$ vera eit topologisk rom (ikkje nødvendigvis eit vektorrom), med \( X \subseteq V \) ei delmengda med underromstopologien. Vidare, la $F$ vera eit endeleg ope overdekke av $X$ med samantrekkbart snitt.
-
-	Då er \( \gr{\Nc(F)} \) homotopiekvivalent til \( X \).
-\end{theorem}
+%\begin{definition}
+%	La \( X \) vera eit topologisk rom, og la \( F \) vera ei mengda av delmengder av \( X \). Då har \( F \) \emph{samantrekkbart snitt} om \( \forall \. \sigma \subseteq F \) så er \( \intersect_{F_i \in \sigma}F_i \) samantrekkbar.
+%\end{definition}
+%
+%\begin{theorem}
+%	(Opent, samantrekkbart snitt) La $V$ vera eit topologisk rom (ikkje nødvendigvis eit vektorrom), med \( X \subseteq V \) ei delmengda med underromstopologien. Vidare, la $F$ vera eit endeleg ope overdekke av $X$ relativ til \( X \) med samantrekkbart snitt.
+%
+%	Då er \( \gr{\Nc(F)} \) homotopiekvivalent til \( X \).
+%\end{theorem}
 
 \section{Bevis av Nervelemma}
 
