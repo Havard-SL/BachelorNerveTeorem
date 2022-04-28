@@ -36,6 +36,7 @@
 %\setmainfont{Atkinson Hyperlegible}
 \setmainfont{Fira Sans}
 \setmathfont{Fira Math}
+\setmathfont[range=\setminus]{Asana Math}
 
 % Ny type lista med ganske perfekt spacing
 \newlist{plist}{enumerate}{5}
@@ -65,27 +66,24 @@
 \newcommand{\Nc}{\mathcal{N}}
 \newcommand{\Cech}{ \operatorname{Cech} }
 \newcommand{\intersect}{ \mathop{\cap}\limits } % For finare grenser på snitt
-\newcommand{\union}{ \mathop{\cup}\limits }
+\newcommand{\union}{ \mathop{\cup}\limits\, }
 \newcommand{\gr}[1]{ \lvert #1 \rvert } % Geometrisk realisering
 \newcommand{\set}[1]{ \left \{ #1 \right \} } % Mengda
 
 % PERSONLEGE NOTAT
 
-% Eigen kommando for \set
 % Større separator i mengdar
 % Rydda vekk semikolonar og kolonar i teksten min
-% Gjer manglane bevis
 % \cup og \cap ser merkelege ut
 % Bytta font? Litt uleseleg til tider. Ingen kaligrafi N, \bigcup/\bigcap f.eks
 % Fiksa tikz diagrammet
-% Kommando for Cech?
 % Skriva om det longe beviset
 % Fleire eksempel!!
 % Kva er feil med \vert og |?
 % Nervedefinisjon for topologisk rom og kun endeleg?
 % Hugs å spesifisér alt! Skriv ned idéen bak korleis eg skriv ting.
 % Seksjon 0 med definisjonar og minimumskrav?
-% Kvifor endra linjeavstand i \parskip?
+% Figurtekst skal vera kort, eksempelteksten skal referera til figurteksten
 
 % PLAN
 % Fokus på å forbetra del 1, og så byrja på del 2. Pass på Magnus sitt bevis er litt shady.
@@ -103,10 +101,11 @@
 
 \section{Grunnleggande definisjonar og resultat}
 
-\begin{definition}
+\begin{definition} \label{def:ASK}
 	For $V$ ei ikkje-tom og endeleg mengda, så definerar me $K$ til å vera eit \emph{endeleg asbtrakt simplisielt kompleks over $V$} om:
 	\begin{enumerate}
 		\item{$\forall v \in V: \{v\} \in K$}
+		\item{\( \forall \sigma \in K: \sigma \subseteq V \)}
 		\item{$\forall \sigma \in K, \forall \tau \subseteq \sigma: \tau \in K$}
 	\end{enumerate}
 	Då kallar me og $V$ for \emph{hjørnemengda} til $K$.
@@ -120,7 +119,7 @@ Nokre eksempel av endelege abstrakte simplisielle kompleks over $\{p_1, p_2, p_3
 	\item{$A_3=\{\{p_1\}, \{p_2\}, \{p_3\}\}$}
 \end{itemize}
 
-Og her er nokre ikkje-eksempel av endelege abstrakte simplisielle kompleks over $\{p_1, p_2, p_3\}$:
+Og her er nokre ikkje-eksempel av endelege abstrakte simplisielle kompleks over \( \{p_1, p_2, p_3\} \):
 
 \begin{itemize}
 	\item{$A_1'=\{\{p_1, p_2\}, \{p_1\}\}=A_1 \setminus \{\{p_2\}\}$}
@@ -128,8 +127,9 @@ Og her er nokre ikkje-eksempel av endelege abstrakte simplisielle kompleks over 
 	\item{$A_3'=\{\{p_1\}, \{p_2\}, \{p_2, p_3\}\}=\left(A_3 \setminus \{\{p_3\}\}\right) \union \{\{p_2, p_3\}\}$}
 \end{itemize}
 
-Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men som me kjem til å sjå seinare; så er dette ein svært praktisk simplifisering av informasjon som bevarer mykje av eigenskapane til den originale datamengda ein vil sjå på. 
-\\Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
+Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men som me kjem til å sjå seinare; så er dette ein svært praktisk simplifisering av informasjon som bevarer mykje av eigenskapane til den originale datamengda ein vil sjå på.
+
+Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 
 \begin{definition}
 	Ein endeleg mengda punkt $\{p_1, p_2, p_3, \dots, p_n\}$ i $\Rb^m$ for $m\geq1$ er \emph{geometrisk uavhengige} om for $\{a_i\}_{i=0}^n$ med $a_i\in\Rb$, så:
@@ -171,6 +171,7 @@ Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men
 
 \begin{definition}
 	\sloppy Ein \emph{konveks kombinasjon} av ei geometrisk uavhengig mengda $P=\{p_1, p_2, p_3, \dots, p_n\}$ av punkt i $\Rb^m$ er eit punkt $x\in\Rb^m$ gitt ein tupel av koeffisientar $A=\{a_1, a_2, a_3, \dots, a_n\}$ i $\Rb$, med $a_i\geq0\forall i$ og $\sum_{i=1}^n a_i = 1;$
+	
 	\begin{equation*}
 		x=\sum_{i=1}^n a_ip_i
 	\end{equation*}
@@ -207,7 +208,7 @@ Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men
 
 \begin{example}
 	\phantom{123}
-	\begin{figure}[H]
+	\begin{figure}[htbp]
 		\begin{center}
 			\includesvg[width=0.6\textwidth]{Eksempel1-8.svg}
 			\caption{Her er tre geometriske simpleksar. Ein \( 1 \)-simpleks utspunne av \( \set{a_1, a_2} \), Ein \(2\)-simpleks utspunne av \( \set{b_1, b_2, b_3} \), og ein \(3\)-simpleks utspunne av \( \set{c_1, c_2, c_3, c_4} \)}
@@ -260,9 +261,12 @@ For $i=1$:
 	\end{equation*}
 	Om ein då let $\hat{L}=L|_{\gr{K}_{\hat{f}}}$, og $L_2:\Rb^l\to\Rb^m$ vera den lineære funskjonen som sender $y_i\mapsto x_i$ og let $\tilde{L}=L_2|_{\gr{K}_{\hat{g}}}$, så er definisjonane symmetriske og det symmetriske resultatet gjelder derfor for $L_2$ også. 
 	For eit vilkårleg element $x\in\gr{K}_{\hat{f}}$ så er $x$ eit element av ein simpleks i det geometriske simplisielle komplekset. Det vil seie, me kan utrykka $x$ som ein konveks sum av ein geometrisk uavhengig mengda, som korresponderar til den simpleksen $x$ er eit element i.
-	\\Me velger derfor ein $\sigma\in K$ sånn at $\hat{f}(\sigma)=\{\hat{f}(k_1), \hat{f}(k_2), \dots, \hat{f}(k_r)\}$. Dette er ein geometrisk uavhengig mengda fordi $\tau_f$ er injektiv og sender $x_i\mapsto x_i$ som er lineært uavhengig og biletet er derfor geometrisk uavhengig om $\{x_i\}$ er lineært uavhengig, som det er frå \autoref{thm:geometrisklineærtuavhengig}.
-	\\La denne mengda utspenna punkta til ein simpleks som $x$ er eit element av. Då kan me utrykka $x$ som ein konveks kombinasjon av elementa i $\hat{f}(\sigma)$: $x=\sum_{i=1}^ka_i\hat{f}(k_i)$ med $\sum_{i=1}^ka_i=1$ og $a_i\geq0\; \forall i$. 
-	\\Her er valet av kva geometrisk simpleks me velger ikkje vikitg, ettersom $\hat{L}$ er veldefinert.
+	
+	Me velger derfor ein $\sigma\in K$ sånn at $\hat{f}(\sigma)=\{\hat{f}(k_1), \hat{f}(k_2), \dots, \hat{f}(k_r)\}$. Dette er ein geometrisk uavhengig mengda fordi $\tau_f$ er injektiv og sender $x_i\mapsto x_i$ som er lineært uavhengig og biletet er derfor geometrisk uavhengig om $\{x_i\}$ er lineært uavhengig, som det er frå \autoref{thm:geometrisklineærtuavhengig}.
+	
+	La denne mengda utspenna punkta til ein simpleks som $x$ er eit element av. Då kan me utrykka $x$ som ein konveks kombinasjon av elementa i $\hat{f}(\sigma)$: $x=\sum_{i=1}^ka_i\hat{f}(k_i)$ med $\sum_{i=1}^ka_i=1$ og $a_i\geq0\; \forall i$. 
+	
+	Her er valet av kva geometrisk simpleks me velger ikkje vikitg, ettersom $\hat{L}$ er veldefinert.
 	\begin{align*}
 		\tilde{L}\circ \hat{L}(x) &= \tilde{L}\circ \hat{L}\left(\sum_{i=1}^ra_i\hat{f}(k_i)\right) \\
 		&= \tilde{L}\left(\sum_{i=1}^r\hat{L}(a_i\hat{f}(k_i))\right) \\
@@ -325,27 +329,36 @@ For $i=1$:
 
 \begin{definition}
 	For $P$ ei endeleg mengda av punkt i $\Rb^m$ og $r\in[0,\infty)$, så er \emph{Cech-komplekset til $P$ med radius $r$} definert som:
-	\begin{equation*}
+	\[
 		\Cech_r(P):=\left\{\sigma\subseteq P \mid \intersect_{p\in\sigma}\bar{B}_r(p)\neq\emptyset\right\}
-	\end{equation*}
+	\]
 \end{definition}
 
 \begin{example}
 	\phantom{abcd}
-	\begin{figure}[H]
+	\begin{figure}[htbp]
 		\begin{center}
-			\includesvg[width=0.5\textwidth]{Eksempel1_18.svg}
+			\includesvg[width=0.8\textwidth]{Eksempel1_18-2.svg}
 		\end{center}
-		\caption{Her kan me sjå tre ulike eksempel av korleis Cech-komplekset ser ut med varierande radius. Merk her at \( p_i \)-ane er ballane med den gitte radiusen, og ikkje punkta.}
+		\caption{Her kan me sjå tre ulike eksempel av korleis Cech-komplekset ser ut med varierande radius.}
 	\end{figure}
 \end{example}
 
-\begin{theorem}
+\begin{theorem} \label{thm:CASK}
 	For $P$ ei endeleg mengda punkt i $\Rb^m$ og $r\in[0,\infty)$, så er Cech komplekset til $P$ med radius $r$ eit abstrakt simplisielt kompleks over $P$.
 \end{theorem}
 
 \begin{proof}
-	TODO
+	For å visa dette, så må me visa at begge aksioma frå \autoref{def:ASK} held:
+	\begin{enumerate}
+		\item{ For ein \( \hat{p} \in P \) så ser me at for \( \sigma = \set{\hat{p}} \), så er \( \intersect_{p\in\sigma}\bar{B}_r(p)=\bar{B}_r(\hat{p})\neq\emptyset \) og då er \( \set{\hat{p}} \in \Cech_r(P) \) }
+		\item{ Per definisjon av Cech-komplekset, så er alle \( \sigma \in \Cech_r(P) \) ei delmengda av \( P \) }
+		\item{ For \( \sigma \in \Cech_r(P) \), så ser me at \( \intersect_{p\in\sigma} \bar{B}_r(p) \neq \emptyset \), men det betyr at for alle \( \tau \subseteq \sigma \), så er \( \intersect_{p\in\tau} \bar{B}_r(p) \) også ikkje-tom, fordi om den var tom, så ville: 
+			\[ 
+				\intersect_{p\in\sigma} \bar{B}_r(p) = \left( \intersect_{p\in(\sigma\setminus\tau)} \bar{B}_r(p) \right) \intersect \left( \intersect_{p\in\tau} \bar{B}_r(p) \right) = \left( \intersect_{p\in(\sigma\setminus\tau)} \bar{B}_r(p) \right) \intersect \emptyset = \emptyset 
+			\] 
+			som den ikkje er. Derfor må \( \tau \in \Cech_r(P) \) }
+	\end{enumerate}
 \end{proof}
 
 Eit fint resultat som er ekvivalent til definisjonen av Cech komplekset:
@@ -380,12 +393,28 @@ Dette gir oss nok grunnlag til å endeleg forstå og definera nerva:
 \end{theorem}
 
 \begin{proof}
-	TODO
+	Likt som i beviset for at Cech-komplekset var eit abstrakt simplisielt kompleks (\autoref{thm:CASK}) så må me visa alle betingelsane i \autoref{def:ASK}:
+	\begin{enumerate}
+		\item{ 
+			For \( v \in F \) så har me at for \( \sigma = \set{ v } \) så er \( \intersect_{ p \in \sigma } p = v \neq \emptyset \), så \( \set{v} \in \Nc(F) \) 
+		}
+		\item{ 
+			Alle element av \( \Nc(F) \) er per definisjon ei delmengda av \( F \)
+		}
+		\item{  
+			For \( \sigma \in \Nc(F) \), så ser me at \( \intersect_{v\in\sigma} v \neq \emptyset \), men det betyr at for alle \( \tau \subseteq \sigma \), så er \( \intersect_{v\in\tau} v \) også ikkje-tom, fordi om den var tom, så ville: 
+			\[ 
+				\intersect_{v\in\sigma} v = \left( \intersect_{v\in(\sigma\setminus\tau)} v \right) \intersect \left( \intersect_{v\in\tau} v \right) = \left( \intersect_{v\in(\sigma\setminus\tau)} v \right) \intersect \emptyset = \emptyset 
+			\] 
+			som den ikkje er. Derfor må \( \tau \in \Nc(F) \)
+		}
+
+	\end{enumerate}
 \end{proof}
 
 \begin{example}
 	\phantom{abc}
-	\begin{figure}[H]
+	\begin{figure}[htbp]
 		\begin{center}
 			\includesvg[width=0.7\textwidth]{Eksempel1_23.svg}
 		\end{center}
@@ -419,8 +448,8 @@ Då kan me endeleg utrykka nerveteoremet:
 %	Då er \( \gr{\Nc(F)} \) homotopiekvivalent til \( X \).
 %\end{theorem}
 
-\section{Bevis av Nervelemma}
+\section{Bevis av Nerveteoremet}
 
-
+\section{Anvendingar av Nerveteoremet}
 
 \end{document}
