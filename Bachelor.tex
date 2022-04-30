@@ -64,11 +64,13 @@
 \newcommand{\Zb}{\mathbb{Z}}
 \newcommand{\Nb}{\mathbb{N}}
 \newcommand{\Nc}{\mathcal{N}}
-\newcommand{\Cech}{ \operatorname{Cech} }
+%\newcommand{\Cech}{ \operatorname{Cech} }
+\DeclareMathOperator{\Cech}{Cech}
 \newcommand{\intersect}{ \mathop{\cap}\limits } % For finare grenser på snitt
-\newcommand{\union}{ \mathop{\cup}\limits\, }
+\newcommand{\union}{ \mathop{\cup}\limits }
 \newcommand{\gr}[1]{ \lvert #1 \rvert } % Geometrisk realisering
 \newcommand{\set}[1]{ \left \{ #1 \right \} } % Mengda
+\DeclareMathOperator{\Sd}{Sd}
 
 % PERSONLEGE NOTAT
 
@@ -84,6 +86,9 @@
 % Hugs å spesifisér alt! Skriv ned idéen bak korleis eg skriv ting.
 % Seksjon 0 med definisjonar og minimumskrav?
 % Figurtekst skal vera kort, eksempelteksten skal referera til figurteksten
+% Eksempeltekst til kvar figur / figur må bli nemd minst ein gong.
+% Skriv om beviset for 1.17 (homeomorfi mellom geometriske realiseringar.)
+% Legg til intuitiv forklaring på kva som foregår i byrjinga.
 
 % PLAN
 % Fokus på å forbetra del 1, og så byrja på del 2. Pass på Magnus sitt bevis er litt shady.
@@ -175,27 +180,27 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 	\begin{equation*}
 		x=\sum_{i=1}^n a_ip_i
 	\end{equation*}
-%	Om $P$ er ein tupel (ein ordna mengda) så blir koeffiseintane også ein tupel, og $A$ blir då kalla dei \emph{barysentriske koordinatane} til $x$.
+	Om $P$ er ein tupel (ein ordna mengda) så blir koeffiseintane også ein tupel, og $A$ blir då kalla dei \emph{barysentriske koordinatane} til $x$.
 \end{definition}
 
-%\begin{theorem}
-%	Dei barysentriske koordinatane til ein konveks kombinasjon er eintydig.
-%\end{theorem}
-%\begin{proof}
-%	La $x$ vera ein konveks kombinasjon av $(p_1, p_2, p_3, \dots, p_n)$ i $\Rb^m$. Annta at $x$ har to barysentriske koordinatar: $(a_1, a_2, a_3, \dots, a_n)$ og $(b_1, b_2, b_3, \dots, b_n)$. Det betyr at:
-%	\begin{equation*}
-%		0 = x - x = \sum_{i=1}^n a_ip_i - \sum_{i=1}^n b_ip_i=\sum_{i=1}^n (a_i-b_i)p_i
-%	\end{equation*}
-%	og me får:
-%	\begin{equation*}
-%		\sum_{i=1}^n(a_i-b_i)=\sum_{i=1}^na_i - \sum_{i=1}^nb_i = 1 - 1 = 0
-%	\end{equation*}
-%	Men sidan $(p_1, p_2, p_3, \dots, p_n)$ er geometrisk uavhengig, så 
-%	\begin{equation*}
-%		\implies (a_i-b_i)=0\forall i \Longleftrightarrow a_i = b_i \forall i
-%	\end{equation*}
-%	og dei barysentriske koordinatane er derfor like.
-%\end{proof}
+\begin{theorem}
+	Dei barysentriske koordinatane til ein konveks kombinasjon er eintydig.
+\end{theorem}
+\begin{proof}
+	La $x$ vera ein konveks kombinasjon av $(p_1, p_2, p_3, \dots, p_n)$ i $\Rb^m$. Annta at $x$ har to barysentriske koordinatar: $(a_1, a_2, a_3, \dots, a_n)$ og $(b_1, b_2, b_3, \dots, b_n)$. Det betyr at:
+	\begin{equation*}
+		0 = x - x = \sum_{i=1}^n a_ip_i - \sum_{i=1}^n b_ip_i=\sum_{i=1}^n (a_i-b_i)p_i
+	\end{equation*}
+	og me får:
+	\begin{equation*}
+		\sum_{i=1}^n(a_i-b_i)=\sum_{i=1}^na_i - \sum_{i=1}^nb_i = 1 - 1 = 0
+	\end{equation*}
+	Men sidan $(p_1, p_2, p_3, \dots, p_n)$ er geometrisk uavhengig, så 
+	\begin{equation*}
+		\implies (a_i-b_i)=0\forall i \Longleftrightarrow a_i = b_i \forall i
+	\end{equation*}
+	og dei barysentriske koordinatane er derfor like.
+\end{proof}
 
 \begin{definition}
 	Det \emph{geometrisk simplekset} utspent av ei geometrisk uavhengig mengda av punkt $P=\{p_1, p_2, p_3, \dots, p_n\}$ i $\Rb^m$, er alle konvekse kombinasjonar av $P$.
@@ -232,13 +237,21 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 	\end{enumerate}
 \end{definition}
 
+\begin{theorem}
+	TODO Geometrisk simplisielle kompleks har ein utvida unik barysentrisk koordinat.
+\end{theorem}
+
 \begin{definition}
 	For $V$ ein endeleg mengda og $m\geq1$, så er $f:V\rightarrow \Rb^m$ ein \emph{affin imbedding} om $f$ er injektiv, og om biletet, $f(A)$ er ei geometrisk uavhengig mengda av punkt.
 \end{definition}
 
-\begin{definition}
+\begin{definition} % Må ha ein affin imbedding for alt? Sjekk opp i ditta TODO
 	For eit endeleg abstrakt simplisielt kompleks $K$, over ei ikkje-tom hjørnemengda $V$, gitt ein vilkårleg affin imbedding $f:V\to\Rb^m$ for ein eller annan $m\geq1$. Så er den \emph{geometriske realiseringa med hensyn til $f$} unionen av alle dei geometriske simpleksane utspunne av punkta i $f(\sigma)$, for $\sigma\in K$. Dette er ofte betegna $\gr{K}_f$
 \end{definition}
+
+\begin{theorem}
+	TODO geometrisk realisering er eit geometrisk simplisielt kompleks
+\end{theorem}
 
 \begin{theorem}
 	Geometrisk realisering er eintydig opp til homeomorfi. Med andre ord: For to ulike geometriske realiseringar av eit endeleg abstrakt simplisielt kompleks $K$, med hensyn til $f$ og $g$ (to ulike affine imbeddingar), så er $\gr{K}_f$ og $\gr{K}_g$ homeomorfe.
@@ -382,7 +395,7 @@ Eit fint resultat som er ekvivalent til definisjonen av Cech komplekset:
 Dette gir oss nok grunnlag til å endeleg forstå og definera nerva:
 
 \begin{definition} % Kan definera for vilk. mengda? Og endeleg?
-	La $X$ vera eit topologisk rom. Vidare la $F$ vera ei mengda av delmengder av $X$. \emph{Nerva} til $F$, betegna som $\Nc(F)$, er:
+	La $X$ vera ei mengda. Vidare la $F$ vera ei mengda av delmengder av $X$. \emph{Nerva} til $F$, betegna som $\Nc(F)$, er:
 	\begin{equation*}
 		\Nc(F) := \left \{ \sigma \subseteq F \mid \intersect_{ F_i \in \sigma } F_i \neq \emptyset \right \}
 	\end{equation*}
@@ -432,11 +445,11 @@ Då kan me endeleg utrykka nerveteoremet:
 %	La \( Y \) vera eit topologisk rom, og \( X \subseteq Y \) ei delmengda. Og la $A$ vera ei indekseringsmengda. Då er eit \emph{overdekke av $X$ relativ til $Y$} ei samling av delmengdar av $Y$: \( \{ F_\alpha \}_{\alpha\in A} \) der \( F_\alpha \subseteq Y  \) og \( X \subseteq \union_{\alpha \in A} F_\alpha \)
 %\end{definition}
 
-\begin{theorem}
-	(Nerveteoremet for konveks og lukka overdekke) La $V$ vera eit vektorrom med ein topologi og \( F = \set{F_i}_{i=1}^n \) ei endeleg mengda av lukka og konvekse delmengder av $V$.
-	
-	Då er $\gr{\Nc(X)}$ homotopiekvivalent til \( \cup_{i=1}^n F_i \)
-\end{theorem}
+%\begin{theorem}
+%	(Nerveteoremet for konveks og lukka overdekke) La $V$ vera eit vektorrom med ein topologi og \( F = \set{F_i}_{i=1}^n \) ei endeleg mengda av lukka og konvekse delmengder av $V$.
+%	
+%	Då er $\gr{\Nc(X)}$ homotopiekvivalent til \( \cup_{i=1}^n F_i \)
+%\end{theorem}
 
 %\begin{definition}
 %	La \( X \) vera eit topologisk rom, og la \( F \) vera ei mengda av delmengder av \( X \). Då har \( F \) \emph{samantrekkbart snitt} om \( \forall \. \sigma \subseteq F \) så er \( \intersect_{F_i \in \sigma}F_i \) samantrekkbar.
@@ -449,6 +462,127 @@ Då kan me endeleg utrykka nerveteoremet:
 %\end{theorem}
 
 \section{Bevis av Nerveteoremet}
+
+Dette beviset er frå TODO
+
+\begin{definition}
+	Gitt eit endeleg abstrakt simplisielt kompleks \( K \) over \( V \), så er den \emph{barysentriske oppdelinga} av \( K \), betegna \( \Sd(K) \), nerva til \( K \).
+\end{definition}
+
+\begin{remark}
+	Grunnen til at me betegnar den barysentriske oppdelinga til \( K \) for \( \Sd(K) \) og ikkje \( \Nc(K) \) er fordi det er praktisk å skilja dei, og enklare å lesa. I tillegg så blir den barysentriske oppdelinga av eit abstrakt simplisielt kompleks ofta kalla for ein "<subdivision>" på engelsk, og derfor brukar me \( \Sd \).
+\end{remark}
+
+\begin{lemma}
+	For \( K \) eit endeleg abstrakt simplisielt kompleks over \( V \), så har me at:
+	\( \gr{\Sd(K)} \) er homeomorf til \( \gr{K} \).
+\end{lemma}
+
+\begin{proof}
+	TODO
+\end{proof}
+
+\begin{example}
+	Teikn
+\end{example}
+
+\begin{definition} \label{thm:Gamma} % Kan fjerna phi og f avhengigheita frå notasjonen. U, phi, f avhengigheita er implisitt.
+	Gitt \( U = \set{U_i}_{i=1}^n \) ei endeleg mengda av konvekse mengder i \( \Rb^m \). Indekser elementa i \( \Sd(\Nc(U)) \) etter \( \sigma_1, \sigma_2, \dots, \sigma_k \). For \( x \in \gr{\Sd(\Nc(U))}_\phi \)  med dei unike ref:TODO utvida barysentriske koordinatane \( a_1, a_2, \dots, a_k \).
+	
+	Vidare, for kvar \( \sigma \in \Nc(U) \) velg punkt \( v_\sigma \in \intersect_{u \in \sigma} u \). 
+
+	La då:
+	\[
+		\Gamma(x) = \sum_{i=1}^k a_iv_{\sigma_i}
+	\]
+\end{definition}
+
+\begin{lemma} % Må visa veldefinert mhp f og phi?
+	\( \Gamma \) frå \ref{thm:Gamma} er kontinuerleg og biletet er i \( \union_{u\in U} u \).
+\end{lemma}
+
+\begin{proof}
+	TODO
+\end{proof}
+
+\begin{example}
+	Teikn
+\end{example}
+
+\begin{definition} % Definér open ball?
+	For ei mengda \( U_i \) og ein \( \epsilon > 0 \) definér \( U_i^\epsilon := \union_{x \in U_i} B_\epsilon(x) \), og for ei endeleg mengda av mengder \( U=\set{U_i}_{i=1}^n \) definér \( U^\epsilon := \set{U_i^\epsilon}_{i=1}^n \).
+\end{definition}
+
+\begin{lemma} \label{thm:epsilondekke} % Epsilondekke
+	For alle endelege mengder av kompakte, konvekse delmengder av \( \Rb^d \), \( U = \set{U_i}_{i=1}^n \), så \( \exists \epsilon > 0 \) sånn at \(f: \Nc(U) \to \Nc(U^\epsilon) \) som tek 
+	\[ 
+		\set{U_{i_1}, U_{i_2}, \dots, U_{i_k}} \mapsto \set{U_{i_1}^\epsilon, U_{i_2}^\epsilon, \dots, U_{i_k}^\epsilon} 
+	\] 
+	er ein bijeksjon.
+\end{lemma}
+
+\begin{proof}
+	TODO
+\end{proof}
+
+\begin{definition} \label{thm:psi} % Kva er betingelsane på overdekket her?
+	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \), velg ein \( \epsilon \) som i \ref{thm:epsilondekke}, kan då danna:
+	\[
+		\phi_i(x) := \frac{d(x, \Rb^m \setminus U_i^\epsilon)}{d(x, U_i) + d(x, \Rb^m \setminus U_i^\epsilon)}
+	\]
+	Og vidare:
+	\[
+		\psi_i(x) := \frac{\phi_i(x)}{\sum_{k=1}^n \phi_k(x)}
+	\]
+\end{definition}
+
+\begin{lemma} % Burde bruka alle
+	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \) , la \( \psi_i \) og \( \epsilon \) vera definert som i \ref{thm:psi}. Då er følgande sant:
+	\begin{enumerate}
+		\item{For \( x \in  U_i \), då er \( \psi_i(x) \geq \psi_j(x) \forall j \) }
+		\item{For \( x \in \Rb^d \setminus U_i^\epsilon \), då er \( \psi_i(x)=0 \) }
+		\item{For \( x \in \union_{u \in U} u \), så er \( \sum_{i=1}^n \psi_i(x) = 1 \) }
+		\item{For \( x \in \union_{u \in U} u \), så er \( \psi_i(x) \geq 0 \) }
+	\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+	TODO
+\end{proof}
+
+\begin{definition} \label{thm:Psi}
+	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \psi_i \) vera som i \ref{thm:psi}. Definér for \( x \in \union_{u \in U} u \):
+	\[
+		\Psi(x) := \sum_{i=1}^n \psi_i(x)f(U_i)
+	\]
+\end{definition}
+
+\begin{lemma} % Noko meir?
+	\( \Psi \) frå \ref{thm:Psi} er kontinuerlig, og har bilete i \( \gr{\Nc(U)}_f \).
+\end{lemma}
+
+\begin{definition}
+	bst
+\end{definition}
+
+\begin{lemma}
+	im bst-i for gamma inne i U-i
+\end{lemma}
+
+\begin{lemma}
+	im U-i inne i bst-i for psi
+\end{lemma}
+
+\begin{lemma} % Sløyfast?
+	psi gamma homotopiekvivalent
+\end{lemma}
+
+\begin{theorem}
+	Tek spesiell overdekke
+	Gamma psi er homotopiekvivalen
+	psi gamma
+
+\end{theorem}
 
 \section{Anvendingar av Nerveteoremet}
 
