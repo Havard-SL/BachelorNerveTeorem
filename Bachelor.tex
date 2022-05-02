@@ -71,6 +71,7 @@
 \newcommand{\gr}[1]{ \lvert #1 \rvert } % Geometrisk realisering
 \newcommand{\set}[1]{ \left \{ #1 \right \} } % Mengda
 \DeclareMathOperator{\Sd}{Sd}
+\DeclareMathOperator{\bst}{bst}
 
 % PERSONLEGE NOTAT
 
@@ -89,6 +90,7 @@
 % Eksempeltekst til kvar figur / figur må bli nemd minst ein gong.
 % Skriv om beviset for 1.17 (homeomorfi mellom geometriske realiseringar.)
 % Legg til intuitiv forklaring på kva som foregår i byrjinga.
+% Kun euklidsk norm
 
 % PLAN
 % Fokus på å forbetra del 1, og så byrja på del 2. Pass på Magnus sitt bevis er litt shady.
@@ -103,6 +105,27 @@
 \begin{document}
 
 \maketitle
+
+\section{Førehandskunnskapar og teorem}
+
+\subsection{Førehandskunnskapar}
+
+Grunnleggande topologi
+Grunnleggande lineær algebra
+
+\subsection{Viktige teorem}
+
+\begin{theorem}
+	Begrensa lin operatorar er kont.
+\end{theorem}
+
+\begin{theorem}
+	Universaleigenskapen til underromstopologien
+\end{theorem}
+
+\begin{theroem}
+	Heine-borel
+\end{theorem}
 
 \section{Grunnleggande definisjonar og resultat}
 
@@ -245,7 +268,7 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 	For $V$ ein endeleg mengda og $m\geq1$, så er $f:V\rightarrow \Rb^m$ ein \emph{affin imbedding} om $f$ er injektiv, og om biletet, $f(A)$ er ei geometrisk uavhengig mengda av punkt.
 \end{definition}
 
-\begin{definition} % Må ha ein affin imbedding for alt? Sjekk opp i ditta TODO
+\begin{definition}
 	For eit endeleg abstrakt simplisielt kompleks $K$, over ei ikkje-tom hjørnemengda $V$, gitt ein vilkårleg affin imbedding $f:V\to\Rb^m$ for ein eller annan $m\geq1$. Så er den \emph{geometriske realiseringa med hensyn til $f$} unionen av alle dei geometriske simpleksane utspunne av punkta i $f(\sigma)$, for $\sigma\in K$. Dette er ofte betegna $\gr{K}_f$
 \end{definition}
 
@@ -475,19 +498,44 @@ Dette beviset er frå TODO
 
 \begin{lemma}
 	For \( K \) eit endeleg abstrakt simplisielt kompleks over \( V \), så har me at:
-	\( \gr{\Sd(K)} \) er homeomorf til \( \gr{K} \).
+	\( \gr{\Sd(K)}_f \subseteq \Rb^d \) er homeomorf til \( \gr{K}_g \subseteq \Rb^m \) ved ein homomorfi me kallar for \( \alpha \) som vert definert i slutten av beviset under.
 \end{lemma}
 
-\begin{proof}
-	TODO
+\begin{proof} % Å herregud ditta beviset e vanskelegare enn eg trudde. % Shit, blande nokre bilete her. må dirrenetsiera mellom pre og post translasjon av mangder.
+	Dette beviset bruker mykje den same strategien som i ref:TODO.
+
+	Fyrst, lag ei ording av elementa i \( V = (v_1, v_2, \dots, v_n) \) la \( \tau_f(x) := x-f(\set{v_1}) \), og la \( \tau_g(x) := x-g(\set{v_1}) \). Desse er homeomorfiar. TODO (Hugs å visa bileta stemmer)
+
+	Då kan me velga ein \( L: \Rb^d \to \Rb^m \) definert av å senda \( f(\set{v_i}) \mapsto g(\set{v_i}) \). 
+
+	Me veit då frå TODO at \( L \) er kontinuerlig. 
+
+	Vidare så får me at \( L(\gr{\Sd(K)}_f) = \gr{K}_g \) Fordi TODO. 
+
+	Definer \( \hat{L} := L|_{\gr{\Sd(K)}_f} \)
+
+	Frå den universale eigenskapen av underromstopologien ref:TODO så får me at \( \hat{L}: \gr{\Sd(K)}_f \to \gr{K}_g \) også er kontinuerlig.
+
+	\( \hat{L} \) er surjektiv fordi TODO
+
+	\( \hat{L} \) er injektiv fordi TODO
+
+	\( \hat{L} \) er ein lukka avbildning fordi gitt ei lukka mengda i \( C \subseteq \gr{\Sd(K)}_f \) så er det per definisjon \( C = C_0 \intersect \gr{\Sd(K)}_f \) for ei eller annan lukka mengda \( C_0 \subseteq \Rb^d \). Men sidan \( \gr{\Sd(K)}_f \) er lukka og kompakt i \( \Rb^d \) frå TODO, så betyr det at \( C \) er snittet av to lukka mengder i \( \Rb^d \) og derfor lukka sjølve. Frå Heine-Borel TODO så betyr det at \( C \) er kompakt, og sidan kontinuerlige funksjonar avbildar kompakte mengder til kompakte mengder frå TODO så er \( L(C)=\hat{L}(C) \) også kompakt i \( \Rb^d \) og igjen frå Heine-Borel TODO, så er \( \hat{L(C)} \) lukka i \( \Rb^m \) og derfor lukka i \( \gr{K}_g \).
+
+	Me får då frå TODO at sidan \( \hat{L} \) er ein bijektiv, kontinuerlig og lukka funskjon så er det ein homeomorfi.
+
+	Me definerar \( \alpha: \gr{\Sd(K)}_f \to \gr{K}_g \):
+	\[
+		\alpha := \tau_g^{-1} \circ \hat{L} \circ \tau_f^{-1}
+	\]
 \end{proof}
 
 \begin{example}
 	Teikn
 \end{example}
 
-\begin{definition} \label{thm:Gamma} % Kan fjerna phi og f avhengigheita frå notasjonen. U, phi, f avhengigheita er implisitt.
-	Gitt \( U = \set{U_i}_{i=1}^n \) ei endeleg mengda av konvekse mengder i \( \Rb^m \). Indekser elementa i \( \Sd(\Nc(U)) \) etter \( \sigma_1, \sigma_2, \dots, \sigma_k \). For \( x \in \gr{\Sd(\Nc(U))}_\phi \)  med dei unike ref:TODO utvida barysentriske koordinatane \( a_1, a_2, \dots, a_k \).
+\begin{definition} \label{thm:Gamma} % Kan fjerna phi og f avhengigheita frå notasjonen. U, phi, f avhengigheita er implisitt. Burde ha med affine imbeddinga?
+	Gitt \( U = \set{U_i}_{i=1}^n \) ei endeleg mengda av konvekse mengder i \( \Rb^m \). Indekser elementa i \( \Sd(\Nc(U)) \) etter \( \sigma_1, \sigma_2, \dots, \sigma_k \). For \( x \in \gr{\Sd(\Nc(U))} \)  med dei unike ref:TODO utvida barysentriske koordinatane \( (a_1, a_2, \dots, a_k) \).
 	
 	Vidare, for kvar \( \sigma \in \Nc(U) \) velg punkt \( v_\sigma \in \intersect_{u \in \sigma} u \). 
 
@@ -513,7 +561,7 @@ Dette beviset er frå TODO
 	For ei mengda \( U_i \) og ein \( \epsilon > 0 \) definér \( U_i^\epsilon := \union_{x \in U_i} B_\epsilon(x) \), og for ei endeleg mengda av mengder \( U=\set{U_i}_{i=1}^n \) definér \( U^\epsilon := \set{U_i^\epsilon}_{i=1}^n \).
 \end{definition}
 
-\begin{lemma} \label{thm:epsilondekke} % Epsilondekke
+\begin{lemma} \label{thm:epsilondekke} % Kunne ha skrive det som at f danner ein bijeksjon av simpleksar?
 	For alle endelege mengder av kompakte, konvekse delmengder av \( \Rb^d \), \( U = \set{U_i}_{i=1}^n \), så \( \exists \epsilon > 0 \) sånn at \(f: \Nc(U) \to \Nc(U^\epsilon) \) som tek 
 	\[ 
 		\set{U_{i_1}, U_{i_2}, \dots, U_{i_k}} \mapsto \set{U_{i_1}^\epsilon, U_{i_2}^\epsilon, \dots, U_{i_k}^\epsilon} 
@@ -551,7 +599,7 @@ Dette beviset er frå TODO
 \end{proof}
 
 \begin{definition} \label{thm:Psi}
-	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \psi_i \) vera som i \ref{thm:psi}. Definér for \( x \in \union_{u \in U} u \):
+	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \psi_i \) vera som i \ref{thm:psi}, og \( \gr{\Nc(U)}_f \) ein geometrisk realisering av nerva til \( U \) med hensyn til ein affin imbeddinga \( f \). Definér for \( x \in \union_{u \in U} u \):
 	\[
 		\Psi(x) := \sum_{i=1}^n \psi_i(x)f(U_i)
 	\]
@@ -562,27 +610,57 @@ Dette beviset er frå TODO
 \end{lemma}
 
 \begin{definition}
-	bst
+	For \( K \) eit endeleg abstrakt simplisielt kompleks over \( V \) med \( v \in V \), så er \emph{den lukka barysentriske stjerna} til \( K \) i \( v \), betegna \( \bst(v) \) lik:
+	\[
+		\bst(v) = \set{\sigma \in \Sd(K) \mid \sigma \union v \subseteq \Sd(K)}
+	\]
 \end{definition}
 
 \begin{lemma}
-	im bst-i for gamma inne i U-i
+	Gitt \( U = \set{U_i}_{i=1}^n \) ei endeleg mengda av konvekse mengder i \( \Rb^m \). La \( \Gamma \) vere definert som i \ref{thm:Gamma}.
+
+	Då er \( \Gamma(\gr{\bst(U_i)}) \subseteq U_i \)
 \end{lemma}
+
+\begin{proof}
+	TODO
+\end{proof}
+
+\begin{lemma} % alpha avbildninga??
+	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \Psi \) vera som i \ref{thm:Psi}, og \( \gr{\Sd(\Nc(U))}_f \) ein geometrisk realisering av nerva til \( U \) med hensyn til ein affin imbeddinga \( f \). 
+
+	Då er \( \Psi(U_i) \subseteq \gr{\bst(U_i)}_f \)
+\end{lemma}
+
+\begin{proof}
+	TODO
+\end{proof}
 
 \begin{lemma}
-	im U-i inne i bst-i for psi
+	gamma psi homotopisk til identiteten.
 \end{lemma}
+
+\begin{proof}
+	TODO
+\end{proof}
 
 \begin{lemma} % Sløyfast?
-	psi gamma homotopiekvivalent
+	psi gamma homotopisk til identiteten.
 \end{lemma}
 
-\begin{theorem}
+\begin{proof}
+	TODO
+\end{proof}
+
+\begin{theorem} %Nerveteoremet for endeleg, reel, konveks, kompakt overdekke
 	Tek spesiell overdekke
 	Gamma psi er homotopiekvivalen
 	psi gamma
-
 \end{theorem}
+
+\begin{proof}
+	TODO
+\end{proof}
 
 \section{Anvendingar av Nerveteoremet}
 
