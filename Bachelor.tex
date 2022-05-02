@@ -99,7 +99,7 @@
 % Drit i uendeleg!
 
 
-\title{Nerveteorement og Anvendingar}
+\title{Nerveteoremet og Anvendingar}
 \author{Håvard Skjetne Lilleheie}
 
 \begin{document}
@@ -123,7 +123,7 @@ Grunnleggande lineær algebra
 	Universaleigenskapen til underromstopologien
 \end{theorem}
 
-\begin{theroem}
+\begin{theorem}
 	Heine-borel
 \end{theorem}
 
@@ -167,7 +167,7 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 \end{definition}
 
 \begin{theorem}\label{thm:geometrisklineærtuavhengig}
-	Ei endeleg mengda $\{p_1, p_2, p_3, \dots, p_n \}$ av punkt i $\Rb^m$ er gemetrisk uavhengige $\Longleftrightarrow$ vektorane $\{(p_2-p_1), (p_3-p_1), (p_4-p_1),\dots,(p_n-p_1)\}$ er lineært uavhengige i $\Rb^m$
+	Ei endeleg mengda $\{p_1, p_2, p_3, \dots, p_n \}$ av punkt i $\Rb^m$ er geometrisk uavhengige $\Longleftrightarrow$ vektorane $\{(p_2-p_1), (p_3-p_1), (p_4-p_1),\dots,(p_n-p_1)\}$ er lineært uavhengige i $\Rb^m$
 \end{theorem}
 
 \begin{proof}
@@ -198,12 +198,12 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 \end{remark}
 
 \begin{definition}
-	\sloppy Ein \emph{konveks kombinasjon} av ei geometrisk uavhengig mengda $P=\{p_1, p_2, p_3, \dots, p_n\}$ av punkt i $\Rb^m$ er eit punkt $x\in\Rb^m$ gitt ein tupel av koeffisientar $A=\{a_1, a_2, a_3, \dots, a_n\}$ i $\Rb$, med $a_i\geq0\forall i$ og $\sum_{i=1}^n a_i = 1;$
+	Ein \emph{konveks kombinasjon} av ei geometrisk uavhengig mengda $P=\{p_1, p_2, p_3, \dots, p_n\}$ av punkt i $\Rb^m$ er eit punkt $x\in\Rb^m$ gitt ein tupel av koeffisientar $A=\{a_1, a_2, a_3, \dots, a_n\}$ i $\Rb$, med $a_i\geq0\forall i$ og $\sum_{i=1}^n a_i = 1;$
 	
 	\begin{equation*}
 		x=\sum_{i=1}^n a_ip_i
 	\end{equation*}
-	Om $P$ er ein tupel (ein ordna mengda) så blir koeffiseintane også ein tupel, og $A$ blir då kalla dei \emph{barysentriske koordinatane} til $x$.
+	Om $P$ er ein tupel (ein ordna mengda) så blir koeffisientane også ein tupel, og $A$ blir då kalla dei \emph{barysentriske koordinatane} til $x$.
 \end{definition}
 
 \begin{theorem}
@@ -498,13 +498,13 @@ Dette beviset er frå TODO
 
 \begin{lemma}
 	For \( K \) eit endeleg abstrakt simplisielt kompleks over \( V \), så har me at:
-	\( \gr{\Sd(K)}_f \subseteq \Rb^d \) er homeomorf til \( \gr{K}_g \subseteq \Rb^m \) ved ein homomorfi me kallar for \( \alpha \) som vert definert i slutten av beviset under.
+	\( \gr{\Sd(K)}_f \subseteq \Rb^d \) er homeomorfi til \( \gr{K}_g \subseteq \Rb^m \) ved ein homeomorfi me kallar for \( \alpha \) som vert definert i slutten av beviset under.
 \end{lemma}
 
 \begin{proof} % Å herregud ditta beviset e vanskelegare enn eg trudde. % Shit, blande nokre bilete her. må dirrenetsiera mellom pre og post translasjon av mangder.
 	Dette beviset bruker mykje den same strategien som i ref:TODO.
 
-	Fyrst, lag ei ording av elementa i \( V = (v_1, v_2, \dots, v_n) \) la \( \tau_f(x) := x-f(\set{v_1}) \), og la \( \tau_g(x) := x-g(\set{v_1}) \). Desse er homeomorfiar. TODO (Hugs å visa bileta stemmer)
+	Fyrst, lag ei ordning av elementa i \( V = (v_1, v_2, \dots, v_n) \) la \( \tau_f(x) := x-f(\set{v_1}) \), og la \( \tau_g(x) := x-g(\set{v_1}) \). Desse er homeomorfiar. TODO (Hugs å visa bileta stemmer)
 
 	Då kan me velga ein \( L: \Rb^d \to \Rb^m \) definert av å senda \( f(\set{v_i}) \mapsto g(\set{v_i}) \). 
 
@@ -520,13 +520,13 @@ Dette beviset er frå TODO
 
 	\( \hat{L} \) er injektiv fordi TODO
 
-	\( \hat{L} \) er ein lukka avbildning fordi gitt ei lukka mengda i \( C \subseteq \gr{\Sd(K)}_f \) så er det per definisjon \( C = C_0 \intersect \gr{\Sd(K)}_f \) for ei eller annan lukka mengda \( C_0 \subseteq \Rb^d \). Men sidan \( \gr{\Sd(K)}_f \) er lukka og kompakt i \( \Rb^d \) frå TODO, så betyr det at \( C \) er snittet av to lukka mengder i \( \Rb^d \) og derfor lukka sjølve. Frå Heine-Borel TODO så betyr det at \( C \) er kompakt, og sidan kontinuerlige funksjonar avbildar kompakte mengder til kompakte mengder frå TODO så er \( L(C)=\hat{L}(C) \) også kompakt i \( \Rb^d \) og igjen frå Heine-Borel TODO, så er \( \hat{L(C)} \) lukka i \( \Rb^m \) og derfor lukka i \( \gr{K}_g \).
+	\( \hat{L} \) er ein lukka avbildning fordi gitt ei lukka mengda i \( C \subseteq \gr{\Sd(K)}_f \) så er det per definisjon \( C = C_0 \intersect \gr{\Sd(K)}_f \) for ei eller annan lukka mengda \( C_0 \subseteq \Rb^d \). Men sidan \( \gr{\Sd(K)}_f \) er lukka og kompakt i \( \Rb^d \) frå TODO, så betyr det at \( C \) er snittet av to lukka mengder i \( \Rb^d \) og derfor lukka sjølve. Frå Heine-Borel TODO så betyr det at \( C \) er kompakt, og sidan kontinuerlige funksjonar avbildar kompakte mengder til kompakte mengder frå TODO så er \( L(C)=\hat{L}(C) \) også kompakt i \( \Rb^d \) og igjen frå Heine-Borel TODO, så er \( \hat{L}(C) \) lukka i \( \Rb^m \) og derfor lukka i \( \gr{K}_g \).
 
-	Me får då frå TODO at sidan \( \hat{L} \) er ein bijektiv, kontinuerlig og lukka funskjon så er det ein homeomorfi.
+	Me får då frå TODO at sidan \( \hat{L} \) er ein bijektiv, kontinuerlig og lukka funksjon så er det ein homeomorfi.
 
 	Me definerar \( \alpha: \gr{\Sd(K)}_f \to \gr{K}_g \):
 	\[
-		\alpha := \tau_g^{-1} \circ \hat{L} \circ \tau_f^{-1}
+		\alpha := \tau_g^{-1} \circ \hat{L} \circ \tau_f
 	\]
 \end{proof}
 
@@ -558,7 +558,7 @@ Dette beviset er frå TODO
 \end{example}
 
 \begin{definition} % Definér open ball?
-	For ei mengda \( U_i \) og ein \( \epsilon > 0 \) definér \( U_i^\epsilon := \union_{x \in U_i} B_\epsilon(x) \), og for ei endeleg mengda av mengder \( U=\set{U_i}_{i=1}^n \) definér \( U^\epsilon := \set{U_i^\epsilon}_{i=1}^n \).
+	For ei mengda \( U_i \) og ein \( \epsilon > 0 \) definer \( U_i^\epsilon := \union_{x \in U_i} B_\epsilon(x) \), og for ei endeleg mengda av mengder \( U=\set{U_i}_{i=1}^n \) definer \( U^\epsilon := \set{U_i^\epsilon}_{i=1}^n \).
 \end{definition}
 
 \begin{lemma} \label{thm:epsilondekke} % Kunne ha skrive det som at f danner ein bijeksjon av simpleksar?
@@ -585,7 +585,7 @@ Dette beviset er frå TODO
 \end{definition}
 
 \begin{lemma} % Burde bruka alle
-	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \) , la \( \psi_i \) og \( \epsilon \) vera definert som i \ref{thm:psi}. Då er følgande sant:
+	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \) , la \( \psi_i \) og \( \epsilon \) vera definert som i \ref{thm:psi}. Då er følgjande sant:
 	\begin{enumerate}
 		\item{For \( x \in  U_i \), då er \( \psi_i(x) \geq \psi_j(x) \forall j \) }
 		\item{For \( x \in \Rb^d \setminus U_i^\epsilon \), då er \( \psi_i(x)=0 \) }
@@ -599,7 +599,7 @@ Dette beviset er frå TODO
 \end{proof}
 
 \begin{definition} \label{thm:Psi}
-	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \psi_i \) vera som i \ref{thm:psi}, og \( \gr{\Nc(U)}_f \) ein geometrisk realisering av nerva til \( U \) med hensyn til ein affin imbeddinga \( f \). Definér for \( x \in \union_{u \in U} u \):
+	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \psi_i \) vera som i \ref{thm:psi}, og \( \gr{\Nc(U)}_f \) ein geometrisk realisering av nerva til \( U \) med hensyn til den affine imbeddinga \( f \). Definer for \( x \in \union_{u \in U} u \):
 	\[
 		\Psi(x) := \sum_{i=1}^n \psi_i(x)f(U_i)
 	\]
@@ -627,7 +627,7 @@ Dette beviset er frå TODO
 \end{proof}
 
 \begin{lemma} % alpha avbildninga??
-	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \Psi \) vera som i \ref{thm:Psi}, og \( \gr{\Sd(\Nc(U))}_f \) ein geometrisk realisering av nerva til \( U \) med hensyn til ein affin imbeddinga \( f \). 
+	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \Psi \) vera som i \ref{thm:Psi}, og \( \gr{\Sd(\Nc(U))}_f \) ein geometrisk realisering av nerva til \( U \) med hensyn til den affine imbeddinga \( f \). 
 
 	Då er \( \Psi(U_i) \subseteq \gr{\bst(U_i)}_f \)
 \end{lemma}
