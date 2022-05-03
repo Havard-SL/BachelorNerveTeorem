@@ -120,11 +120,19 @@ Grunnleggande lineær algebra
 \end{theorem}
 
 \begin{theorem}
-	Universaleigenskapen til underromstopologien
+	Universaleigenskapen til underromstopologien (Brukt for å visa at lineære restrikterte avbildningar er kont.)
 \end{theorem}
 
 \begin{theorem}
-	Heine-borel
+	Closed map lemma (Visa at avb er lukka)
+\end{theorem}
+
+\begin{theorem}
+	Heine borel (Visa at Geometriske simpleks er kompakte)
+\end{theorem}
+
+\begin{theorem}
+	Pasting lemma
 \end{theorem}
 
 \section{Grunnleggande definisjonar og resultat}
@@ -209,6 +217,7 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 \begin{theorem}
 	Dei barysentriske koordinatane til ein konveks kombinasjon er eintydig.
 \end{theorem}
+
 \begin{proof}
 	La $x$ vera ein konveks kombinasjon av $(p_1, p_2, p_3, \dots, p_n)$ i $\Rb^m$. Annta at $x$ har to barysentriske koordinatar: $(a_1, a_2, a_3, \dots, a_n)$ og $(b_1, b_2, b_3, \dots, b_n)$. Det betyr at:
 	\begin{equation*}
@@ -520,7 +529,7 @@ Dette beviset er frå TODO
 
 	\( \hat{L} \) er injektiv fordi TODO
 
-	\( \hat{L} \) er ein lukka avbildning fordi gitt ei lukka mengda i \( C \subseteq \gr{\Sd(K)}_f \) så er det per definisjon \( C = C_0 \intersect \gr{\Sd(K)}_f \) for ei eller annan lukka mengda \( C_0 \subseteq \Rb^d \). Men sidan \( \gr{\Sd(K)}_f \) er lukka og kompakt i \( \Rb^d \) frå TODO, så betyr det at \( C \) er snittet av to lukka mengder i \( \Rb^d \) og derfor lukka sjølve. Frå Heine-Borel TODO så betyr det at \( C \) er kompakt, og sidan kontinuerlige funksjonar avbildar kompakte mengder til kompakte mengder frå TODO så er \( L(C)=\hat{L}(C) \) også kompakt i \( \Rb^d \) og igjen frå Heine-Borel TODO, så er \( \hat{L}(C) \) lukka i \( \Rb^m \) og derfor lukka i \( \gr{K}_g \).
+	\( \hat{L} \) er ein lukka avbildning fordi gitt ei lukka mengda i \( C \subseteq \gr{\Sd(K)}_f \) så er det per definisjon \( C = C_0 \intersect \gr{\Sd(K)}_f \) for ei eller annan lukka mengda \( C_0 \subseteq \Rb^d \). Men sidan \( \gr{\Sd(K)}_f \) er lukka og kompakt i \( \Rb^d \) frå TODO, så betyr det at \( C \) er snittet av to lukka mengder i \( \Rb^d \) og derfor lukka sjølve. Frå Heine-Borel TODO så betyr det at \( C \) er kompakt, og sidan kontinuerlige funksjonar avbildar kompakte mengder til kompakte mengder frå TODO så er \( L(C)=\hat{L}(C) \) også kompakt i \( \Rb^d \) og igjen frå Heine-Borel TODO, så er \( \hat{L}(C) \) lukka i \( \Rb^m \) og derfor lukka i \( \gr{K}_g \). % Erstatta heine-borel med closed mapping theorem
 
 	Me får då frå TODO at sidan \( \hat{L} \) er ein bijektiv, kontinuerlig og lukka funksjon så er det ein homeomorfi.
 
@@ -551,6 +560,10 @@ Dette beviset er frå TODO
 
 \begin{proof}
 	TODO
+	Visa at biletete er i rett stad.
+	Bruka pasting lemma
+	Trenge at geometriske simpleks er lukka.
+	Stemme på snitta.
 \end{proof}
 
 \begin{example}
