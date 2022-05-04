@@ -1,6 +1,7 @@
 \documentclass[a4paper, titlepage, 12pt, norsk]{article}
 
-\usepackage[utf8]{inputenc} % For å kunna skriva æøå i tekstar
+% For å kunna skriva æøå i tekstar MERK: Blir automatisk ubrukeleg med lualatex of fontspec
+%\usepackage[utf8]{inputenc} 
 \usepackage[T1]{fontenc}
 \usepackage[margin=2cm]{geometry} % Fiksa margin
 \usepackage[ddmmyyyy]{datetime} % Fiksar datorormatet på tiitelen
@@ -115,7 +116,7 @@ Grunnleggande lineær algebra
 
 \subsection{Viktige teorem}
 
-\begin{theorem}
+\begin{theorem} \label{thm:begrensa-lin-op-er-kont}
 	Begrensa lin operatorar er kont.
 \end{theorem}
 
@@ -214,7 +215,7 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 	Om $P$ er ein tupel (ein ordna mengda) så blir koeffisientane også ein tupel, og $A$ blir då kalla dei \emph{barysentriske koordinatane} til $x$.
 \end{definition}
 
-\begin{theorem}
+\begin{theorem} \label{thm:unik-barysentrisk-koordinat}
 	Dei barysentriske koordinatane til ein konveks kombinasjon er eintydig.
 \end{theorem}
 
@@ -258,7 +259,7 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 \end{remark}
 
 \begin{definition}
-	Eit \emph{fjes} til eit geometrisk simpleks utspunne av $P=\{p_1, p_2, p_3, \dots, p_n\}$ er eit geometriske simpleks utspunne av $\hat{P}_i := P\setminus \{p_i\}$ for ein eller annan $i$.
+	Eit \emph{fjes} til eit geometrisk simpleks utspunne av ein geometrisk uavhengig mengda $P=\{p_1, p_2, p_3, \dots, p_n\}$, er eit geometriske simpleks utspunne av $\hat{P}_i := P\setminus \{p_i\}$ for ein eller annan $i$.
 \end{definition}
 
 \begin{definition} % Ikkje utspunne av nokre punkt?
@@ -269,12 +270,12 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 	\end{enumerate}
 \end{definition}
 
-\begin{theorem}
+\begin{theorem} \label{thm:unik-utvida-barysentrisk-koordinat}
 	TODO Geometrisk simplisielle kompleks har ein utvida unik barysentrisk koordinat.
 \end{theorem}
 
 \begin{definition}
-	For $V$ ein endeleg mengda og $m\geq1$, så er $f:V\rightarrow \Rb^m$ ein \emph{affin imbedding} om $f$ er injektiv, og om biletet, $f(A)$ er ei geometrisk uavhengig mengda av punkt.
+	For $V$ ein endeleg mengda og $m\geq1$, så er $f:V\rightarrow \Rb^m$ ein \emph{affin imbedding} om $f$ er injektiv, og om biletet, $f(V)$ er ei geometrisk uavhengig mengda av punkt.
 \end{definition}
 
 \begin{definition}
@@ -284,6 +285,30 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 \begin{theorem}
 	TODO geometrisk realisering er eit geometrisk simplisielt kompleks
 \end{theorem}
+
+\begin{lemma} \label{thm:tau-homeomorfi}
+	Gitt \( K \) eit abstrakt simplisielt kompleks over \( V \), og \( f \) ein affin imbedding \( f: V \to \Rb^n \). Fiksér \( x \in \Rb^n \). For eit vilkårleg punkt \( y \in \Rb^n \), definer avbildninga \( \hat{\tau}: y \mapsto y-x \). Då er \( \hat{\tau} \circ f \) ein affin imbedding, og \( \hat{\tau} \) ein homeomorfi frå \( \gr{K}_f \) til \( \gr{K}_{\hat{\tau} \circ f} \).
+\end{lemma}
+
+\begin{proof}
+	For å visa at \( \hat{\tau} \circ f \) er ein affin imbedding, så ser me på \( \hat{\tau} \circ f(V) = (f(v_1)-x, f(v_2)-x, \dots, f(v_n)-x) \). Me får då at \( (f(v_2)-x-(f(v_1)-x), f(v_3)-x-(f(v_1)-x), \dots, f(v_n)-x-(f(v_1)-x)) = ( f(v_2)-f(v_1), f(v_3)-f(v_1), \dots, f(v_n)-f(v_1) ) \). Og frå \ref{thm:geometrisklineærtuavhengig}, så får me at \( ( f(v_2)-f(v_1), f(v_3)-f(v_1), \dots, f(v_n)-f(v_1) ) \) er lineært uavhengig fordi \( f(V) \) er geometrisk uavhengig, men det betyr igjen at \( (f(v_2)-x-(f(v_1)-x), f(v_3)-x-(f(v_1)-x), \dots, f(v_n)-x-(f(v_1)-x)) \) er lineært uavhengig, som betyr at \( \hat{\tau} \circ f(V) \) er geometrisk uavhengig.
+
+	For å visa at \( \hat{\tau}(\gr{K}_f) \subseteq \gr{K}_{\hat{\tau} \circ f} \), så ser me på \( y \in \hat{\tau}(\gr{K}_f) \). Då er \( y \) ein konveks kombinasjon av \( f(\sigma) \) for ein eller annan \( \sigma \in K \). Det vil seie at for \( k \) lik antal element i \( f(\sigma) \), så er \( y = \sum_{i=1}^k a_i f(v_i) \). Då er
+	\begin{align*}
+		\hat{\tau(y)} &= \left(\sum_{i=1}^k a_i f(v_i)\right) - x \\
+		&= \left(\sum_{i=1}^k a_i f(v_i)\right)-\left(\sum_{i=1}^k a_i \right)x \\
+		&= \left(\sum_{i=1}^k a_i f(v_i)\right)-\sum_{i=1}^k a_i x \\
+		&= \sum_{i=1}^k a_i f(v_i) - a_i x \\
+		&= \sum_{i=1}^k a_i(f(v_i) - x)
+	\end{align*}
+	Som er ein konveks kombinasjon av element i \( \hat{\tau} \circ f(\sigma) \), og derfor ei delmengda av \( \gr{K}_{\hat{\tau} \circ f} \).
+
+	For å visa at \( \hat{\tau}(\gr{K}_f) \supseteq \gr{K}_{\hat{\tau} \circ f} \), så tek me \( y \in \gr{K}_{\hat{\tau} \circ f} \). Då, for ein eller annan \( \sigma \in K \), så er \( y \) ein konveks kombinasjon av element i \( \hat{\tau}\circ f(\sigma) \). Altså: \(  y = \sum_{i=1}^k a_i (f(v_i) - x \). Ein lik sum-manipulasjon som over motsatt veg gir oss at \( y = \hat{\tau}\left(\sum_{i=1}^k a_i f(v_i)\right) \), altså \( \hat{\tau}(z) \), der \( z \) er ein konveks kombinasjon av punkta \( f(\sigma) \). Altså eit element i \( \hat{\tau}(\gr{K}_f) \).
+
+	\( \hat{\tau} \) er kontinuerlig fordi \( \hat{\tau} = \tau \circ i \) for \( \tau: \Rb^n \to \Rb^n \) som tek \( y \mapsto y-x \) er ein homeomorfi, og \( i: \gr{K}_f \hookrightarrow Rb^n \), inklusjonen inn i \( \Rb^n \) er kontinuerlig fordi \( \gr{K}_f \subseteq \Rb^n \) har underromstopologien. Så \( \hat{\tau} \) er ein komposisjon av to kontinuerlige funksjonar og derfor kontinuerlig sjølve.
+
+	Av symmetri så kan eit likt argument kan bli gjort på \( \hat{\tau}^{-1}: y \mapsto y+x \) og ein får derfor at \( \hat{\tau} \) er ein homeomorfi.
+\end{proof}
 
 \begin{theorem}
 	Geometrisk realisering er eintydig opp til homeomorfi. Med andre ord: For to ulike geometriske realiseringar av eit endeleg abstrakt simplisielt kompleks $K$, med hensyn til $f$ og $g$ (to ulike affine imbeddingar), så er $\gr{K}_f$ og $\gr{K}_g$ homeomorfe.
@@ -513,11 +538,11 @@ Dette beviset er frå TODO
 \begin{proof} % Å herregud ditta beviset e vanskelegare enn eg trudde. % Shit, blande nokre bilete her. må dirrenetsiera mellom pre og post translasjon av mangder.
 	Dette beviset bruker mykje den same strategien som i ref:TODO.
 
-	Fyrst, lag ei ordning av elementa i \( V = (v_1, v_2, \dots, v_n) \) la \( \tau_f(x) := x-f(\set{v_1}) \), og la \( \tau_g(x) := x-g(\set{v_1}) \). Desse er homeomorfiar. TODO (Hugs å visa bileta stemmer)
+	Fyrst, lag ei ordning av elementa i \( V = (v_1, v_2, \dots, v_n) \) la \( \tau_f(x) := x-f(\set{v_1}) \), og la \( \tau_g(x) := x-g(\set{v_1}) \). Desse er homeomorfiar frå \ref{thm:tau-homeomorfi}.
 
 	Då kan me velga ein \( L: \Rb^d \to \Rb^m \) definert av å senda \( f(\set{v_i}) \mapsto g(\set{v_i}) \). 
 
-	Me veit då frå TODO at \( L \) er kontinuerlig. 
+	Me veit då frå \ref{thm:begrensa-lin-op-er-kont} at \( L \) er kontinuerlig. 
 
 	Vidare så får me at \( L(\gr{\Sd(K)}_f) = \gr{K}_g \) Fordi TODO. 
 
