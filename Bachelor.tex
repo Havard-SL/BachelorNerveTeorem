@@ -305,7 +305,7 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 	Gitt \( K \) eit abstrakt simplisielt kompleks over \( V \), og \( f \) ein affin imbedding \( f: V \to \Rb^n \). Fiksér \( x \in \Rb^n \). For eit vilkårleg punkt \( y \in \Rb^n \), definer avbildninga \( \hat{\tau}: y \mapsto y-x \). Då er \( \hat{\tau} \circ f \) ein affin imbedding, og \( \hat{\tau} \) ein homeomorfi frå \( \gr{K}_f \) til \( \gr{K}_{\hat{\tau} \circ f} \).
 \end{lemma}
 
-\begin{proof}
+\begin{proof} %Burde visa at bevarar barysentriske koordinatar også?
 	For å visa at \( \hat{\tau} \circ f \) er ein affin imbedding, så ser me på \( \hat{\tau} \circ f(V) = (f(v_1)-x, f(v_2)-x, \dots, f(v_n)-x) \). Me får då at \( (f(v_2)-x-(f(v_1)-x), f(v_3)-x-(f(v_1)-x), \dots, f(v_n)-x-(f(v_1)-x)) = ( f(v_2)-f(v_1), f(v_3)-f(v_1), \dots, f(v_n)-f(v_1) ) \). Og frå \ref{thm:geometrisklineærtuavhengig}, så får me at \( ( f(v_2)-f(v_1), f(v_3)-f(v_1), \dots, f(v_n)-f(v_1) ) \) er lineært uavhengig fordi \( f(V) \) er geometrisk uavhengig, men det betyr igjen at \( (f(v_2)-x-(f(v_1)-x), f(v_3)-x-(f(v_1)-x), \dots, f(v_n)-x-(f(v_1)-x)) \) er lineært uavhengig, som betyr at \( \hat{\tau} \circ f(V) \) er geometrisk uavhengig.
 
 	For å visa at \( \hat{\tau}(\gr{K}_f) \subseteq \gr{K}_{\hat{\tau} \circ f} \), så ser me på \( y \in \hat{\tau}(\gr{K}_f) \). Då er \( y \) ein konveks kombinasjon av \( f(\sigma) \) for ein eller annan \( \sigma \in K \). Det vil seie at for \( k \) lik antal element i \( f(\sigma) \), så er \( y = \sum_{i=1}^k a_i f(v_i) \). Då er
@@ -508,7 +508,7 @@ Dette gir oss nok grunnlag til å endeleg forstå og definera nerva:
 \end{example}
 
 \begin{remark}
-	Rett frå definisjonen så ser me at Cech komplekset til $P$ med radius $r$ er ``ekvivalent'' til nerva til $\union_{p \in P} \left \{ \bar{B}_r(p) \right \}$
+	Rett frå definisjonen så ser me at Cech komplekset til $P$ med radius $r$ er "<ekvivalent>" til nerva til $\union_{p \in P} \left \{ \bar{B}_r(p) \right \}$
 \end{remark}
 
 Då kan me endeleg utrykka nerveteoremet:
@@ -592,11 +592,41 @@ Dette beviset er frå TODO
 
 	Frå den universale eigenskapen av underromstopologien ref:TODO så får me at \( \hat{L} \) er kontinuerlig.
 
-	\( \hat{L} \) er surjektiv fordi gitt ein \( y \in \gr{K}_{\hat{g}} \), så er det ein konveks kombinasjon av punkt \( \hat{g}(\sigma) \) for \( \sigma \in K \). Vel ein ordning av hjørnene: \( \sigma = (v_1, v_2, \dots, v_{\#\sigma}) \), og la \( y \) ha barysentrisk koordinatar \( (a_1, a_2, \dots, a_{\#\sigma}) \)
+	\( \hat{L} \) er surjektiv fordi gitt ein \( y \in \gr{K}_{\hat{g}} \), så er det ein konveks kombinasjon av punkt \( \hat{g}(\epsilon) \) for \( \epsilon \in K \). Vel ein ordning av hjørnene: \( \epsilon = (v_1, v_2, \dots, v_{\#\epsilon}) \), og la \( y \) ha barysentrisk koordinatar \( (a_1, a_2, \dots, a_{\#\epsilon}) \)
 	\[
-		y = \sum_{i = 1}^{\#\sigma} a_i \hat{g}(v_i)
+		y = \sum_{i = 1}^{\#\epsilon} a_i \hat{g}(v_i)
 	\]
-	Anta utan tap av generalitet at ordninga av hjørnene i \( \sigma \) gjer at \( a_1 \geq a_2 \geq \dots \geq a_{\#\sigma} \) for \( y \).
+	Anta utan tap av generalitet at ordninga av hjørnene i \( \epsilon \) gjer at \( a_1 \geq a_2 \geq \dots \geq a_{\#\epsilon} \) for \( y \). La 
+	\begin{align*}
+		(b_1, b_2, b_3, \dots, b_{\#\epsilon}) &= \left( a_1-a_2, 2(a_2-a_3), \dots, (\#\epsilon-1)(a_{\epsilon-1}-a_{\epsilon}), \#\epsilon a_{\epsilon} \right) \\
+		&= \left( i (a_i-a_{i+1}) \right)_{i=1}^{\#\epsilon}, a_{\epsilon+1} = 0
+	\end{align*}
+		
+	Og la \( \left(\union_{j = 1}^{k} \set{v_j} \right)_{k=1}^{\#\epsilon} = (\sigma_i)_{i=1}^{\#\epsilon}=\sigma \in \Sd(K) \)
+	
+	Då definerar me: (Merk at \( \#\epsilon = \#\sigma\) )
+	\[
+		x = \sum_{i=1}^{\#\sigma} b_i \hat{f}(\sigma_i)
+	\]
+	Då er \( x \) ein konveks kombinasjon av punkta \( \hat{f}(\sigma) \), fordi:
+	\[
+		\sum_{i=1}^{\#\sigma} b_i = \sum_{i=1}^{\#\epsilon} a_i = 1
+	\]
+	Og sidan \( a_i \geq a_j \) for \( i \leq j \), så er alle \( b_i \geq 0 \). Derfor er \( x \in \gr{\Sd(K)}_{\hat{f}} \) % ref til def?
+	Om me anvender \( \hat{L} \) på denne \( y \)-en så får me:
+	\begin{align*} % Meir detaljar rundt sum manipulasjon på linja 4-5?
+		\hat{L}\left(x\right) &= \hat{L}\left( \sum_{i=1}^{\#\sigma} b_i \hat{f}(\sigma_i) \right) \\
+		&= \sum_{i=1}^{\#\sigma} \hat{L} \left( b_i \hat{f}(\sigma_i) \right) \\
+		&= \sum_{i=1}^{\#\sigma} b_i \hat{L} \left( \hat{f}(\sigma_i) \right) \\
+		&= \sum_{i=1}^{\#\sigma} b_i \frac{1}{\#\sigma_i} \sum_{v_j \in \sigma_i} \hat{g}(v_j) \\
+		&= \sum_{i=1}^{\#\sigma} b_i \frac{1}{i} \sum_{j = 1}^{i} \hat{g}(v_j) \\
+		\intertext{Hugs \( a_{\epsilon+1} = 0 \)}
+		&= \sum_{i=1}^{\#\sigma} (a_{i}-a_{i+1}) \sum_{j = 1}^{i} \hat{g}(v_j) \\
+		&= \sum_{j=1}^{\#\sigma} \hat{g}(v_j) \sum_{i = j}^{\#\sigma} (a_{i}-a_{i+1}) \\
+		&= \sum_{j=1}^{\#\epsilon} a_i \hat{g}(v_j) \\
+		&= y
+	\end{align*}
+	Fordi dei barysentriske koordinatene er unike \ref{thm:unik-barysentrisk-koordinat}. Og ettersom dette var ein vilkårleg \( y \), så er \( \hat{L} \) surjektiv.
 
 	\( \hat{L} \) er injektiv fordi TODO
 
