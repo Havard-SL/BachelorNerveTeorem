@@ -111,11 +111,14 @@
 
 \subsection{Notasjon}
 
-La \#S vera antal element i S
+La \( \#S \) vera antal element i \( S \)
+
+La \( \subset \) vera streng inklusjon, og la \( \subseteq \) vera inklusjon eller lik.
 
 \subsection{Førehandskunnskapar}
 
 Grunnleggande topologi
+
 Grunnleggande lineær algebra
 
 \subsection{Viktige teorem}
@@ -531,11 +534,22 @@ Då kan me endeleg utrykka nerveteoremet:
 Dette beviset er frå TODO
 
 \begin{definition}
-	Gitt eit endeleg abstrakt simplisielt kompleks \( K \) over \( V \), så er den \emph{barysentriske oppdelinga} av \( K \), betegna \( \Sd(K) \), nerva til \( K \).
+	Gitt eit endeleg abstrakt simplisielt kompleks \( K \) over \( V \), så er den \emph{barysentriske oppdelinga} av \( K \), betegna \( \Sd(K) \) alle tuplar: 
+	\[
+		\set{(\sigma_1, \sigma_2, \sigma_3, \dots, \sigma_n) \mid \sigma_1 \subset \sigma_2 \subset \sigma_3 \subset \dots \subset \sigma_n\,, \sigma_i \in K}
+	\]
 \end{definition}
 
+\begin{lemma}
+	Gitt eit endeleg abstrakt simplisielt kompleks \( K \) over \( V \), så er \( \Sd(K) \) eit endeleg abstrakt simplisielt kompleks over \( K \)
+\end{lemma}
+
+\begin{proof}
+	TODO
+\end{proof}
+
 \begin{remark}
-	Grunnen til at me betegnar den barysentriske oppdelinga til \( K \) for \( \Sd(K) \) og ikkje \( \Nc(K) \) er fordi det er praktisk å skilja dei, og enklare å lesa. I tillegg så blir den barysentriske oppdelinga av eit abstrakt simplisielt kompleks ofta kalla for ein "<subdivision>" på engelsk, og derfor brukar me \( \Sd \).
+	Grunnen til at me betegnar den barysentriske oppdelinga til \( K \) for \( \Sd(K) \) er fordi den barysentriske oppdelinga av eit abstrakt simplisielt kompleks ofta kalla for ein "<subdivision>" på engelsk, og derfor brukar me \( \Sd \).
 \end{remark}
 
 \begin{lemma}
@@ -559,8 +573,16 @@ Dette beviset er frå TODO
 		L(x) &= L\left(\sum_{i=1}^{\#\sigma} a_i \hat{f}(\sigma_i)\right) \\
 		&= \sum_{i=1}^{\#\sigma} L(a_i \hat{f}(\sigma_i)) \\
 		&= \sum_{i=1}^{\#\sigma} a_i L(\hat{f}(\sigma_i)) \\
-		&= \sum_{i=1}^{\#\sigma} a_i \frac{1}{\#\sigma_i} \sum_{v_j \in \sigma_i} \hat{g}(v_j)
-	\end{align*} TODO!! %Korleis visa at summen er 1?!? Gir sikkert hint til surjektivitet også
+		&= \sum_{i=1}^{\#\sigma} a_i \frac{1}{\#\sigma_i} \sum_{v_j \in \sigma_i} \hat{g}(v_j) \\
+		&= \sum_{i=1}^{\#\sigma} \sum_{v_j \in \sigma_i} a_i \frac{1}{\#\sigma_i} \hat{g}(v_j)
+	\end{align*}
+	Så gir dette at summen av koeffisientane til \( \hat{g}(v_j) \)-ane er:
+	\[
+		\sum_{i=1}^{\#\sigma} \sum_{v_j \in \sigma_i} a_i \frac{1}{\#\sigma_i} = 
+		\sum_{i=1}^{\#\sigma} \#\sigma_i a_i \frac{1}{\#\sigma_i} =
+		\sum_{i=1}^{\#\sigma} a_i = 1
+	\]
+	Og sidan for ein \( \sigma \in \Sd(K) \) så er \( \set{v_j \in V \mid v_j \in \sigma_i \,, \sigma_i \in \sigma} \in K \) WIP
 
 	Definer \( \hat{L} := L|_{\gr{\Sd(K)}_f} \)
 
