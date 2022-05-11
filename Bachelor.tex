@@ -281,6 +281,10 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 	\end{enumerate}
 \end{definition}
 
+\begin{lemma}
+	Geometrisk simplisielle kompleks er lukka TODO
+\end{lemma}
+
 \begin{theorem} \label{thm:unik-utvida-barysentrisk-koordinat}
 	TODO Geometrisk simplisielle kompleks har ein utvida unik barysentrisk koordinat.
 \end{theorem}
@@ -568,7 +572,7 @@ Dette beviset er frå TODO
 
 	Me veit då frå \ref{thm:begrensa-lin-op-er-kont} at \( L \) er kontinuerlig. 
 
-	Vidare så får me at \( L(\gr{\Sd(K)}_{\hat{f}}) \subseteq \gr{K}_{\hat{g}} \) Fordi for \( x \in \gr{\Sd(K)}_{\hat{f}} \), så er \( x \) ein konveks kombinasjon av punkt \( \hat{f}(\sigma) \) for \( \sigma \in \Sd(K) \). Vel ein ording \( \sigma = (\sigma_1, \sigma_2, \dots, \sigma_{\#\sigma}) \). Då er \( x = \sum_{i=1}^{\#\sigma} a_i \hat{f}(\sigma_i) \), med \( (a_i)_i^{\#\sigma} \) dei barysentriske koordinatane til \( x \). Me får då:
+	Vidare så får me at \( L(\gr{\Sd(K)}_{\hat{f}}) \subseteq \gr{K}_{\hat{g}} \) Fordi for \( x \in \gr{\Sd(K)}_{\hat{f}} \), så er \( x \) ein konveks kombinasjon av punkt \( \hat{f}(\sigma) \) for \( \sigma \in \Sd(K) \). Så er \( \sigma = (\sigma_1, \sigma_2, \dots, \sigma_{\#\sigma}) \). Då er \( x = \sum_{i=1}^{\#\sigma} a_i \hat{f}(\sigma_i) \), med \( (a_i)_i^{\#\sigma} \) dei barysentriske koordinatane til \( x \). Me får då:
 	\begin{align*}
 		L(x) &= L\left(\sum_{i=1}^{\#\sigma} a_i \hat{f}(\sigma_i)\right) \\
 		&= \sum_{i=1}^{\#\sigma} L(a_i \hat{f}(\sigma_i)) \\
@@ -582,13 +586,17 @@ Dette beviset er frå TODO
 		\sum_{i=1}^{\#\sigma} \#\sigma_i a_i \frac{1}{\#\sigma_i} =
 		\sum_{i=1}^{\#\sigma} a_i = 1
 	\]
-	Og sidan for ein \( \sigma \in \Sd(K) \) så er \( \set{v_j \in V \mid v_j \in \sigma_i \,, \sigma_i \in \sigma} \in K \) WIP
+	Og sidan for ein \( \sigma \in \Sd(K) \) så er \( \set{v_j \in V \mid v_j \in \sigma_i \,, \sigma_i \in \sigma} = \union_{\sigma_i \in \sigma} \sigma_i = \sigma_{\#\sigma} \in K \). Då er \( x \) i eit geometrisk simpleks utspunne av punkta \( \hat{g}(\sigma_{\#\sigma}) \), som er i \( \gr{K}_{\hat{g}} \)
 
-	Definer \( \hat{L} := L|_{\gr{\Sd(K)}_f} \)
+	Definer \( \hat{L} := L|_{\gr{\Sd(K)}_{\hat{f}}}: \gr{\Sd(K)}_{\hat{f}} \to \gr{K}_{\hat{g}} \)
 
-	Frå den universale eigenskapen av underromstopologien ref:TODO så får me at \( \hat{L}: \gr{\Sd(K)}_f \to \gr{K}_g \) også er kontinuerlig.
+	Frå den universale eigenskapen av underromstopologien ref:TODO så får me at \( \hat{L} \) er kontinuerlig.
 
-	\( \hat{L} \) er surjektiv fordi TODO
+	\( \hat{L} \) er surjektiv fordi gitt ein \( y \in \gr{K}_{\hat{g}} \), så er det ein konveks kombinasjon av punkt \( \hat{g}(\sigma) \) for \( \sigma \in K \). Vel ein ordning av hjørnene: \( \sigma = (v_1, v_2, \dots, v_{\#\sigma}) \), og la \( y \) ha barysentrisk koordinatar \( (a_1, a_2, \dots, a_{\#\sigma}) \)
+	\[
+		y = \sum_{i = 1}^{\#\sigma} a_i \hat{g}(v_i)
+	\]
+	Anta utan tap av generalitet at ordninga av hjørnene i \( \sigma \) gjer at \( a_1 \geq a_2 \geq \dots \geq a_{\#\sigma} \) for \( y \).
 
 	\( \hat{L} \) er injektiv fordi TODO
 
@@ -616,10 +624,6 @@ Dette beviset er frå TODO
 		\Gamma(x) = \sum_{i=1}^k a_iv_{\sigma_i}
 	\]
 \end{definition}
-
-\begin{lemma}
-	Geometrisk simplisielle kompleks er lukka TODO
-\end{lemma}
 
 \begin{lemma} % Må visa veldefinert mhp f og phi?
 	\( \Gamma \) frå \ref{thm:Gamma} er kontinuerleg og biletet er i \( \union_{u\in U} u \).
