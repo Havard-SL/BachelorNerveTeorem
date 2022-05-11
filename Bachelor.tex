@@ -91,7 +91,7 @@
 % Eksempeltekst til kvar figur / figur må bli nemd minst ein gong.
 % Skriv om beviset for 1.17 (homeomorfi mellom geometriske realiseringar.)
 % Legg til intuitiv forklaring på kva som foregår i byrjinga.
-% Kun euklidsk norm
+% Kun euklidsk norm på geometrisk realisering.
 
 % PLAN
 % Fokus på å forbetra del 1, og så byrja på del 2. Pass på Magnus sitt bevis er litt shady.
@@ -109,6 +109,10 @@
 
 \section{Førehandskunnskapar og teorem}
 
+\subsection{Notasjon}
+
+La \#S vera antal element i S
+
 \subsection{Førehandskunnskapar}
 
 Grunnleggande topologi
@@ -118,6 +122,10 @@ Grunnleggande lineær algebra
 
 \begin{theorem} \label{thm:begrensa-lin-op-er-kont}
 	Begrensa lin operatorar er kont.
+\end{theorem}
+
+\begin{theorem} \label{thm:definer-lin-op}
+	Kan definera lin operator på n lineært uavhengige vektorar
 \end{theorem}
 
 \begin{theorem}
@@ -241,7 +249,7 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 \end{definition}
 
 \begin{remark}
-	Ut ifrå den førre definisjonen så ser me at eit $0$-simpleks kun er eit enkelt punkt, eit $1$-simpleks er alle konvekse kombinasjonar mellom to punkt, som viser seg å vera ei linjestykket mellom dei to punkta. Og eit $2$-simpleks dannar ein trekant. Ein $3$-simpleks blir også kalla eit tetraheder. Denne simpleks definisjonenen gir ein fin matematisk forklaring av "trekant"-strukturar i $\Rb^m$.
+	Ut ifrå den førre definisjonen så ser me at eit $0$-simpleks kun er eit enkelt punkt, eit $1$-simpleks er alle konvekse kombinasjonar mellom to punkt, som viser seg å vera ei linjestykket mellom dei to punkta. Og eit $2$-simpleks dannar ein trekant. Ein $3$-simpleks blir også kalla eit tetraeder. Denne simpleks definisjonenen gir ein fin matematisk forklaring av "trekant"-strukturar i $\Rb^m$.
 \end{remark}
 
 \begin{example}
@@ -535,16 +543,24 @@ Dette beviset er frå TODO
 	\( \gr{\Sd(K)}_f \subseteq \Rb^d \) er homeomorfi til \( \gr{K}_g \subseteq \Rb^m \) ved ein homeomorfi me kallar for \( \alpha \) som vert definert i slutten av beviset under.
 \end{lemma}
 
-\begin{proof} % Å herregud ditta beviset e vanskelegare enn eg trudde. % Shit, blande nokre bilete her. må dirrenetsiera mellom pre og post translasjon av mangder.
+\begin{proof} % Å herregud ditta beviset e vanskelegare enn eg trudde. % Shit, blande nokre bilete her. må dirrenetsiera mellom pre og post translasjon av mangder. Lineær operator definert av kor den sender n lineært uavhengige vektorar.
 	Dette beviset bruker mykje den same strategien som i ref:TODO.
 
-	Fyrst, lag ei ordning av elementa i \( V = (v_1, v_2, \dots, v_n) \) la \( \tau_f(x) := x-f(\set{v_1}) \), og la \( \tau_g(x) := x-g(\set{v_1}) \). Desse er homeomorfiar frå \ref{thm:tau-homeomorfi}.
+	Fyrst, lag ei ordning av elementa i \( V = (v_1, v_2, \dots, v_n) \) og ein ordning \( K = (\sigma_1, \sigma_2, \dots, \sigma_m) \) med \( \sigma_1 = \set{v_1} \). Vidare la \( \tau_f(x) := x-f(\set{v_1}) \), og la \( \tau_g(x) := x-g(v_1) \). Desse er homeomorfiar frå \ref{thm:tau-homeomorfi}.
 
-	Då kan me velga ein \( L: \Rb^d \to \Rb^m \) definert av å senda \( f(\set{v_i}) \mapsto g(\set{v_i}) \). 
+	Definer \( \hat{f} := \tau_f \circ f \) og \( \hat{g} := \tau_g \circ g \)
+
+	Då kan me definera ein lineæroperator \( L: \Rb^d \to \Rb^m \) definert for \( \sigma \in K \) ved å senda \( \hat{f}(\sigma) \mapsto \frac{1}{\#\sigma}\sum_{v_j \in \sigma} \hat{g}(v_j) \). Dette er lov fordi \( \hat{f}(K) = (0, f(\sigma_2)-f(\sigma_1), f(\sigma_3)-f(\sigma_1), \dots, f(\sigma_n)-f(\sigma_1) ) \), er lineært uavhengige sidan \( f \) er ein affin imbedding, og \ref{thm:geometrisklineærtuavhengig} (utanom \( 0 \), som blir sendt til \( 0 \) uansett frå linearitet), så \ref{thm:definer-lin-op} gjeld.
 
 	Me veit då frå \ref{thm:begrensa-lin-op-er-kont} at \( L \) er kontinuerlig. 
 
-	Vidare så får me at \( L(\gr{\Sd(K)}_f) = \gr{K}_g \) Fordi TODO. 
+	Vidare så får me at \( L(\gr{\Sd(K)}_{\hat{f}}) \subseteq \gr{K}_{\hat{g}} \) Fordi for \( x \in \gr{\Sd(K)}_{\hat{f}} \), så er \( x \) ein konveks kombinasjon av punkt \( \hat{f}(\sigma) \) for \( \sigma \in \Sd(K) \). Vel ein ording \( \sigma = (\sigma_1, \sigma_2, \dots, \sigma_{\#\sigma}) \). Då er \( x = \sum_{i=1}^{\#\sigma} a_i \hat{f}(\sigma_i) \), med \( (a_i)_i^{\#\sigma} \) dei barysentriske koordinatane til \( x \). Me får då:
+	\begin{align*}
+		L(x) &= L\left(\sum_{i=1}^{\#\sigma} a_i \hat{f}(\sigma_i)\right) \\
+		&= \sum_{i=1}^{\#\sigma} L(a_i \hat{f}(\sigma_i)) \\
+		&= \sum_{i=1}^{\#\sigma} a_i L(\hat{f}(\sigma_i)) \\
+		&= \sum_{i=1}^{\#\sigma} a_i \frac{1}{\#\sigma_i} \sum_{v_j \in \sigma_i} \hat{g}(v_j)
+	\end{align*} TODO!! %Korleis visa at summen er 1?!? Gir sikkert hint til surjektivitet også
 
 	Definer \( \hat{L} := L|_{\gr{\Sd(K)}_f} \)
 
@@ -578,6 +594,10 @@ Dette beviset er frå TODO
 		\Gamma(x) = \sum_{i=1}^k a_iv_{\sigma_i}
 	\]
 \end{definition}
+
+\begin{lemma}
+	Geometrisk simplisielle kompleks er lukka TODO
+\end{lemma}
 
 \begin{lemma} % Må visa veldefinert mhp f og phi?
 	\( \Gamma \) frå \ref{thm:Gamma} er kontinuerleg og biletet er i \( \union_{u\in U} u \).
