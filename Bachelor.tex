@@ -29,7 +29,7 @@
 %  depth=0.25ex]}
 
 \usepackage{tikz-cd} %For kommutative diagram med tikz
-\usepackage{parskip} %Fjernar indents, men gjer linjeavstanden kortare
+\usepackage{parskip} %Fjernar indents, men gjer linjeavstanden kortare (Kanskje)
 
 \usepackage{fontspec}
 \usepackage{unicode-math}
@@ -54,7 +54,7 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definisjon}
-\newtheorem{example}[theorem]{Eksempel}
+\newtheorem{example}[theorem]{Døme}
 \newtheorem{remark}[theorem]{Merknad}
 
 \usepackage[norsk]{babel}
@@ -306,7 +306,7 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 \end{lemma}
 
 \begin{proof} %Burde visa at bevarar barysentriske koordinatar også?
-	For å visa at \( \hat{\tau} \circ f \) er ein affin imbedding, så ser me på \( \hat{\tau} \circ f(V) = (f(v_1)-x, f(v_2)-x, \dots, f(v_n)-x) \). Me får då at \( (f(v_2)-x-(f(v_1)-x), f(v_3)-x-(f(v_1)-x), \dots, f(v_n)-x-(f(v_1)-x)) = ( f(v_2)-f(v_1), f(v_3)-f(v_1), \dots, f(v_n)-f(v_1) ) \). Og frå \ref{thm:geometrisklineærtuavhengig}, så får me at \( ( f(v_2)-f(v_1), f(v_3)-f(v_1), \dots, f(v_n)-f(v_1) ) \) er lineært uavhengig fordi \( f(V) \) er geometrisk uavhengig, men det betyr igjen at \( (f(v_2)-x-(f(v_1)-x), f(v_3)-x-(f(v_1)-x), \dots, f(v_n)-x-(f(v_1)-x)) \) er lineært uavhengig, som betyr at \( \hat{\tau} \circ f(V) \) er geometrisk uavhengig.
+	For å visa at \( \hat{\tau} \circ f \) er ein affin imbedding, så ser me på \( \hat{\tau} \circ f(V) = (f(v_1)-x, f(v_2)-x, \dots, f(v_n)-x) \). Me får då at \( (f(v_2)-x-(f(v_1)-x), f(v_3)-x-(f(v_1)-x), \dots, f(v_n)-x-(f(v_1)-x)) = ( f(v_2)-f(v_1), f(v_3)-f(v_1), \dots, f(v_n)-f(v_1) ) \). Og frå \autoref{thm:geometrisklineærtuavhengig}, så får me at \( ( f(v_2)-f(v_1), f(v_3)-f(v_1), \dots, f(v_n)-f(v_1) ) \) er lineært uavhengig fordi \( f(V) \) er geometrisk uavhengig, men det betyr igjen at \( (f(v_2)-x-(f(v_1)-x), f(v_3)-x-(f(v_1)-x), \dots, f(v_n)-x-(f(v_1)-x)) \) er lineært uavhengig, som betyr at \( \hat{\tau} \circ f(V) \) er geometrisk uavhengig.
 
 	For å visa at \( \hat{\tau}(\gr{K}_f) \subseteq \gr{K}_{\hat{\tau} \circ f} \), så ser me på \( y \in \hat{\tau}(\gr{K}_f) \). Då er \( y \) ein konveks kombinasjon av \( f(\sigma) \) for ein eller annan \( \sigma \in K \). Det vil seie at for \( k \) lik antal element i \( f(\sigma) \), så er \( y = \sum_{i=1}^k a_i f(v_i) \). Då er
 	\begin{align*}
@@ -344,7 +344,8 @@ For $i=1$:
 	\begin{equation*}
 		L_1(\hat{f}(k_i))=L_1(f(k_i)-f(k_1))=L_1(x_{i-1})=y_{i-1}=g(k_i)-g(k_1)=\hat{g}(k_i)
 	\end{equation*}
-	Om ein då let $\hat{L}=L|_{\gr{K}_{\hat{f}}}$, og $L_2:\Rb^l\to\Rb^m$ vera den lineære funskjonen som sender $y_i\mapsto x_i$ og let $\tilde{L}=L_2|_{\gr{K}_{\hat{g}}}$, så er definisjonane symmetriske og det symmetriske resultatet gjelder derfor for $L_2$ også. 
+	Om ein då let $\hat{L}=L|_{\gr{K}_{\hat{f}}}$, og $L_2:\Rb^l\to\Rb^m$ vera den lineære funskjonen som sender $y_i\mapsto x_i$ og let $\tilde{L}=L_2|_{\gr{K}_{\hat{g}}}$, så er definisjonane symmetriske og det symmetriske resultatet gjelder derfor for $L_2$ også.
+
 	For eit vilkårleg element $x\in\gr{K}_{\hat{f}}$ så er $x$ eit element av ein simpleks i det geometriske simplisielle komplekset. Det vil seie, me kan utrykka $x$ som ein konveks sum av ein geometrisk uavhengig mengda, som korresponderar til den simpleksen $x$ er eit element i.
 	
 	Me velger derfor ein $\sigma\in K$ sånn at $\hat{f}(\sigma)=\{\hat{f}(k_1), \hat{f}(k_2), \dots, \hat{f}(k_r)\}$. Dette er ein geometrisk uavhengig mengda fordi $\tau_f$ er injektiv og sender $x_i\mapsto x_i$ som er lineært uavhengig og biletet er derfor geometrisk uavhengig om $\{x_i\}$ er lineært uavhengig, som det er frå \autoref{thm:geometrisklineærtuavhengig}.
@@ -365,8 +366,10 @@ For $i=1$:
 	\end{align*}
 	Og likt for $\hat{L}\circ\tilde{L}(y)$.
 	Så det betyr at $\hat{L}$ er bijektiv med invers $\tilde{L}$.
+	
 	Om ein let $\hat{\tau}_f:=\tau_f|_{\gr{K}_f}$ og $\hat{\tau}_g:=\tau_g|_{\gr{K}_g}$, så kan ein sjå at $\hat{\tau}_f\gr{K}_f\to\gr{K}_{\hat{f}}$ er ein bijeksjon, og likt for $\hat{\tau}_g$.
-	\\Då får ein følgande kommutative diagram:
+	
+	Då får ein følgande kommutative diagram:
 %	\begin{center}
 %		\begin{tikzpicture}
 %			\diagram{d}{2.5em}{2.5em}{
@@ -564,13 +567,13 @@ Dette beviset er frå TODO
 \begin{proof} % Å herregud ditta beviset e vanskelegare enn eg trudde. % Shit, blande nokre bilete her. må dirrenetsiera mellom pre og post translasjon av mangder. Lineær operator definert av kor den sender n lineært uavhengige vektorar.
 	Dette beviset bruker mykje den same strategien som i ref:TODO.
 
-	Fyrst, lag ei ordning av elementa i \( V = (v_1, v_2, \dots, v_n) \) og ein ordning \( K = (\sigma_1, \sigma_2, \dots, \sigma_m) \) med \( \sigma_1 = \set{v_1} \). Vidare la \( \tau_f(x) := x-f(\set{v_1}) \), og la \( \tau_g(x) := x-g(v_1) \). Desse er homeomorfiar frå \ref{thm:tau-homeomorfi}.
+	Fyrst, lag ei ordning av elementa i \( V = (v_1, v_2, \dots, v_n) \) og ein ordning \( K = (\sigma_1, \sigma_2, \dots, \sigma_m) \) med \( \sigma_1 = \set{v_1} \). Vidare la \( \tau_f(x) := x-f(\set{v_1}) \), og la \( \tau_g(x) := x-g(v_1) \). Desse er homeomorfiar frå \autoref{thm:tau-homeomorfi}.
 
 	Definer \( \hat{f} := \tau_f \circ f \) og \( \hat{g} := \tau_g \circ g \)
 
-	Då kan me definera ein lineæroperator \( L: \Rb^d \to \Rb^m \) definert for \( \sigma \in K \) ved å senda \( \hat{f}(\sigma) \mapsto \frac{1}{\#\sigma}\sum_{v_j \in \sigma} \hat{g}(v_j) \). Dette er lov fordi \( \hat{f}(K) = (0, f(\sigma_2)-f(\sigma_1), f(\sigma_3)-f(\sigma_1), \dots, f(\sigma_n)-f(\sigma_1) ) \), er lineært uavhengige sidan \( f \) er ein affin imbedding, og \ref{thm:geometrisklineærtuavhengig} (utanom \( 0 \), som blir sendt til \( 0 \) uansett frå linearitet), så \ref{thm:definer-lin-op} gjeld.
+	Då kan me definera ein lineæroperator \( L: \Rb^d \to \Rb^m \) definert for \( \sigma \in K \) ved å senda \( \hat{f}(\sigma) \mapsto \frac{1}{\#\sigma}\sum_{v_j \in \sigma} \hat{g}(v_j) \). Dette er lov fordi \( \hat{f}(K) = (0, f(\sigma_2)-f(\sigma_1), f(\sigma_3)-f(\sigma_1), \dots, f(\sigma_n)-f(\sigma_1) ) \), er lineært uavhengige sidan \( f \) er ein affin imbedding, og \autoref{thm:geometrisklineærtuavhengig} (utanom \( 0 \), som blir sendt til \( 0 \) uansett frå linearitet), så \autoref{thm:definer-lin-op} gjeld.
 
-	Me veit då frå \ref{thm:begrensa-lin-op-er-kont} at \( L \) er kontinuerlig. 
+	Me veit då frå \autoref{thm:begrensa-lin-op-er-kont} at \( L \) er kontinuerlig. 
 
 	Vidare så får me at \( L(\gr{\Sd(K)}_{\hat{f}}) \subseteq \gr{K}_{\hat{g}} \) Fordi for \( x \in \gr{\Sd(K)}_{\hat{f}} \), så er \( x \) ein konveks kombinasjon av punkt \( \hat{f}(\sigma) \) for \( \sigma \in \Sd(K) \). Så er \( \sigma = (\sigma_1, \sigma_2, \dots, \sigma_{\#\sigma}) \). Då er \( x = \sum_{i=1}^{\#\sigma} a_i \hat{f}(\sigma_i) \), med \( (a_i)_i^{\#\sigma} \) dei barysentriske koordinatane til \( x \). Me får då:
 	\begin{align*}
@@ -626,9 +629,9 @@ Dette beviset er frå TODO
 		&= \sum_{j=1}^{\#\epsilon} a_i \hat{g}(v_j) \\
 		&= y
 	\end{align*}
-	Fordi dei barysentriske koordinatene er unike \ref{thm:unik-barysentrisk-koordinat}. Og ettersom dette var ein vilkårleg \( y \), så er \( \hat{L} \) surjektiv.
+	Fordi dei barysentriske koordinatene er unike \autoref{thm:unik-barysentrisk-koordinat}. Og ettersom dette var ein vilkårleg \( y \), så er \( \hat{L} \) surjektiv.
 
-	\( \hat{L} \) er injektiv fordi TODO
+	\( \hat{L} \) er injektiv fordi for \( x, y \in \gr{\Sd(K)}_{\hat{f}} \), la \( x \) vera ein konveks kombinasjon av punkta \( \hat{f}(\hat{\sigma}) \), for ein \( \hat{\sigma} \in \Sd(K) \) og \( y \) vera ein konveks kombnasjon av punkta \( \hat{f}(\bar{\sigma}) \), for ein \( \bar{\sigma} \in \Sd(K) \).
 
 	\( \hat{L} \) er ein lukka avbildning fordi gitt ei lukka mengda i \( C \subseteq \gr{\Sd(K)}_f \) så er det per definisjon \( C = C_0 \intersect \gr{\Sd(K)}_f \) for ei eller annan lukka mengda \( C_0 \subseteq \Rb^d \). Men sidan \( \gr{\Sd(K)}_f \) er lukka og kompakt i \( \Rb^d \) frå TODO, så betyr det at \( C \) er snittet av to lukka mengder i \( \Rb^d \) og derfor lukka sjølve. Frå Heine-Borel TODO så betyr det at \( C \) er kompakt, og sidan kontinuerlige funksjonar avbildar kompakte mengder til kompakte mengder frå TODO så er \( L(C)=\hat{L}(C) \) også kompakt i \( \Rb^d \) og igjen frå Heine-Borel TODO, så er \( \hat{L}(C) \) lukka i \( \Rb^m \) og derfor lukka i \( \gr{K}_g \). % Erstatta heine-borel med closed mapping theorem
 
@@ -656,7 +659,7 @@ Dette beviset er frå TODO
 \end{definition}
 
 \begin{lemma} % Må visa veldefinert mhp f og phi?
-	\( \Gamma \) frå \ref{thm:Gamma} er kontinuerleg og biletet er i \( \union_{u\in U} u \).
+	\( \Gamma \) frå \autoref{thm:Gamma} er kontinuerleg og biletet er i \( \union_{u\in U} u \).
 \end{lemma}
 
 \begin{proof}
@@ -688,7 +691,7 @@ Dette beviset er frå TODO
 \end{proof}
 
 \begin{definition} \label{thm:psi} % Kva er betingelsane på overdekket her?
-	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \), velg ein \( \epsilon \) som i \ref{thm:epsilondekke}, kan då danna:
+	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \), velg ein \( \epsilon \) som i \autoref{thm:epsilondekke}, kan då danna:
 	\[
 		\phi_i(x) := \frac{d(x, \Rb^m \setminus U_i^\epsilon)}{d(x, U_i) + d(x, \Rb^m \setminus U_i^\epsilon)}
 	\]
@@ -699,7 +702,7 @@ Dette beviset er frå TODO
 \end{definition}
 
 \begin{lemma} % Burde bruka alle
-	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \) , la \( \psi_i \) og \( \epsilon \) vera definert som i \ref{thm:psi}. Då er følgjande sant:
+	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \) , la \( \psi_i \) og \( \epsilon \) vera definert som i \autoref{thm:psi}. Då er følgjande sant:
 	\begin{enumerate}
 		\item{For \( x \in  U_i \), då er \( \psi_i(x) \geq \psi_j(x) \forall j \) }
 		\item{For \( x \in \Rb^d \setminus U_i^\epsilon \), då er \( \psi_i(x)=0 \) }
@@ -713,14 +716,14 @@ Dette beviset er frå TODO
 \end{proof}
 
 \begin{definition} \label{thm:Psi}
-	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \psi_i \) vera som i \ref{thm:psi}, og \( \gr{\Nc(U)}_f \) ein geometrisk realisering av nerva til \( U \) med hensyn til den affine imbeddinga \( f \). Definer for \( x \in \union_{u \in U} u \):
+	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \psi_i \) vera som i \autoref{thm:psi}, og \( \gr{\Nc(U)}_f \) ein geometrisk realisering av nerva til \( U \) med hensyn til den affine imbeddinga \( f \). Definer for \( x \in \union_{u \in U} u \):
 	\[
 		\Psi(x) := \sum_{i=1}^n \psi_i(x)f(U_i)
 	\]
 \end{definition}
 
 \begin{lemma} % Noko meir?
-	\( \Psi \) frå \ref{thm:Psi} er kontinuerlig, og har bilete i \( \gr{\Nc(U)}_f \).
+	\( \Psi \) frå \autoref{thm:Psi} er kontinuerlig, og har bilete i \( \gr{\Nc(U)}_f \).
 \end{lemma}
 
 \begin{definition}
@@ -731,7 +734,7 @@ Dette beviset er frå TODO
 \end{definition}
 
 \begin{lemma}
-	Gitt \( U = \set{U_i}_{i=1}^n \) ei endeleg mengda av konvekse mengder i \( \Rb^m \). La \( \Gamma \) vere definert som i \ref{thm:Gamma}.
+	Gitt \( U = \set{U_i}_{i=1}^n \) ei endeleg mengda av konvekse mengder i \( \Rb^m \). La \( \Gamma \) vere definert som i \autoref{thm:Gamma}.
 
 	Då er \( \Gamma(\gr{\bst(U_i)}) \subseteq U_i \)
 \end{lemma}
@@ -741,7 +744,7 @@ Dette beviset er frå TODO
 \end{proof}
 
 \begin{lemma} % alpha avbildninga??
-	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \Psi \) vera som i \ref{thm:Psi}, og \( \gr{\Sd(\Nc(U))}_f \) ein geometrisk realisering av nerva til \( U \) med hensyn til den affine imbeddinga \( f \). 
+	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \Psi \) vera som i \autoref{thm:Psi}, og \( \gr{\Sd(\Nc(U))}_f \) ein geometrisk realisering av nerva til \( U \) med hensyn til den affine imbeddinga \( f \). 
 
 	Då er \( \Psi(U_i) \subseteq \gr{\bst(U_i)}_f \)
 \end{lemma}
