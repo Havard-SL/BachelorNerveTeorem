@@ -71,6 +71,7 @@
 \newcommand{\union}{ \mathop{\cup}\limits }
 \newcommand{\gr}[1]{ \lvert #1 \rvert } % Geometrisk realisering
 \newcommand{\set}[1]{ \left \{ #1 \right \} } % Mengda
+\newcommand{\tuple}[1]{ \left( #1 \right) } % Tupel
 \DeclareMathOperator{\Sd}{Sd}
 \DeclareMathOperator{\bst}{bst}
 
@@ -131,11 +132,11 @@ Grunnleggande lineær algebra
 	Kan definera lin operator på n lineært uavhengige vektorar
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem} \label{thm:universal-eigenskap-underromstopologi}
 	Universaleigenskapen til underromstopologien (Brukt for å visa at lineære restrikterte avbildningar er kont.)
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem} \label{thm:closed-map-lemma}
 	Closed map lemma (Visa at avb er lukka)
 \end{theorem}
 
@@ -281,13 +282,17 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 	\end{enumerate}
 \end{definition}
 
-\begin{lemma}
-	Geometrisk simplisielle kompleks er lukka TODO
+\begin{lemma} \label{thm:geometrisk-kompleks-lukka}
+	Geometrisk simplisielle kompleks er lukka og kompakte
 \end{lemma}
 
-\begin{theorem} \label{thm:unik-utvida-barysentrisk-koordinat}
-	TODO Geometrisk simplisielle kompleks har ein utvida unik barysentrisk koordinat.
-\end{theorem}
+\begin{proof}
+	TODO
+\end{proof}
+
+% \begin{theorem} \label{thm:unik-utvida-barysentrisk-koordinat}
+% 	TODO Geometrisk simplisielle kompleks har ein utvida unik barysentrisk koordinat.
+% \end{theorem}
 
 \begin{definition}
 	For $V$ ein endeleg mengda og $m\geq1$, så er $f:V\rightarrow \Rb^m$ ein \emph{affin imbedding} om $f$ er injektiv, og om biletet, $f(V)$ er ei geometrisk uavhengig mengda av punkt.
@@ -593,47 +598,134 @@ Dette beviset er frå TODO
 
 	Definer \( \hat{L} := L|_{\gr{\Sd(K)}_{\hat{f}}}: \gr{\Sd(K)}_{\hat{f}} \to \gr{K}_{\hat{g}} \)
 
-	Frå den universale eigenskapen av underromstopologien ref:TODO så får me at \( \hat{L} \) er kontinuerlig.
+	Frå den universale eigenskapen av underromstopologien \autoref{thm:universal-eigenskap-underromstopologi} så får me at \( \hat{L} \) er kontinuerlig.
 
-	\( \hat{L} \) er surjektiv fordi gitt ein \( y \in \gr{K}_{\hat{g}} \), så er det ein konveks kombinasjon av punkt \( \hat{g}(\epsilon) \) for \( \epsilon \in K \). Vel ein ordning av hjørnene: \( \epsilon = (v_1, v_2, \dots, v_{\#\epsilon}) \), og la \( y \) ha barysentrisk koordinatar \( (a_1, a_2, \dots, a_{\#\epsilon}) \)
+	Vidare, definer avbildninga \( \tilde{L} \) punktvis:
+	
+	For ein \( y \in \gr{K}_{\hat{g}} \), så er \( y \) ein konveks kombinasjon av punkt \( \hat{g}(\epsilon) \) for ein \( \epsilon \in K \), med barysentriske koordinatar \( \tuple{b_1, b_2, b_3, \dots, b_{\#\epsilon}} \). Velg ein ordning av \( \epsilon = \tuple{v_1, v_2, \dots, v_{\#\epsilon}} \) sånn at \( b_1 \geq b_2 \geq \dots \geq b_{\#\epsilon} \geq  b_{\epsilon+1}=0 \), og la
 	\[
-		y = \sum_{i = 1}^{\#\epsilon} a_i \hat{g}(v_i)
+		\sigma := \tuple{\union_{j=1}^k\set{v_j}}_{k=1}^{\#\epsilon} = \tuple{\sigma_i}_{i=1}^{\#\epsilon} \in \Sd(K)
 	\]
-	Anta utan tap av generalitet at ordninga av hjørnene i \( \epsilon \) gjer at \( a_1 \geq a_2 \geq \dots \geq a_{\#\epsilon} \) for \( y \). La 
+	% La
+	% \begin{align*}
+	% 	c &= \tuple{c_1, c_2, \dots, c_{\#\epsilon}} \\
+	% 	&= \tuple{b_1-b_2, 2\tuple{b_2-b_3}, 3\tuple{b_3-b_2}, \dots, \#\epsilon b_{\#\epsilon}} \\
+	% 	&= \tuple{i\tuple{b_i - b_{i+1}}}_{i=1}^{\#\epsilon}
+	% \end{align*}
+	Definer:
+	\[
+		\tilde{L}(y) = \tilde{L}\tuple{\sum_{i=1}^{\#\epsilon} b_i \hat{g}(v_i)} := \sum_{i=1}^{\#\epsilon}i\tuple{b_i-b_{i+1}}\hat{f}(\sigma_i)
+	\]
+
+	\( \tilde{L} \) er veldefinert med hensyn til ulike barysentriske koordinatar ettersom dei barysentriske koordinatane er unike frå \autoref{thm:unik-barysentrisk-koordinat}. I tilleg så er veldefinert med hensyn til ulik val av ordning, fordi om ein fikserar ein vilkårleg ordning på \( \epsilon \), så får ein kun forskjellige ordningar av dei barysentriske koordinatane. Og ein kan redusere alle permutasjonar av denne ordninga av dei barysentriske koordinatane til ein samansetting av fleire permutasjonar av kun to barysentriske koordinatar (ref:TODO?). Så anta me har to ordningar med \( n < m \):
+	\[
+		b_{i_1} \geq \dots \geq b_{i_n} \geq \dots \geq b_{i_m} \geq \dots \geq b_{i_{\#\epsilon}}
+	\]
+	Og
+	\[
+		b_{j_1} \geq \dots \geq b_{j_n} \geq \dots \geq b_{j_m} \geq \dots \geq b_{j_{\#\epsilon}}
+	\]
+	Der \( i_n=j_m \) og \( i_m=j_n \) har bytta posisjon, men resten er urørt. Då får me at \( b_{i_n} \geq b_{i_m}=b_{j_n} \geq b_{j_m}=b_{i_n} \) som betyr at \( b_{i_n} = b_{i_n+1} = \dots = b_{i_m}=b_{j_n}=b_{j_n+1}=\dots=b_{j_m} \). Og \( i_k = j_k \) for alle \( k \). Men det gir oss at \( c_{i_r} = c_{j_r} \) for alle \( r \). Og sidan alle moglege permutasjonar er ein samansetting av parvis permutasjonar som ikkje påverkar resultatet, så må \( \tilde{L} \) vera veldefinert, uavhengig av val av permutasjon av \( \epsilon \).
+
+	Vidare så er \( \tilde{L}(\gr{K}_{\hat{g}}) \subseteq \gr{\Sd(K)}_{\hat{f}} \), fordi for \( y \in \gr{K}_{\hat{g}} \) så får ein:
+	%fordi gitt \( y \in \gr{K}_{\hat{g}} \), ein konveks kombinasjon av \( \hat{g}(\epsilon) \) for ein \( \epsilon \in K \), med barysentriske koordinatar \( \tuple{b_1, b_2, b_3, \dots, b_{\#\epsilon}} \). Velg ein ordning av \( \epsilon = \tuple{v_1, v_2, \dots, v_{\#\epsilon}} \) sånn at \( b_1 \geq b_2 \geq \dots \geq b_{\#\epsilon} \geq  b_{\epsilon+1}=0 \)
+	\[
+		\tilde{L}(y) = \sum_{i=1}^{\#\epsilon}i\tuple{b_i-b_{i+1}}\hat{f}(\sigma_i)
+	\]
+	Og då er summen av koeffisientane:
 	\begin{align*}
-		(b_1, b_2, b_3, \dots, b_{\#\epsilon}) &= \left( a_1-a_2, 2(a_2-a_3), \dots, (\#\epsilon-1)(a_{\epsilon-1}-a_{\epsilon}), \#\epsilon a_{\epsilon} \right) \\
-		&= \left( i (a_i-a_{i+1}) \right)_{i=1}^{\#\epsilon}, a_{\epsilon+1} = 0
+		\sum_{i=1}^{\#\epsilon}i\tuple{b_i-b_{i+1}} &= \sum_{i=1}^{\#\epsilon}\tuple{ib_i-ib_{i+1}} \\
+		&= \sum_{i=1}^{\#\epsilon}i b_i - \sum_{i=1}^{\#\epsilon}i b_{i+1} \\
+		&= \sum_{i=1}^{\#\epsilon}i b_i - \sum_{i=2}^{\#\epsilon}\tuple{i-1}b_{i} \\
+		&= \sum_{i=1}^{\#\epsilon}i b_i - \sum_{i=2}^{\#\epsilon}i b_{i} + \sum_{i=2}^{\#\epsilon}b_i \\
+		&= b_1 + \sum_{i=2}^{\#\epsilon} b_i \\
+		&= \sum_{i=1}^{\#\epsilon} b_i \\
+		&= 1
+	\end{align*}
+	Og sidan \( b_i \geq b_{i+1} \), så er \( i\tuple{b_i-b_{i+1}} \geq 0 \). Det vil seie, \( \tilde{L}(y) \) er ein konveks kombinasjon av den geometrisk uavhengige mengda \( \hat{f}(\sigma) \), for \( \sigma \in \Sd(K) \). Altså eit element i \( \gr{\Sd(K)}_{\hat{f}} \).
+
+	Me kan derfor skriva \( \tilde{L}: \gr{K}_{\hat{g}} \to \gr{\Sd(K)}_{\hat{f}} \)
+
+	\( \hat{L}\circ\tilde{L} = id \) fordi gitt ein \( y \in \gr{K}_{\hat{g}} \), så er det ein konveks kombinasjon av punkt \( \hat{g}(\epsilon) \) for \( \epsilon \in K \). Vel ein ordning av hjørnene: \( \epsilon = (v_1, v_2, \dots, v_{\#\epsilon}) \), og la \( y \) ha barysentrisk koordinatar \( (b_1, b_2, \dots, b_{\#\epsilon}) \)
+	\[
+		y = \sum_{i = 1}^{\#\epsilon} b_i \hat{g}(v_i)
+	\]
+	Velg ein ordning av hjørnene i \( \epsilon \) der \( b_1 \geq b_2 \geq \dots \geq b_{\#\epsilon} \) for \( y \). La 
+	\begin{align*}
+		(a_1, a_2, a_3, \dots, a_{\#\epsilon}) &= \left( b_1-b_2, 2(b_2-b_3), \dots, (\#\epsilon-1)(b_{\epsilon-1}-b_{\epsilon}), \#\epsilon b_{\epsilon} \right) \\
+		&= \left( i (b_i-b_{i+1}) \right)_{i=1}^{\#\epsilon}, b_{\epsilon+1} = 0
 	\end{align*}
 		
 	Og la \( \left(\union_{j = 1}^{k} \set{v_j} \right)_{k=1}^{\#\epsilon} = (\sigma_i)_{i=1}^{\#\epsilon}=\sigma \in \Sd(K) \)
 	
-	Då definerar me: (Merk at \( \#\epsilon = \#\sigma\) )
-	\[
-		x = \sum_{i=1}^{\#\sigma} b_i \hat{f}(\sigma_i)
-	\]
-	Då er \( x \) ein konveks kombinasjon av punkta \( \hat{f}(\sigma) \), fordi:
-	\[
-		\sum_{i=1}^{\#\sigma} b_i = \sum_{i=1}^{\#\epsilon} a_i = 1
-	\]
-	Og sidan \( a_i \geq a_j \) for \( i \leq j \), så er alle \( b_i \geq 0 \). Derfor er \( x \in \gr{\Sd(K)}_{\hat{f}} \) % ref til def?
-	Om me anvender \( \hat{L} \) på denne \( y \)-en så får me:
+	% Då definerar me: (Merk at \( \#\epsilon = \#\sigma\) )
+	% \[
+	% 	x = \sum_{i=1}^{\#\sigma} b_i \hat{f}(\sigma_i)
+	% \]
+	% Då er \( x \) ein konveks kombinasjon av punkta \( \hat{f}(\sigma) \), fordi:
+	% \[
+	% 	\sum_{i=1}^{\#\sigma} b_i = \sum_{i=1}^{\#\epsilon} a_i = 1
+	% \]
+	% Og sidan \( a_i \geq a_j \) for \( i \leq j \), så er alle \( b_i \geq 0 \). Derfor er \( x \in \gr{\Sd(K)}_{\hat{f}} \) % ref til def?
+	% Om me anvender \( \hat{L} \) på denne \( y \)-en så får me:
 	\begin{align*} % Meir detaljar rundt sum manipulasjon på linja 4-5?
-		\hat{L}\left(x\right) &= \hat{L}\left( \sum_{i=1}^{\#\sigma} b_i \hat{f}(\sigma_i) \right) \\
-		&= \sum_{i=1}^{\#\sigma} \hat{L} \left( b_i \hat{f}(\sigma_i) \right) \\
-		&= \sum_{i=1}^{\#\sigma} b_i \hat{L} \left( \hat{f}(\sigma_i) \right) \\
-		&= \sum_{i=1}^{\#\sigma} b_i \frac{1}{\#\sigma_i} \sum_{v_j \in \sigma_i} \hat{g}(v_j) \\
-		&= \sum_{i=1}^{\#\sigma} b_i \frac{1}{i} \sum_{j = 1}^{i} \hat{g}(v_j) \\
-		\intertext{Hugs \( a_{\epsilon+1} = 0 \)}
-		&= \sum_{i=1}^{\#\sigma} (a_{i}-a_{i+1}) \sum_{j = 1}^{i} \hat{g}(v_j) \\
-		&= \sum_{j=1}^{\#\sigma} \hat{g}(v_j) \sum_{i = j}^{\#\sigma} (a_{i}-a_{i+1}) \\
-		&= \sum_{j=1}^{\#\epsilon} a_i \hat{g}(v_j) \\
+		\hat{L}\circ\tilde{L}(y) &= \hat{L}\circ\tilde{L}\tuple{\sum_{i=1}^{\#\epsilon} b_i \hat{g}(v_i)} \\
+		&= \hat{L}\left( \sum_{i=1}^{\#\epsilon} a_i \hat{f}(\sigma_i) \right) \\
+		&= \sum_{i=1}^{\#\epsilon} \hat{L} \left( a_i \hat{f}(\sigma_i) \right) \\
+		&= \sum_{i=1}^{\#\epsilon} a_i \hat{L} \left( \hat{f}(\sigma_i) \right) \\
+		&= \sum_{i=1}^{\#\epsilon} a_i \frac{1}{\#\sigma_i} \sum_{v_j \in \sigma_i} \hat{g}(v_j) \\
+		&= \sum_{i=1}^{\#\epsilon} a_i \frac{1}{i} \sum_{j = 1}^{i} \hat{g}(v_j) \\
+		\intertext{Hugs \( b_{\epsilon+1} = 0 \)}
+		&= \sum_{i=1}^{\#\epsilon} (b_{i}-b_{i+1}) \sum_{j = 1}^{i} \hat{g}(v_j) \\
+		\intertext{Her gjer me eit ikkje-trivielt summasjonsskifte:}
+		&= \sum_{j=1}^{\#\epsilon} \hat{g}(v_j) \sum_{i = j}^{\#\epsilon} (b_{i}-b_{i+1}) \\
+		&= \sum_{j=1}^{\#\epsilon} b_i \hat{g}(v_j) \\
 		&= y
 	\end{align*}
-	Fordi dei barysentriske koordinatene er unike \autoref{thm:unik-barysentrisk-koordinat}. Og ettersom dette var ein vilkårleg \( y \), så er \( \hat{L} \) surjektiv.
+	Ettersom \( y \) var eit vilkårleg element i \( \gr{K}_{\hat{g}} \), så er \( \hat{L}\circ\tilde{L} = id \).
 
-	\( \hat{L} \) er injektiv fordi for \( x, y \in \gr{\Sd(K)}_{\hat{f}} \), la \( x \) vera ein konveks kombinasjon av punkta \( \hat{f}(\hat{\sigma}) \), for ein \( \hat{\sigma} \in \Sd(K) \) og \( y \) vera ein konveks kombnasjon av punkta \( \hat{f}(\bar{\sigma}) \), for ein \( \bar{\sigma} \in \Sd(K) \).
+	\( \tilde{L}\circ\hat{L} = id \) fordi gitt \( x \in \gr{\Sd(K)}_{\hat{f}} \) ein konveks kombinasjon av punkt \( \hat{f}(\hat{\sigma}) \) for \( \hat{\sigma} \in \Sd(K) \), med barysentriske koordinatar \( \tuple{\hat{a}_1, \hat{a}_2, \dots, \hat{a}_{\#\hat{\sigma}}} \). La \( n = \#\hat{\sigma}_{\hat{\sigma}} \) og la \( \sigma = \tuple{\sigma_i}_{i=1}^{n} := \tuple{v_j}_{j=1}^{n} \) for \( v_j \in \hat{\sigma}_{\hat{\sigma}} \). Me kan utvida \( \hat{\sigma} \) til \( \sigma \), ved å velga ein ordning av hjørnenene \( v_j \in \hat{\sigma}_{\hat{\sigma}} \) sånn at \( \hat{\sigma}_i = \sigma_{\#\hat{\sigma}_i} \). Det er mogleg fordi ein \( \hat{\sigma} \in \Sd(K) \) er ein strengt aukande følga av kompleks i \( K \), så ingen har likt antal element. I tillegg, så er \( \hat{\sigma}_i \subseteq \hat{\sigma}_{i+1} \) frå definisjonen av barysentrisk oppdeling. Merk at \( \sigma \in \Sd(K) \), ettersom det er ei streng følga av \( \sigma_i \in K \).
 
-	\( \hat{L} \) er ein lukka avbildning fordi gitt ei lukka mengda i \( C \subseteq \gr{\Sd(K)}_f \) så er det per definisjon \( C = C_0 \intersect \gr{\Sd(K)}_f \) for ei eller annan lukka mengda \( C_0 \subseteq \Rb^d \). Men sidan \( \gr{\Sd(K)}_f \) er lukka og kompakt i \( \Rb^d \) frå TODO, så betyr det at \( C \) er snittet av to lukka mengder i \( \Rb^d \) og derfor lukka sjølve. Frå Heine-Borel TODO så betyr det at \( C \) er kompakt, og sidan kontinuerlige funksjonar avbildar kompakte mengder til kompakte mengder frå TODO så er \( L(C)=\hat{L}(C) \) også kompakt i \( \Rb^d \) og igjen frå Heine-Borel TODO, så er \( \hat{L}(C) \) lukka i \( \Rb^m \) og derfor lukka i \( \gr{K}_g \). % Erstatta heine-borel med closed mapping theorem
+	Velg vidare barysentriske koordinatar til \( \sigma \):
+	\[
+		a_i =
+		\begin{cases}
+			a_i & \text{om \( i = \#\hat{\sigma}_j \) for ein eller annan \( j \)} \\
+			0 & \text{ellers}
+		\end{cases}
+	\]
+	Merk:
+	\[
+		\sum_{i=1}^n a_i = \sum_{i=1}^{\#\hat{\sigma}}\hat{a_i}=1
+	\]
+	Så me kan skriva \( x \) som ein konveks kombinasjon av element i \( \hat{f}(\sigma) \) med barysentriske koordinatar \( \tuple{a_i}_{i=1}^n \). Hugs at ettersom \( \hat{L} \) er veldefinert så er dette lov, og burde avbilde dette til same element.
+
+	Då er:
+	\begin{align*}
+		\tilde{L}\circ\hat{L}(x) &= \tilde{L}\circ\hat{L}\tuple{\sum_{i=1}^n a_i \hat{f}(\sigma_i)} \\
+		&= \tilde{L}\tuple{\sum_{i=1}^n a_i \hat{L}\tuple{\hat{f}(\sigma_i)}} \\
+		&= \tilde{L}\tuple{\sum_{i=1}^n \frac{a_i}{\#\sigma_i}\sum_{v_j \in \sigma_i}\hat{g}(v_j)} \\
+		&= \tilde{L}\tuple{\sum_{i=1}^n\sum_{v_j \in \sigma_i}\frac{a_i}{\#\sigma_i}\hat{g}(v_j)} \\
+		\intertext{Eit ikkje-trivielt summasjonskifte:}
+		&= \tilde{L}\tuple{\sum_{j=1}^n\sum_{\set{i:v_j\in\sigma_i}}\frac{a_i}{\#\sigma_i}\hat{g}(v_j)} \\
+		&= \tilde{L}\tuple{\sum_{j=1}^n \hat{g}(v_j) \sum_{\set{i:v_j\in\sigma_i}}\frac{a_i}{\#\sigma_i}}
+	\end{align*}
+	La \( b_j = \sum_{\set{i:v_j\in\sigma_i}}\frac{a_i}{\#\sigma_i} \). Merk at \( \set{i : v_j \in \sigma_i} = \set{j, j+1, \dots, n } \) per definisjon av \( \sigma \). I tillegg, så ser ein at \( \#\sigma_i = i \), så me kan skriva: \( b_j = \sum_{i=j}^n \frac{a_i}{i} \).
+
+	Men det er då tydleg at \( b_i \geq b_{i+j} \) ettersom den fyrste er den same summen som den siste, men med eit ekstra positivt ledd. Me kan derfor bruke denne ordninga i definisjonen av \( \tilde{L} \), og me kan derfor bruke den same definisjonen av \( \sigma \), så me får:
+	\begin{align*}
+		\tilde{L}\circ\hat{L}(x) &= \tilde{L}\tuple{\sum_{j=1}^n \hat{g}(v_j) \sum_{i:v_j\in\sigma_i}\frac{a_i}{\#\sigma_i}} \\
+		&= \tilde{L}\tuple{\sum_{j=1}^n \hat{g}(v_j) \sum_{i=j}^n \frac{a_i}{i}} \\
+		&= \sum_{j=1}^n j\tuple{\sum_{i=j}^n \frac{a_i}{i} - \sum_{i=j+1}^n \frac{a_i}{i}}\hat{f}(\sigma_j) \\
+		&= \sum_{j=1}^n j\tuple{\frac{a_j}{j}}\hat{f}(\sigma_j) \\
+		&= \sum_{j=1}^n a_j \hat{f}(\sigma_j) \\
+		&= x
+	\end{align*}
+	Og ein får defor at \( \tilde{L}\circ\hat{L} = id \). 
+	
+	Dei to førre utsagna gir at \( \hat{L} \) er bijektiv, med invers \( \tilde{L} \).
+
+	Vidare så er \( \hat{L} \) er ein lukka avbildning frå \autoref{thm:closed-map-lemma}, fordi det er ein kontinuerleg avbildning frå \( \gr{\Sd(K)}_{\hat{f}} \) til \( \gr{K}_{\hat{g}} \), der \( \gr{\Sd(K)}_{\hat{f}} \) er kompakt frå \autoref{thm:geometrisk-kompleks-lukka}, og  \( \gr{K}_{\hat{g}} \) er Hausdorff ettersom det er ei delmengda av \( \Rb^n \) for ein eller annan \( n \).
 
 	Me får då frå TODO at sidan \( \hat{L} \) er ein bijektiv, kontinuerlig og lukka funksjon så er det ein homeomorfi.
 
@@ -641,6 +733,7 @@ Dette beviset er frå TODO
 	\[
 		\alpha := \tau_g^{-1} \circ \hat{L} \circ \tau_f
 	\]
+	Og sidan \( \alpha \) er ein komposisjon av tre homeomorfiar, så er det ein homeomorfi sjølve.
 \end{proof}
 
 \begin{example}
@@ -648,18 +741,16 @@ Dette beviset er frå TODO
 \end{example}
 
 \begin{definition} \label{thm:Gamma} % Kan fjerna phi og f avhengigheita frå notasjonen. U, phi, f avhengigheita er implisitt. Burde ha med affine imbeddinga?
-	Gitt \( U = \set{U_i}_{i=1}^n \) ei endeleg mengda av konvekse mengder i \( \Rb^m \). Indekser elementa i \( \Sd(\Nc(U)) \) etter \( \sigma_1, \sigma_2, \dots, \sigma_k \). For \( x \in \gr{\Sd(\Nc(U))} \)  med dei unike ref:TODO utvida barysentriske koordinatane \( (a_1, a_2, \dots, a_k) \).
-	
-	Vidare, for kvar \( \sigma \in \Nc(U) \) velg punkt \( v_\sigma \in \intersect_{u \in \sigma} u \). 
+	Gitt \( U = \set{U_i}_{i=1}^n \) ei endeleg mengda av konvekse mengder i \( \Rb^m \). Vidare, for kvar \( \epsilon \in \Nc(U) \) velg punkt \( v_\epsilon \in \intersect_{u \in \sigma} u \).
 
-	La då:
+	For \( x \in \gr{\Sd(\Nc(U))}_f \) ein konveks kombinasjon av dei geometrisk uavhengige punkta \( f(\sigma) \) for ein eller annan \( \sigma \in \Sd(\Nc(U)) \), der \( \sigma = \tuple{\sigma_1, \sigma_2, \dots, \sigma_{\#\sigma}} \) med dei barysentriske koordinatane \( \tuple{a_1, a_2, \dots, a_{\#\sigma}} \), definer:
 	\[
-		\Gamma(x) = \sum_{i=1}^k a_iv_{\sigma_i}
+		\Gamma(x) = \sum_{i=1}^{\#\sigma} a_i v_{\sigma_i}
 	\]
 \end{definition}
 
 \begin{lemma} % Må visa veldefinert mhp f og phi?
-	\( \Gamma \) frå \autoref{thm:Gamma} er kontinuerleg og biletet er i \( \union_{u\in U} u \).
+	\( \Gamma \) frå \autoref{thm:Gamma} er veldefinert, kontinuerleg og biletet er i \( \union_{u\in U} u \).
 \end{lemma}
 
 \begin{proof}
@@ -668,6 +759,10 @@ Dette beviset er frå TODO
 	Bruka pasting lemma
 	Trenge at geometriske simpleks er lukka.
 	Stemme på snitta.
+
+	\( \Gamma \) er veldefinert ettersom dei barysentriske koordinatane den er definert ut ifrå er unike frå \autoref{thm:unik-barysentrisk-koordinat}.
+
+	
 \end{proof}
 
 \begin{example}
