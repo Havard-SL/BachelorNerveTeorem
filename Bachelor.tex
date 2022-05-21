@@ -140,12 +140,33 @@ Grunnleggande lineær algebra
 	Closed map lemma (Visa at avb er lukka)
 \end{theorem}
 
-\begin{theorem}
+\begin{theorem} \label{thm:heine-borel}
 	Heine borel (Visa at Geometriske simpleks er kompakte)
 \end{theorem}
 
 \begin{theorem}
 	Pasting lemma
+\end{theorem}
+
+\begin{theorem} \label{thm:distanse-er-kont}
+	d er kont
+\end{theorem}
+
+\begin{theorem} \label{thm:maksimum-av-kont-er-kont}
+	maksimum av kont funksjonar er kont
+\end{theorem}
+
+\begin{theorem} \label{thm:infimum-over-kompakt-er-min}
+	infimum over kompakt er min
+\end{theorem}
+
+\begin{theorem} \label{thm:supremum-over-kompakt-er-maks}
+	supremum over kompakt er max
+\end{theorem}
+
+
+\begin{theorem} \label{thm:endeleg-union-kompakt-er-kompakt}
+	Endeleg union kompakt mengde er kompakt
 \end{theorem}
 
 \section{Grunnleggande definisjonar og resultat}
@@ -219,7 +240,7 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 \end{remark}
 
 \begin{definition}
-	Ein \emph{konveks kombinasjon} av ei endeleg geometrisk uavhengig mengda \( P = \set{p_1, p_2, p_3, \dots, p_n} \) av punkt i \( \Rb^m \) er eit punkt \( x\in\Rb^m \) gitt ein tupel av koeffisientar \( A=\{a_1, a_2, a_3, \dots, a_n\} \) i \( \Rb \), med \( a_i\geq0\forall i \) og \( \sum_{i=1}^n a_i = 1 : \)
+	Ein \emph{konveks kombinasjon} av ei endeleg mengda \( P = \set{p_1, p_2, p_3, \dots, p_n} \) av punkt i \( \Rb^m \) er eit punkt \( x\in\Rb^m \) gitt ein tupel av koeffisientar \( A=\{a_1, a_2, a_3, \dots, a_n\} \) i \( \Rb \), med \( a_i\geq0\forall i \) og \( \sum_{i=1}^n a_i = 1 : \)
 	
 	\begin{equation*}
 		x=\sum_{i=1}^n a_ip_i
@@ -228,11 +249,11 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 \end{definition}
 
 \begin{theorem} \label{thm:unik-barysentrisk-koordinat}
-	Dei barysentriske koordinatane til ein konveks kombinasjon er eintydig.
+	Dei barysentriske koordinatane til ein konveks kombinasjon av geometrisk uavhengige punkt er eintydig.
 \end{theorem}
 
 \begin{proof}
-	La $x$ vera ein konveks kombinasjon av $(p_1, p_2, p_3, \dots, p_n)$ i $\Rb^m$. Annta at $x$ har to barysentriske koordinatar: $(a_1, a_2, a_3, \dots, a_n)$ og $(b_1, b_2, b_3, \dots, b_n)$. Det betyr at:
+	La $x$ vera ein konveks kombinasjon av geometrisk uavhengige punkt \( \tuple{p_1, p_2, \dots, p_n} \) i $\Rb^m$. Annta at $x$ har to barysentriske koordinatar: $(a_1, a_2, a_3, \dots, a_n)$ og $(b_1, b_2, b_3, \dots, b_n)$. Det betyr at:
 	\begin{equation*}
 		0 = x - x = \sum_{i=1}^n a_ip_i - \sum_{i=1}^n b_ip_i=\sum_{i=1}^n (a_i-b_i)p_i
 	\end{equation*}
@@ -740,6 +761,51 @@ Dette beviset er frå TODO
 	Teikn
 \end{example}
 
+\begin{lemma} \label{thm:konveks-kombinasjon-i-konveks}
+	Alle konvekse kombinasjonar av (ikkje nødvendegvis geometrisk uavhengige) punkt \( P = \set{p_1, p_2, \dots, p_n } \subseteq V \), for \( V \) ei konveks mengda, er innehaldt i \( V \).
+\end{lemma}
+
+\begin{proof}
+	Beviset er gjort ved induksjon på antal punkt i mengda punkt ein tek ein koveks kombinasjon over, her betegna \( n \).
+	Grunntilfella:
+
+	La \( n = 1 \):
+	
+	Då er \( x = a_1 p_1 \), med \( a_1 = 1 \), så \( x = p_1 \in K \).
+	
+	For \( n = 2 \):
+
+	Då er \( x = a_1 p_1 + a_2 p_2 \), med \( a_1 + a_2 = 1 \). Men då er \( a_2 = 1 - a_1 \), så me kan skriva: \( x = a_1 p_1 + (1-a_1) p_2 \). Men dette er jo definisjonen på eit punkt på eit linjestykke mellom \( p_1 \) og \( p_2 \). Så frå definisjonen av ei konveks mengda, så må \( x \in K \).
+
+	Annta det gjeld for \( n = k-1 \), vil no visa at det gjeld for \( n = k \).
+
+	La \( x = \sum_{i=1}^k a_i p_i \). Me kan då skriva:
+	\[ 
+		x = a_1 p_1 + \sum_{i=2}^k a_i p_i = a_1 p_1 + (\sum_{i=2}^k a_i) \frac{\sum_{i=2}^k a_i p_i}{(\sum_{i=2}^k a_i)} = a_1 p_1 + (1-a_1) \frac{\sum_{i=2}^k a_i p_i}{(\sum_{i=2}^k a_i)}
+	\]
+	Men me ser at:
+	\[
+		\frac{\sum_{i=2}^k a_i p_i}{(\sum_{i=2}^k a_i)} = \sum_{i=2}^k p_i\frac{a_i}{(\sum_{i=2}^k a_i)}
+	\]
+	Dannar ein konveks kombinasjon av \( k-1 \) punkt sidan:
+	\[
+		\sum_{i=2}^k \frac{a_i}{(\sum_{i=2}^k a_i)} = \frac{\sum_{i=2}^k a_i}{(\sum_{i=2}^k a_i)} = 1
+	\]
+	Og
+	\[
+		\frac{a_i}{(\sum_{i=2}^k a_i)} \geq 0, \, i=2,3,\dots,k
+	\]
+	Så:
+	\[
+		y := \frac{\sum_{i=2}^k a_i p_i}{(\sum_{i=2}^k a_i)}
+	\]
+	Er eit element i \( V \) av induksjonshypotesen. Derfor er:
+	\[
+		x = a_1 p_1 + \sum_{i=2}^k a_i p_i = a_1 p_1 + (1-a_1) y
+	\]
+	Ein konveks kombinasjon av \( 2 \) punkt i \( V \), og me får frå induksjonshypotesen at \( x \in V \).
+\end{proof}
+
 \begin{definition} \label{thm:Gamma} % Kan fjerna phi og f avhengigheita frå notasjonen. U, phi, f avhengigheita er implisitt. Burde ha med affine imbeddinga?
 	Gitt \( U = \set{U_i}_{i=1}^n \) ei endeleg mengda av konvekse mengder i \( \Rb^m \). Vidare, for kvar \( \epsilon \in \Nc(U) \) velg punkt \( v_\epsilon \in \intersect_{u \in \sigma} u \).
 
@@ -754,19 +820,31 @@ Dette beviset er frå TODO
 \end{lemma}
 
 \begin{proof}
-	TODO
-	Visa at biletete er i rett stad.
-	Bruka pasting lemma
-	Trenge at geometriske simpleks er lukka.
-	Stemme på snitta.
+	%\( \Gamma \) er veldefinert ettersom dei barysentriske koordinatane den er definert ut ifrå er unike frå \autoref{thm:unik-barysentrisk-koordinat}.
 
-	\( \Gamma \) er veldefinert ettersom dei barysentriske koordinatane den er definert ut ifrå er unike frå \autoref{thm:unik-barysentrisk-koordinat}.
+	\( \Gamma \) er kontinuerleg og veldefinert fordi om ein let \( \hat{\tau} : \gr{\Sd(\Nc(U))}_f \to \gr{\Sd(\Nc(U))}_{\hat{\tau} \circ f} \) vera definert som i \autoref{thm:tau-homeomorfi} (\( x \mapsto x - f(\hat{\sigma}) \) for ein \( \hat{\sigma} \in \Nc(U) \)), så er dette ein homeomorfi, og om ein deretter definerar \( L \) til å vere ein lineæravblildning som tek \( \hat{\tau} \circ f (\sigma) \mapsto v_{\sigma} \) for alle \( \sigma \in \Nc(U) \). Og vidare let \( \hat{L} := L|_{\gr{\Sd(\Nc(U))}_{\hat{\tau}\circ f}} \), så ser me at for \( x \in \gr{\Sd(\Nc(U))}_f \) ein konveks kombinasjon av dei geometrisk uavhengige punkta \( f(\sigma) \) for ein eller annan \( \sigma \in \Sd(\Nc(U)) \), der \( \sigma = \tuple{\sigma_1, \sigma_2, \dots, \sigma_{\#\sigma}} \) med dei barysentriske koordinatane \( \tuple{a_1, a_2, \dots, a_{\#\sigma}} \) så er:
+	\begin{align*}
+		\hat{L} \circ \hat{\tau} (x) &= \hat{L} \circ \hat{\tau} \tuple{\sum_{i=1}^{\#\sigma}a_i f(\sigma_i)} \\
+		&= \hat{L} \tuple{\sum_{i=1}^{\#\sigma}a_i f(\sigma_i)-f(\hat{\sigma})} \\
+		&= \hat{L} \tuple{\sum_{i=1}^{\#\sigma}a_i f(\sigma_i)-\tuple{\sum_{j=1}^{\#\sigma}a_i}f(\hat{\sigma})} \\
+		&= \hat{L} \tuple{\sum_{i=1}^{\#\sigma}a_i f(\sigma_i)-\tuple{\sum_{j=1}^{\#\sigma}a_if(\hat{\sigma})}} \\
+		&= \hat{L} \tuple{\sum_{i=1}^{\#\sigma}a_i\tuple{f(\sigma_i)-f(\hat{\sigma})}} \\
+		&= \hat{L} \tuple{\sum_{i=1}^{\#\sigma}a_i\hat{\tau}\tuple{f(\sigma_i)}} \\
+		&= \sum_{i=1}^{\#\sigma}a_iL\tuple{\hat{\tau}\tuple{f(\sigma_i)}} \\
+		&= \sum_{i=1}^{\#\sigma}a_i v_{\sigma_i} \\
+		&= \Gamma(x)
+	\end{align*}
+	Og sidan \( \hat{\tau} \) er kontinuerleg og veldefinert, og \( \hat{L} \) er kontinuerleg og veldefinert frå \autoref{thm:begrensa-lin-op-er-kont} og \autoref{thm:universal-eigenskap-underromstopologi}, så må \( \Gamma = \hat{L}\circ\hat{\tau} \) også vera kontinuelreg og veldefinert.
 
-	
+	Biletet til \( \Gamma \) er i \( \union_{u\in U} u \), fordi for \( x \in \gr{\Sd(\Nc(U))}_f \) ein konveks kombinasjon av dei geometrisk uavhengige punkta \( f(\sigma) \) for ein eller annan \( \sigma \in \Sd(\Nc(U)) \), der \( \sigma = \tuple{\sigma_1, \sigma_2, \dots, \sigma_{\#\sigma}} \) med dei barysentriske koordinatane \( \tuple{a_1, a_2, \dots, a_{\#\sigma}} \), så får me at:
+	\[
+		\Gamma(x) = \sum_{i=1}^{\#\sigma} a_i v_{\sigma_i}
+	\]
+	Er ein konveks kombinasjon av punkta \( v_{\sigma_i} \) for \( i = 1,2,\dots,\#\sigma \). Men sidan \( \sigma_1 \subsetneq \sigma_2 \subsetneq \dots \subsetneq \sigma_{\#\sigma} \), så er det ein \( \epsilon \in U \) med \( \epsilon \in \sigma_1, \sigma_2, \dots, \sigma_{\#\sigma} \). Og derfor så er \( v_{\sigma_1}, v_{\sigma_2}, \dots, v_{\sigma_{\#\sigma}} \in \epsilon \). Men ettersom alle elementa i \( U \) er konvekse mengder, så er \( \Gamma(x) \) ein konveks kombinasjon av element i ei konveks mengda, \( \epsilon \), og frå \autoref{thm:konveks-kombinasjon-i-konveks}, så er \( x \in \epsilon \subseteq \union_{u\in U} u \).
 \end{proof}
 
 \begin{example}
-	Teikn
+	Teikn Gamma TODO
 \end{example}
 
 \begin{definition} % Definér open ball?
@@ -774,19 +852,64 @@ Dette beviset er frå TODO
 \end{definition}
 
 \begin{lemma} \label{thm:epsilondekke} % Kunne ha skrive det som at f danner ein bijeksjon av simpleksar?
-	For alle endelege mengder av kompakte, konvekse delmengder av \( \Rb^d \), \( U = \set{U_i}_{i=1}^n \), så \( \exists \epsilon > 0 \) sånn at \(f: \Nc(U) \to \Nc(U^\epsilon) \) som tek 
+	For alle endelege mengder av kompakte, delmengder av \( \Rb^d \), \( U = \set{U_i}_{i=1}^n \), så \( \exists \epsilon > 0 \) sånn at \(f \) som tek 
 	\[ 
 		\set{U_{i_1}, U_{i_2}, \dots, U_{i_k}} \mapsto \set{U_{i_1}^\epsilon, U_{i_2}^\epsilon, \dots, U_{i_k}^\epsilon} 
 	\] 
-	er ein bijeksjon.
+	dannar ein bijeksjon frå  \(\Nc(U) \) til \( \Nc(U^\epsilon) \).
 \end{lemma}
 
 \begin{proof}
-	TODO
+	La \( A \) vere mengda av alle mogelge delmengder av \( U \), og \( A^\epsilon \) vere alle moglege delmengder av \( U^\epsilon \). Då ser me at \( f \) dannar ein bijeksjon frå \( A \) til \( A^\epsilon \). Og sidan \( i: \Nc(U) \hookrightarrow A \), inklusjonsavbildninga, er injektiv, så er \( f \circ i \) injektiv.
+
+	Ettersom \( U^{\epsilon} \) kan kun få fleire snitt, enn \( U \), så må \( f(\Nc(U)) \subseteq \Nc(U^{\epsilon}) \).
+	
+	For å visa \( f(\Nc(U)) \supseteq \Nc(U^{\epsilon}) \), så ser me på det kontrapostive tilfellet:
+	 
+	\[ 
+		f(\Nc(U)) \supseteq \Nc(U^{\epsilon}) \iff \tuple{\forall \sigma \in \Nc(U^{\epsilon}) \implies \sigma \in f(\Nc(U))} \iff \tuple{\forall \sigma \not\in f(\Nc(U)) \implies \sigma \not\in \Nc(U^{\epsilon})}
+	\] % Finskriva med A og A^\epsilon?
+
+	For ein \( \sigma = \set{U_{i_1}, U_{i_2}, \dots, U_{i_k}} \in A \) så kan me skriva det som \( \sigma_J \) for \( J = \set{i_1, i_2, \dots i_k} \). Likt for \( \sigma^\epsilon_J \in A^\epsilon \). Så me vil visa at \( \exists \epsilon : \sigma^\epsilon_J \not\in f(\Nc(U)) \implies \sigma^\epsilon_J \not\in \Nc(U^{\epsilon}) \) for alle moglege \( J \) der \( \sigma^\epsilon_J \not\in f(\Nc(U)) \). Men ettersom \( f \) dannar ein bijeksjon frå \( A \) til \( A^\epsilon \), så kan me sjå på \( \exists \epsilon : \sigma_J \not\in \Nc(U) \implies f(\sigma_J) \not\in \Nc(U^{\epsilon}) \).
+
+	La:
+	\[
+		r_J := sup_{x \in \union_{j \in J} u_j} d(x,0)
+	\]
+	Sidan \( \union_{j \in J} u_j \) er ein endeleg union av kompakte mengder så er den kompakt frå \autoref{thm:endeleg-union-kompakt-er-kompakt}. Då får ein frå \autoref{thm:supremum-over-kompakt-er-maks}, at \( r_J = \max{x \in \union_{j \in J} u_j} d(x,0) \) og derfor endeleg. Me får også at \( \union_{j \in J} u_j \subseteq \bar{B}_{r_J}(0) \).
+	
+	Definer vidare \( D_J := \bar{B}_{4r_J}(0) \). Sidan dette er ein lukka og begrensa mengda i \( \Rb^d \), så er den kompakt frå \autoref{thm:heine-borel}.
+
+	La \( g_J: D_J \to \Rb \) med \( x \mapsto \max_{j \in J} d(x, U_j) \). Då ser ein at \( g \) er kontinuerleg sidan det er ein maks av endeleg mange kontinuerlege funskjonar frå \autoref{thm:distanse-er-kont} og \autoref{thm:maksimum-av-kont-er-kont}.
+
+	Om ein let \( \sigma_J \not\in \Nc(U) \), så får ein at \( g_J(x) > 0 \) for alle \( x \) i \( D_J \), sidan \( \intersect_{u \in \sigma_J} u = \emptyset \).
+
+	Og sidan \( D_J \) er kompakt. Då får me frå \autoref{thm:infimum-over-kompakt-er-min}, at \( g_J(x) \) oppnår eit minimum, som frå argumentet over må vere ulik \( 0 \). Dette kallar me for
+	\[
+		\epsilon_J := \min_{x \in D_J} \max_{j \in J} d(x, U_j) 
+	\]
+	Men dette minimumet er eit globalt minimum over heile \( \Rb^d \), fordi for \( x \in \Rb^d \setminus D_J \), så er \( g_J(x) \geq 3r_J \), sidan det er minste moglege avstand frå \( x \) til ei av \( u_j \in U_J \). Men om \( x \in \bar{B}_{r_J}(0) \) då er \( g_J(x) \leq 2r_J \) sidan det er det lengste vekke den andre mengda kan vere og framleis vere inne i \( \bar{B}_{r_J}(0) \). Så eit globalt minimum må vere eit minimum inne i \( D_J \).
+
+	Vidare så ser ein at \( \sigma_J^{\epsilon_J} \not\in \Nc(U^{\epsilon_J}) \) fordi om ein let \( x \) vere eit av punkta som gav det globale minimumet \( \epsilon_J \), så er \( x \not\in \intersect_{j \in J} u_j^{\epsilon_J} \) fordi det er ingen \( y \in  u_{\hat{j}} \) for \( \hat{j} \) den verdien i \( J \) som gav maksimumet til \( \max_{j \in J} d(x, U_j) \), som har \( d(y, x) > \epsilon_J \). Så det er ingen open ball om \( y \) med radius \( r_J \) som inneheld \( x \). Derfor kan ikkje \( x \) vere i snittet av alle \( u_j \)-ane. Det same argumentet gjeld for alle andre punkt i \( D_J \) som ikkje var globale minimum.
+	
+	Så det er ingen punkt i \( \intersect_{j \in J} u_j^{\epsilon_J} \), og derfor er \( \sigma_J^{\epsilon_J} \not\in \Nc(U^{\epsilon_J}) \).
+
+	Vidare, la: 
+	\[
+		\epsilon := \min_{\set{J : \sigma_J \not\in \Nc(U)}} \epsilon_J
+	\]
+	\( \epsilon \neq 0 \) fordi alle \( \epsilon_J \neq 0 \) og det er kun endeleg mange \( \sigma_J \in A \).
+
+	Om me brukar den øvre \( \epsilon \)-en så får me at for alle \( \sigma_J \not\in \Nc(U) \), så er \( \sigma_J^{\epsilon}=f(\sigma_J) \not\in \Nc(U^{\epsilon}) \). Som var det me ville visa.
+
 \end{proof}
 
+\begin{remark}
+	Avbildninga f over blir ofta kalla ein simplisiell isomorfi, og er det eg alluderte til når eg sa at nerva var ekvivalent med cech komplekset i ref TODO
+\end{remark}
+
 \begin{definition} \label{thm:psi} % Kva er betingelsane på overdekket her?
-	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \), velg ein \( \epsilon \) som i \autoref{thm:epsilondekke}, kan då danna:
+	For ei endeleg mengda av kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \), velg ein \( \epsilon \) som i \autoref{thm:epsilondekke}, kan då danna:
 	\[
 		\phi_i(x) := \frac{d(x, \Rb^m \setminus U_i^\epsilon)}{d(x, U_i) + d(x, \Rb^m \setminus U_i^\epsilon)}
 	\]
@@ -820,6 +943,10 @@ Dette beviset er frå TODO
 \begin{lemma} % Noko meir?
 	\( \Psi \) frå \autoref{thm:Psi} er kontinuerlig, og har bilete i \( \gr{\Nc(U)}_f \).
 \end{lemma}
+
+\begin{proof}
+	TODO
+\end{proof}
 
 \begin{definition}
 	For \( K \) eit endeleg abstrakt simplisielt kompleks over \( V \) med \( v \in V \), så er \emph{den lukka barysentriske stjerna} til \( K \) i \( v \), betegna \( \bst(v) \) lik:
