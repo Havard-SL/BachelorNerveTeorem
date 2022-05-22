@@ -577,7 +577,7 @@ Dette beviset er frå TODO
 	Gitt eit endeleg abstrakt simplisielt kompleks \( K \) over \( V \), så er \( \Sd(K) \) eit endeleg abstrakt simplisielt kompleks over \( K \)
 \end{lemma}
 
-\begin{proof}
+\begin{proof} \label{thm:subdivisjon-abstrakt-simplisielt-kompleks}
 	TODO
 \end{proof}
 
@@ -908,7 +908,7 @@ Dette beviset er frå TODO
 	Avbildninga f over blir ofta kalla ein simplisiell isomorfi, og er det eg alluderte til når eg sa at nerva var ekvivalent med cech komplekset i ref TODO
 \end{remark}
 
-\begin{definition} \label{thm:psi} % Kva er betingelsane på overdekket her?
+\begin{definition} \label{def:psi} % Kva er betingelsane på overdekket her?
 	For ei endeleg mengda av kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \), velg ein \( \epsilon \) som i \autoref{thm:epsilondekke}, kan då danna:
 	\[
 		\phi_i(x) := \frac{d(x, \Rb^m \setminus U_i^\epsilon)}{d(x, U_i) + d(x, \Rb^m \setminus U_i^\epsilon)}
@@ -919,60 +919,104 @@ Dette beviset er frå TODO
 	\]
 \end{definition}
 
-\begin{lemma} % Burde bruka alle
-	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \) , la \( \psi_i \) og \( \epsilon \) vera definert som i \autoref{thm:psi}. Då er følgjande sant:
-	\begin{enumerate}
-		\item{For \( x \in  U_i \), då er \( \psi_i(x) \geq \psi_j(x) \forall j \) }
-		\item{For \( x \in \Rb^d \setminus U_i^\epsilon \), då er \( \psi_i(x)=0 \) }
-		\item{For \( x \in \union_{u \in U} u \), så er \( \sum_{i=1}^n \psi_i(x) = 1 \) }
-		\item{For \( x \in \union_{u \in U} u \), så er \( \psi_i(x) \geq 0 \) }
-	\end{enumerate}
+\begin{lemma}
+	\( \phi_i \) og \( \psi_i \) frå \autoref{def:psi} er kontinuerlege på domenet \( \union_{i=1}^n U_i^\epsilon \).
 \end{lemma}
 
-\begin{proof}
-	TODO
+% Burde refera til eit lemma om sum av kont avb er kont
+\begin{proof} 
+	Sidan distansefunksjonen \( d \) er kontinuerleg frå \autoref{thm:distanse-er-kont}, og nemnaren er alltid ulik null sidan \( U_i \subsetneq U_i^\epsilon \) og ein sum av to kontinuerlege funskjonar og derfor kontinuerkeg sjølve, så er \( \phi_i \) ein kvotient av to kontinuerlege funskjonar med heile \( \Rb^d \) som domene, og derfor kontinerleg på heile \( \union_{i=1}^n U_i^\epsilon \) sjølve.
+
+	Ved mykje det same argumentet så ser me at \( \psi_i \) er ein kvotient med ein kontinuerleg avbildning i teljaren og ein sum av kontinerlege avbildningar som er alltid ulik null på \( \union_{i=1}^n U_i^\epsilon \) sidan minst ein \( \phi_i \) er ulik null fordi \( phi_i(x)=0 \) kun når \( d(x, \Rb^m \setminus U_i^\epsilon)=0 \) som skjer når \( x \not\in U_i^\epsilon \). Men sidan for \( x \in \union_{i=1}^n U_i^\epsilon \) så er det vertfall ein \( U_i^\epsilon \) som \( x \) er eit element av. Derfor er \( \psi_i \) kontinerleg.
 \end{proof}
 
-\begin{definition} \label{thm:Psi}
-	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \psi_i \) vera som i \autoref{thm:psi}, og \( \gr{\Nc(U)}_f \) ein geometrisk realisering av nerva til \( U \) med hensyn til den affine imbeddinga \( f \). Definer for \( x \in \union_{u \in U} u \):
+% \begin{lemma} % Burde bruka alle
+% 	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \) , la \( \psi_i \) og \( \epsilon \) vera definert som i \autoref{thm:psi}. Då er følgjande sant:
+% 	\begin{enumerate}
+% 		\item{For \( x \in  U_i \), då er \( \psi_i(x) \geq \psi_j(x) \forall j \) }
+% 		\item{For \( x \in \Rb^d \setminus U_i^\epsilon \), då er \( \psi_i(x)=0 \) }
+% 		\item{For \( x \in \union_{u \in U} u \), så er \( \sum_{i=1}^n \psi_i(x) = 1 \) }
+% 		\item{For \( x \in \union_{u \in U} u \), så er \( \psi_i(x) \geq 0 \) }
+% 	\end{enumerate}
+% \end{lemma}
+
+% \begin{proof}
+% 	TODO
+% \end{proof}
+
+\begin{definition} \label{def:Psi}
+	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \psi_i \) vera som i \autoref{def:psi}, og \( \gr{\Nc(U)}_f \) ein geometrisk realisering av nerva til \( U \) med hensyn til den affine imbeddinga \( f \). Definer for \( x \in \union_{u \in U} u \):
 	\[
 		\Psi(x) := \sum_{i=1}^n \psi_i(x)f(U_i)
 	\]
 \end{definition}
 
 \begin{lemma} % Noko meir?
-	\( \Psi \) frå \autoref{thm:Psi} er kontinuerlig, og har bilete i \( \gr{\Nc(U)}_f \).
+	\( \Psi \) frå \autoref{def:Psi} er kontinuerlig, og har bilete i \( \gr{\Nc(U)}_f \).
+\end{lemma}
+
+\begin{proof} % Trenge fleire forkunskapar om kvifor ting er kontinuerleg
+	Sidan alle \( \psi_i \)-ane er kontinuerlege, så er \( \psi_i(x) f(U_i) \) også kontinuerleg, ettersom \( f(U_i) \) er ein konstant vektor. Så \( \Psi \) er ein sum av kontinuerlege funksjonar og derfor kontinuerleg sjølve.
+
+	For å visa at \( \Psi\tuple{\union_{u \in U} u} \subseteq \gr{\Nc(U)}_f \), la \( x \in \union_{u \in U} u \). Då er \( \Psi(x) = \sum_{i=1}^n \psi_i(x)f(U_i) \). Men merk at:
+	\begin{align*}
+		\sum_{j=1}^n \psi_j(x)  &= \sum_{j=1}^n \frac{\phi_j(x)}{\sum_{k=1}^n \phi_k(x)} \\
+		&= \frac{\sum_{j=1}^n \phi_j(x)}{\sum_{k=1}^n \phi_k(x)} \\
+		&= 1
+	\end{align*}
+	Og sidan \( \phi_i(x) \geq 0 \) for alle \( i \) og \( x \) så er \( \psi_i(x) \geq 0 \) for alle \( i \) og \( x \). Derfor så får me at \( \Psi(x) \) er ein konveks kombinasjon av punkta \( f(U) \).
+
+	Ettersom \( x \not\in U_i^\epsilon \iff \phi_i(x) = 0 \iff \psi_i(x) = 0 \). Så får me at \( \psi_i(x) \neq 0 \iff x \in U_i^\epsilon \). Så la \( A_x^\epsilon := \set{U_i^\epsilon \in U^\epsilon : x \in U_i^\epsilon} \). Då ser me at \( A_x^\epsilon \in \Nc(U^\epsilon) \). Men med \( h(x) \) bijeksjonen me får frå \autoref{thm:epsilondekke}, så veit me at \( A_x^\epsilon \) korrsponderar til ein \( A_x := h^{-1}(A_x^\epsilon) \in \Nc(U) \).
+	
+	Så for alle \( x \in \union_{u \in U} u \) så er \( \Psi(x) \) ein konveks kombinasjon av punkta \( f(A_x) \) om ein forkastar alle hjørnene med barysentrisk koordinat lik null. Dette er i \( \gr{\Nc(U)}_f \).
+\end{proof}
+
+\begin{definition} \label{def:bst}
+	For \( K \) eit endeleg abstrakt simplisielt kompleks over \( V \) med \( v \in V \), så er \emph{den lukka barysentriske stjerna} til \( K \) i \( v \), betegna \( \bst(v) \) lik:
+	\[
+		\bst(v) = \set{\sigma \in \Sd(K) \mid \sigma \union \set{v} \in \Sd(K)}
+	\]
+\end{definition}
+
+\begin{example}
+	TODO
+\end{example}
+
+\begin{lemma} \label{thm:bst-ask}
+	Den lukka barysentriske stjerna som definert i \autoref{def:bst} er eit abstrakt simplisielt kompleks, med hjørnemengda \( W = \set{w \in K : \set{w} \union \set{v} \in \Sd(K)} \)
 \end{lemma}
 
 \begin{proof}
-	TODO
+	Her må me visa dei tre eigenskapane frå \autoref{def:ASK}:
+	\begin{enumerate}
+		\item{For \( w \in W \), så er \( \set{w} \in \bst(v) \) frå definisjonen.}
+  		\item{For \( \sigma \in \bst(v) \) så er \( \sigma \subseteq W \), fordi for ein vilkårleg \( \tau \in \sigma \), så er \( \sigma \union \set{v} = \set{\tau} \union \sigma \union \set{v} \in \Sd(K) \). Men sidan \( \Sd(K) \) er eit abstrakt simplisielt kompleks frå \autoref{thm:subdivisjon-abstrakt-simplisielt-kompleks}, så er \( \sigma \union \set{v} \supseteq \set{\tau} \union \set{v} \in \Sd(K) \). Og då er \( \tau \in W \).}
+    	\item{For \( \sigma in \bst(v) \), la \( \tau \subseteq \sigma \). Sidan \( \sigma \union \set{v} \in \Sd(K) \), og sidan \( \Sd(K) \) er eit abstrakt simplisielt kompleks frå \autoref{thm:subdivisjon-abstrakt-simplisielt-kompleks}, så er \( \sigma \union \set{v} \supseteq \tau \union \set{v} \in \Sd(K) \). Og derfor er \( \tau \in \bst(v) \).}
+	\end{enumerate}
 \end{proof}
-
-\begin{definition}
-	For \( K \) eit endeleg abstrakt simplisielt kompleks over \( V \) med \( v \in V \), så er \emph{den lukka barysentriske stjerna} til \( K \) i \( v \), betegna \( \bst(v) \) lik:
-	\[
-		\bst(v) = \set{\sigma \in \Sd(K) \mid \sigma \union v \subseteq \Sd(K)}
-	\]
-\end{definition}
 
 \begin{lemma}
 	Gitt \( U = \set{U_i}_{i=1}^n \) ei endeleg mengda av konvekse mengder i \( \Rb^m \). La \( \Gamma \) vere definert som i \autoref{thm:Gamma}.
 
-	Då er \( \Gamma(\gr{\bst(U_i)}) \subseteq U_i \)
+	Då er \( \Gamma(\gr{\bst(U_i)}_f) \subseteq U_i \)
 \end{lemma}
 
 \begin{proof}
-	TODO
+	Frå \autoref{thm:bst-ask}, så veit me at hjørnemengda til \( \bst(U_i) \), er
+	\[
+		W = \set{w \in \Nc(U) : \set{w} \union \set{U_i} \in \Sd(\Nc(U))}=\set{w \in \Nc(U) : U_i \in w}
+	\] 
+	Men då er jo \( v_w \) (frå \autoref{thm:Gamma}) \( \in \intersect_{u \in w} u \subseteq U_i \) for alle \( w \). Og sidan \( \Gamma \) tek eit element, \( x \), i \( \gr{\bst(U_i)}_f \) som er ein konveks kombinasjon av punkta \( \set{f(w)}_{w \in W} \) til ein konveks kombinasjon av \( \set{v_w}_{w \in W} \subseteq U_i \), så får me at \( \Gamma(x) \) er ein konveks kombinasjon av punkta \( \set{v_w}_{w \in W} \), som alle ligg i ei konveks mengda \( U_i \), og me får derfor frå \autoref{thm:konveks-kombinasjon-i-konveks} at \( x \in U_i \).
 \end{proof}
 
 \begin{lemma} % alpha avbildninga??
-	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \Psi \) vera som i \autoref{thm:Psi}, og \( \gr{\Sd(\Nc(U))}_f \) ein geometrisk realisering av nerva til \( U \) med hensyn til den affine imbeddinga \( f \). 
+	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \Psi \) vera som i \autoref{def:Psi}, og \( \gr{\Sd(\Nc(U))}_f \) ein geometrisk realisering av den barysentriske oppdelinga til nerva av \( U \) med hensyn til den affine imbeddinga \( f \). 
 
 	Då er \( \Psi(U_i) \subseteq \gr{\bst(U_i)}_f \)
 \end{lemma}
 
 \begin{proof}
-	TODO
+	Mega TODO
 \end{proof}
 
 \begin{lemma}
