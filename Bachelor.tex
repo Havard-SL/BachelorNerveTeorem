@@ -157,7 +157,7 @@ Eg kjem til å annta grunnleggande kunnskap innan topologi, lineær algebra, ana
 \begin{theorem} \label{thm:heine-borel}
 	(Heine-Borel)
 
-	For \( X \subset \Rb^d \) så er \( X \) kompakt \( \iff \) \( X \) er lukka og begrensa.
+	For \( X \subseteq \Rb^d \) så er \( X \) kompakt \( \iff \) \( X \) er lukka og begrensa.
 \end{theorem}
 
 \begin{theorem} \label{thm:pasting-lemma}
@@ -609,7 +609,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 \begin{definition}
 	Gitt eit endeleg abstrakt simplisielt kompleks \( K \) over \( V \), så er den \emph{barysentriske oppdelinga} av \( K \), betegna \( \Sd(K) \) alle tuplar: 
 	\[
-		\set{(\sigma_1, \sigma_2, \sigma_3, \dots, \sigma_n) \mid \sigma_1 \subset \sigma_2 \subset \sigma_3 \subset \dots \subset \sigma_n\,, \sigma_i \in K}
+		\set{(\sigma_1, \sigma_2, \sigma_3, \dots, \sigma_n) \mid \sigma_1 \subsetneq \sigma_2 \subsetneq \sigma_3 \subsetneq \dots \subsetneq \sigma_n\,, \sigma_i \in K}
 	\]
 \end{definition}
 
@@ -1167,7 +1167,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 \end{lemma}
 
 \begin{proof}
-	Alle \( \tau \in \Sk_n(K) \) er delmengder av ein \( \sigma \in K \), så dei oppfyllar krav 2 og 3. Krav 1 er oppfylt ved at \( \Sk_0(K) \subset \Sk_n(K) \).
+	Alle \( \tau \in \Sk_n(K) \) er delmengder av ein \( \sigma \in K \), så dei oppfyllar krav 2 og 3. Krav 1 er oppfylt ved at \( \Sk_0(K) \subseteq \Sk_n(K) \).
 \end{proof}
 
 \begin{definition}
