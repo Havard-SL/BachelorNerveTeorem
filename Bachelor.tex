@@ -75,6 +75,7 @@
 \DeclareMathOperator{\Sd}{Sd}
 \DeclareMathOperator{\bst}{bst}
 \DeclareMathOperator{\Sk}{Sk}
+\DeclareMathOperator{\Id}{Id}
 
 % PERSONLEGE NOTAT
 
@@ -728,7 +729,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 
 	Me kan derfor skriva \( \tilde{L}: \gr{K}_{\hat{g}} \to \gr{\Sd(K)}_{\hat{f}} \)
 
-	\( \hat{L}\circ\tilde{L} = id \) fordi gitt ein \( y \in \gr{K}_{\hat{g}} \), så er det ein konveks kombinasjon av punkt \( \hat{g}(\epsilon) \) for \( \epsilon \in K \). Vel ein ordning av hjørnene: \( \epsilon = (v_1, v_2, \dots, v_{\#\epsilon}) \), og la \( y \) ha barysentrisk koordinatar \( (b_1, b_2, \dots, b_{\#\epsilon}) \)
+	\( \hat{L}\circ\tilde{L} = \Id \) fordi gitt ein \( y \in \gr{K}_{\hat{g}} \), så er det ein konveks kombinasjon av punkt \( \hat{g}(\epsilon) \) for \( \epsilon \in K \). Vel ein ordning av hjørnene: \( \epsilon = (v_1, v_2, \dots, v_{\#\epsilon}) \), og la \( y \) ha barysentrisk koordinatar \( (b_1, b_2, \dots, b_{\#\epsilon}) \)
 	\[
 		y = \sum_{i = 1}^{\#\epsilon} b_i \hat{g}(v_i)
 	\]
@@ -764,9 +765,9 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 		&= \sum_{j=1}^{\#\epsilon} b_i \hat{g}(v_j) \\
 		&= y
 	\end{align*}
-	Ettersom \( y \) var eit vilkårleg element i \( \gr{K}_{\hat{g}} \), så er \( \hat{L}\circ\tilde{L} = id \).
+	Ettersom \( y \) var eit vilkårleg element i \( \gr{K}_{\hat{g}} \), så er \( \hat{L}\circ\tilde{L} = \Id \).
 
-	\( \tilde{L}\circ\hat{L} = id \) fordi gitt \( x \in \gr{\Sd(K)}_{\hat{f}} \) ein konveks kombinasjon av punkt \( \hat{f}(\hat{\sigma}) \) for \( \hat{\sigma} \in \Sd(K) \), med barysentriske koordinatar \( \tuple{\hat{a}_1, \hat{a}_2, \dots, \hat{a}_{\#\hat{\sigma}}} \). La \( n = \#\hat{\sigma}_{\hat{\sigma}} \) og la \( \sigma = \tuple{\sigma_i}_{i=1}^{n} := \tuple{v_j}_{j=1}^{n} \) for \( v_j \in \hat{\sigma}_{\hat{\sigma}} \). Me kan utvida \( \hat{\sigma} \) til \( \sigma \), ved å velga ein ordning av hjørnenene \( v_j \in \hat{\sigma}_{\hat{\sigma}} \) sånn at \( \hat{\sigma}_i = \sigma_{\#\hat{\sigma}_i} \). Det er mogleg fordi ein \( \hat{\sigma} \in \Sd(K) \) er ein strengt aukande følga av kompleks i \( K \), så ingen har likt antal element. I tillegg, så er \( \hat{\sigma}_i \subseteq \hat{\sigma}_{i+1} \) frå definisjonen av barysentrisk oppdeling. Merk at \( \sigma \in \Sd(K) \), ettersom det er ei streng følga av \( \sigma_i \in K \).
+	\( \tilde{L}\circ\hat{L} = \Id \) fordi gitt \( x \in \gr{\Sd(K)}_{\hat{f}} \) ein konveks kombinasjon av punkt \( \hat{f}(\hat{\sigma}) \) for \( \hat{\sigma} \in \Sd(K) \), med barysentriske koordinatar \( \tuple{\hat{a}_1, \hat{a}_2, \dots, \hat{a}_{\#\hat{\sigma}}} \). La \( n = \#\hat{\sigma}_{\hat{\sigma}} \) og la \( \sigma = \tuple{\sigma_i}_{i=1}^{n} := \tuple{v_j}_{j=1}^{n} \) for \( v_j \in \hat{\sigma}_{\hat{\sigma}} \). Me kan utvida \( \hat{\sigma} \) til \( \sigma \), ved å velga ein ordning av hjørnenene \( v_j \in \hat{\sigma}_{\hat{\sigma}} \) sånn at \( \hat{\sigma}_i = \sigma_{\#\hat{\sigma}_i} \). Det er mogleg fordi ein \( \hat{\sigma} \in \Sd(K) \) er ein strengt aukande følga av kompleks i \( K \), så ingen har likt antal element. I tillegg, så er \( \hat{\sigma}_i \subseteq \hat{\sigma}_{i+1} \) frå definisjonen av barysentrisk oppdeling. Merk at \( \sigma \in \Sd(K) \), ettersom det er ei streng følga av \( \sigma_i \in K \).
 
 	Velg vidare barysentriske koordinatar til \( \sigma \):
 	\[
@@ -803,7 +804,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 		&= \sum_{j=1}^n a_j \hat{f}(\sigma_j) \\
 		&= x
 	\end{align*}
-	Og ein får defor at \( \tilde{L}\circ\hat{L} = id \). 
+	Og ein får defor at \( \tilde{L}\circ\hat{L} \Id \). 
 	
 	Dei to førre utsagna gir at \( \hat{L} \) er bijektiv, med invers \( \tilde{L} \).
 
@@ -1126,7 +1127,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 \begin{lemma} \label{thm:homeq-u}
 	La \( U = \tuple{U_i}_{i=1}^n \) vera ei endeleg mengda av kompakte og konvekse delmengder av \( \Rb^d \). La \( \Gamma \) vera som i \autoref{thm:Gamma}, la \( \Psi \) vera som i \autoref{def:Psi}, og la \( \alpha \) vera som i \autoref{thm:alpha-homeomorfi}. Då er:
 	\[
-		\Gamma \circ \alpha^{-1} \circ \Psi \simeq id_{\union_{u \in U} u} 
+		\Gamma \circ \alpha^{-1} \circ \Psi \simeq \Id_{\union_{u \in U} u} 
 	\]
 \end{lemma}
 
@@ -1151,7 +1152,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	
 	Den er også veldefinert fordi om ein fikserar ein \( x \in U_i \) så er \( xt + \Gamma \circ \alpha^{-1} \circ \Psi(x)(1-t) \in U_i \) for alle \( t \in I \) sidan det er på på ei linja mellom to punkt i \( U_i \) som er konveks.
 
-	Så \( H \) er ein homotopi frå \( id \) til \( \Gamma \circ \alpha^{-1} \circ \Psi \)
+	Så \( H \) er ein homotopi frå \( \Id \) til \( \Gamma \circ \alpha^{-1} \circ \Psi \)
 \end{proof}
 
 \begin{definition}
@@ -1220,14 +1221,14 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 \begin{lemma} \label{thm:homeq-sd} % Jævli vanskeleg å visa frå botnen
 	La \( U = \tuple{U_i}_{i=1}^n \) vera ei endeleg mengda av kompakte og konvekse delmengder av \( \Rb^d \). La \( \Gamma \) vera som i \autoref{thm:Gamma}, la \( \Psi \) vera som i \autoref{def:Psi}, og la \( \alpha \) vera som i \autoref{thm:alpha-homeomorfi}. Då er:
 	\[
-		\alpha^{-1} \circ \Psi \circ \Gamma \simeq Id_{\gr{\Sd(\Nc(U))}_f}
+		\alpha^{-1} \circ \Psi \circ \Gamma \simeq \Id_{\gr{\Sd(\Nc(U))}_f}
 	\]
 \end{lemma}
 
 \begin{proof} % Rydda opp i da geometrisk realiserings greiene?
 	La \( h := \alpha^{-1} \circ \Psi \circ \Gamma \), den er kontinuerlig frå \autoref{thm:Gamma-eigenskapar} og \autoref{thm:psi-kont}. Vidare la \( C_\sigma := \intersect_{\set{ U_i : \sigma \in \bst(U_i) }} \gr{\bst(U_i)}_f \)
 
-	Dette beviset er gjort ved induksjon over \( m \)-skjelettet til \( \Sd(\Nc(U)) \) for å finna ein \( H_m : \gr{\Sk_m(\Sd(\Nc(U)))}_f \times I \to \gr{\Sk_m(\Sd(\Nc(U)))}_f \) som sender \( \gr{\Sk_m(\bst(U_i))}_f \to \gr{\bst(U_i)}_f \) og er ein homotopi frå \( id_m := id|_{\gr{\Sk_m(\Sd(\Nc(U)))}_f} \) til \( h_m := h|_{\gr{\Sk_m(\Sd(\Nc(U)))}_f} \).
+	Dette beviset er gjort ved induksjon over \( m \)-skjelettet til \( \Sd(\Nc(U)) \) for å finna ein \( H_m : \gr{\Sk_m(\Sd(\Nc(U)))}_f \times I \to \gr{\Sk_m(\Sd(\Nc(U)))}_f \) som sender \( \gr{\Sk_m(\bst(U_i))}_f \to \gr{\bst(U_i)}_f \) og er ein homotopi frå \( \Id_m := \Id|_{\gr{\Sk_m(\Sd(\Nc(U)))}_f} \) til \( h_m := h|_{\gr{\Sk_m(\Sd(\Nc(U)))}_f} \).
 
 	For å visa grunntilfellet: \( m = 0 \), så ser me på \( H_0: \gr{\Sk_0(\Sd(\Nc(U)))}_f \times I \to \gr{\Sk_0(\Sd(\Nc(U)))}_f \). Merk at \( \Sk_0(\Sd(\Nc(U))) = \set{\set{v} : v \in \Nc(U)} \), så \( \gr{\Sk_0(\Sd(\Nc(U)))}_f \) er ein haug med diskré punkt.
 
@@ -1293,7 +1294,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	Me kallar den raude avbildninga: \( \xi \circ \gamma = H_m|_{G_f(\sigma) \times I} \).
 
 
-	% \gr{\Sk_m(\bst(U_i))}_f \to \gr{\bst(U_i)}_f
+	% TODO -> x må vera i interior ellers så dekke ikkje bst(U_i) x og beviset dett saman.
 	Induksjonshypotesen gjeld for \( H_m|_{G_f(\sigma) \times I} \), fordi om ein let \( x \in \gr{\Sk_m(\bst(U_i))}_f \intersect G_f(\sigma) \subseteq C_\sigma \), men sidan \( \gr{\Sk_m(\bst(U_i))}_f \), dekkar ein \( x \in G_f(\sigma) \), så må \( \gr{\Sk_m(\bst(U_i))}_f \) vera eit av ledda som blir snitta i definisjonen av \( C_\sigma \). så:
 	\[
 		H_m|_{G_f(\sigma) \times I}(x) \in C_\sigma \subseteq \gr{\Sk_m(\bst(U_i))}_f
@@ -1306,14 +1307,14 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	\[
 		H = H_k
 	\]
-	Er ein homotopi frå \( id_{\gr{\Sd(\Nc(U))}_f} \) til \( h = \alpha^{-1} \circ \Psi \circ \Gamma \).
+	Er ein homotopi frå \( \Id_{\gr{\Sd(\Nc(U))}_f} \) til \( h = \alpha^{-1} \circ \Psi \circ \Gamma \).
 
 \end{proof}
 
 % \begin{lemma} % Går ikkje... ;_;
 % 	La \( U = \tuple{U_i}_{i=1}^n \) vera ei endeleg mengda av kompakte og konvekse delmengder av \( \Rb^d \). La \( \Gamma \) vera som i \autoref{thm:Gamma}, la \( \Psi \) vera som i \autoref{def:Psi}, og la \( \alpha \) vera som i \autoref{thm:alpha-homeomorfi}. Då er:
 % 	\[
-% 		\Psi \circ \Gamma \circ \alpha^{-1} \simeq Id_{\gr{\Nc(U)}_g}
+% 		\Psi \circ \Gamma \circ \alpha^{-1} \simeq \Id_{\gr{\Nc(U)}_g}
 % 	\]
 % \end{lemma}
 
