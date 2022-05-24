@@ -1,4 +1,4 @@
-\documentclass[a4paper, titlepage, 12pt, norsk]{article}
+\documentclass[a4paper, 12pt, norsk]{article}
 
 % For å kunna skriva æøå i tekstar MERK: Blir automatisk ubrukeleg med lualatex of fontspec
 %\usepackage[utf8]{inputenc} 
@@ -109,65 +109,106 @@
 
 \maketitle
 
+\tableofcontents
+
+\newpage
+
+\section{Innleiing}
+
+Topologisk dataanalyse er eit nytting verktøy ... TODO
+
 \section{Førehandskunnskapar og teorem}
 
-\subsection{Notasjon}
+\subsection{Spesiel notasjon}
+ 
+Eg lar \( \#S \) vera antal element i \( S \)
 
-La \( \#S \) vera antal element i \( S \)
+Eg lar \( f \simeq  g \) betegna at to avbildningar \( f \) og \( g \) er homotope.
 
-La \( \subset \) vera streng inklusjon, og la \( \subseteq \) vera inklusjon eller lik.
+Eg lar \( X \cong Y \) betegna at to topologiske rom \( X \) og \( Y \) er homeomorfe.
 
 \subsection{Førehandskunnskapar}
 
-Grunnleggande topologi
-
-Grunnleggande lineær algebra
+Eg kjem til å annta grunnleggande kunnskap innan topologi, lineær algebra, analyse og litt om permutasjonar.
 
 \subsection{Viktige teorem}
 
 \begin{theorem} \label{thm:begrensa-lin-op-er-kont}
-	Begrensa lin operatorar er kont.
+	Alle lineære avbildningar frå \( \Rb^n \) til \( \Rb^m \) for \( n, m < \infty \) er kontinuerlege.
 \end{theorem}
 
 \begin{theorem} \label{thm:definer-lin-op}
-	Kan definera lin operator på n lineært uavhengige vektorar
+	For ei mengda med \( n \) lineært uavhengige vektorar i \( \Rb^d \), med \( n \leq d \): \( \set{v_1, v_2, \dots, v_n} \), så kan ein konstruera ei lineæravbildning \( L \) som tek \( v_1 \mapsto L(v_1) \).
 \end{theorem}
 
 \begin{theorem} \label{thm:universal-eigenskap-underromstopologi}
-	Universaleigenskapen til underromstopologien (Brukt for å visa at lineære restrikterte avbildningar er kont.)
+	(Universaleigenskapen til underromstopologien)
+
+	For \( A \subseteq X \) ei delmenga av \( X \) med underromstopologien, og \( f: Y \to A \). Og \( i: A \hookrightarrow X \) inklusjonsavbildninga. Då er \( f \) kontinuerlig  \( \iff i \circ f \) er kontinuerlig.
 \end{theorem}
 
 \begin{theorem} \label{thm:closed-map-lemma}
-	Closed map lemma (Visa at avb er lukka)
+	La \( X \) vera eit kompakt rom, og \( Y \) eit lukka rom. La \( f: X \to Y \) vera ein kontinuerlig avbildning.
+
+	Då er \( f \) ein lukka avbildning.
 \end{theorem}
 
 \begin{theorem} \label{thm:heine-borel}
-	Heine borel (Visa at Geometriske simpleks er kompakte)
+	(Heine-Borel)
+
+	For \( X \subset \Rb^d \) så er \( X \) kompakt \( \iff \) \( X \) er lukka og begrensa.
 \end{theorem}
 
-\begin{theorem}
-	Pasting lemma
+\begin{theorem} \label{thm:pasting-lemma}
+	La \( A \) og \( B \) vera lukka delmengder av \( X \) sånn at \( A \union B = X \). 
+	
+	Då er \( f: X \to Y \) er kontinuerlig \( \iff \) \( f|_A \) og \( f|_B \) er begge kontinuerlege.
 \end{theorem}
 
 \begin{theorem} \label{thm:distanse-er-kont}
-	d er kont
+	La \( X \) vera ei delmengda av \( \Rb^d \). La \( x \in \Rb^d \). Då er:
+	\[
+		d(x, X) = \inf_{y \in X} ||x-y||
+	\]
+	kontinuerleg.
 \end{theorem}
 
 \begin{theorem} \label{thm:maksimum-av-kont-er-kont}
-	maksimum av kont funksjonar er kont
+	La \( F := \set{f_i : \Rb^d \to \Rb} \) vera ei endeleg mengda av kontinuerlege avbildningar. Då er:
+	\[
+		g(x) := \max_{f \in F} f(x)
+	\]
+	Også kontinuerleg.
 \end{theorem}
 
-\begin{theorem} \label{thm:infimum-over-kompakt-er-min}
-	infimum over kompakt er min
-\end{theorem}
+\begin{theorem} \label{thm:infimum-over-kompakt-er-min} \label{thm:supremum-over-kompakt-er-maks}
+	La \( K \) vera ei kompakt mengda, og la \( f: K \to \Rb \) vera ein vilkårleg kontinuelrleg funskjon. Då er:
 
-\begin{theorem} \label{thm:supremum-over-kompakt-er-maks}
-	supremum over kompakt er max
+	\[
+		\inf_{x \in K} f(x) = \min_{x \in K} K
+	\]
+	Og
+	\[
+		\sup{x \in K} f(x) = \max_{x \in K} K
+	\]
 \end{theorem}
-
 
 \begin{theorem} \label{thm:endeleg-union-kompakt-er-kompakt}
-	Endeleg union kompakt mengde er kompakt
+	La \( \set{K_i}_{i = 1}^n \) vera ei endeleg mengda av kompakte mengder. Då er:
+	\[
+		K = \union_{i=1}^n K_i
+	\]
+	Også kompakt.
+\end{theorem}
+
+\begin{theorem} \label{thm:permutasjon}
+	La \( A \) vera ei endeleg tupel. Då kan ein permutasjon (bijektiv funskjon) \( f: A \to A \) bli skriven som ei samansetting av endeleg mange permutasjonar som kun berører to element.
+\end{theorem}
+
+\begin{theorem} \label{thm:bijektiv-lukka-homeomorfi}
+	La \( f: X \to Y \) vera ein kontinuerleg, bijektiv og lukka avbildning.
+
+	Då er \( f \) også ein homeomorfi.
 \end{theorem}
 
 \section{Grunnleggande definisjonar og resultat}
@@ -193,9 +234,9 @@ Nokre eksempel av endelege abstrakte simplisielle kompleks over \( P=\set{p_1, p
 Og her er nokre ikkje-eksempel av endelege abstrakte simplisielle kompleks over \( P=\set{p_1, p_2, p_3} \):
 
 \begin{itemize}
-	\item{$A_1'=\{\{p_1, p_2\}, \{p_1\}\}=A_1 \setminus \{\{p_2\}\}$}
-	\item{$A_2'=\{\{p_1\}, \{p_2\}, \{p_3\}, \{p_1, p_3\}, \{p_2, p_3\}, \{p_1, p_2, p_3\}\}=A_2 \union \{\{p_1, p_2, p_3\}\}$}
-	\item{$A_3'=\{\{p_1\}, \{p_2\}, \{p_2, p_3\}\}=\left(A_3 \setminus \{\{p_3\}\}\right) \union \{\{p_2, p_3\}\}$}
+	\item{$A_1'=\{\{p_1, p_2\}, \{p_1\}\}=A_1 \setminus \{\{p_2\}\}$, fordi TODO}
+	\item{$A_2'=\{\{p_1\}, \{p_2\}, \{p_3\}, \{p_1, p_3\}, \{p_2, p_3\}, \{p_1, p_2, p_3\}\}=A_2 \union \{\{p_1, p_2, p_3\}\}$, fordi TODO}
+	\item{$A_3'=\{\{p_1\}, \{p_2\}, \{p_2, p_3\}\}=\left(A_3 \setminus \{\{p_3\}\}\right) \union \{\{p_2, p_3\}\}$, fordi TODO}
 \end{itemize}
 
 Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men som me kjem til å sjå seinare; så er dette ein svært praktisk simplifisering av informasjon som bevarer mykje av eigenskapane til den originale datamengda ein vil sjå på.
@@ -306,7 +347,7 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 % \end{definition}
 
 % \begin{theorem} \label{thm:unik-utvida-barysentrisk-koordinat}
-% 	TODO Geometrisk simplisielle kompleks har ein utvida unik barysentrisk koordinat.
+% 	Geometrisk simplisielle kompleks har ein utvida unik barysentrisk koordinat.
 % \end{theorem}
 
 \begin{definition}
@@ -318,7 +359,7 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 \end{definition}
 
 % \begin{theorem}
-% 	TODO geometrisk realisering er eit geometrisk simplisielt kompleks
+% 	geometrisk realisering er eit geometrisk simplisielt kompleks
 % \end{theorem}
 
 \begin{lemma} \label{thm:tau-homeomorfi}
@@ -345,11 +386,11 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 	Av symmetri så kan eit likt argument kan bli gjort på \( \hat{\tau}^{-1}: y \mapsto y+x \) og ein får derfor at \( \hat{\tau} \) er ein homeomorfi.
 \end{proof}
 
-\begin{theorem}
+\begin{theorem} \label{thm:gr-eintydig}
 	Geometrisk realisering er eintydig opp til homeomorfi. Med andre ord: For to ulike geometriske realiseringar av eit endeleg abstrakt simplisielt kompleks $K$, med hensyn til $f$ og $g$ (to ulike affine imbeddingar), så er $\gr{K}_f$ og $\gr{K}_g$ homeomorfe.
 \end{theorem}
 
-\begin{proof}%Rotete? Trenge unike barysentriske koordinatar? Må visa \hat{\tau} er bijeksjonar
+\begin{proof}%Rotete? Trenge unike barysentriske koordinatar? Må visa \hat{\tau} er bijeksjonar SKRIV OM TODO
 	La $K$ vera eit abstrakt simplisielt kompleks, og la $f:K\to\Rb^m$ og $g:K\to\Rb^l$ vera to affine imbeddingar. La $V=\{ v_1, v_2, \dots, v_n \}$ vera hjørnemengda til $K$ Definér vidare $x_i=(f(k_{i-1})-f(k_1))$ og $y_i=(g(k_{i-1})-g(k_1))$. La $\tau_f:\Rb^m\to\Rb^m$ vera ein forskyving som tek $x\mapsto x-f(k_1)$. Og la $\tau_g:\Rb^l\to\Rb^l$ vera ein forskyving som tek $x\mapsto x-g(k_1)$. Til slutt, la $L_1:\Rb^m\to\Rb^l$ vera den lineære funksjonen som sender $x_i\mapsto y_i$.
 	Og for praktiske grunnar: Definér $\hat{f}:=\tau_f\circ f$ og $\hat{g}:=\tau_g \circ g$
 Me får då at $L_1(\hat{f}(k_i))=\hat{g}(k_i)$, fordi:
@@ -443,7 +484,7 @@ For $i=1$:
 \end{definition}
 
 \begin{example}
-	\phantom{abcd}
+	TODO
 	\begin{figure}[htbp]
 		\begin{center}
 			\includesvg[width=0.8\textwidth]{Eksempel1_18-2.svg}
@@ -521,7 +562,7 @@ Dette gir oss nok grunnlag til å endeleg forstå og definera nerva:
 \end{proof}
 
 \begin{example}
-	\phantom{abc}
+	TODO
 	\begin{figure}[htbp]
 		\begin{center}
 			\includesvg[width=0.7\textwidth]{Eksempel1_23.svg}
@@ -530,7 +571,7 @@ Dette gir oss nok grunnlag til å endeleg forstå og definera nerva:
 	\end{figure}
 \end{example}
 
-\begin{remark}
+\begin{remark} \label{rem:cech-ekvivalent}
 	Rett frå definisjonen så ser me at Cech komplekset til $P$ med radius $r$ er "<ekvivalent>" til nerva til $\union_{p \in P} \left \{ \bar{B}_r(p) \right \}$
 \end{remark}
 
@@ -556,9 +597,13 @@ Då kan me endeleg utrykka nerveteoremet:
 %	Då er \( \gr{\Nc(F)} \) homotopiekvivalent til \( X \).
 %\end{theorem}
 
+\begin{theorem} %Nerveteoremet for endeleg, reel, konveks, kompakt overdekke
+	La \( U = \set{U_i}_{i=1}^n \) vera ei endeleg mengda av kompakte og konvekse delmengdar av \( \Rb^d \). Då er \( \union_{u \in U} u \) homotopiekvivalent med \( \gr{\Nc(U)} \).
+\end{theorem}
+
 \section{Bevis av Nerveteoremet}
 
-Dette beviset er frå TODO
+Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.03571}
 
 \begin{definition}
 	Gitt eit endeleg abstrakt simplisielt kompleks \( K \) over \( V \), så er den \emph{barysentriske oppdelinga} av \( K \), betegna \( \Sd(K) \) alle tuplar: 
@@ -572,7 +617,12 @@ Dette beviset er frå TODO
 \end{lemma}
 
 \begin{proof} \label{thm:subdivisjon-abstrakt-simplisielt-kompleks}
-	TODO
+	Me må visa dei tre eigenskapane frå \autoref{def:ASK}:
+	\begin{enumerate}
+		\item{ For \( k \in K \), så er \( \tuple{k} \) trivielt ei streng følga av element frå \( K \), så \( \tuple{k} \in \Sd(K) \) }
+  		\item{ For \( \sigma \in \Sd(K) \) så er det per definisjon ei delmengda av \( K \). }
+    	\item{ For \( \sigma \in K \), med \( \tau \subseteq \sigma \), då er \( \tau \) ei delfølga av element frå \( K \). Men ei delfølga er framleis ei følga, så \( \tau \in \Sd(K) \). }  
+	\end{enumerate}
 \end{proof}
 
 \begin{remark}
@@ -580,11 +630,20 @@ Dette beviset er frå TODO
 \end{remark}
 
 \begin{lemma} \label{thm:geometrisk-kompleks-lukka}
-	Geometrisk realisering lukka og kompakte
+	Gitt eit endeleg abstrakt simplisielt kompleks \( K \) over \( V \) og \( f: V \to \Rb^d \) ein affin imbedding. Då er \( \gr{K}_f \) lukka og kompakt.
 \end{lemma}
 
 \begin{proof}
 	TODO
+	% Sidan \( \gr{K}_f \) per definisjon er ein endeleg union av geometriske simpleksar utspunne av endeleg mange punkt \( f(\sigma) \) for \( \sigma \in K \). Ein kan difor redusera problemet til å visa at alle geometriske simpleksar utspunne av endeleg mange geometrisk uavhengige punkt er lukka.
+
+	% La \( X \) vera det geometriske simplekset utspunne av punkta \( \set{p_1, p_2, \dots, p_n} \), og la \( \tuple{x_i}_{i \in \Nb} \) vera ei følga av punkt i \( X \) som konvergerar mot \( x \). Vil visa at \( x \in X \).
+
+	% Anta at \( x \not\in X \). Då er det tre tilfeller:
+	% \begin{enumerate}
+	% 	\item \( x \not\in span\set{p_1, p_2, \dots, p_n} \). Men det er umogleg sidan \( span\set{p_1, p_2, \dots, p_n} \) er eit lukka underrom av \( \Rb^d \).
+  	% 	\item \( x = \sum_{i=1}^n a_i x \), men \( \exists a_j < 0 \). Det er også umogleg sidan 
+	% \end{enumerate}
 \end{proof}
 
 \begin{lemma} \label{thm:alpha-homeomorfi}
@@ -593,7 +652,7 @@ Dette beviset er frå TODO
 \end{lemma}
 
 \begin{proof} % Å herregud ditta beviset e vanskelegare enn eg trudde. % Shit, blande nokre bilete her. må dirrenetsiera mellom pre og post translasjon av mangder. Lineær operator definert av kor den sender n lineært uavhengige vektorar.
-	Dette beviset bruker mykje den same strategien som i ref:TODO.
+	Dette beviset bruker mykje den same strategien som i \autoref{thm:gr-eintydig}.
 
 	Fyrst, lag ei ordning av elementa i \( V = (v_1, v_2, \dots, v_n) \) og ein ordning \( K = (\sigma_1, \sigma_2, \dots, \sigma_m) \) med \( \sigma_1 = \set{v_1} \). Vidare la \( \tau_f(x) := x-f(\set{v_1}) \), og la \( \tau_g(x) := x-g(v_1) \). Desse er homeomorfiar frå \autoref{thm:tau-homeomorfi}.
 
@@ -640,7 +699,7 @@ Dette beviset er frå TODO
 		\tilde{L}(y) = \tilde{L}\tuple{\sum_{i=1}^{\#\epsilon} b_i \hat{g}(v_i)} := \sum_{i=1}^{\#\epsilon}i\tuple{b_i-b_{i+1}}\hat{f}(\sigma_i)
 	\]
 
-	\( \tilde{L} \) er veldefinert med hensyn til ulike barysentriske koordinatar ettersom dei barysentriske koordinatane er unike frå \autoref{thm:unik-barysentrisk-koordinat}. I tilleg så er veldefinert med hensyn til ulik val av ordning, fordi om ein fikserar ein vilkårleg ordning på \( \epsilon \), så får ein kun forskjellige ordningar av dei barysentriske koordinatane. Og ein kan redusere alle permutasjonar av denne ordninga av dei barysentriske koordinatane til ein samansetting av fleire permutasjonar av kun to barysentriske koordinatar (ref:TODO?). Så anta me har to ordningar med \( n < m \):
+	\( \tilde{L} \) er veldefinert med hensyn til ulike barysentriske koordinatar ettersom dei barysentriske koordinatane er unike frå \autoref{thm:unik-barysentrisk-koordinat}. I tilleg så er veldefinert med hensyn til ulik val av ordning, fordi om ein fikserar ein vilkårleg ordning på \( \epsilon \), så får ein kun forskjellige ordningar av dei barysentriske koordinatane. Og ein kan redusere alle permutasjonar av denne ordninga av dei barysentriske koordinatane til ein samansetting av fleire permutasjonar av kun to barysentriske koordinatar frå \autoref{thm:permutasjon}. Så anta me har to ordningar med \( n < m \):
 	\[
 		b_{i_1} \geq \dots \geq b_{i_n} \geq \dots \geq b_{i_m} \geq \dots \geq b_{i_{\#\epsilon}}
 	\]
@@ -750,7 +809,7 @@ Dette beviset er frå TODO
 
 	Vidare så er \( \hat{L} \) er ein lukka avbildning frå \autoref{thm:closed-map-lemma}, fordi det er ein kontinuerleg avbildning frå \( \gr{\Sd(K)}_{\hat{f}} \) til \( \gr{K}_{\hat{g}} \), der \( \gr{\Sd(K)}_{\hat{f}} \) er kompakt frå \autoref{thm:geometrisk-kompleks-lukka}, og  \( \gr{K}_{\hat{g}} \) er Hausdorff ettersom det er ei delmengda av \( \Rb^n \) for ein eller annan \( n \).
 
-	Me får då frå TODO at sidan \( \hat{L} \) er ein bijektiv, kontinuerlig og lukka funksjon så er det ein homeomorfi.
+	Me får då frå \autoref{thm:bijektiv-lukka-homeomorfi} at sidan \( \hat{L} \) er ein bijektiv, kontinuerlig og lukka funksjon så er det ein homeomorfi.
 
 	Me definerar \( \alpha: \gr{\Sd(K)}_f \to \gr{K}_g \):
 	\[
@@ -760,7 +819,7 @@ Dette beviset er frå TODO
 \end{proof}
 
 \begin{example}
-	Teikn
+	Teikn TODO
 \end{example}
 
 \begin{lemma} \label{thm:konveks-kombinasjon-i-konveks}
@@ -907,7 +966,7 @@ Dette beviset er frå TODO
 \end{proof}
 
 \begin{remark}
-	Avbildninga f over blir ofta kalla ein simplisiell isomorfi, og er det eg alluderte til når eg sa at nerva var ekvivalent med cech komplekset i ref TODO
+	Avbildninga f over blir ofta kalla ein simplisiell isomorfi, og er det eg alluderte til når eg sa at nerva til \( \set{\set{\bar{B}_\epsilon(p_i)}}_{i=1}^n \) var ekvivalent med Cech komplekset av \( \set{p_i}_{i=1}^n \) med radius \( \epsilon \) i \autoref{rem:cech-ekvivalent}.
 \end{remark}
 
 \begin{definition} \label{def:psi} % Kva er betingelsane på overdekket her?
@@ -931,20 +990,6 @@ Dette beviset er frå TODO
 
 	Ved mykje det same argumentet så ser me at \( \psi_i \) er ein kvotient med ein kontinuerleg avbildning i teljaren og ein sum av kontinerlege avbildningar som er alltid ulik null på \( \union_{i=1}^n U_i^\epsilon \) sidan minst ein \( \phi_i \) er ulik null fordi \( phi_i(x)=0 \) kun når \( d(x, \Rb^m \setminus U_i^\epsilon)=0 \) som skjer når \( x \not\in U_i^\epsilon \). Men sidan for \( x \in \union_{i=1}^n U_i^\epsilon \) så er det vertfall ein \( U_i^\epsilon \) som \( x \) er eit element av. Derfor er \( \psi_i \) kontinerleg.
 \end{proof}
-
-% \begin{lemma} % Burde bruka alle
-% 	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \) , la \( \psi_i \) og \( \epsilon \) vera definert som i \autoref{thm:psi}. Då er følgjande sant:
-% 	\begin{enumerate}
-% 		\item{For \( x \in  U_i \), då er \( \psi_i(x) \geq \psi_j(x) \forall j \) }
-% 		\item{For \( x \in \Rb^d \setminus U_i^\epsilon \), då er \( \psi_i(x)=0 \) }
-% 		\item{For \( x \in \union_{u \in U} u \), så er \( \sum_{i=1}^n \psi_i(x) = 1 \) }
-% 		\item{For \( x \in \union_{u \in U} u \), så er \( \psi_i(x) \geq 0 \) }
-% 	\end{enumerate}
-% \end{lemma}
-
-% \begin{proof}
-% 	TODO
-% \end{proof}
 
 \begin{definition} \label{def:Psi}
 	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \psi_i \) vera som i \autoref{def:psi}, og \( \gr{\Nc(U)}_f \) ein geometrisk realisering av nerva til \( U \) med hensyn til den affine imbeddinga \( f \). Definer for \( x \in \union_{u \in U} u \):
@@ -1078,21 +1123,21 @@ Dette beviset er frå TODO
 	\]
 \end{proof}
 
-\begin{lemma}
+\begin{lemma} \label{thm:homeq-u}
 	La \( U = \tuple{U_i}_{i=1}^n \) vera ei endeleg mengda av kompakte og konvekse delmengder av \( \Rb^d \). La \( \Gamma \) vera som i \autoref{thm:Gamma}, la \( \Psi \) vera som i \autoref{def:Psi}, og la \( \alpha \) vera som i \autoref{thm:alpha-homeomorfi}. Då er:
 	\[
-		\Gamma \circ \alpha \circ \Psi \simeq id_{\union_{u \in U} u} 
+		\Gamma \circ \alpha^{-1} \circ \Psi \simeq id_{\union_{u \in U} u} 
 	\]
 \end{lemma}
 
-\begin{proof} % Koffor er homotopien kontinuerlig? TODO
+\begin{proof}
 	For \( x \in U_i \) så følger det frå \autoref{thm:Psi-inni-bst} at:
 	\[
-		\alpha \circ \Psi(x) \in \gr{\bst(U_i)}_f
+		\alpha^{-1} \circ \Psi(x) \in \gr{\bst(U_i)}_f
 	\]
 	Og frå \autoref{thm:Gamma-inni-ui} så får ein derfor at:
 	\[
-		\Gamma \circ \alpha \circ \Psi(x) \in U_i
+		\Gamma \circ \alpha^{-1} \circ \Psi(x) \in U_i
 	\]
 	Sjå på avbildninga:
 	\[
@@ -1100,13 +1145,13 @@ Dette beviset er frå TODO
 	\]
 	som tek:
 	\[
-		\tuple{x, t} \mapsto xt + \Gamma \circ \alpha \circ \Psi(x)(1-t)
+		\tuple{x, t} \mapsto xt + \Gamma \circ \alpha^{-1} \circ \Psi(x)(1-t)
 	\]
 	Denne er kontinuerlig fordi \( \Gamma \) er kontinuerlig frå \autoref{thm:Gamma-eigenskapar}, \( \Psi \) er kontinuerlig frå \autoref{thm:psi-kont}, og \( \alpha \) er ein homeomorfi.
 	
-	Den er også veldefinert fordi om ein fikserar ein \( x \in U_i \) så er \( xt + \Gamma \circ \alpha \circ \Psi(x)(1-t) \in U_i \) for alle \( t \in I \) sidan det er på på ei linja mellom to punkt i \( U_i \) som er konveks.
+	Den er også veldefinert fordi om ein fikserar ein \( x \in U_i \) så er \( xt + \Gamma \circ \alpha^{-1} \circ \Psi(x)(1-t) \in U_i \) for alle \( t \in I \) sidan det er på på ei linja mellom to punkt i \( U_i \) som er konveks.
 
-	Så \( H \) er ein homotopi frå \( id \) til \( \Gamma \circ \alpha \circ \Psi \)
+	Så \( H \) er ein homotopi frå \( id \) til \( \Gamma \circ \alpha^{-1} \circ \Psi \)
 \end{proof}
 
 \begin{definition}
@@ -1131,7 +1176,7 @@ Dette beviset er frå TODO
 	\]
 \end{definition}
 
-\begin{lemma}
+\begin{lemma} \label{thm:utvida-funk}
 	For \( K \) eit endeleg abstrakt simplisielt kompleks over hjørnemengda \( V \), og \( \gr{K}_f \) ei geometrisk realisering av \( K \). For \( \sigma \in K \), la \( G_f(\sigma) \) betegna det geometriske simplekset utspunne av punkta \( f(\sigma) \), og \( G_f(\partial\sigma) := \union_{\tau \in \partial\sigma} G_f(\tau) \). Då er:
 	\[
 		G_f(\partial\sigma) \times I \union G_f(\sigma) \times \set{0, 1}
@@ -1144,26 +1189,125 @@ Dette beviset er frå TODO
 \end{lemma}
 
 \begin{proof}
-	Hakkje peiling korleis eg skal visa ditta...
+	Hakkje peiling korleis eg skal visa ditta... TODO
 \end{proof}
 
-\begin{lemma}
-	bst er eit good cover TODO
+\begin{lemma} \label{thm:bst-good}
+	For \( K \) eit endeleg abstrakt simplisielt kompleks over \( V \), og \( \gr{\Sd(K)}_f \) ei geometrisk realisering. Så er \( B := \set{\gr{\bst(V_i)}_f}_{i=1}^{\# V} \) eit overdekke av \( \gr{\Sd(K)}_f \), og alle snitt av vilkårkleg mange element av \( B \) er samantrekkbart. Då blir \( B \) kalla eit samantrekkbart overdekke.
 \end{lemma}
 
-\begin{lemma}
-	kan utvida avb frå Sn til samantrekkbar til Dn+1 til samantrekkbar. TODO
+\begin{proof}
+	TODO
+\end{proof}
+
+\begin{lemma} \label{thm:utvida-avb}
+	For \( X \) eit samantrekkbart rom, la \( f: S^n \to X \) vera ein kontinuerlig avbildning frå \( n \)-sfæro til \( X \). Då kan \( f \) utvidast til ein avbildning \( \hat{f} \) sånn at følgande diagram kommuterar:
+
+	\begin{center} % |, \vert funke ikkje??
+		\begin{tikzcd}
+			S^n \arrow[hook]{d}{i} \arrow{r}{f} &
+			X \\
+			B^{n+1} \arrow[dotted]{ur}{\hat{f}}
+		\end{tikzcd}
+	\end{center}
+	Der \( i: S^n \hookrightarrow B^{n+1} \) er inklusjonsavbildninga.
 \end{lemma}
 
-\begin{lemma} % Jævli vanskeleg å visa frå botnen
+\begin{proof}
+	TODO
+\end{proof}
+
+\begin{lemma} \label{thm:homeq-sd} % Jævli vanskeleg å visa frå botnen
 	La \( U = \tuple{U_i}_{i=1}^n \) vera ei endeleg mengda av kompakte og konvekse delmengder av \( \Rb^d \). La \( \Gamma \) vera som i \autoref{thm:Gamma}, la \( \Psi \) vera som i \autoref{def:Psi}, og la \( \alpha \) vera som i \autoref{thm:alpha-homeomorfi}. Då er:
 	\[
 		\alpha^{-1} \circ \Psi \circ \Gamma \simeq Id_{\gr{\Sd(\Nc(U))}_f}
 	\]
 \end{lemma}
 
-\begin{proof}
-	Dette beviset er gjort ved induksjon over \( n \)-skjelettet til \( \Sd(\Nc(U)) \) for å finna ein \( H_n : \Sk_n(\Sd(\Nc(U))) \times I \to \Sk_n(\Sd(\Nc(U))) \) som sender \( \Sk_n(\bst(U_i)) \to \bst(U_i) \)
+\begin{proof} % Rydda opp i da geometrisk realiserings greiene?
+	La \( h := \alpha^{-1} \circ \Psi \circ \Gamma \), den er kontinuerlig frå \autoref{thm:Gamma-eigenskapar} og \autoref{thm:psi-kont}. Vidare la \( C_\sigma := \intersect_{\set{ U_i : \sigma \in \bst(U_i) }} \gr{\bst(U_i)}_f \)
+
+	Dette beviset er gjort ved induksjon over \( m \)-skjelettet til \( \Sd(\Nc(U)) \) for å finna ein \( H_m : \gr{\Sk_m(\Sd(\Nc(U)))}_f \times I \to \gr{\Sk_m(\Sd(\Nc(U)))}_f \) som sender \( \gr{\Sk_m(\bst(U_i))}_f \to \gr{\bst(U_i)}_f \) og er ein homotopi frå \( id_m := id|_{\gr{\Sk_m(\Sd(\Nc(U)))}_f} \) til \( h_m := h|_{\gr{\Sk_m(\Sd(\Nc(U)))}_f} \).
+
+	For å visa grunntilfellet: \( m = 0 \), så ser me på \( H_0: \gr{\Sk_0(\Sd(\Nc(U)))}_f \times I \to \gr{\Sk_0(\Sd(\Nc(U)))}_f \). Merk at \( \Sk_0(\Sd(\Nc(U))) = \set{\set{v} : v \in \Nc(U)} \), så \( \gr{\Sk_0(\Sd(\Nc(U)))}_f \) er ein haug med diskré punkt.
+
+	Vél ein \( p \in \Sk_0(\Sd(\Nc(U))) \). Sidan \( p \) er trivielt eit abstrakt simplisielt kompleks sidan det er kun eit punkt, så kan me sjå på den geometriske realiseringa av den. \( \gr{p}_f \in C_p \), men sidan \( h(\gr{p}_f) \in \gr{\bst(U_i)} \) for alle \( p \in \bst{U_i} \), frå \autoref{thm:Gamma-inni-ui} og \autoref{thm:Psi-inni-bst}, så er \( h(\gr{p}_f) \in C_p \) også.
+
+	Men sidan \( \set{\gr{\bst(U_i)}_f}_{i = 1}^{n} \) er eit samantrekkbart overdekke av simplisielle kompleks av \( \gr{\Sd(\Nc(U))}_f \) frå \autoref{thm:bst-good}, så er alle \( C_\sigma \) samantrekkbare uavhengig av val av \( \sigma \in \Sd(\Nc(U)) \).
+
+	Difor er både \( \gr{p}_f \) og \( h(\gr{p}_f) \) i ei samantrekkbar mengda \( C_p \), og me kan konstruera ein sti i \( C_p \), betegna \( s_p \), med \( s_p(0) = \gr{p}_f \) og \( s_p(1) = h(\gr{p}_f) \) mellom dei. Om me gjer dette for alle punkta så får me den fyrste homotopien:
+	\[
+		H_0 : (\gr{p}_f, t) \mapsto s_p(t)
+	\]
+	For å sjekka om den oppfyllar kravet:
+	\[
+		H_0: \gr{\Sk_0(\bst(U_i))}_f \to \gr{\bst(U_i)}_f
+	\]
+	Så ser me at for \( p \in \Sk_0(\bst(U_i)) \implies p \in \bst(U_i) \). Så då må \( \bst(U_i) \) vera eit av ledda som snittar i definisjonen til \( C_p \), og \( s_p(I) \subseteq C_p \subseteq \gr{\bst(U_i)}_f \), som var det me ville visa.
+
+	No, anta at induksjonshypotesen gjeld for \( H_{m-1} \), vil visa at det gjeld for \( H_m \):
+
+	La \( G_f \) vera som i \autoref{thm:utvida-funk}.
+
+	Velg ein vilkårleg \( \sigma \in \Sk_m(\Sd(\Nc(U))) \) med \( \#\sigma = m \) (\( \sigma \) er ein \( m \)-simpleks). Og definer for \( (x, t) = \in G_f(\partial\sigma) \times I \union G_f(\sigma) \times \set{0, 1} \): 
+	\[
+		\hat{H}_{m-1}^\sigma (x,t) := 
+		\begin{cases}
+			id_m|_{G_f(\sigma)} & t=0 \\
+			H_{m-1}|_{G_f(\partial\sigma) \times I} & t \in (0, 1) \\
+			h_m|_{G_f(\sigma)} & t=1
+		\end{cases}
+	\]
+	Dette er kontinuerlig frå \autoref{thm:pasting-lemma}, og \( \hat{H}_{m-1}^\sigma (x,t) \in C_\sigma \) fordi for \( t = 0 \), så følger det trivielt. For \( t = 1 \) så følger det for frå \autoref{thm:Gamma-inni-ui} og \autoref{thm:Psi-inni-bst}. For \( t \in (0, 1) \), så følger det frå induksjonshypotesen.
+
+	Sidan frå \autoref{thm:utvida-funk} så er \( G_f(\partial\sigma) \times I \union G_f(\sigma) \times \set{0, 1} \cong S^{m} \) og \( G_f(\sigma) \times I \cong D^{m+1} \), så får me diagrammet og induserte avbildningar frå \autoref{thm:utvida-avb}:
+
+	% \begin{center} % |, \vert funke ikkje??
+	% 	\begin{tikzcd}
+	% 		\Rb^m \arrow{r}{\tau_f}
+	% 		& \Rb^m \arrow{r}{L}
+	% 		& \Rb^l
+	% 		& \Rb^l \arrow{l}[swap]{\tau_g} \\
+	% 		\gr{K}_f \arrow[dashed]{r}{\hat{\tau}_f} \arrow[hook]{u}
+	% 		& \gr{K}_{\hat{f}} \arrow{r}{\hat{L}} \arrow[hook]{u}
+	% 		& \gr{K}_{\hat{g}} \arrow[hook]{u}
+	% 		& \gr{K}_g \arrow[dashed]{l}[swap]{\hat{\tau}_g} \arrow[hook]{u}
+	% 	\end{tikzcd}
+	% \end{center}
+
+	\begin{center} % |, \vert funke ikkje??
+		\begin{tikzcd}
+			S^m \arrow[hook, dashed, swap]{dd}{\gamma \circ i \circ \beta} \arrow{rr}{\beta} &
+			&
+			G_f(\partial\sigma) \times I \union G_f(\sigma) \times \set{0, 1} \arrow[hook]{dd}{i}  \arrow{dl}[swap]{\hat{H}_{m-1}^\sigma} \\
+			&
+			C_\sigma &
+			\\
+			B^{m+1} \arrow[dashed]{ru}{\xi} &
+			&
+			G_f(\sigma) \arrow{ll}[swap]{\gamma}  \times I \arrow[dashed, swap, red]{lu}{\xi \circ \gamma}
+		\end{tikzcd}
+	\end{center}
+	Der avbildninga \( \xi: B^{m+1} \to C_\sigma \) er den me får frå \autoref{thm:utvida-avb}, og \( \beta, \gamma \) er homeomorfiane me får frå \autoref{thm:utvida-funk}
+
+	Me kallar den raude avbildninga: \( \xi \circ \gamma = H_m|_{G_f(\sigma) \times I} \).
+
+
+	% \gr{\Sk_m(\bst(U_i))}_f \to \gr{\bst(U_i)}_f
+	Induksjonshypotesen gjeld for \( H_m|_{G_f(\sigma) \times I} \), fordi om ein let \( x \in \gr{\Sk_m(\bst(U_i))}_f \intersect G_f(\sigma) \subseteq C_\sigma \), men sidan \( \gr{\Sk_m(\bst(U_i))}_f \), dekkar ein \( x \in G_f(\sigma) \), så må \( \gr{\Sk_m(\bst(U_i))}_f \) vera eit av ledda som blir snitta i definisjonen av \( C_\sigma \). så:
+	\[
+		H_m|_{G_f(\sigma) \times I}(x) \in C_\sigma \subseteq \gr{\Sk_m(\bst(U_i))}_f
+	\]
+	Og sidan valet vårt av \( \sigma \) med \( \#\sigma = m \) var vilkårleg, så kan me lima alle saman med \autoref{thm:pasting-lemma}, og ein får ein:
+	\[
+		H_m : \gr{\Sk_m(\Sd(\Nc(U)))}_f \times I \to \gr{\Sk_m(\Sd(\Nc(U)))}_f
+	\]
+	Sidan \( U \) er endeleg, så er \( \Nc(U) \) og \( \Sd(\Nc(U)) \) også endelege og har derfor ein simpleks av maksimal lengde \( k \), så om ein gjenntek induksjonen mange nok gangar til \( \Sk_{k}(\Sd(\Nc(U))) = \Sk_{k+1}(\Sd(\Nc(U))) \), så får ein at
+	\[
+		H = H_k
+	\]
+	Er ein homotopi frå \( id_{\gr{\Sd(\Nc(U))}_f} \) til \( h = \alpha^{-1} \circ \Psi \circ \Gamma \).
+
 \end{proof}
 
 % \begin{lemma} % Går ikkje... ;_;
@@ -1178,15 +1322,26 @@ Dette beviset er frå TODO
 % \end{proof}
 
 \begin{theorem} %Nerveteoremet for endeleg, reel, konveks, kompakt overdekke
-	Tek spesiell overdekke
-	Gamma psi er homotopiekvivalen
-	psi gamma
+	La \( U = \set{U_i}_{i=1}^n \) vera ei endeleg mengda av kompakte og konvekse delmengdar av \( \Rb^d \). Då er \( \union_{u \in U} u \) homotopiekvivalent med \( \gr{\Nc(U)} \).
 \end{theorem}
 
 \begin{proof}
-	TODO
+	Velg ein affin imbedding \( g: U \to \Rb^{m_1} \) og ein affin imbedding \( f: \Nc(U) \to \Rb^{m_2} \). Definér \( \Psi \) som i \autoref{def:Psi}, \( \Gamma \) som i \autoref{thm:Gamma}, og \( \alpha \) som i \autoref{thm:alpha-homeomorfi}.
+
+	Då får me frå \autoref{thm:homeq-u} og \autoref{thm:homeq-sd} at \( \alpha^{-1} \circ \Psi \) er ein homotopi-invers til \( \Gamma \), og gir derfor ein homotopiekvivalens mellom \( \union_{u \in U} u \) og \( \gr{\Sd(\Nc(U))}_f \).
+
+	Men sidan \( \gr{\Sd(\Nc(U))}_f \stackrel{\alpha}{\cong} \gr{\Nc(U)}_g \) frå \autoref{thm:alpha-homeomorfi}, så får me ein homotopiekvivalens mellom \( \union_{u \in U} u \) og \( \gr{\Nc(U)}_g \).
+
+	Og frå \autoref{thm:gr-eintydig}, så er \( \gr{\Nc(U)}_g \) homeomorf til alle geometriske realsieringar av \( \Nc(U) \), og resultatet følger.
 \end{proof}
 
-\section{Anvendingar av Nerveteoremet}
+\section{Konklusjon}
+
+Nerveteoremet viser at Cech komplekset er kult... TODO
+
+\section{Referansar}
+
+\bibliography{Bachelor}{}
+\bibliographystyle{plain}
 
 \end{document}
