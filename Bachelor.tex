@@ -1,43 +1,78 @@
 \documentclass[a4paper, 12pt, norsk]{article}
 
-% For å kunna skriva æøå i tekstar MERK: Blir automatisk ubrukeleg med lualatex of fontspec
-%\usepackage[utf8]{inputenc} 
+% Oversett visse ord til norsk.
+\usepackage[norsk]{babel}
+
+% For å kunna skriva æøå i tekstar MERK: Blir automatisk ubrukeleg med lualatex og fontspec
+%\usepackage[utf8]{inputenc}
+
 \usepackage[T1]{fontenc}
-\usepackage[margin=2cm]{geometry} % Fiksa margin
-\usepackage[ddmmyyyy]{datetime} % Fiksar datorormatet på tiitelen
+
+% Fiksa margin
+\usepackage[margin=2cm]{geometry}
+
+% Fiksar datoformatet på tiitelen
+\usepackage[ddmmyyyy]{datetime} 
+
 \usepackage{amssymb}
-\usepackage{amsmath} % For visse mattesymbol, typ \mathbb
-\usepackage{graphicx} % Bilete
-%\usepackage{minted} % For kodesnuttar og resultat
-\usepackage{enumitem} % Kan endra på korleis listar ser ut
 
-\usepackage[hidelinks,colorlinks=true]{hyperref} % For autoref
-\hypersetup{allcolors=[rgb]{0,0.31,0.62}} % For fargar på ting ein referer til i autoref
+% For visse mattesymbol, typ \mathbb
+\usepackage{amsmath}
 
-\usepackage{amsthm} % For teorem, definisjon, bevis enviornments.
+% Bilete
+\usepackage{graphicx}
+
+% For kodesnuttar og resultat
+%\usepackage{minted}
+
+% Kan endra på korleis listar ser ut
+\usepackage{enumitem}
+
+% For autoref
+\usepackage[hidelinks,colorlinks=true]{hyperref} 
+
+% For fargar på ting ein referer til i autoref
+\hypersetup{allcolors=[rgb]{0,0.31,0.62}}
+
+% For teorem, definisjon, bevis enviornments.
+\usepackage{amsthm} 
+
 \usepackage{thmtools} 
 
+% For svgar
 \usepackage{svg}
-\svgpath{svg/}
-\usepackage{float}
-%\usepackage[subsection]{placeins}
 
+% Set svg mappo
+\svgpath{svg/}
+
+% For å laga / halda styr på flytopbjekt
+% \usepackage{float}
+
+% \usepackage[subsection]{placeins}
+
+% Fjernar indents ved nye avsnitt, men gjer linjeavstanden kortare (Kanskje)
+\usepackage{parskip} 
+
+% Lualatex font greie
+\usepackage{fontspec}
+
+\usepackage{unicode-math}
+
+% Set fontar som blir brukt
+% \setmainfont{Atkinson Hyperlegible}
+% \setmainfont{Fira Sans}
+% \setmathfont{Fira Math}
+% \setmathfont[range=\setminus]{Asana Math}
+
+%For kommutative diagram med tikz
+\usepackage{tikz-cd}
+
+% Thaule tikzcd erstatning
 %\usepackage{tikz}
 %\usetikzlibrary{matrix}
 %\newcommand{\diagram}[3]{\matrix (#1) [matrix of math nodes,row
 %  sep={#2},column sep={#3},text height=1.5ex,text
 %  depth=0.25ex]}
-
-\usepackage{tikz-cd} %For kommutative diagram med tikz
-\usepackage{parskip} %Fjernar indents, men gjer linjeavstanden kortare (Kanskje)
-
-\usepackage{fontspec}
-\usepackage{unicode-math}
-
-%\setmainfont{Atkinson Hyperlegible}
-% \setmainfont{Fira Sans}
-% \setmathfont{Fira Math}
-% \setmathfont[range=\setminus]{Asana Math}
 
 % Ny type lista med ganske perfekt spacing
 \newlist{plist}{enumerate}{5}
@@ -46,62 +81,55 @@
 \setlist[plist,2]{label*=.\arabic*, labelwidth=1.25cm, leftmargin=1.25cm}
 \setlist[plist,3]{label*=.\arabic*, labelwidth=1.5cm, leftmargin=1.5cm}
 
+% Teoremstil
 \theoremstyle{plain}
 \newtheorem{theorem}{Teorem}[section]
 \newtheorem{proposition}[theorem]{Proposjon}
 \newtheorem{corollary}[theorem]{Korollar}
 \newtheorem{lemma}[theorem]{Lemma}
 
+% Definisjonstil
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definisjon}
 \newtheorem{example}[theorem]{Døme}
 \newtheorem{remark}[theorem]{Merknad}
 
-\usepackage[norsk]{babel}
-%\renewcommand*{\proofname}{Bevis}
-
+% Praktiske forkortningar
 \newcommand{\Rb}{\mathbb{R}}
 \newcommand{\Qb}{\mathbb{Q}}
 \newcommand{\Zb}{\mathbb{Z}}
 \newcommand{\Nb}{\mathbb{N}}
 \newcommand{\Nc}{\mathcal{N}}
-%\newcommand{\Cech}{ \operatorname{Cech} }
-\DeclareMathOperator{\Cech}{Cech}
-\newcommand{\intersect}{ \mathop{\cap}\limits } % For finare grenser på snitt
+
+% Praktiske omformuleringar
+\newcommand{\intersect}{ \mathop{\cap}\limits }
 \newcommand{\union}{ \mathop{\cup}\limits }
+
+% Praktiske kommandoar
 \newcommand{\gr}[1]{ \lvert #1 \rvert } % Geometrisk realisering
-\newcommand{\set}[1]{ \left \{ #1 \right \} } % Mengda
+\newcommand{\set}[1]{ \left\{ #1 \right\} } % Mengde
 \newcommand{\tuple}[1]{ \left( #1 \right) } % Tupel
-\DeclareMathOperator{\Sd}{Sd}
-\DeclareMathOperator{\bst}{bst}
-\DeclareMathOperator{\Sk}{Sk}
-\DeclareMathOperator{\Id}{Id}
+
+% Nødvendige nye operatorar for bacheloroppgåva
+\DeclareMathOperator{\Cech}{Cech} % Cech kompleks
+\DeclareMathOperator{\Sd}{Sd} % Barysentrisk Oppdeling
+\DeclareMathOperator{\bst}{bst} % Lukka barysentrisk stjerna
+\DeclareMathOperator{\Sk}{Sk} % Skjelett
+\DeclareMathOperator{\Id}{Id} % Identitetsavbildninga
 
 % PERSONLEGE NOTAT
 
-% Større separator i mengdar
-% Rydda vekk semikolonar og kolonar i teksten min
+% Større separator i mengder
 % \cup og \cap ser merkelege ut
-% Bytta font? Litt uleseleg til tider. Ingen kaligrafi N, \bigcup/\bigcap f.eks
+% Bytta font?
 % Fiksa tikz diagrammet
-% Skriva om det longe beviset
 % Fleire eksempel!!
-% Kva er feil med \vert og |?
-% Nervedefinisjon for topologisk rom og kun endeleg?
 % Hugs å spesifisér alt! Skriv ned idéen bak korleis eg skriv ting.
-% Seksjon 0 med definisjonar og minimumskrav?
 % Figurtekst skal vera kort, eksempelteksten skal referera til figurteksten
 % Eksempeltekst til kvar figur / figur må bli nemd minst ein gong.
 % Skriv om beviset for 1.17 (homeomorfi mellom geometriske realiseringar.)
 % Legg til intuitiv forklaring på kva som foregår i byrjinga.
 % Kun euklidsk norm på geometrisk realisering.
-
-% PLAN
-% Fokus på å forbetra del 1, og så byrja på del 2. Pass på Magnus sitt bevis er litt shady.
-
-% MERK:
-% Drit i uendeleg!
-
 
 \title{Nerveteoremet og Anvendingar}
 \author{Håvard Skjetne Lilleheie}
@@ -139,7 +167,7 @@ Eg kjem til å annta grunnleggande kunnskap innan topologi, lineær algebra, ana
 \end{theorem}
 
 \begin{theorem} \label{thm:definer-lin-op}
-	For ei mengda med \( n \) lineært uavhengige vektorar i \( \Rb^d \), med \( n \leq d \): \( \set{v_1, v_2, \dots, v_n} \), så kan ein konstruera ei lineæravbildning \( L \) som tek \( v_1 \mapsto L(v_1) \).
+	For ei mengde med \( n \) lineært uavhengige vektorar i \( \Rb^d \), med \( n \leq d \): \( \set{v_1, v_2, \dots, v_n} \), så kan ein konstruera ei lineæravbildning \( L \) som tek \( v_1 \mapsto L(v_1) \).
 \end{theorem}
 
 \begin{theorem} \label{thm:universal-eigenskap-underromstopologi}
@@ -167,7 +195,7 @@ Eg kjem til å annta grunnleggande kunnskap innan topologi, lineær algebra, ana
 \end{theorem}
 
 \begin{theorem} \label{thm:distanse-er-kont}
-	La \( X \) vera ei delmengda av \( \Rb^d \). La \( x \in \Rb^d \). Då er:
+	La \( X \) vera ei delmengde av \( \Rb^d \). La \( x \in \Rb^d \). Då er:
 	\[
 		d(x, X) = \inf_{y \in X} ||x-y||
 	\]
@@ -175,7 +203,7 @@ Eg kjem til å annta grunnleggande kunnskap innan topologi, lineær algebra, ana
 \end{theorem}
 
 \begin{theorem} \label{thm:maksimum-av-kont-er-kont}
-	La \( F := \set{f_i : \Rb^d \to \Rb} \) vera ei endeleg mengda av kontinuerlege avbildningar. Då er:
+	La \( F := \set{f_i : \Rb^d \to \Rb} \) vera ei endeleg mengde av kontinuerlege avbildningar. Då er:
 	\[
 		g(x) := \max_{f \in F} f(x)
 	\]
@@ -183,7 +211,7 @@ Eg kjem til å annta grunnleggande kunnskap innan topologi, lineær algebra, ana
 \end{theorem}
 
 \begin{theorem} \label{thm:infimum-over-kompakt-er-min} \label{thm:supremum-over-kompakt-er-maks}
-	La \( K \) vera ei kompakt mengda, og la \( f: K \to \Rb \) vera ein vilkårleg kontinuelrleg funskjon. Då er:
+	La \( K \) vera ei kompakt mengde, og la \( f: K \to \Rb \) vera ein vilkårleg kontinuelrleg funskjon. Då er:
 
 	\[
 		\inf_{x \in K} f(x) = \min_{x \in K} f(x)
@@ -195,7 +223,7 @@ Eg kjem til å annta grunnleggande kunnskap innan topologi, lineær algebra, ana
 \end{theorem}
 
 \begin{theorem} \label{thm:endeleg-union-kompakt-er-kompakt}
-	La \( \set{K_i}_{i = 1}^n \) vera ei endeleg mengda av kompakte mengder. Då er:
+	La \( \set{K_i}_{i = 1}^n \) vera ei endeleg mengde av kompakte mengder. Då er:
 	\[
 		K = \union_{i=1}^n K_i
 	\]
@@ -215,44 +243,48 @@ Eg kjem til å annta grunnleggande kunnskap innan topologi, lineær algebra, ana
 \section{Grunnleggande definisjonar og resultat}
 
 \begin{definition} \label{def:ASK}
-	For $V$ ei ikkje-tom og endeleg mengda, så definerar me $K$ til å vera eit \emph{endeleg asbtrakt simplisielt kompleks over $V$} om:
+	For $V$ ei ikkje-tom og endeleg mengde, så definerar me $K$ til å vera eit \emph{endeleg asbtrakt simplisielt kompleks over $V$} om:
 	\begin{enumerate}
 		\item{$\forall v \in V: \{v\} \in K$}
 		\item{\( \forall \sigma \in K: \sigma \subseteq V \)}
 		\item{$\forall \sigma \in K, \forall \tau \subseteq \sigma: \tau \in K$}
 	\end{enumerate}
-	Då kallar me og $V$ for \emph{hjørnemengda} til $K$.
+	Då kallar me og $V$ for \emph{hjørnemengde} til $K$.
 \end{definition}
 
-Nokre eksempel av endelege abstrakte simplisielle kompleks over \( P=\set{p_1, p_2, p_3} \):
+\begin{example}
+	Nokre eksempel av endeleg abstrakte simplisielle kompleks over \( P=\set{p_1, p_2, p_3} \):
 
-\begin{itemize}
-	\item{$A_1=\{\{p_1, p_2\}, \{p_1\}, \{p_2\}\}$}
-	\item{$A_2=\{\{p_1\}, \{p_2\}, \{p_3\}, \{p_1, p_3\}, \{p_2, p_3\}\}$}
-	\item{$A_3=\{\{p_1\}, \{p_2\}, \{p_3\}\}$}
-\end{itemize}
+	\begin{itemize}
+		\item{$A_1=\{\{p_1, p_2\}, \{p_1\}, \{p_2\}\}$}
+		\item{$A_2=\{\{p_1\}, \{p_2\}, \{p_3\}, \{p_1, p_3\}, \{p_2, p_3\}\}$}
+		\item{$A_3=\{\{p_1\}, \{p_2\}, \{p_3\}\}$}
+	\end{itemize}
 
-Og her er nokre ikkje-eksempel av endelege abstrakte simplisielle kompleks over \( P=\set{p_1, p_2, p_3} \):
+	Og her er nokre ikkje-eksempel av endeleg abstrakte simplisielle kompleks over \( P=\set{p_1, p_2, p_3} \):
 
-\begin{itemize}
-	\item{$A_1'=\{\{p_1, p_2\}, \{p_1\}\}=A_1 \setminus \{\{p_2\}\}$, fordi TODO}
-	\item{$A_2'=\{\{p_1\}, \{p_2\}, \{p_3\}, \{p_1, p_3\}, \{p_2, p_3\}, \{p_1, p_2, p_3\}\}=A_2 \union \{\{p_1, p_2, p_3\}\}$, fordi TODO}
-	\item{$A_3'=\{\{p_1\}, \{p_2\}, \{p_2, p_3\}\}=\left(A_3 \setminus \{\{p_3\}\}\right) \union \{\{p_2, p_3\}\}$, fordi TODO}
-\end{itemize}
+	\begin{itemize}
+		\item{$A_1'=\{\{p_1, p_2\}, \{p_1\}\}=A_1 \setminus \{\{p_2\}\}$, fordi TODO}
+		\item{$A_2'=\{\{p_1\}, \{p_2\}, \{p_3\}, \{p_1, p_3\}, \{p_2, p_3\}, \{p_1, p_2, p_3\}\}=A_2 \union \{\{p_1, p_2, p_3\}\}$, fordi TODO}
+		\item{$A_3'=\{\{p_1\}, \{p_2\}, \{p_2, p_3\}\}=\left(A_3 \setminus \{\{p_3\}\}\right) \union \{\{p_2, p_3\}\}$, fordi TODO}
+	\end{itemize}
+\end{example}
 
-Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men som me kjem til å sjå seinare; så er dette ein svært praktisk simplifisering av informasjon som bevarer mykje av eigenskapane til den originale datamengda ein vil sjå på.
+\begin{remark}
+	Inspirasjonen bak denne definisjonen kan verka tilfeldig og heilt umotivert, men som me kjem til å sjå seinare, så er dette ein svært praktisk simplifisering av informasjon som bevarer mykje av eigenskapane til den originale datamengda ein vil sjå på.
 
-Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
+	Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
+\end{remark}
 
 \begin{definition}
-	Ein endeleg mengda punkt $\{p_1, p_2, p_3, \dots, p_n\}$ i $\Rb^m$ for $m\geq1$ er \emph{geometrisk uavhengige} om for $\{a_i\}_{i=0}^n$ med $a_i\in\Rb$, så:
+	Ein endeleg mengde punkt $\{p_1, p_2, p_3, \dots, p_n\}$ i $\Rb^m$ for $m\geq1$ er \emph{geometrisk uavhengige} om for $\{a_i\}_{i=0}^n$ med $a_i\in\Rb$, så:
 	\begin{equation*}
 		\left(\sum_{i=1}^n a_i=0 \land  \sum_{i=1}^n a_ip_i=0\right)\implies a_i=0 \; \forall i
 	\end{equation*}
 \end{definition}
 
 \begin{theorem}\label{thm:geometrisklineærtuavhengig}
-	Ei endeleg mengda $\{p_1, p_2, p_3, \dots, p_n \}$ av punkt i $\Rb^m$ er geometrisk uavhengige $\Longleftrightarrow$ vektorane $\{(p_2-p_1), (p_3-p_1), (p_4-p_1),\dots,(p_n-p_1)\}$ er lineært uavhengige i $\Rb^m$
+	Ei endeleg mengde $\{p_1, p_2, p_3, \dots, p_n \}$ av punkt i $\Rb^m$ er geometrisk uavhengige $\Longleftrightarrow$ vektorane $\{(p_2-p_1), (p_3-p_1), (p_4-p_1),\dots,(p_n-p_1)\}$ er lineært uavhengige i $\Rb^m$
 \end{theorem}
 
 \begin{proof}
@@ -279,16 +311,16 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 \end{proof}
 
 \begin{remark}
-	Ein direkte konsekvens frå dette resultatet og grunnleggande lineær algebra er at ein geometrisk uavhengig mengda i $\Rb^m$ kan maksimalt innehalda $m+1$ forskjellige punkt. Dette er fordi det kan ikkje vera meir enn $m$ lineært uavhengige vektorar i eit $m$-dimensjonalt vektorrom.
+	Ein direkte konsekvens frå dette resultatet og grunnleggande lineær algebra er at ein geometrisk uavhengig mengde i $\Rb^m$ kan maksimalt innehalda $m+1$ forskjellige punkt. Dette er fordi det kan ikkje vera meir enn $m$ lineært uavhengige vektorar i eit $m$-dimensjonalt vektorrom.
 \end{remark}
 
 \begin{definition}
-	Ein \emph{konveks kombinasjon} av ei endeleg mengda \( P = \set{p_1, p_2, p_3, \dots, p_n} \) av punkt i \( \Rb^m \) er eit punkt \( x\in\Rb^m \) gitt ein tupel av koeffisientar \( A=\{a_1, a_2, a_3, \dots, a_n\} \) i \( \Rb \), med \( a_i\geq0\forall i \) og \( \sum_{i=1}^n a_i = 1 : \)
+	Ein \emph{konveks kombinasjon} av ei endeleg mengde \( P = \set{p_1, p_2, p_3, \dots, p_n} \) av punkt i \( \Rb^m \) er eit punkt \( x\in\Rb^m \) gitt ein tupel av koeffisientar \( A=\{a_1, a_2, a_3, \dots, a_n\} \) i \( \Rb \), med \( a_i\geq0\forall i \) og \( \sum_{i=1}^n a_i = 1 : \)
 	
 	\begin{equation*}
 		x=\sum_{i=1}^n a_ip_i
 	\end{equation*}
-	Om $P$ er ein tupel (ein ordna mengda) så blir koeffisientane også ein tupel, og $A$ blir då kalla dei \emph{barysentriske koordinatane} til $x$.
+	Om $P$ er ein tupel (ein ordna mengde) så blir koeffisientane også ein tupel, og $A$ blir då kalla dei \emph{barysentriske koordinatane} til $x$.
 \end{definition}
 
 \begin{theorem} \label{thm:unik-barysentrisk-koordinat}
@@ -312,7 +344,7 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 \end{proof}
 
 \begin{definition}
-	Det \emph{geometrisk simplekset} utspent av ei geometrisk uavhengig mengda av punkt $P=\{p_1, p_2, p_3, \dots, p_n\}$ i $\Rb^m$, er alle konvekse kombinasjonar av $P$.
+	Det \emph{geometrisk simplekset} utspent av ei geometrisk uavhengig mengde av punkt $P=\{p_1, p_2, p_3, \dots, p_n\}$ i $\Rb^m$, er alle konvekse kombinasjonar av $P$.
 	\\Vidare, så kallar me dette geometriske simplekset for eit \emph{$(n-1)$-simpleks}, når $P$ består av $n$ punkt.
 \end{definition}
 
@@ -321,7 +353,7 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 \end{remark}
 
 \begin{example}
-	\phantom{123}
+	TODO
 	\begin{figure}[htbp]
 		\begin{center}
 			\includesvg[width=0.6\textwidth]{Eksempel1-8.svg}
@@ -331,32 +363,15 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 \end{example}
 
 \begin{remark}
-	Noko som er svært interessant med denne definisjonen er at om ein har ei geometrisk uavhengig mengda $P$, og ser på $\hat{P}_i := P \setminus \{p_i\}$, så vil dette også vera ei geometrisk uavhengig mengda. I tilleg så vil det geometriske simplekset utspent av $\hat{P}_i$ vere ei delmengda av det geometriske simplekset utspent av $P$. Med andre ord; alle delmengdar av $P$ dannar også andre geometriske simpleks, inneholdt i det originale geometriske simplekset! Men ikkje nok med det, fordi når ein ser på det geometriske simplekset utspent av $\hat{P}_i$ for ein eller annan vilkårleg $i$, så ser me at det er som eine "fjeset" av det geometriske simplekset utspunne av $P$. 
-	%Dette inspirerar ein ny definisjon:
+	Noko som er svært interessant med denne definisjonen er at om ein har ei geometrisk uavhengig mengde $P$, og ser på $\hat{P}_i := P \setminus \{p_i\}$, så vil dette også vera ei geometrisk uavhengig mengde. I tilleg så vil det geometriske simplekset utspent av $\hat{P}_i$ vere ei delmengde av det geometriske simplekset utspent av $P$. Med andre ord, alle delmengder av $P$ dannar også andre geometriske simpleks, inneholdt i det originale geometriske simplekset! Men ikkje nok med det, fordi når ein ser på det geometriske simplekset utspent av $\hat{P}_i$ for ein eller annan vilkårleg $i$, så ser me at det er som eine "fjeset" av det geometriske simplekset utspunne av $P$. 
 \end{remark}
 
-% \begin{definition}
-% 	Eit \emph{fjes} til eit geometrisk simpleks utspunne av ein geometrisk uavhengig mengda $P=\{p_1, p_2, p_3, \dots, p_n\}$, er eit geometriske simpleks utspunne av $\hat{P}_i := P\setminus \{p_i\}$ for ein eller annan $i$.
-% \end{definition}
-
-% \begin{definition} % Ikkje utspunne av nokre punkt?
-% 	Eit \emph{geometrisk simplisielt kompleks} er ei mengda av geometriske simpleksar (utspent av punkt i $\Rb^m$), $K$, sånn at:
-% 	\begin{enumerate}
-% 		\item{For $\sigma \in K$ så er alle fjesa til $\sigma$ også i $K$.}
-% 		\item{For $\sigma, \tau \in K$ med $\sigma \intersect \tau \neq \emptyset$, då er $\sigma \intersect \tau$ eit fjes av både $\sigma$ og $\tau$.}
-% 	\end{enumerate}
-% \end{definition}
-
-% \begin{theorem} \label{thm:unik-utvida-barysentrisk-koordinat}
-% 	Geometrisk simplisielle kompleks har ein utvida unik barysentrisk koordinat.
-% \end{theorem}
-
 \begin{definition}
-	For $V$ ein endeleg mengda og $m\geq1$, så er $f:V\rightarrow \Rb^m$ ein \emph{affin imbedding} om $f$ er injektiv, og om biletet, $f(V)$ er ei geometrisk uavhengig mengda av punkt.
+	For $V$ ein endeleg mengde og $m\geq1$, så er $f:V\rightarrow \Rb^m$ ein \emph{affin imbedding} om $f$ er injektiv, og om biletet, $f(V)$ er ei geometrisk uavhengig mengde av punkt.
 \end{definition}
 
 \begin{definition}
-	For eit endeleg abstrakt simplisielt kompleks $K$, over ei ikkje-tom hjørnemengda $V$, gitt ein vilkårleg affin imbedding $f:V\to\Rb^m$ for ein eller annan $m\geq1$. Så er den \emph{geometriske realiseringa med hensyn til $f$ av \( K \)} unionen av alle dei geometriske simpleksane utspunne av punkta i $f(\sigma)$, for $\sigma\in K$. Dette er ofte betegna $\gr{K}_f$
+	For eit endeleg abstrakt simplisielt kompleks $K$, over ei ikkje-tom hjørnemengde $V$, gitt ein vilkårleg affin imbedding $f:V\to\Rb^m$ for ein eller annan $m\geq1$. Så er den \emph{geometriske realiseringa med hensyn til $f$ av \( K \)} unionen av alle dei geometriske simpleksane utspunne av punkta i $f(\sigma)$, for $\sigma\in K$. Dette er ofte betegna $\gr{K}_f$
 \end{definition}
 
 % \begin{theorem}
@@ -378,7 +393,7 @@ Fyrst, lat oss sjå korleis dette kan tenkast på som meir geometrisk:
 		&= \sum_{i=1}^k a_i f(v_i) - a_i x \\
 		&= \sum_{i=1}^k a_i(f(v_i) - x)
 	\end{align*}
-	Som er ein konveks kombinasjon av element i \( \hat{\tau} \circ f(\sigma) \), og derfor ei delmengda av \( \gr{K}_{\hat{\tau} \circ f} \).
+	Som er ein konveks kombinasjon av element i \( \hat{\tau} \circ f(\sigma) \), og derfor ei delmengde av \( \gr{K}_{\hat{\tau} \circ f} \).
 
 	For å visa at \( \hat{\tau}(\gr{K}_f) \supseteq \gr{K}_{\hat{\tau} \circ f} \), så tek me \( y \in \gr{K}_{\hat{\tau} \circ f} \). Då, for ein eller annan \( \sigma \in K \), så er \( y \) ein konveks kombinasjon av element i \( \hat{\tau}\circ f(\sigma) \). Altså: \(  y = \sum_{i=1}^k a_i (f(v_i) - x \). Ein lik sum-manipulasjon som over motsatt veg gir oss at \( y = \hat{\tau}\left(\sum_{i=1}^k a_i f(v_i)\right) \), altså \( \hat{\tau}(z) \), der \( z \) er ein konveks kombinasjon av punkta \( f(\sigma) \). Altså eit element i \( \hat{\tau}(\gr{K}_f) \).
 
@@ -408,9 +423,9 @@ For $i=1$:
 	\end{equation*}
 	Om ein då let $\hat{L}=L|_{\gr{K}_{\hat{f}}}$, og $L_2:\Rb^l\to\Rb^m$ vera den lineære funskjonen som sender $y_i\mapsto x_i$ og let $\tilde{L}=L_2|_{\gr{K}_{\hat{g}}}$, så er definisjonane symmetriske og det symmetriske resultatet gjelder derfor for $L_2$ også.
 
-	For eit vilkårleg element $x\in\gr{K}_{\hat{f}}$ så er $x$ eit element av ein simpleks i det geometriske simplisielle komplekset. Det vil seie, me kan utrykka $x$ som ein konveks sum av ein geometrisk uavhengig mengda, som korresponderar til den simpleksen $x$ er eit element i.
+	For eit vilkårleg element $x\in\gr{K}_{\hat{f}}$ så er $x$ eit element av ein simpleks i det geometriske simplisielle komplekset. Det vil seie, me kan utrykka $x$ som ein konveks sum av ein geometrisk uavhengig mengde, som korresponderar til den simpleksen $x$ er eit element i.
 	
-	Me velger derfor ein $\sigma\in K$ sånn at $\hat{f}(\sigma)=\{\hat{f}(k_1), \hat{f}(k_2), \dots, \hat{f}(k_r)\}$. Dette er ein geometrisk uavhengig mengda fordi $\tau_f$ er injektiv og sender $x_i\mapsto x_i$ som er lineært uavhengig og biletet er derfor geometrisk uavhengig om $\{x_i\}$ er lineært uavhengig, som det er frå \autoref{thm:geometrisklineærtuavhengig}.
+	Me velger derfor ein $\sigma\in K$ sånn at $\hat{f}(\sigma)=\{\hat{f}(k_1), \hat{f}(k_2), \dots, \hat{f}(k_r)\}$. Dette er ein geometrisk uavhengig mengde fordi $\tau_f$ er injektiv og sender $x_i\mapsto x_i$ som er lineært uavhengig og biletet er derfor geometrisk uavhengig om $\{x_i\}$ er lineært uavhengig, som det er frå \autoref{thm:geometrisklineærtuavhengig}.
 	
 	La denne mengda utspenna punkta til ein simpleks som $x$ er eit element av. Då kan me utrykka $x$ som ein konveks kombinasjon av elementa i $\hat{f}(\sigma)$: $x=\sum_{i=1}^ka_i\hat{f}(k_i)$ med $\sum_{i=1}^ka_i=1$ og $a_i\geq0\; \forall i$. 
 	
@@ -478,7 +493,7 @@ For $i=1$:
 \end{definition}
 
 \begin{definition}
-	For $P$ ei endeleg mengda av punkt i $\Rb^m$ og $r\in[0,\infty)$, så er \emph{Cech-komplekset til $P$ med radius $r$} definert som:
+	For $P$ ei endeleg mengde av punkt i $\Rb^m$ og $r\in[0,\infty)$, så er \emph{Cech-komplekset til $P$ med radius $r$} definert som:
 	\[
 		\Cech_r(P):=\left\{\sigma\subseteq P \mid \intersect_{p\in\sigma}\bar{B}_r(p)\neq\emptyset\right\}
 	\]
@@ -495,14 +510,14 @@ For $i=1$:
 \end{example}
 
 \begin{theorem} \label{thm:CASK}
-	For $P$ ei endeleg mengda punkt i $\Rb^m$ og $r\in[0,\infty)$, så er Cech komplekset til $P$ med radius $r$ eit abstrakt simplisielt kompleks over $P$.
+	For $P$ ei endeleg mengde punkt i $\Rb^m$ og $r\in[0,\infty)$, så er Cech komplekset til $P$ med radius $r$ eit abstrakt simplisielt kompleks over $P$.
 \end{theorem}
 
 \begin{proof}
 	For å visa dette, så må me visa at begge aksioma frå \autoref{def:ASK} held:
 	\begin{enumerate}
 		\item{ For ein \( \hat{p} \in P \) så ser me at for \( \sigma = \set{\hat{p}} \), så er \( \intersect_{p\in\sigma}\bar{B}_r(p)=\bar{B}_r(\hat{p})\neq\emptyset \) og då er \( \set{\hat{p}} \in \Cech_r(P) \) }
-		\item{ Per definisjon av Cech-komplekset, så er alle \( \sigma \in \Cech_r(P) \) ei delmengda av \( P \) }
+		\item{ Per definisjon av Cech-komplekset, så er alle \( \sigma \in \Cech_r(P) \) ei delmengde av \( P \) }
 		\item{ For \( \sigma \in \Cech_r(P) \), så ser me at \( \intersect_{p\in\sigma} \bar{B}_r(p) \neq \emptyset \), men det betyr at for alle \( \tau \subseteq \sigma \), så er \( \intersect_{p\in\tau} \bar{B}_r(p) \) også ikkje-tom, fordi om den var tom, så ville: 
 			\[ 
 				\intersect_{p\in\sigma} \bar{B}_r(p) = \left( \intersect_{p\in(\sigma\setminus\tau)} \bar{B}_r(p) \right) \intersect \left( \intersect_{p\in\tau} \bar{B}_r(p) \right) = \left( \intersect_{p\in(\sigma\setminus\tau)} \bar{B}_r(p) \right) \intersect \emptyset = \emptyset 
@@ -514,9 +529,9 @@ For $i=1$:
 Eit fint resultat som er ekvivalent til definisjonen av Cech komplekset:
 
 \begin{theorem}
-	For $P$ ei endeleg mengda av punkt i $\Rb^m$ og $r\in[0, \infty)$, så:
+	For $P$ ei endeleg mengde av punkt i $\Rb^m$ og $r\in[0, \infty)$, så:
 	\begin{equation*}
-		\sigma\in \Cech_r(P) \Longleftrightarrow \exists x\in\Rb^m; \sigma \subseteq \bar{B}_r(x)
+		\sigma\in \Cech_r(P) \Longleftrightarrow \exists x\in\Rb^m : \sigma \subseteq \bar{B}_r(x)
 	\end{equation*}
 \end{theorem}
 
@@ -531,15 +546,15 @@ Eit fint resultat som er ekvivalent til definisjonen av Cech komplekset:
 
 Dette gir oss nok grunnlag til å endeleg forstå og definera nerva:
 
-\begin{definition} % Kan definera for vilk. mengda? Og endeleg?
-	La $X$ vera ei mengda. Vidare la $F$ vera ei mengda av delmengder av $X$. \emph{Nerva} til $F$, betegna som $\Nc(F)$, er:
+\begin{definition}
+	La $X$ vera ei mengde. Vidare la $F$ vera ei mengde av delmengder av $X$. \emph{Nerva} til $F$, betegna som $\Nc(F)$, er:
 	\begin{equation*}
 		\Nc(F) := \left \{ \sigma \subseteq F \mid \intersect_{ F_i \in \sigma } F_i \neq \emptyset \right \}
 	\end{equation*}
 \end{definition}
 
 \begin{theorem}
-	For $X$ eit topologisk rom med $F$ ei mengda av delmengder av $X$, då er nerva til $F$ eit abstrakt simplisielt kompleks over $F$.
+	For $X$ eit topologisk rom med $F$ ei mengde av delmengder av $X$, då er nerva til $F$ eit abstrakt simplisielt kompleks over $F$.
 \end{theorem}
 
 \begin{proof}
@@ -549,7 +564,7 @@ Dette gir oss nok grunnlag til å endeleg forstå og definera nerva:
 			For \( v \in F \) så har me at for \( \sigma = \set{ v } \) så er \( \intersect_{ p \in \sigma } p = v \neq \emptyset \), så \( \set{v} \in \Nc(F) \) 
 		}
 		\item{ 
-			Alle element av \( \Nc(F) \) er per definisjon ei delmengda av \( F \)
+			Alle element av \( \Nc(F) \) er per definisjon ei delmengde av \( F \)
 		}
 		\item{  
 			For \( \sigma \in \Nc(F) \), så ser me at \( \intersect_{v\in\sigma} v \neq \emptyset \), men det betyr at for alle \( \tau \subseteq \sigma \), så er \( \intersect_{v\in\tau} v \) også ikkje-tom, fordi om den var tom, så ville: 
@@ -568,7 +583,7 @@ Dette gir oss nok grunnlag til å endeleg forstå og definera nerva:
 		\begin{center}
 			\includesvg[width=0.7\textwidth]{Eksempel1_23.svg}
 		\end{center}
-		\caption{Her har me tre eksempel på mengdar av delmengder i \( \Rb^2 \) og den geometriske realiseringa av nerva deira.}
+		\caption{Her har me tre eksempel på mengder av delmengder i \( \Rb^2 \) og den geometriske realiseringa av nerva deira.}
 	\end{figure}
 \end{example}
 
@@ -578,28 +593,8 @@ Dette gir oss nok grunnlag til å endeleg forstå og definera nerva:
 
 Då kan me endeleg utrykka nerveteoremet:
 
-%\begin{definition}
-%	La \( Y \) vera eit topologisk rom, og \( X \subseteq Y \) ei delmengda. Og la $A$ vera ei indekseringsmengda. Då er eit \emph{overdekke av $X$ relativ til $Y$} ei samling av delmengdar av $Y$: \( \{ F_\alpha \}_{\alpha\in A} \) der \( F_\alpha \subseteq Y  \) og \( X \subseteq \union_{\alpha \in A} F_\alpha \)
-%\end{definition}
-
-%\begin{theorem}
-%	(Nerveteoremet for konveks og lukka overdekke) La $V$ vera eit vektorrom med ein topologi og \( F = \set{F_i}_{i=1}^n \) ei endeleg mengda av lukka og konvekse delmengder av $V$.
-%	
-%	Då er $\gr{\Nc(X)}$ homotopiekvivalent til \( \cup_{i=1}^n F_i \)
-%\end{theorem}
-
-%\begin{definition}
-%	La \( X \) vera eit topologisk rom, og la \( F \) vera ei mengda av delmengder av \( X \). Då har \( F \) \emph{samantrekkbart snitt} om \( \forall \. \sigma \subseteq F \) så er \( \intersect_{F_i \in \sigma}F_i \) samantrekkbar.
-%\end{definition}
-%
-%\begin{theorem}
-%	(Opent, samantrekkbart snitt) La $V$ vera eit topologisk rom (ikkje nødvendigvis eit vektorrom), med \( X \subseteq V \) ei delmengda med underromstopologien. Vidare, la $F$ vera eit endeleg ope overdekke av $X$ relativ til \( X \) med samantrekkbart snitt.
-%
-%	Då er \( \gr{\Nc(F)} \) homotopiekvivalent til \( X \).
-%\end{theorem}
-
-\begin{theorem} %Nerveteoremet for endeleg, reel, konveks, kompakt overdekke
-	La \( U = \set{U_i}_{i=1}^n \) vera ei endeleg mengda av kompakte og konvekse delmengdar av \( \Rb^d \). Då er \( \union_{u \in U} u \) homotopiekvivalent med \( \gr{\Nc(U)} \).
+\begin{theorem}
+	La \( U = \set{U_i}_{i=1}^n \) vera ei endeleg mengde av kompakte og konvekse delmengder av \( \Rb^d \). Då er \( \union_{u \in U} u \) homotopiekvivalent med \( \gr{\Nc(U)} \).
 \end{theorem}
 
 \section{Bevis av Nerveteoremet}
@@ -621,7 +616,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	Me må visa dei tre eigenskapane frå \autoref{def:ASK}:
 	\begin{enumerate}
 		\item{ For \( k \in K \), så er \( \tuple{k} \) trivielt ei streng følga av element frå \( K \), så \( \tuple{k} \in \Sd(K) \) }
-  		\item{ For \( \sigma \in \Sd(K) \) så er det per definisjon ei delmengda av \( K \). }
+  		\item{ For \( \sigma \in \Sd(K) \) så er det per definisjon ei delmengde av \( K \). }
     	\item{ For \( \sigma \in K \), med \( \tau \subseteq \sigma \), då er \( \tau \) ei delfølga av element frå \( K \). Men ei delfølga er framleis ei følga, så \( \tau \in \Sd(K) \). }  
 	\end{enumerate}
 \end{proof}
@@ -652,7 +647,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	\( \gr{\Sd(K)}_f \subseteq \Rb^d \) er homeomorfi til \( \gr{K}_g \subseteq \Rb^m \) ved ein homeomorfi me kallar for \( \alpha \) som vert definert i slutten av beviset under.
 \end{lemma}
 
-\begin{proof} % Å herregud ditta beviset e vanskelegare enn eg trudde. % Shit, blande nokre bilete her. må dirrenetsiera mellom pre og post translasjon av mangder. Lineær operator definert av kor den sender n lineært uavhengige vektorar.
+\begin{proof}
 	Dette beviset bruker mykje den same strategien som i \autoref{thm:gr-eintydig}.
 
 	Fyrst, lag ei ordning av elementa i \( V = (v_1, v_2, \dots, v_n) \) og ein ordning \( K = (\sigma_1, \sigma_2, \dots, \sigma_m) \) med \( \sigma_1 = \set{v_1} \). Vidare la \( \tau_f(x) := x-f(\set{v_1}) \), og la \( \tau_g(x) := x-g(v_1) \). Desse er homeomorfiar frå \autoref{thm:tau-homeomorfi}.
@@ -689,12 +684,6 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	\[
 		\sigma := \tuple{\union_{j=1}^k\set{v_j}}_{k=1}^{\#\epsilon} = \tuple{\sigma_i}_{i=1}^{\#\epsilon} \in \Sd(K)
 	\]
-	% La
-	% \begin{align*}
-	% 	c &= \tuple{c_1, c_2, \dots, c_{\#\epsilon}} \\
-	% 	&= \tuple{b_1-b_2, 2\tuple{b_2-b_3}, 3\tuple{b_3-b_2}, \dots, \#\epsilon b_{\#\epsilon}} \\
-	% 	&= \tuple{i\tuple{b_i - b_{i+1}}}_{i=1}^{\#\epsilon}
-	% \end{align*}
 	Definer:
 	\[
 		\tilde{L}(y) = \tilde{L}\tuple{\sum_{i=1}^{\#\epsilon} b_i \hat{g}(v_i)} := \sum_{i=1}^{\#\epsilon}i\tuple{b_i-b_{i+1}}\hat{f}(\sigma_i)
@@ -711,7 +700,6 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	Der \( i_n=j_m \) og \( i_m=j_n \) har bytta posisjon, men resten er urørt. Då får me at \( b_{i_n} \geq b_{i_m}=b_{j_n} \geq b_{j_m}=b_{i_n} \) som betyr at \( b_{i_n} = b_{i_n+1} = \dots = b_{i_m}=b_{j_n}=b_{j_n+1}=\dots=b_{j_m} \). Og \( i_k = j_k \) for alle \( k \). Men det gir oss at \( c_{i_r} = c_{j_r} \) for alle \( r \). Og sidan alle moglege permutasjonar er ein samansetting av parvis permutasjonar som ikkje påverkar resultatet, så må \( \tilde{L} \) vera veldefinert, uavhengig av val av permutasjon av \( \epsilon \).
 
 	Vidare så er \( \tilde{L}(\gr{K}_{\hat{g}}) \subseteq \gr{\Sd(K)}_{\hat{f}} \), fordi for \( y \in \gr{K}_{\hat{g}} \) så får ein:
-	%fordi gitt \( y \in \gr{K}_{\hat{g}} \), ein konveks kombinasjon av \( \hat{g}(\epsilon) \) for ein \( \epsilon \in K \), med barysentriske koordinatar \( \tuple{b_1, b_2, b_3, \dots, b_{\#\epsilon}} \). Velg ein ordning av \( \epsilon = \tuple{v_1, v_2, \dots, v_{\#\epsilon}} \) sånn at \( b_1 \geq b_2 \geq \dots \geq b_{\#\epsilon} \geq  b_{\epsilon+1}=0 \)
 	\[
 		\tilde{L}(y) = \sum_{i=1}^{\#\epsilon}i\tuple{b_i-b_{i+1}}\hat{f}(\sigma_i)
 	\]
@@ -740,17 +728,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	\end{align*}
 		
 	Og la \( \left(\union_{j = 1}^{k} \set{v_j} \right)_{k=1}^{\#\epsilon} = (\sigma_i)_{i=1}^{\#\epsilon}=\sigma \in \Sd(K) \)
-	
-	% Då definerar me: (Merk at \( \#\epsilon = \#\sigma\) )
-	% \[
-	% 	x = \sum_{i=1}^{\#\sigma} b_i \hat{f}(\sigma_i)
-	% \]
-	% Då er \( x \) ein konveks kombinasjon av punkta \( \hat{f}(\sigma) \), fordi:
-	% \[
-	% 	\sum_{i=1}^{\#\sigma} b_i = \sum_{i=1}^{\#\epsilon} a_i = 1
-	% \]
-	% Og sidan \( a_i \geq a_j \) for \( i \leq j \), så er alle \( b_i \geq 0 \). Derfor er \( x \in \gr{\Sd(K)}_{\hat{f}} \) % ref til def?
-	% Om me anvender \( \hat{L} \) på denne \( y \)-en så får me:
+
 	\begin{align*} % Meir detaljar rundt sum manipulasjon på linja 4-5?
 		\hat{L}\circ\tilde{L}(y) &= \hat{L}\circ\tilde{L}\tuple{\sum_{i=1}^{\#\epsilon} b_i \hat{g}(v_i)} \\
 		&= \hat{L}\left( \sum_{i=1}^{\#\epsilon} a_i \hat{f}(\sigma_i) \right) \\
@@ -808,7 +786,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	
 	Dei to førre utsagna gir at \( \hat{L} \) er bijektiv, med invers \( \tilde{L} \).
 
-	Vidare så er \( \hat{L} \) er ein lukka avbildning frå \autoref{thm:closed-map-lemma}, fordi det er ein kontinuerleg avbildning frå \( \gr{\Sd(K)}_{\hat{f}} \) til \( \gr{K}_{\hat{g}} \), der \( \gr{\Sd(K)}_{\hat{f}} \) er kompakt frå \autoref{thm:geometrisk-kompleks-lukka}, og  \( \gr{K}_{\hat{g}} \) er Hausdorff ettersom det er ei delmengda av \( \Rb^n \) for ein eller annan \( n \).
+	Vidare så er \( \hat{L} \) er ein lukka avbildning frå \autoref{thm:closed-map-lemma}, fordi det er ein kontinuerleg avbildning frå \( \gr{\Sd(K)}_{\hat{f}} \) til \( \gr{K}_{\hat{g}} \), der \( \gr{\Sd(K)}_{\hat{f}} \) er kompakt frå \autoref{thm:geometrisk-kompleks-lukka}, og  \( \gr{K}_{\hat{g}} \) er Hausdorff ettersom det er ei delmengde av \( \Rb^n \) for ein eller annan \( n \).
 
 	Me får då frå \autoref{thm:bijektiv-lukka-homeomorfi} at sidan \( \hat{L} \) er ein bijektiv, kontinuerlig og lukka funksjon så er det ein homeomorfi.
 
@@ -824,7 +802,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 \end{example}
 
 \begin{lemma} \label{thm:konveks-kombinasjon-i-konveks}
-	Alle konvekse kombinasjonar av (ikkje nødvendegvis geometrisk uavhengige) punkt \( P = \set{p_1, p_2, \dots, p_n } \subseteq V \), for \( V \) ei konveks mengda, er innehaldt i \( V \).
+	Alle konvekse kombinasjonar av (ikkje nødvendegvis geometrisk uavhengige) punkt \( P = \set{p_1, p_2, \dots, p_n } \subseteq V \), for \( V \) ei konveks mengde, er innehaldt i \( V \).
 \end{lemma}
 
 \begin{proof}
@@ -837,7 +815,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	
 	For \( n = 2 \):
 
-	Då er \( x = a_1 p_1 + a_2 p_2 \), med \( a_1 + a_2 = 1 \). Men då er \( a_2 = 1 - a_1 \), så me kan skriva: \( x = a_1 p_1 + (1-a_1) p_2 \). Men dette er jo definisjonen på eit punkt på eit linjestykke mellom \( p_1 \) og \( p_2 \). Så frå definisjonen av ei konveks mengda, så må \( x \in K \).
+	Då er \( x = a_1 p_1 + a_2 p_2 \), med \( a_1 + a_2 = 1 \). Men då er \( a_2 = 1 - a_1 \), så me kan skriva: \( x = a_1 p_1 + (1-a_1) p_2 \). Men dette er jo definisjonen på eit punkt på eit linjestykke mellom \( p_1 \) og \( p_2 \). Så frå definisjonen av ei konveks mengde, så må \( x \in K \).
 
 	Annta det gjeld for \( n = k-1 \), vil no visa at det gjeld for \( n = k \).
 
@@ -868,8 +846,8 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	Ein konveks kombinasjon av \( 2 \) punkt i \( V \), og me får frå induksjonshypotesen at \( x \in V \).
 \end{proof}
 
-\begin{definition} \label{thm:Gamma} % Kan fjerna phi og f avhengigheita frå notasjonen. U, phi, f avhengigheita er implisitt. Burde ha med affine imbeddinga?
-	Gitt \( U = \set{U_i}_{i=1}^n \) ei endeleg mengda av konvekse mengder i \( \Rb^m \). Vidare, for kvar \( \epsilon \in \Nc(U) \) velg punkt \( v_\epsilon \in \intersect_{u \in \sigma} u \).
+\begin{definition} \label{thm:Gamma}
+	Gitt \( U = \set{U_i}_{i=1}^n \) ei endeleg mengde av konvekse mengder i \( \Rb^m \). Vidare, for kvar \( \epsilon \in \Nc(U) \) velg punkt \( v_\epsilon \in \intersect_{u \in \sigma} u \).
 
 	For \( x \in \gr{\Sd(\Nc(U))}_f \) ein konveks kombinasjon av dei geometrisk uavhengige punkta \( f(\sigma) \) for ein eller annan \( \sigma \in \Sd(\Nc(U)) \), der \( \sigma = \tuple{\sigma_1, \sigma_2, \dots, \sigma_{\#\sigma}} \) med dei barysentriske koordinatane \( \tuple{a_1, a_2, \dots, a_{\#\sigma}} \), definer:
 	\[
@@ -877,13 +855,11 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	\]
 \end{definition}
 
-\begin{lemma} \label{thm:Gamma-eigenskapar} % Må visa veldefinert mhp f og phi?
+\begin{lemma} \label{thm:Gamma-eigenskapar}
 	\( \Gamma \) frå \autoref{thm:Gamma} er veldefinert, kontinuerleg og biletet er i \( \union_{u\in U} u \).
 \end{lemma}
 
 \begin{proof}
-	%\( \Gamma \) er veldefinert ettersom dei barysentriske koordinatane den er definert ut ifrå er unike frå \autoref{thm:unik-barysentrisk-koordinat}.
-
 	\( \Gamma \) er kontinuerleg og veldefinert fordi om ein let \( \hat{\tau} : \gr{\Sd(\Nc(U))}_f \to \gr{\Sd(\Nc(U))}_{\hat{\tau} \circ f} \) vera definert som i \autoref{thm:tau-homeomorfi} (\( x \mapsto x - f(\hat{\sigma}) \) for ein \( \hat{\sigma} \in \Nc(U) \)), så er dette ein homeomorfi, og om ein deretter definerar \( L \) til å vere ein lineæravblildning som tek \( \hat{\tau} \circ f (\sigma) \mapsto v_{\sigma} \) for alle \( \sigma \in \Nc(U) \). Og vidare let \( \hat{L} := L|_{\gr{\Sd(\Nc(U))}_{\hat{\tau}\circ f}} \), så ser me at for \( x \in \gr{\Sd(\Nc(U))}_f \) ein konveks kombinasjon av dei geometrisk uavhengige punkta \( f(\sigma) \) for ein eller annan \( \sigma \in \Sd(\Nc(U)) \), der \( \sigma = \tuple{\sigma_1, \sigma_2, \dots, \sigma_{\#\sigma}} \) med dei barysentriske koordinatane \( \tuple{a_1, a_2, \dots, a_{\#\sigma}} \) så er:
 	\begin{align*}
 		\hat{L} \circ \hat{\tau} (x) &= \hat{L} \circ \hat{\tau} \tuple{\sum_{i=1}^{\#\sigma}a_i f(\sigma_i)} \\
@@ -902,18 +878,18 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	\[
 		\Gamma(x) = \sum_{i=1}^{\#\sigma} a_i v_{\sigma_i}
 	\]
-	Er ein konveks kombinasjon av punkta \( v_{\sigma_i} \) for \( i = 1,2,\dots,\#\sigma \). Men sidan \( \sigma_1 \subsetneq \sigma_2 \subsetneq \dots \subsetneq \sigma_{\#\sigma} \), så er det ein \( \epsilon \in U \) med \( \epsilon \in \sigma_1, \sigma_2, \dots, \sigma_{\#\sigma} \). Og derfor så er \( v_{\sigma_1}, v_{\sigma_2}, \dots, v_{\sigma_{\#\sigma}} \in \epsilon \). Men ettersom alle elementa i \( U \) er konvekse mengder, så er \( \Gamma(x) \) ein konveks kombinasjon av element i ei konveks mengda, \( \epsilon \), og frå \autoref{thm:konveks-kombinasjon-i-konveks}, så er \( x \in \epsilon \subseteq \union_{u\in U} u \).
+	Er ein konveks kombinasjon av punkta \( v_{\sigma_i} \) for \( i = 1,2,\dots,\#\sigma \). Men sidan \( \sigma_1 \subsetneq \sigma_2 \subsetneq \dots \subsetneq \sigma_{\#\sigma} \), så er det ein \( \epsilon \in U \) med \( \epsilon \in \sigma_1, \sigma_2, \dots, \sigma_{\#\sigma} \). Og derfor så er \( v_{\sigma_1}, v_{\sigma_2}, \dots, v_{\sigma_{\#\sigma}} \in \epsilon \). Men ettersom alle elementa i \( U \) er konvekse mengder, så er \( \Gamma(x) \) ein konveks kombinasjon av element i ei konveks mengde, \( \epsilon \), og frå \autoref{thm:konveks-kombinasjon-i-konveks}, så er \( x \in \epsilon \subseteq \union_{u\in U} u \).
 \end{proof}
 
 \begin{example}
 	Teikn Gamma TODO
 \end{example}
 
-\begin{definition} % Definér open ball?
-	For ei mengda \( U_i \) og ein \( \epsilon > 0 \) definer \( U_i^\epsilon := \union_{x \in U_i} B_\epsilon(x) \), og for ei endeleg mengda av mengder \( U=\set{U_i}_{i=1}^n \) definer \( U^\epsilon := \set{U_i^\epsilon}_{i=1}^n \).
+\begin{definition} % Definer open ball TODO
+	For ei mengde \( U_i \) og ein \( \epsilon > 0 \) definer \( U_i^\epsilon := \union_{x \in U_i} B_\epsilon(x) \), og for ei endeleg mengde av mengder \( U=\set{U_i}_{i=1}^n \) definer \( U^\epsilon := \set{U_i^\epsilon}_{i=1}^n \).
 \end{definition}
 
-\begin{lemma} \label{thm:epsilondekke} % Kunne ha skrive det som at f danner ein bijeksjon av simpleksar?
+\begin{lemma} \label{thm:epsilondekke}
 	For alle endelege mengder av kompakte, delmengder av \( \Rb^d \), \( U = \set{U_i}_{i=1}^n \), så \( \exists \epsilon > 0 \) sånn at \(f \) som tek 
 	\[ 
 		\set{U_{i_1}, U_{i_2}, \dots, U_{i_k}} \mapsto \set{U_{i_1}^\epsilon, U_{i_2}^\epsilon, \dots, U_{i_k}^\epsilon} 
@@ -922,7 +898,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 \end{lemma}
 
 \begin{proof}
-	La \( A \) vere mengda av alle mogelge delmengder av \( U \), og \( A^\epsilon \) vere alle moglege delmengder av \( U^\epsilon \). Då ser me at \( f \) dannar ein bijeksjon frå \( A \) til \( A^\epsilon \). Og sidan \( i: \Nc(U) \hookrightarrow A \), inklusjonsavbildninga, er injektiv, så er \( f \circ i \) injektiv.
+	La \( A \) vere mengde av alle mogelge delmengder av \( U \), og \( A^\epsilon \) vere alle moglege delmengder av \( U^\epsilon \). Då ser me at \( f \) dannar ein bijeksjon frå \( A \) til \( A^\epsilon \). Og sidan \( i: \Nc(U) \hookrightarrow A \), inklusjonsavbildninga, er injektiv, så er \( f \circ i \) injektiv.
 
 	Ettersom \( U^{\epsilon} \) kan kun få fleire snitt, enn \( U \), så må \( f(\Nc(U)) \subseteq \Nc(U^{\epsilon}) \).
 	
@@ -930,7 +906,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	 
 	\[ 
 		f(\Nc(U)) \supseteq \Nc(U^{\epsilon}) \iff \tuple{\forall \sigma \in \Nc(U^{\epsilon}) \implies \sigma \in f(\Nc(U))} \iff \tuple{\forall \sigma \not\in f(\Nc(U)) \implies \sigma \not\in \Nc(U^{\epsilon})}
-	\] % Finskriva med A og A^\epsilon?
+	\] % Finskriva med A og A^\epsilon? TODO
 
 	For ein \( \sigma = \set{U_{i_1}, U_{i_2}, \dots, U_{i_k}} \in A \) så kan me skriva det som \( \sigma_J \) for \( J = \set{i_1, i_2, \dots i_k} \). Likt for \( \sigma^\epsilon_J \in A^\epsilon \). Så me vil visa at \( \exists \epsilon : \sigma^\epsilon_J \not\in f(\Nc(U)) \implies \sigma^\epsilon_J \not\in \Nc(U^{\epsilon}) \) for alle moglege \( J \) der \( \sigma^\epsilon_J \not\in f(\Nc(U)) \). Men ettersom \( f \) dannar ein bijeksjon frå \( A \) til \( A^\epsilon \), så kan me sjå på \( \exists \epsilon : \sigma_J \not\in \Nc(U) \implies f(\sigma_J) \not\in \Nc(U^{\epsilon}) \).
 
@@ -940,7 +916,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	\]
 	Sidan \( \union_{j \in J} u_j \) er ein endeleg union av kompakte mengder så er den kompakt frå \autoref{thm:endeleg-union-kompakt-er-kompakt}. Då får ein frå \autoref{thm:supremum-over-kompakt-er-maks}, at \( r_J = \max{x \in \union_{j \in J} u_j} d(x,0) \) og derfor endeleg. Me får også at \( \union_{j \in J} u_j \subseteq \bar{B}_{r_J}(0) \).
 	
-	Definer vidare \( D_J := \bar{B}_{4r_J}(0) \). Sidan dette er ein lukka og begrensa mengda i \( \Rb^d \), så er den kompakt frå \autoref{thm:heine-borel}.
+	Definer vidare \( D_J := \bar{B}_{4r_J}(0) \). Sidan dette er ein lukka og begrensa mengde i \( \Rb^d \), så er den kompakt frå \autoref{thm:heine-borel}.
 
 	La \( g_J: D_J \to \Rb \) med \( x \mapsto \max_{j \in J} d(x, U_j) \). Då ser ein at \( g \) er kontinuerleg sidan det er ein maks av endeleg mange kontinuerlege funskjonar frå \autoref{thm:distanse-er-kont} og \autoref{thm:maksimum-av-kont-er-kont}.
 
@@ -970,8 +946,8 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	Avbildninga f over blir ofta kalla ein simplisiell isomorfi, og er det eg alluderte til når eg sa at nerva til \( \set{\set{\bar{B}_\epsilon(p_i)}}_{i=1}^n \) var ekvivalent med Cech komplekset av \( \set{p_i}_{i=1}^n \) med radius \( \epsilon \) i \autoref{rem:cech-ekvivalent}.
 \end{remark}
 
-\begin{definition} \label{def:psi} % Kva er betingelsane på overdekket her?
-	For ei endeleg mengda av kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \), velg ein \( \epsilon \) som i \autoref{thm:epsilondekke}, kan då danna:
+\begin{definition} \label{def:psi}
+	For ei endeleg mengde av kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \), velg ein \( \epsilon \) som i \autoref{thm:epsilondekke}, kan då danna:
 	\[
 		\phi_i(x) := \frac{d(x, \Rb^m \setminus U_i^\epsilon)}{d(x, U_i) + d(x, \Rb^m \setminus U_i^\epsilon)}
 	\]
@@ -985,7 +961,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	\( \phi_i \) og \( \psi_i \) frå \autoref{def:psi} er kontinuerlege på domenet \( \union_{i=1}^n U_i^\epsilon \).
 \end{lemma}
 
-% Burde refera til eit lemma om sum av kont avb er kont
+% Burde refera til eit lemma om sum av kont avb er kont? TODO
 \begin{proof} 
 	Sidan distansefunksjonen \( d \) er kontinuerleg frå \autoref{thm:distanse-er-kont}, og nemnaren er alltid ulik null sidan \( U_i \subsetneq U_i^\epsilon \) og ein sum av to kontinuerlege funskjonar og derfor kontinuerkeg sjølve, så er \( \phi_i \) ein kvotient av to kontinuerlege funskjonar med heile \( \Rb^d \) som domene, og derfor kontinerleg på heile \( \union_{i=1}^n U_i^\epsilon \) sjølve.
 
@@ -993,17 +969,18 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 \end{proof}
 
 \begin{definition} \label{def:Psi}
-	For ei endeleg mengda av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \psi_i \) vera som i \autoref{def:psi}, og \( \gr{\Nc(U)}_f \) ein geometrisk realisering av nerva til \( U \) med hensyn til den affine imbeddinga \( f \). Definer for \( x \in \union_{u \in U} u \):
+	For ei endeleg mengde av lukka, kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \psi_i \) vera som i \autoref{def:psi}, og \( \gr{\Nc(U)}_f \) ein geometrisk realisering av nerva til \( U \) med hensyn til den affine imbeddinga \( f \). Definer for \( x \in \union_{u \in U} u \):
 	\[
 		\Psi(x) := \sum_{i=1}^n \psi_i(x)f(U_i)
 	\]
 \end{definition}
 
-\begin{lemma} \label{thm:psi-kont} % Noko meir?
+\begin{lemma} \label{thm:psi-kont}
 	\( \Psi \) frå \autoref{def:Psi} er kontinuerlig, og har bilete i \( \gr{\Nc(U)}_f \).
 \end{lemma}
 
-\begin{proof} % Trenge fleire forkunskapar om kvifor ting er kontinuerleg
+ % Trenge fleire forkunskapar om kvifor ting er kontinuerleg TODO?
+\begin{proof}
 	Sidan alle \( \psi_i \)-ane er kontinuerlege, så er \( \psi_i(x) f(U_i) \) også kontinuerleg, ettersom \( f(U_i) \) er ein konstant vektor. Så \( \Psi \) er ein sum av kontinuerlege funksjonar og derfor kontinuerleg sjølve.
 
 	For å visa at \( \Psi\tuple{\union_{u \in U} u} \subseteq \gr{\Nc(U)}_f \), la \( x \in \union_{u \in U} u \). Då er \( \Psi(x) = \sum_{i=1}^n \psi_i(x)f(U_i) \). Men merk at:
@@ -1031,7 +1008,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 \end{example}
 
 \begin{lemma} \label{thm:bst-ask}
-	Den lukka barysentriske stjerna som definert i \autoref{def:bst} er eit abstrakt simplisielt kompleks, med hjørnemengda \( W = \set{w \in K : \set{w} \union \set{v} \in \Sd(K)} \)
+	Den lukka barysentriske stjerna som definert i \autoref{def:bst} er eit abstrakt simplisielt kompleks, med hjørnemengde \( W = \set{w \in K : \set{w} \union \set{v} \in \Sd(K)} \)
 \end{lemma}
 
 \begin{proof}
@@ -1044,7 +1021,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 \end{proof}
 
 \begin{lemma} \label{thm:Gamma-inni-ui}
-	Gitt \( U = \set{U_i}_{i=1}^n \) ei endeleg mengda av konvekse mengder i \( \Rb^m \). La \( \Gamma \) vere definert som i \autoref{thm:Gamma}.
+	Gitt \( U = \set{U_i}_{i=1}^n \) ei endeleg mengde av konvekse mengder i \( \Rb^m \). La \( \Gamma \) vere definert som i \autoref{thm:Gamma}.
 
 	Då er \( \Gamma(\gr{\bst(U_i)}_f) \subseteq U_i \)
 \end{lemma}
@@ -1054,11 +1031,11 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	\[
 		W = \set{w \in \Nc(U) : \set{w} \union \set{U_i} \in \Sd(\Nc(U))}=\set{w \in \Nc(U) : U_i \in w}
 	\] 
-	Men då er jo \( v_w \) (frå \autoref{thm:Gamma}) \( \in \intersect_{u \in w} u \subseteq U_i \) for alle \( w \). Og sidan \( \Gamma \) tek eit element, \( x \), i \( \gr{\bst(U_i)}_f \) som er ein konveks kombinasjon av punkta \( \set{f(w)}_{w \in W} \) til ein konveks kombinasjon av \( \set{v_w}_{w \in W} \subseteq U_i \), så får me at \( \Gamma(x) \) er ein konveks kombinasjon av punkta \( \set{v_w}_{w \in W} \), som alle ligg i ei konveks mengda \( U_i \), og me får derfor frå \autoref{thm:konveks-kombinasjon-i-konveks} at \( x \in U_i \).
+	Men då er jo \( v_w \) (frå \autoref{thm:Gamma}) \( \in \intersect_{u \in w} u \subseteq U_i \) for alle \( w \). Og sidan \( \Gamma \) tek eit element, \( x \), i \( \gr{\bst(U_i)}_f \) som er ein konveks kombinasjon av punkta \( \set{f(w)}_{w \in W} \) til ein konveks kombinasjon av \( \set{v_w}_{w \in W} \subseteq U_i \), så får me at \( \Gamma(x) \) er ein konveks kombinasjon av punkta \( \set{v_w}_{w \in W} \), som alle ligg i ei konveks mengde \( U_i \), og me får derfor frå \autoref{thm:konveks-kombinasjon-i-konveks} at \( x \in U_i \).
 \end{proof}
 
 \begin{lemma} \label{thm:bst-betingingar}
-	La \( U = \tuple{U_i}_{i=1}^n \) vera ei endeleg mengda av delmengder av \( \Rb^d \). La \( \alpha \) vera definert som i \autoref{thm:alpha-homeomorfi} der \( \alpha: \gr{\Sd(\Nc(U))}_f \to \gr{\Nc(U)}_g \). For ein \( x \in \gr{\Nc(U)}_g \), ein konveks kombinasjon av punkta \( g(\tau) \) for ein eller annan \( \tau \in \Nc(U) \) med barysentriske koordinatar \( \tuple{b_1, b_2,\dots, b_i, \dots, b_{\#\tau}} \) med \( b_i \geq b_j, \, \forall j \in \set{1, 2, 3, \dots, \#\tau} \). Då er:
+	La \( U = \tuple{U_i}_{i=1}^n \) vera ei endeleg mengde av delmengder av \( \Rb^d \). La \( \alpha \) vera definert som i \autoref{thm:alpha-homeomorfi} der \( \alpha: \gr{\Sd(\Nc(U))}_f \to \gr{\Nc(U)}_g \). For ein \( x \in \gr{\Nc(U)}_g \), ein konveks kombinasjon av punkta \( g(\tau) \) for ein eller annan \( \tau \in \Nc(U) \) med barysentriske koordinatar \( \tuple{b_1, b_2,\dots, b_i, \dots, b_{\#\tau}} \) med \( b_i \geq b_j, \, \forall j \in \set{1, 2, 3, \dots, \#\tau} \). Då er:
 	\[ 
 		\alpha^{-1}(x) \in \gr{\bst(U_i)}
 	\]
@@ -1094,7 +1071,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 \end{proof}
 
 \begin{lemma} \label{thm:Psi-inni-bst}
-	For ei endeleg mengda av kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \Psi \) vera som i \autoref{def:Psi}, og \( \gr{\Sd(\Nc(U))}_f \) ein geometrisk realisering av den barysentriske oppdelinga til nerva av \( U \) med hensyn til den affine imbeddinga \( f \). La \( \alpha \) vera som i \autoref{thm:alpha-homeomorfi}
+	For ei endeleg mengde av kompakte delmengder \( U_i \subseteq \Rb^d \), med \( U = \set{U_i}_{i=1}^n \). Vidare la \( \Psi \) vera som i \autoref{def:Psi}, og \( \gr{\Sd(\Nc(U))}_f \) ein geometrisk realisering av den barysentriske oppdelinga til nerva av \( U \) med hensyn til den affine imbeddinga \( f \). La \( \alpha \) vera som i \autoref{thm:alpha-homeomorfi}
 
 	Då er \( \alpha \circ \Psi(U_i) \subseteq \gr{\bst(U_i)}_f \)
 \end{lemma}
@@ -1125,7 +1102,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 \end{proof}
 
 \begin{lemma} \label{thm:homeq-u}
-	La \( U = \tuple{U_i}_{i=1}^n \) vera ei endeleg mengda av kompakte og konvekse delmengder av \( \Rb^d \). La \( \Gamma \) vera som i \autoref{thm:Gamma}, la \( \Psi \) vera som i \autoref{def:Psi}, og la \( \alpha \) vera som i \autoref{thm:alpha-homeomorfi}. Då er:
+	La \( U = \tuple{U_i}_{i=1}^n \) vera ei endeleg mengde av kompakte og konvekse delmengder av \( \Rb^d \). La \( \Gamma \) vera som i \autoref{thm:Gamma}, la \( \Psi \) vera som i \autoref{def:Psi}, og la \( \alpha \) vera som i \autoref{thm:alpha-homeomorfi}. Då er:
 	\[
 		\Gamma \circ \alpha^{-1} \circ \Psi \simeq \Id_{\union_{u \in U} u} 
 	\]
@@ -1204,7 +1181,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 \begin{lemma} \label{thm:utvida-avb}
 	For \( X \) eit samantrekkbart rom, la \( f: S^n \to X \) vera ein kontinuerlig avbildning frå \( n \)-sfæro til \( X \). Då kan \( f \) utvidast til ein avbildning \( \hat{f} \) sånn at følgande diagram kommuterar:
 
-	\begin{center} % |, \vert funke ikkje??
+	\begin{center}
 		\begin{tikzcd}
 			S^n \arrow[hook]{d}{i} \arrow{r}{f} &
 			X \\
@@ -1218,14 +1195,14 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 	TODO
 \end{proof}
 
-\begin{lemma} \label{thm:homeq-sd} % Jævli vanskeleg å visa frå botnen
-	La \( U = \tuple{U_i}_{i=1}^n \) vera ei endeleg mengda av kompakte og konvekse delmengder av \( \Rb^d \). La \( \Gamma \) vera som i \autoref{thm:Gamma}, la \( \Psi \) vera som i \autoref{def:Psi}, og la \( \alpha \) vera som i \autoref{thm:alpha-homeomorfi}. Då er:
+\begin{lemma} \label{thm:homeq-sd}
+	La \( U = \tuple{U_i}_{i=1}^n \) vera ei endeleg mengde av kompakte og konvekse delmengder av \( \Rb^d \). La \( \Gamma \) vera som i \autoref{thm:Gamma}, la \( \Psi \) vera som i \autoref{def:Psi}, og la \( \alpha \) vera som i \autoref{thm:alpha-homeomorfi}. Då er:
 	\[
 		\alpha^{-1} \circ \Psi \circ \Gamma \simeq \Id_{\gr{\Sd(\Nc(U))}_f}
 	\]
 \end{lemma}
 
-\begin{proof} % Rydda opp i da geometrisk realiserings greiene?
+\begin{proof}
 	La \( h := \alpha^{-1} \circ \Psi \circ \Gamma \), den er kontinuerlig frå \autoref{thm:Gamma-eigenskapar} og \autoref{thm:psi-kont}. Vidare la \( C_\sigma := \intersect_{\set{ U_i : \sigma \in \bst(U_i) }} \gr{\bst(U_i)}_f \)
 
 	Dette beviset er gjort ved induksjon over \( m \)-skjelettet til \( \Sd(\Nc(U)) \) for å finna ein \( H_m : \gr{\Sk_m(\Sd(\Nc(U)))}_f \times I \to \gr{\Sk_m(\Sd(\Nc(U)))}_f \) som sender \( \gr{\Sk_m(\bst(U_i))}_f \to \gr{\bst(U_i)}_f \) og er ein homotopi frå \( \Id_m := \Id|_{\gr{\Sk_m(\Sd(\Nc(U)))}_f} \) til \( h_m := h|_{\gr{\Sk_m(\Sd(\Nc(U)))}_f} \).
@@ -1236,7 +1213,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 
 	Men sidan \( \set{\gr{\bst(U_i)}_f}_{i = 1}^{n} \) er eit samantrekkbart overdekke av simplisielle kompleks av \( \gr{\Sd(\Nc(U))}_f \) frå \autoref{thm:bst-good}, så er alle \( C_\sigma \) samantrekkbare uavhengig av val av \( \sigma \in \Sd(\Nc(U)) \).
 
-	Difor er både \( \gr{p}_f \) og \( h(\gr{p}_f) \) i ei samantrekkbar mengda \( C_p \), og me kan konstruera ein sti i \( C_p \), betegna \( s_p \), med \( s_p(0) = \gr{p}_f \) og \( s_p(1) = h(\gr{p}_f) \) mellom dei. Om me gjer dette for alle punkta så får me den fyrste homotopien:
+	Difor er både \( \gr{p}_f \) og \( h(\gr{p}_f) \) i ei samantrekkbar mengde \( C_p \), og me kan konstruera ein sti i \( C_p \), betegna \( s_p \), med \( s_p(0) = \gr{p}_f \) og \( s_p(1) = h(\gr{p}_f) \) mellom dei. Om me gjer dette for alle punkta så får me den fyrste homotopien:
 	\[
 		H_0 : (\gr{p}_f, t) \mapsto s_p(t)
 	\]
@@ -1263,20 +1240,7 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 
 	Sidan frå \autoref{thm:utvida-funk} så er \( G_f(\partial\sigma) \times I \union G_f(\sigma) \times \set{0, 1} \cong S^{m} \) og \( G_f(\sigma) \times I \cong D^{m+1} \), så får me diagrammet og induserte avbildningar frå \autoref{thm:utvida-avb}:
 
-	% \begin{center} % |, \vert funke ikkje??
-	% 	\begin{tikzcd}
-	% 		\Rb^m \arrow{r}{\tau_f}
-	% 		& \Rb^m \arrow{r}{L}
-	% 		& \Rb^l
-	% 		& \Rb^l \arrow{l}[swap]{\tau_g} \\
-	% 		\gr{K}_f \arrow[dashed]{r}{\hat{\tau}_f} \arrow[hook]{u}
-	% 		& \gr{K}_{\hat{f}} \arrow{r}{\hat{L}} \arrow[hook]{u}
-	% 		& \gr{K}_{\hat{g}} \arrow[hook]{u}
-	% 		& \gr{K}_g \arrow[dashed]{l}[swap]{\hat{\tau}_g} \arrow[hook]{u}
-	% 	\end{tikzcd}
-	% \end{center}
-
-	\begin{center} % |, \vert funke ikkje??
+	\begin{center}
 		\begin{tikzcd}
 			S^m \arrow[hook, dashed, swap]{dd}{\gamma \circ i \circ \beta} \arrow{rr}{\beta} &
 			&
@@ -1311,19 +1275,8 @@ Dette beviset er svært inspirert av \cite{https://doi.org/10.48550/arxiv.2203.0
 
 \end{proof}
 
-% \begin{lemma} % Går ikkje... ;_;
-% 	La \( U = \tuple{U_i}_{i=1}^n \) vera ei endeleg mengda av kompakte og konvekse delmengder av \( \Rb^d \). La \( \Gamma \) vera som i \autoref{thm:Gamma}, la \( \Psi \) vera som i \autoref{def:Psi}, og la \( \alpha \) vera som i \autoref{thm:alpha-homeomorfi}. Då er:
-% 	\[
-% 		\Psi \circ \Gamma \circ \alpha^{-1} \simeq \Id_{\gr{\Nc(U)}_g}
-% 	\]
-% \end{lemma}
-
-% \begin{proof}
-% 	La \( y \in \alpha(\bst(U_i)) \) for ein vilkårleg \( i \). Me ser at for \( x \) ein konveks kombinasjon av hjørnemengda til \( \bst(U_i) \), som me kallar for \( W \), frå \autoref{thm:bst-ask} med barysentriske koordinatar \( \tuple{a_1, a_2, \dots, } \)
-% \end{proof}
-
-\begin{theorem} %Nerveteoremet for endeleg, reel, konveks, kompakt overdekke
-	La \( U = \set{U_i}_{i=1}^n \) vera ei endeleg mengda av kompakte og konvekse delmengdar av \( \Rb^d \). Då er \( \union_{u \in U} u \) homotopiekvivalent med \( \gr{\Nc(U)} \).
+\begin{theorem}
+	La \( U = \set{U_i}_{i=1}^n \) vera ei endeleg mengde av kompakte og konvekse delmengder av \( \Rb^d \). Då er \( \union_{u \in U} u \) homotopiekvivalent med \( \gr{\Nc(U)} \).
 \end{theorem}
 
 \begin{proof}
