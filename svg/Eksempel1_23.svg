@@ -7,11 +7,10 @@
    viewBox="0 0 330.86002 358.59335"
    version="1.1"
    id="svg5"
-   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
    sodipodi:docname="Eksempel1_23.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -29,14 +28,16 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="0.35105175"
-     inkscape:cx="391.68014"
+     inkscape:cx="394.52873"
      inkscape:cy="965.66959"
      inkscape:window-width="1920"
      inkscape:window-height="1011"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="32"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     inkscape:showpageshadow="0"
+     inkscape:deskcolor="#d1d1d1" />
   <defs
      id="defs2">
     <clipPath
@@ -59,14 +60,6 @@
     <g
        id="g128"
        transform="matrix(0.26458333,0,0,0.26458333,86.002193,-128.62036)">
-      <image
-         x="0"
-         y="0"
-         width="1404"
-         height="1872"
-         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAADElEQVQImWP4//8/AAX+Av5Y8msOAAAAAElFTkSuQmCC"
-         id="image11"
-         clip-path="url(#clipPath236)" />
       <g
          id="g15">
         <path

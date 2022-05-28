@@ -7,11 +7,10 @@
    viewBox="0 0 68.589294 149.38249"
    version="1.1"
    id="svg5"
-   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   inkscape:version="1.2 (dc2aedaf03, 2022-05-15)"
    sodipodi:docname="Eksempel1_18.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
@@ -29,14 +28,16 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:zoom="1.3905599"
-     inkscape:cx="106.79152"
-     inkscape:cy="288.37306"
+     inkscape:cx="18.337937"
+     inkscape:cy="289.09219"
      inkscape:window-width="1920"
      inkscape:window-height="1011"
      inkscape:window-x="0"
-     inkscape:window-y="0"
+     inkscape:window-y="32"
      inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
+     inkscape:current-layer="layer1"
+     inkscape:showpageshadow="0"
+     inkscape:deskcolor="#d1d1d1" />
   <defs
      id="defs2">
     <clipPath
@@ -71,13 +72,6 @@
        id="g80"
        transform="matrix(0.04891641,0,0,0.04891641,78.991635,60.400603)"
        clip-path="url(#clipPath405)">
-      <image
-         x="0"
-         y="0"
-         width="1404"
-         height="1872"
-         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAADElEQVQImWP4//8/AAX+Av5Y8msOAAAAAElFTkSuQmCC"
-         id="image11" />
       <g
          id="g15">
         <path
@@ -153,13 +147,6 @@
        id="g215"
        transform="matrix(0.0519099,0,0,0.0519099,77.95964,132.03036)"
        clip-path="url(#clipPath401)">
-      <image
-         x="0"
-         y="0"
-         width="1404"
-         height="1872"
-         xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAADElEQVQImWP4//8/AAX+Av5Y8msOAAAAAElFTkSuQmCC"
-         id="image164" />
       <g
          id="g168">
         <path
