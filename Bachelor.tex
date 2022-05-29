@@ -361,7 +361,7 @@ Eg kjem til å anta at lesaren har grunnleggande kunnskap innan topologi, lineæ
 \begin{definition}
 	La \( P = \set{p_1, p_2, p_3, \dots, p_n} \) vere ei endeleg mengd av punkt i \( \Rb^m \), med \( x\in\Rb^m \).
 
-	Då er \( x \) ein \emph{konveks kombinasjon} av \( P \) om det eksisterar ein tuppel av koeffisientar \( A=\{a_1, a_2, \dots, a_n\} \) i \( \Rb \), med \( a_i\geq0\forall i \) og \( \sum_{i=1}^n a_i = 1\), sånn at
+	Då er \( x \) ein \emph{konveks kombinasjon av \( P \)} om det eksisterar ein tuppel av koeffisientar \( A=\set{a_1, a_2, \dots, a_n} \) i \( \Rb \), med \( a_i \geq 0 \; \forall i \) og \( \sum_{i=1}^n a_i = 1 \), sånn at
 	\[
 		x=\sum_{i=1}^n a_ip_i
 	\]
@@ -415,8 +415,8 @@ Eg kjem til å anta at lesaren har grunnleggande kunnskap innan topologi, lineæ
 \end{example}
 
 \begin{remark}
-	Noko som er svært interessant med denne definisjonen er at om ein har ei geometrisk uavhengig mengd $P$, og ser på $\hat{P}_i := P \setminus \{p_i\}$, så vil dette også vera ei geometrisk uavhengig mengd. I tillegg så vil det geometriske simplekset utspent av $\hat{P}_i$ vera ei delmengd av det geometriske simplekset utspent av $P$. Med andre ord, alle delmengder av $P$ dannar også andre geometriske simpleks, inneheldt i det originale geometriske simplekset! Men ikkje nok med det, fordi når ein ser på det geometriske simplekset utspent av $\hat{P}_i$ for ein eller annan vilkårleg $i$, så ser ein at det er som eine "<fjeset"> av det geometriske simplekset utspunne av $P$. 
-\end{remark} % TODO legg til illustrasjon av dette
+	Noko som er svært interessant med denne definisjonen er at om ein har ei geometrisk uavhengig mengd $P$, og ser på $\hat{P}_i := P \setminus \{p_i\}$, så vil dette også vera ei geometrisk uavhengig mengd. I tillegg så vil det geometriske simplekset utspent av $\hat{P}_i$ vera ei delmengd av det geometriske simplekset utspent av $P$. Med andre ord, alle delmengder av $P$ dannar også andre geometriske simpleks, inneheldt i det originale geometriske simplekset! Men ikkje nok med det, fordi når ein ser på det geometriske simplekset utspent av $\hat{P}_i$ for ein eller annan vilkårleg $i$, så ser ein at det er som eine "<fjeset"> av det geometriske simplekset utspunne av $P$. Dette kan ein sjå på \autoref{fig:tre-geometriske-simpleksar}.
+\end{remark}
 
 \begin{definition}
 	La $V$ vera ei endeleg mengd, og $f:V\rightarrow \Rb^m$ ei $f$ er injektiv avbilding der bilete $f(V)$ er ei geometrisk uavhengig mengd av punkt. 
@@ -737,7 +737,7 @@ Dette beviset er svært inspirert av \cite[Kapittel 3]{https://doi.org/10.48550/
 	\]
 	Men dette betyr at \( x \in \hat{U}_0 \) fordi \( \hat{U}_0 \) er hyperhalvplanet danna av punkta \( \tuple{e_1, e_2, \dots, e_n} \) som ikkje inneheld \( 0 \). Men ein ser at for \( x \in U_i \), så er \( \sum_{i=1}^n a_i = 1 \), så \( \hat{U}_0 \) inneheld derfor planet danna av alle punkta med positve koordinatar og ein får derfor at
 	\[
-		hat{U}_0 = \set{ x : \sum_{i=1}^n a_i > 1}
+		\hat{U}_0 = \set{ x : \sum_{i=1}^n a_i > 1}
 	\]
 	Som er nøyaktig det ein kom fram til ovanfor.
 
@@ -1136,7 +1136,7 @@ Dette beviset er svært inspirert av \cite[Kapittel 3]{https://doi.org/10.48550/
 	Definer for \( x \in \union_{u \in U} u \):
 	\begin{align*}
 		\Psi : \union_{u \in U} u &\to \gr{\Nc(U)} \\
-		x \mapsto \sum_{i=1}^n \psi_i(x)f(U_i)
+		x &\mapsto \sum_{i=1}^n \psi_i(x)f(U_i)
 	\end{align*}
 \end{definition}
 
