@@ -185,12 +185,6 @@ Beviset av nerveteoremet er langt og bygger på mange kjente resultat. Her kjem 
 	For eit bevis, kombiner resultata til \cite[Theroem 6.3.1]{MR3838450} og \cite[Theorem 6.4.1]{MR3838450}.
 \end{theorem}
 
-\begin{theorem} \label{thm:definer-lin-op}
-	La \( V := \tuple{v_1, v_2, \dots, v_n} \), vera ein tuppel av \( n \) lineært uavhengige vektorar i \( \Rb^d \), med \( d \geq n \). La \( \tuple{w_1, w_2, \dots, w_n} \) vera ein tuppel av \( n \) vilkårlege (ikkje nødvendegvis distinkte) punkt i \( \Rb^k \).
-	
-	Då kan ein konstruera ei lineæravbilding \( L : \Rb^d \to \Rb^k \) som tek \( v_i \mapsto w_i \) for \( i = 1, 2 \dots, n \).
-\end{theorem}
-
 \begin{theorem}[Universaleigenskapen til underromstopologien] \label{thm:universal-eigenskap-underromstopologi}
 	La \( X \) og \( Y \) vera topologiske rom, og la \( A \subseteq X \) vera ei delmengd av \( X \) med underromstopologien, og la \( f: Y \to A \) vera ei vilkårleg avbilding frå \( Y \) til \( A \), og \( i: A \hookrightarrow X \) inklusjonsavbildinga. 
 	
@@ -248,6 +242,12 @@ Beviset av nerveteoremet er langt og bygger på mange kjente resultat. Her kjem 
 	For eit bevis av dette, sjå \cite[s. 132]{MR2548039}.
 \end{theorem}
 
+\begin{theorem} \label{thm:definer-lin-op}
+	La \( V := \tuple{v_1, v_2, \dots, v_n} \), vera ein tuppel av \( n \) lineært uavhengige vektorar i \( \Rb^d \), med \( d \geq n \). La \( \tuple{w_1, w_2, \dots, w_n} \) vera ein tuppel av \( n \) vilkårlege (ikkje nødvendegvis distinkte) punkt i \( \Rb^k \).
+	
+	Då kan ein konstruera ei lineæravbilding \( L : \Rb^d \to \Rb^k \) som tek \( v_i \mapsto w_i \) for \( i = 1, 2 \dots, n \).
+\end{theorem}
+
 \begin{theorem} \label{thm:endeleg-union-kompakt-er-kompakt}
 	La \( \set{K_i}_{i = 1}^n \) vera ei endeleg mengd av kompakte topologiske rom. 
 	
@@ -258,6 +258,16 @@ Beviset av nerveteoremet er langt og bygger på mange kjente resultat. Her kjem 
 	også kompakt.
 \end{theorem}
 
+\begin{proof}
+	La \( U := \set{U_i}_{i \in A} \) vere eit uendeleg overdekke av \( K \).
+
+	Då er \( U \) eit overdekke av \( K_j \) for alle \( j = 1, 2, \dots, n \). Men sidan \( K_j \) er kompakt, så kan ein velga eit deloverdekke \( \set_{U_i}_{i \in A_j} \) som kun består av endeleg mange element. Då får ein at
+	\[
+		\hat{A} := \union_{j = 1}^n A_j
+	\]
+	kun består av endeleg mange element, og \( \set{U_i}_{i \in \hat{A}} \) dekkar alle \( K_j \). Det er difor eit endeleg deloverdekke av \( U \) som dekkar \( K \).
+\end{proof}
+
 \begin{theorem} \label{thm:permutasjon}
 	La \( A \) vera ei tuppel av endeleg mange element. Og la \( f: A \to A \) vera ein permutasjon (bijektiv funskjon)
 	
@@ -266,7 +276,7 @@ Beviset av nerveteoremet er langt og bygger på mange kjente resultat. Her kjem 
 
 \section{Grunnleggande definisjonar og resultat}
 
-I denne delen så bygger eg opp grunnlaget til å kunne forstå kva nerveteoremet seier i tillegg til nokre resultat som bygger forståelse, men som blir brukt i beviset som kjem i neste kapittel.
+I denne delen så bygger ein opp grunnlaget til å kunne forstå kva nerveteoremet seier i tillegg til nokre resultat som bygger forståelse, men som blir brukt i beviset som kjem i neste kapittel.
 
 \begin{definition} \label{def:ASK}
 	La $V$ vera ei ikkje-tom og endeleg mengd, og \( K \) ei mengd som oppfyller følgande krav: 
@@ -476,7 +486,7 @@ I denne delen så bygger eg opp grunnlaget til å kunne forstå kva nerveteoreme
 	Av symmetri så kan eit likt argument kan bli gjort på \( \hat{\tau}^{-1}: y \mapsto y+x \) og ein får difor at \( \hat{\tau} \) er ein homeomorfi.
 \end{proof}
 
-\begin{theorem} \label{thm:gr-eintydig}
+\begin{theorem} \label{thm:gr-eintydig} % TODO Mangle lineær uavhengighet og referanse til definisjon av kont tingen.
 	Geometrisk realisering er eintydig opp til homeomorfi. Med andre ord: For to ulike geometriske realiseringar av eit endeleg abstrakt simplisielt kompleks $K$, med omsyn på $f$ og $g$ (to ulike affine imbeddingar), så er $\gr{K}_f$ og $\gr{K}_g$ homeomorfe.
 \end{theorem}
 
