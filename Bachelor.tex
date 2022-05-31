@@ -149,11 +149,11 @@
 
 Topologisk dataanalyse er eit fagfelt der ein brukar abstrakte topologiske verktøy til å rekna seg fram til "<forma"> til data. Gunnar Carlsson argumenterer i \cite{MR2476414} for at topologisk dataanalyse er bra på å finna den generelle strukturen til data meir uavhengig av val av metrikk og totalt uavhengig av val av koordinatsystem ein har ei datamengd i.
 
-Eit av dei mest sentrale resultata i topologisk dataanalyse er "<nerveteoremet">, som koplar den intuitive måten ein ser på forma til data på, med ein matematisk struktur ein kan jobba med. Det er ein grunnmur som store deler av topologisk dataanalyse er bygd på. Det er dette resultatet som er fokuset av denne teksten.
+Eit av dei mest sentrale resultata i topologisk dataanalyse er "<nerveteoremet">, som koplar den intuitive måten ein ser på forma til data på, med ein matematisk struktur ein kan jobba med. Det er ein grunnmur som store delar av topologisk dataanalyse er bygd på. Det er dette resultatet som er fokuset av denne teksten.
 
 Nerveteoremet er som oftest kreditert til anten Borsuk i \cite{MR28019} i 1948, eller Weil i \cite{MR50280} i 1952, så det er eit resultat som er over \( 70 \) år gammalt.
 
-Men trass i at nerveteoremet er så sentralt i topologisk dataanalyse, så er det svært få konkrete bevis for kvifor det fungerer i dei tilfella det blir brukt. Somme skriv teoremet upresist som til dømes \cite[Theorem 2.1]{MR4381505}, eller referer ikkje til eit skikkeleg bevis som til dømes \cite[Lemma 4.11]{MR3408277}. Medan andre referer til eller viser nerveteoremet ved å bruka svært avanserte teknikkar som til dømes \cite[Corollary 4G.3]{MR1867354} eller \cite[Theorem 15.21]{MR2361455}, utan å visa det for det kompakte og konvekse tilfellet som er det som blir brukt mest i topologisk dataanalyse.
+Men trass i at nerveteoremet er så sentralt i topologisk dataanalyse, så er det svært få konkrete bevis for kvifor det fungerer i dei tilfella det blir brukt. Somme skriv teoremet upresist som til dømes \cite[Theorem 2.1]{MR4381505}, eller referer ikkje til eit skikkeleg bevis som til dømes \cite[Lemma 4.11]{MR3408277}. Medan andre viser nerveteoremet ved å bruka svært avanserte teknikkar som til dømes \cite[Corollary 4G.3]{MR1867354} eller \cite[Theorem 15.21]{MR2361455}, utan å visa det for det kompakte og konvekse tilfellet som er det som blir brukt mest i topologisk dataanalyse.
 
 I denne teksten ynskjer eg å bevisa nerveteoremet i det endelege, konvekse og kompakte tilfellet i \( \Rb^n \), som er det mest vanlege tilfellet det blir brukt til i topologisk dataanalyse.
 
@@ -375,7 +375,7 @@ I denne delen så bygger ein opp grunnlaget til å kunne forstå kva nerveteorem
 	\begin{equation*}
 		0=\sum_{i=1}^n a_ip_i=\sum_{i=2}^n a_ip_i-\sum_{i=2}a_ip_1=\sum_{i=2}a_i(p_i-p_1).
 	\end{equation*}
-	Men sidan $\{(p_i-p_1)\}_{i=2}^n$ er lineært uavhengig, så er $ a_i = 0$ for $i\in[2,n]$. Men sidan $a_1 = -\sum_{i=2}^n a_i=0$, så får ein $a_i=0 \, \forall i$, som er definisjonen på geometrisk uavhengigheit.
+	Men sidan $\{(p_i-p_1)\}_{i=2}^n$ er lineært uavhengig, så er $ a_i = 0$ for $i\in[2,n]$. Men sidan $a_1 = -\sum_{i=2}^n a_i=0$, får ein at $a_i=0 \, \forall i$, som er definisjonen på geometrisk uavhengigheit.
 \end{proof}
 
 \begin{remark}
@@ -544,7 +544,7 @@ I denne delen så bygger ein opp grunnlaget til å kunne forstå kva nerveteorem
 		&= \tilde{L}\left(\sum_{i=1}^k\hat{L}(a_i\hat{f}(v_i))\right) \\
 		&= \tilde{L}\left(\sum_{i=1}^ka_i\hat{L}(\hat{f}(v_i))\right) \\
 		&= \tilde{L}\left(\sum_{i=1}^ka_i\hat{g}(v_i)\right) \\
-		\intertext{ettersom $\sum_{i=1}^ka_i\hat{g}(v_i)\in\gr{K}_{\hat{g}}$, så får ein at} \\
+		\intertext{ettersom $\sum_{i=1}^ka_i\hat{g}(v_i)\in\gr{K}_{\hat{g}}$, får ein at} \\
 		\tilde{L}\left(\sum_{i=1}^ka_i\hat{g}(v_i)\right) &= \sum_{i=1}^k\tilde{L}(a_i\hat{g}(v_i)) \\
 		&= \sum_{i=1}^ka_i\tilde{L}(\hat{g}(v_i)) \\
 		&= \sum_{i=1}^ka_i\hat{f}(v_i) \\
@@ -552,7 +552,7 @@ I denne delen så bygger ein opp grunnlaget til å kunne forstå kva nerveteorem
 	\end{align*}
 	Ein kan gjere det same for $\hat{L}\circ\tilde{L}(y)$ ved eit symmetrisk argument. Dette tyder at $\hat{L}$ er bijektiv med invers $\tilde{L}$.
 	
-	Om ein lar $\hat{\tau}_f:=\tau_f|_{\gr{K}_f} : \gr{K}_f \to \gr{K}_{\hat{f}}$ og $\hat{\tau}_g:=\tau_g|_{\gr{K}_g} : \gr{K}_g \to \gr{K}_{\hat{g}}$, så får ein frå \autoref{thm:tau-homeomorfi} at desse er homeomorfiar.
+	Om ein lar $\hat{\tau}_f:=\tau_f|_{\gr{K}_f} : \gr{K}_f \to \gr{K}_{\hat{f}}$ og $\hat{\tau}_g:=\tau_g|_{\gr{K}_g} : \gr{K}_g \to \gr{K}_{\hat{g}}$, får ein frå \autoref{thm:tau-homeomorfi} at desse er homeomorfiar.
 	
 	Då får ein det følgande kommutative diagrammet:
 %	\begin{center}
@@ -651,7 +651,7 @@ Eit fint resultat som er ekvivalent med definisjonen av Cech-komplekset er som f
 	
 	Sidan $A:=\intersect_{p\in\sigma}\bar{B}_r(p)\neq\emptyset$, så finst det ein $x\in A$ der for for alle \( p\in\sigma \) så er \( d(p,x)\leq r \), sidan $x\in\bar{B}_r(p)$.
 	
-	Men sidan $d(p,x)=d(x,p)$ per definisjon av metrikk, så får ein at \( \forall p\in\sigma \) så er \( p \in \bar{B}_r(x) \).
+	Men sidan $d(p,x)=d(x,p)$ per definisjon av metrikk, får ein at \( \forall p\in\sigma \) så er \( p \in \bar{B}_r(x) \).
 	
 	( \( \Longleftarrow \) )
 	
@@ -789,7 +789,7 @@ Dette beviset er svært inspirert av \cite[Section 3]{https://doi.org/10.48550/a
 				 Då er \( x \in \hat{U}_0 \), fordi \( \hat{U}_0 \) er hyperhalvplanet som består av alle \( x = \sum_{i = 1}^n a_i e_i \) der \( \sum_{i = 1}^n a_i > 1 \). }
 	\end{enumerate}
 
-	Difor så får ein at for \( x \not\in \Delta^n \) så er \( x \in \hat{U} \).
+	Difor får ein at for \( x \not\in \Delta^n \) så er \( x \in \hat{U} \).
 
 	For \( x \in \Delta^n \), så er \( x = \sum_{i=1} a_i e_i \), med \( a_i \geq 0 \), og \( \sum_{i=1}^n a_i \leq 1 \).
 
@@ -1064,7 +1064,7 @@ Dette beviset er svært inspirert av \cite[Section 3]{https://doi.org/10.48550/a
 	\end{align*}
 	Og sidan \( \hat{\tau} \) er kontinuerleg og veldefinert, og \( \hat{L} \) er kontinuerleg og veldefinert ifølge \autoref{thm:avgrensa-lin-op-er-kont} og \autoref{thm:universal-eigenskap-underromstopologi}, så må \( \Gamma = \hat{L}\circ\hat{\tau} \) også vera kontinuerleg og veldefinert.
 
-	For \( x \in \gr{\Sd(\Nc(U))}_f \) ein konveks kombinasjon av dei geometrisk uavhengige punkta \( f(\sigma) \) for ein eller annan \( \sigma \in \Sd(\Nc(U)) \), der \( \sigma = \tuple{\sigma_1, \sigma_2, \dots, \sigma_{\#\sigma}} \) med dei barysentriske koordinatane \( \tuple{a_1, a_2, \dots, a_{\#\sigma}} \), så får ein at
+	For \( x \in \gr{\Sd(\Nc(U))}_f \) ein konveks kombinasjon av dei geometrisk uavhengige punkta \( f(\sigma) \) for ein eller annan \( \sigma \in \Sd(\Nc(U)) \), der \( \sigma = \tuple{\sigma_1, \sigma_2, \dots, \sigma_{\#\sigma}} \) med dei barysentriske koordinatane \( \tuple{a_1, a_2, \dots, a_{\#\sigma}} \), får ein at
 	\[
 		\Gamma(x) = \sum_{i=1}^{\#\sigma} a_i v_{\sigma_i}
 	\]
@@ -1484,7 +1484,7 @@ Dette beviset er svært inspirert av \cite[Section 3]{https://doi.org/10.48550/a
 
 	men då er \( \hat{g} = l \), og \( l \) er difor kontinuerleg. Ifølge \autoref{thm:universal-eigenskap-underromstopologi}, så er avbildinga \( i \circ l : \gr{\sigma}_f \times I \to \gr{\sigma}_f \times I \) kontinueleg for \( i: \gr{\partial\sigma}_f \times I \union \gr{\sigma}_f \times \set{0, 1} \hookrightarrow \gr{\sigma}_f \times I \) inklusjonsavbildinga.
 	
-	Merk at sidan \( G \simeq S^{\#\sigma} \), så får ein det fyrste resultatet frå argumentet ovanfor.
+	Merk at sidan \( G \simeq S^{\#\sigma} \), får ein det fyrste resultatet frå argumentet ovanfor.
 
 	La
 	\begin{align*}
@@ -1550,7 +1550,7 @@ Dette beviset er svært inspirert av \cite[Section 3]{https://doi.org/10.48550/a
 
 	Ein får også at \( \intersect_{i = 1}^k \gr{\bst(v_{j_i})}_f \subseteq \gr{\intersect_{i = 1}^k \bst(v_{j_i})}_f \) fordi for \( x \in \intersect_{i = 1}^k \gr{\bst(v_{j_i})}_f \), så er \( x \in \gr{\tau_i}_f \) for ein eller annan \( \tau_i \in \gr{\bst(v_{j_i})}_f \) for alle \( i \). Då har ein at ein kan utrykka \( x \) sine barysentriske koordinatar på \( k \) ulike måtar. Men ifølge \autoref{thm:unik-barysentrisk-koordinat}, så må alle dei ikkje-null korrdinata vera like ettersom den barysentriske koordinaten skal vere eintydig. La \( \hat{\tau} \) vera det abstrakte simplekset som kun inneheld dei ikkje-null koordinata til \( x \), då er \( x \in \gr{\hat{\tau}}_f \), og \( \hat{\tau} \subseteq \tau_i \) for alle \( i = 1, 2, \dots, k \). Men sidan \( \tau_i \in \bst(v_{j_i}) \) er abstrakte simplisielle kompleks ifølge \autoref{thm:bst-ask}, så er også \( \hat{\tau} \in  \bst(v_{j_i}) \) for alle \( i = 1, 2, \dots, k \). Det tyder at \( \hat{\tau} \in \intersect_{i = 1}^k \bst(v_{j_i}) \), så \( x \in \gr{\hat{\tau}}_f \subseteq \gr{\intersect_{i = 1}^k \bst(v_{j_i})}_f \).
 	
-	Om ein sett saman dei to resultata ovanfor, så får ein at
+	Om ein sett saman dei to resultata ovanfor, får ein at
 	\[
 		gr{\intersect_{i = 1}^k \bst(v_{j_i})}_f = \intersect_{i = 1}^k \gr{\bst(v_{j_i})}_f.
 	\]
@@ -1632,7 +1632,7 @@ Dette beviset er svært inspirert av \cite[Section 3]{https://doi.org/10.48550/a
 
 	Men sidan \( \set{\gr{\bst(U_i)}_f}_{i = 1}^{n} \) er eit samantrekkbart overdekke av \( \gr{\Sd(\Nc(U))}_f \) ifølge \autoref{thm:bst-good}, så er alle \( C_\sigma \) samantrekkbare uavhengig av val av \( \sigma \in \Sd(\Nc(U)) \).
 
-	Difor er både \( \gr{p}_f \) og \( h(\gr{p}_f) \) i eit samantrekkbart rom \( C_p \), og ein kan konstruera ein sti i \( C_p \), kalla \( s_p \), med \( s_p(0) = \gr{p}_f \) og \( s_p(1) = h(\gr{p}_f) \) mellom dei. Om ein gjer dette for alle punkta så får ein den fyrste homotopien
+	Difor er både \( \gr{p}_f \) og \( h(\gr{p}_f) \) i eit samantrekkbart rom \( C_p \), og ein kan konstruera ein sti i \( C_p \), kalla \( s_p \), med \( s_p(0) = \gr{p}_f \) og \( s_p(1) = h(\gr{p}_f) \) mellom dei. Om ein gjer dette for alle punkta får ein den fyrste homotopien
 	\[
 		H_0 : (\gr{p}_f, t) \mapsto s_p(t).
 	\]
@@ -1686,7 +1686,7 @@ Dette beviset er svært inspirert av \cite[Section 3]{https://doi.org/10.48550/a
 	\[
 		H_m|_{\gr{\sigma}_f \times I}(x) \in C_\sigma \subseteq \gr{\Sk_m(\bst(U_i))}_f.
 	\]
-	Om \( x \) er ikkje i det indre av \( \gr{\sigma}_f \), men heller \( x \in \gr{\Sk_m(\bst(U_i))}_f \intersect \gr{\partial\sigma}_f \), så er dette ei delmengd av \( \gr{\Sk_{m-1}(\bst(U_i))}_f \), sidan \( \partial\sigma \) er ein samling av \( m-1 \)-simpleksar. Men frå diagrammet, og induksjonshypotesen så får ein difor at
+	Om \( x \) er ikkje i det indre av \( \gr{\sigma}_f \), men heller \( x \in \gr{\Sk_m(\bst(U_i))}_f \intersect \gr{\partial\sigma}_f \), så er dette ei delmengd av \( \gr{\Sk_{m-1}(\bst(U_i))}_f \), sidan \( \partial\sigma \) er ein samling av \( m-1 \)-simpleksar. Men frå diagrammet, og induksjonshypotesen får ein difor at
 	\[
 		H_m|_{\gr{\sigma}_f \times I}(x) = H_{m-1}(x) \in \gr{\Sk_{m-1}(\bst(U_i))}_f \subseteq \gr{\Sk_{m}(\bst(U_i))}_f.
 	\]
@@ -1696,7 +1696,7 @@ Dette beviset er svært inspirert av \cite[Section 3]{https://doi.org/10.48550/a
 	\[
 		H_m : \gr{\Sk_m(\Sd(\Nc(U)))}_f \times I \to \gr{\Sk_m(\Sd(\Nc(U)))}_f.
 	\]
-	Sidan \( U \) er endeleg, så er \( \Nc(U) \) og \( \Sd(\Nc(U)) \) også endelege og har difor eit abstrakt \( k \)-simpleks med \( k \geq r \) for alle andre \( r \)-simpleksar (dette vil vera begrensa av \( \#U \)), så om ein gjentek induksjonen mange nok gangar til \( \Sk_{k}(\Sd(\Nc(U))) = \Sk_{k+1}(\Sd(\Nc(U))) \), så får ein at
+	Sidan \( U \) er endeleg, så er \( \Nc(U) \) og \( \Sd(\Nc(U)) \) også endelege og har difor eit abstrakt \( k \)-simpleks med \( k \geq r \) for alle andre \( r \)-simpleksar (dette vil vera begrensa av \( \#U \)), så om ein gjentek induksjonen mange nok gangar til \( \Sk_{k}(\Sd(\Nc(U))) = \Sk_{k+1}(\Sd(\Nc(U))) \), får ein at
 	\[
 		H = H_k
 	\]
@@ -1710,22 +1710,22 @@ Endeleg så har ein alle dei nødvendege resultata ein treng for å visa nervete
 
 	Då får ein ifølge \autoref{thm:homeq-u} og \autoref{thm:homeq-sd} at \( \alpha^{-1} \circ \Psi \) er ein homotopi-invers til \( \Gamma \), som gir ein homotopiekvivalens mellom \( \union_{u \in U} u \) og \( \gr{\Sd(\Nc(U))}_f \).
 
-	Men sidan \( \alpha : \gr{\Sd(\Nc(U))}_f \cong \gr{\Nc(U)}_g \) frå \autoref{thm:alpha-homeomorfi}, så får ein ein homotopiekvivalens mellom \( \union_{u \in U} u \) og \( \gr{\Nc(U)}_g \).
+	Men sidan \( \alpha : \gr{\Sd(\Nc(U))}_f \cong \gr{\Nc(U)}_g \) ifrå \autoref{thm:alpha-homeomorfi}, får ein ein homotopiekvivalens mellom \( \union_{u \in U} u \) og \( \gr{\Nc(U)}_g \).
 
 	Ifølge \autoref{thm:gr-eintydig}, så er \( \gr{\Nc(U)}_g \) homeomorf til alle geometriske realsieringar av \( \Nc(U) \), og resultatet følger.
 \end{proof}
 
 \section{Konklusjon}
 
-Grunnen til at ein visar nerveteoremet \autoref{thm:nerveteoremet} for endelege, konvekse og kompakte mengder er i hovudsak for å visa at Cech-komplekset bevarer all strukturen opp til homotopiekvivalens. Cech-komplekset er den naturlege strukturen ein ser på om ein har ei stor datamengda og ynskjer å veta "<formen"> på den datamengda. Ved å bruka nerveteoremet så får ein bevist at Cech-komplekset er ein svært god approksimasjon av strukturen danna av datamengda.
+Grunnen til at ein visar nerveteoremet \autoref{thm:nerveteoremet} for endelege, konvekse og kompakte mengder er i hovudsak for å visa at Cech-komplekset bevarer all strukturen opp til homotopiekvivalens. Cech-komplekset er den naturlege strukturen ein ser på om ein har ei stor datamengda og ynskjer å veta "<formen"> på den datamengda. Ved å bruka nerveteoremet får ein bevist at Cech-komplekset er ein svært god approksimasjon av strukturen danna av datamengda.
 
-Diverre, så viser det seg at å rekna ut Cech-komplekset tek ekstremt lang tid, til og med for kraftige datamaskinar, så i praksis brukar ein heller andre approksimasjonar av Cech-komplekset, som til dømes Vietoris-Rips komplekset. % Referer TODO
+Diverre, så viser det seg at å rekna ut Cech-komplekset tek ekstremt lang tid, til og med for kraftige datamaskinar, så i praksis brukar ein heller andre approksimasjonar av Cech-komplekset, som til dømes Vietoris-Rips komplekset eller Delaunay-komplekset som Carlsson argumenterar for i \cite[s. 263--264]{MR2476414}.
 
 Det er også mange fleire variantar av nerveteoremet som ikkje vert omtalt i denne teksten som til dømes eit nerveteorem for uendeleg mange opne mengder med samantrekkbart over eit parakompakt rom \cite[Corollary 4G.3]{MR1867354}. Det mest vanlege beviset av eit nerveteorem ein kjem borti er i eit ope tilfelle som i \cite[Theorem 15.21]{MR2361455}, \cite[Theorem 4.3]{MR4218370} eller \cite[Theorem 2.3]{MR2476414}.
 
 Men sidan Cech-komplekset vert gjort med lukka ballar, så dekker ikkje nerveteoremet i det opne tilfellet dette. Studiet av nerveteoremet og i kva tilfeller det gjeld, eller ikkje gjeld er eit aktivt fagfelt ifølge Oudot i \cite[s. 82]{MR3408277}, som på same side påstår det er eit nerveteorem for uendeleg lukka overdekke med andre betingingar, utan å referere til eit bevis av påstanden.
 
-Dette viser at i trass for at mange anvender nerveteoremet, så er både dei nødvendige føresetnadane og eit bevis for nerveteoremet utanom det ope og parakompakt tilfelle lite dokumentert.
+Dette viser at i trass for at mange anvender nerveteoremet, så er både dei nødvendige føresetnadane og eit bevis for nerveteoremet utanom det ope og parakompakt tilfellet lite dokumentert.
 
 Eg håper difor at denne teksten gav eit relativt kort og enkelt bevis av nerveteoremet, sånn som det vanlegvis blir brukt i topologisk dataanalyse.
 
