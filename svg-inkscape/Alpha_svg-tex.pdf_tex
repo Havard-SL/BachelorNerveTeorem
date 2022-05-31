@@ -38,7 +38,7 @@
   \newcommand*\fsize{\dimexpr\f@size pt\relax}%
   \newcommand*\lineheight[1]{\fontsize{\fsize}{#1\fsize}\selectfont}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{903.09683507bp}%
+    \setlength{\unitlength}{919.81571513bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -50,9 +50,26 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.83471681)%
+  \begin{picture}(1,0.81954472)%
     \lineheight{1}%
     \setlength\tabcolsep{0pt}%
     \put(0,0){\includegraphics[width=\unitlength,page=1]{Alpha_svg-tex.pdf}}%
+    \put(0.06462013,0.71937443){\color[rgb]{0,0,0}\rotatebox{8.29214341}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}}%
+    \put(0.78799894,0.72093505){\color[rgb]{0,0,0}\rotatebox{-15.32193603}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}1\end{tabular}}}}}%
+    \put(0.03291654,0.42374768){\color[rgb]{0,0,0}\rotatebox{-12.7510232}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}}%
+    \put(0.83216158,0.50697787){\color[rgb]{0,0,0}\rotatebox{-12.75878442}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}2\end{tabular}}}}}%
+    \put(0.05753394,0.14974697){\color[rgb]{0,0,0}\rotatebox{6.15258447}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}}%
+    \put(0.95234601,0.18455698){\color[rgb]{0,0,0}\rotatebox{-15.11696973}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}3\end{tabular}}}}}%
+    \put(0.01581274,0.72245064){\color[rgb]{0,0,0}\rotatebox{4.46396844}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}| |\end{tabular}}}}}%
+    \put(0.68471673,0.75149725){\color[rgb]{0,0,0}\rotatebox{-24.44025433}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}|\end{tabular}}}}}%
+    \put(0.80470246,0.71930597){\color[rgb]{0,0,0}\rotatebox{-21.42670691}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}|\end{tabular}}}}}%
+    \put(-0.00634896,0.44133318){\color[rgb]{0,0,0}\rotatebox{-21.77524647}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}|\end{tabular}}}}}%
+    \put(0.03826311,0.42893845){\color[rgb]{0,0,0}\rotatebox{-13.36996688}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}|\end{tabular}}}}}%
+    \put(0.72823048,0.53171976){\color[rgb]{0,0,0}\rotatebox{-21.77524647}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}|\end{tabular}}}}}%
+    \put(0.8562201,0.51373315){\color[rgb]{0,0,0}\rotatebox{-18.54389321}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}|\end{tabular}}}}}%
+    \put(0.01421827,0.15629536){\color[rgb]{0,0,0}\rotatebox{-6.39359026}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}|\end{tabular}}}}}%
+    \put(0.05949154,0.15964874){\color[rgb]{0,0,0}\rotatebox{-9.93620258}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}|\end{tabular}}}}}%
+    \put(0.82905341,0.2163053){\color[rgb]{0,0,0}\rotatebox{-26.54307339}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}|\end{tabular}}}}}%
+    \put(0.97806115,0.20406958){\color[rgb]{0,0,0}\rotatebox{-34.17378856}{\makebox(0,0)[lt]{\lineheight{1.25}\smash{\begin{tabular}[t]{l}|\end{tabular}}}}}%
   \end{picture}%
 \endgroup%
